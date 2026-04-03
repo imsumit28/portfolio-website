@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀 Sumit Kumar | Developer Portfolio</h1>
+  <h1>Sumit Kumar | Developer Portfolio</h1>
   <p>
     A high-performance, fully responsive personal portfolio and blog built from the ground up using the MERN stack. Designed with a focus on modern UI/UX aesthetics, scalable architecture, and raw recruiter conversion.
   </p>
