@@ -54,6 +54,14 @@ const ContactForm = () => {
 
   return (
     <div className="position-relative" style={{ zIndex: 1 }}>
+      <style>{`
+        .form-control.contact-input::placeholder {
+          color: rgba(248, 250, 252, 0.4) !important;
+        }
+        .form-control.contact-input {
+          color: #f8fafc !important;
+        }
+      `}</style>
       <h4 className="fw-bold mb-1" style={{ color: '#f8fafc' }}>Send a Message</h4>
       <br />
       {status.message && (
@@ -66,11 +74,11 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="row g-3 mb-3">
           <div className="col-md-6">
-            <label className="form-label text-muted fw-medium" style={{ fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR NAME</label>
+            <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR NAME</label>
             <input
               type="text"
               style={inputStyle}
-              className="form-control"
+              className="form-control contact-input"
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -81,11 +89,11 @@ const ContactForm = () => {
             />
           </div>
           <div className="col-md-6">
-            <label className="form-label text-muted fw-medium" style={{ fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR EMAIL</label>
+            <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR EMAIL</label>
             <input
               type="email"
               style={inputStyle}
-              className="form-control"
+              className="form-control contact-input"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -97,10 +105,10 @@ const ContactForm = () => {
           </div>
         </div>
         <div className="mb-4">
-          <label className="form-label text-muted fw-medium" style={{ fontSize: '0.85rem', letterSpacing: '0.5px' }}>MESSAGE</label>
+          <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>MESSAGE</label>
           <textarea
             style={{ ...inputStyle, resize: 'none' }}
-            className="form-control"
+            className="form-control contact-input"
             name="message"
             rows="5"
             value={formData.message}
@@ -132,7 +140,7 @@ const ContactForm = () => {
             'Send Message'
           )}
         </button>
-        <p className="text-center text-muted mt-3 mb-0" style={{ fontSize: '0.85rem' }}>
+        <p className="text-center mt-3 mb-0" style={{ color: '#cbd5e1', fontSize: '0.85rem' }}>
           Or reach out directly via email or LinkedIn
         </p>
       </form>

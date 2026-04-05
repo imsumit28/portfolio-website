@@ -98,13 +98,13 @@ const Home = () => {
                 >
                   View Projects
                 </button>
-                <button
-                  type="button"
-                  className="hero-cta-btn hero-cta-btn--secondary"
-                  onClick={() => scrollToSection('resume')}
+                <a
+                  href="/resume.pdf"
+                  download="Sumit_Kumar_Resume.pdf"
+                  className="hero-cta-btn hero-cta-btn--secondary text-decoration-none"
                 >
                   Download Resume
-                </button>
+                </a>
                 <button
                   type="button"
                   className="hero-cta-btn hero-cta-btn--secondary"
@@ -440,9 +440,9 @@ const Home = () => {
                     </div>
                   </div>
                   <h6 className="fw-bold mb-2" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>B.Tech. in Computer Science and Engineering</h6>
-                  <p className="mb-2 text-muted" style={{ fontSize: '1rem' }}>CGPA: <span style={{ color: '#10b981', fontWeight: '600' }}>8.0 (till now)</span></p>
-                  <p className="mb-3 text-muted" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>
-                    <span style={{ color: '#cbd5e1', fontWeight: '500' }}>Relevant Coursework:</span> Data Structures, DBMS, Operating Systems
+                  <p className="mb-2" style={{ fontSize: '1rem', color: '#e2e8f0' }}>CGPA: <span style={{ color: '#10b981', fontWeight: '600' }}>8.03 (till now)</span></p>
+                  <p className="mb-3" style={{ fontSize: '0.95rem', lineHeight: '1.5', color: '#e2e8f0' }}>
+                    <span style={{ color: '#f8fafc', fontWeight: '700' }}>Relevant Coursework:</span> Data Structures, DBMS, Operating Systems
                   </p>
 
                   <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
@@ -561,12 +561,76 @@ const Home = () => {
                 boxShadow: '0 0 40px rgba(59,130,246,0.06), 0 20px 60px rgba(0,0,0,0.4)',
               }}
             >
-              <h4 className="fw-bold mb-2" style={{ color: '#f8fafc' }}>
-                Resume coming soon
-              </h4>
-              <p className="mb-0" style={{ color: '#94a3b8', fontSize: '1.02rem', lineHeight: 1.7 }}>
-                I’m preparing a polished, one-page resume PDF. For now, feel free to reach out from the Contact section.
-              </p>
+              <div className="row align-items-center">
+                <div className="col-lg-5 mb-5 mb-lg-0">
+                  <h4 className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1.8rem' }}>
+                    My Resume
+                  </h4>
+                  <p className="mb-4" style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                    Get a detailed overview of my technical skills, hands-on experience, and educational background.
+                  </p>
+                  
+                  <div className="mb-4 d-flex flex-column gap-3">
+                    <div>
+                      <span className="badge rounded-pill" style={{ background: 'rgba(59,130,246,0.1)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.3)', padding: '8px 14px', fontSize: '0.9rem', fontWeight: '500' }}>
+                        📄 PDF • Updated April 2026
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-5">
+                    <a 
+                      href="/resume.pdf" 
+                      download="Sumit_Kumar_Resume.pdf"
+                      className="hero-cta-btn hero-cta-btn--primary text-decoration-none d-inline-flex align-items-center justify-content-center"
+                      style={{ padding: '14px 32px', fontSize: '1.05rem', fontWeight: '600', letterSpacing: '0.5px' }}
+                    >
+                      Download Resume
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="col-lg-7 px-lg-5">
+                  <div 
+                    className="position-relative w-100 mx-auto" 
+                    style={{ 
+                      paddingTop: '120%', /* aspect ratio for A4 preview */
+                      background: 'rgba(15, 23, 42, 0.6)', 
+                      borderRadius: '16px', 
+                      border: '1px solid rgba(59,130,246,0.3)',
+                      boxShadow: '0 15px 40px rgba(0,0,0,0.5), 0 0 25px rgba(59,130,246,0.15)'
+                    }}
+                  >
+                    <div style={{ 
+                      position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
+                      overflow: 'hidden', 
+                      borderRadius: '15px', 
+                      transform: 'translateZ(0)',
+                      clipPath: 'inset(0px round 15px)' 
+                    }}>
+                      <div style={{ position: 'absolute', top: 0, left: '-18px', width: 'calc(100% + 36px)', height: '100%', overflow: 'hidden' }}>
+                        <object 
+                          data="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                          type="application/pdf" 
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            border: 'none',
+                            background: '#fff'
+                          }}
+                        >
+                        <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4 text-center" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: '#1e293b' }}>
+                          <p style={{ color: '#cbd5e1', marginBottom: '15px' }}>Preview not available in this browser.</p>
+                          <a href="/resume.pdf" download="Sumit_Kumar_Resume.pdf" className="btn btn-primary px-4 py-2" style={{ borderRadius: '8px' }}>
+                            Download PDF Instead
+                          </a>
+                        </div>
+                      </object>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
