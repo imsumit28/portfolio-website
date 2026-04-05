@@ -529,12 +529,12 @@ const Home = () => {
                     />
                     <div className="ms-3">
                       <h6 className="fw-bold mb-0" style={{ color: 'var(--text-main)', fontSize: '0.95rem' }}>Central Board Of Secondary Education</h6>
-                      <p className="mb-0 text-muted" style={{ fontSize: '0.85rem' }}>Class XII</p>
+                      <p className="mb-0" style={{ color: '#e2e8f0', fontSize: '0.85rem' }}>Class XII</p>
                     </div>
                   </div>
                   <div className="text-md-end">
                     <p className="mb-0 text-accent fw-medium" style={{ fontSize: '0.85rem' }}>May 2021 - May 2023</p>
-                    <p className="mb-0 text-muted" style={{ fontSize: '0.85rem' }}>Score: <span style={{ color: '#f8fafc', fontWeight: '600' }}>89.4%</span></p>
+                    <p className="mb-0" style={{ color: '#e2e8f0', fontSize: '0.85rem' }}>Score: <span style={{ color: '#f8fafc', fontWeight: '600' }}>89.4%</span></p>
                   </div>
                 </div>
               </div>
