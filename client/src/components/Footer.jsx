@@ -77,7 +77,7 @@ const Footer = () => {
 
         <div className="footer-bottom text-center">
           <p className="footer-copyright mb-3">
-            &copy; {new Date().getFullYear()} Sumit Kumar &bull; Built with <span style={{ color: '#ef4444' }}>❤️</span> using MERN
+            Built with <span style={{ color: '#ef4444' }}>❤️</span>
           </p>
           <div className="d-flex justify-content-center gap-3">
             <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="GitHub">
