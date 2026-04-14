@@ -15,7 +15,7 @@
 
 ---
 
-## ✨ Features
+##  Features:
 
 - **Modern UI/UX:** Built with a custom "Modern Glass" aesthetic featuring emerald green accents and dark-mode optimization.
 - **Dynamic Projects Showcase:** Easily display technical projects, case studies, and code repositories with metric-driven bullet points.
@@ -23,7 +23,7 @@
 - **Direct Mail Integration:** Contact form wired directly to Nodemailer, pushing encrypted messages securely to an admin inbox with rate limiting for spam protection.
 - **Fully Responsive:** Fluid layouts designed with Bootstrap and Flexbox to guarantee a 10/10 experience on all devices, from massive ultra-wides to mobile screens.
 
-## 🛠️ Built With
+##  Built With:
 
 * **Frontend:** React.js, Vite, Vanilla CSS, Bootstrap
 * **Backend:** Node.js, Express.js
@@ -31,7 +31,7 @@
 * **Authentication:** JSON Web Tokens (JWT)
 * **Utilities:** Nodemailer (Emails), Express-Rate-Limit (Security), AOS (Animations)
 
-## ⚙️ Local Setup
+##  Local Setup:
 
 Follow these steps to spin up the project locally on your machine.
 
@@ -88,10 +88,10 @@ Ensure you have the following installed:
 
 6. Open your browser and navigate to `http://localhost:5173/`.
 
-### 🛡️ Admin Dashboard Access
+###  Admin Dashboard Access:
 To access the Admin panel, navigate to `/auth` on your frontend and log in. You will need to manually seed a user document into your MongoDB `users` collection with the matching credentials.
 
-## 🤝 Contact / Network
+##  Contact / Network:
 
 Sumit Kumar - [LinkedIn](https://linkedin.com/in/imsumit45/) - [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
 
