@@ -15,7 +15,7 @@
 
 ---
 
-##  Features:
+## Features:
 
 - **Modern UI/UX:** Built with a custom "Modern Glass" aesthetic featuring emerald green accents and dark-mode optimization.
 - **Dynamic Projects Showcase:** Easily display technical projects, case studies, and code repositories with metric-driven bullet points.
@@ -31,7 +31,7 @@
 * **Authentication:** JSON Web Tokens (JWT)
 * **Utilities:** Nodemailer (Emails), Express-Rate-Limit (Security), AOS (Animations)
 
-##  Local Setup:
+## Local Setup:
 
 Follow these steps to spin up the project locally on your machine.
 
@@ -91,7 +91,7 @@ Ensure you have the following installed:
 ###  Admin Dashboard Access:
 To access the Admin panel, navigate to `/auth` on your frontend and log in. You will need to manually seed a user document into your MongoDB `users` collection with the matching credentials.
 
-##  Contact / Network:
+## Contact / Network:
 
 Sumit Kumar - [LinkedIn](https://linkedin.com/in/imsumit45/) - [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
 

@@ -186,10 +186,11 @@ const Home = () => {
           </div>
 
           {/* Interests */}
-          <div className="mt-2" data-aos="fade-up" data-aos-delay="200">
-            <h6 className="text-muted text-uppercase fw-bold mb-4 ms-1" style={{ fontSize: '0.85rem', letterSpacing: '1px' }}>
-              INTERESTS <span style={{ display: 'inline-block', width: '80px', height: '1px', background: 'rgba(255,255,255,0.2)', verticalAlign: 'middle', marginLeft: '15px' }}></span>
-            </h6>
+          <div className="mt-5" data-aos="fade-up" data-aos-delay="200">
+            <div className="section-title-wrapper mb-4">
+              <h4 className="section-title" style={{ minWidth: 'auto' }}>INTERESTS</h4>
+              <div className="section-line"></div>
+            </div>
 
             <div className="row g-3">
               {[
