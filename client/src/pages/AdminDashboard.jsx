@@ -156,7 +156,7 @@ const AdminDashboard = () => {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h4 className="fw-bold mb-0">Projects Portfolio</h4>
             <button 
-              className="btn btn-primary d-flex align-items-center rounded-pill px-3 shadow-sm"
+              className="btn-global btn-global-primary btn-global-sm d-flex align-items-center"
               onClick={() => { resetProjectForm(); setShowProjectModal(true); }}
             >
               <FaPlus className="me-2" /> Add Project
@@ -189,10 +189,10 @@ const AdminDashboard = () => {
                       <td className="fw-medium">{project.title}</td>
                       <td>{project.order}</td>
                       <td>
-                        <button className="btn btn-sm btn-outline-primary me-2 shadow-sm" onClick={() => openEditModal(project)}>
+                        <button className="btn-global btn-global-secondary btn-global-sm me-2" onClick={() => openEditModal(project)}>
                           <FaEdit />
                         </button>
-                        <button className="btn btn-sm btn-outline-danger shadow-sm" onClick={() => deleteProject(project._id)}>
+                        <button className="btn-global btn-global-sm me-2" style={{background:'rgba(239,68,68,0.15)',border:'1px solid rgba(239,68,68,0.35)',color:'#f87171'}} onClick={() => deleteProject(project._id)}>
                           <FaTrash />
                         </button>
                       </td>
@@ -231,7 +231,7 @@ const AdminDashboard = () => {
                       <div className="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
                         <small className="text-muted">{new Date(msg.createdAt).toLocaleDateString()}</small>
                         {!msg.isRead && (
-                          <button className="btn btn-sm btn-success d-flex align-items-center shadow-sm" onClick={() => markAsRead(msg._id)}>
+                          <button className="btn-global btn-global-primary btn-global-sm d-flex align-items-center" onClick={() => markAsRead(msg._id)}>
                             <FaCheck className="me-1" /> Mark Read
                           </button>
                         )}
@@ -293,8 +293,8 @@ const AdminDashboard = () => {
                   </div>
                   
                   <div className="d-flex justify-content-end mt-4 pt-3 border-top gap-2">
-                    <button type="button" className="btn btn-light shadow-sm" onClick={() => { setShowProjectModal(false); resetProjectForm(); }}>Cancel</button>
-                    <button type="submit" className="btn btn-primary px-4 shadow-sm">{editingProject ? 'Update Project' : 'Save Project'}</button>
+                    <button type="button" className="btn-global btn-global-secondary btn-global-sm" onClick={() => { setShowProjectModal(false); resetProjectForm(); }}>Cancel</button>
+                    <button type="submit" className="btn-global btn-global-primary btn-global-sm px-4">{editingProject ? 'Update Project' : 'Save Project'}</button>
                   </div>
                 </form>
               </div>

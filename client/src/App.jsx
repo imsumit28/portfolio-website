@@ -32,7 +32,7 @@ function App() {
       <Router>
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
-          <main className="flex-grow-1">
+          <main className="flex-grow-1" style={{ paddingTop: '80px' }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<Projects />} />

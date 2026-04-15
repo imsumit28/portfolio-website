@@ -93,21 +93,21 @@ const Home = () => {
               <div className="hero-cta-row mt-4">
                 <button
                   type="button"
-                  className="hero-cta-btn hero-cta-btn--primary"
+                  className="btn-global btn-global-primary"
                   onClick={() => scrollToSection('projects')}
                 >
                   View Projects
                 </button>
                 <a
                   href="/resume.pdf"
-                  download="Sumit_Kumar_Resume.pdf"
-                  className="hero-cta-btn hero-cta-btn--secondary text-decoration-none"
+                  download="Sumit_Kumar_Full_Stack_Developer_resume.pdf"
+                  className="btn-global btn-global-secondary text-decoration-none"
                 >
                   Download Resume
                 </a>
                 <button
                   type="button"
-                  className="hero-cta-btn hero-cta-btn--secondary"
+                  className="btn-global btn-global-secondary"
                   onClick={() => scrollToSection('contact')}
                 >
                   Contact Me
@@ -375,7 +375,7 @@ const Home = () => {
 
                 <hr style={{ borderColor: 'rgba(255,255,255,0.07)', margin: '1.5rem 0' }} />
 
-                <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
+                <ul className="d-flex flex-column gap-3 mb-4 list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0 }}>
                   {[
                     'Built and deployed full-stack applications including DevConnect and AI Resume Analyzer',
                     'Implemented real-time chat functionality using Socket.io, handling 50+ concurrent users',
@@ -430,7 +430,12 @@ const Home = () => {
                   <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-4 gap-3">
                     <img
                       src="/vit.jpg"
-                      onError={(e) => { e.target.onerror = null; e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png'; }}
+                      onError={(e) => { 
+                        if (!e.target.dataset.retried) {
+                          e.target.dataset.retried = 'true';
+                          e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png';
+                        }
+                      }}
                       alt="VIT"
                       className="rounded shadow-sm"
                       style={{ width: '140px', height: '75px', objectFit: 'cover' }}
@@ -453,7 +458,7 @@ const Home = () => {
                     <p className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1rem' }}>
                       Open Source Audit & Automation Capstone (OSS – NGMC)
                     </p>
-                    <ul style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
+                    <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
                       <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                         <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
                         <span>Audited Python (open-source software) through Linux-based automation scripts.</span>
@@ -483,7 +488,7 @@ const Home = () => {
                       <p className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1rem' }}>
                         Resume Analyzer (Core Java)
                       </p>
-                      <ul style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
+                      <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
                         <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                           <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
                           <span>Engineered a resume analysis application in Java (OOP) to evaluate content quality and structure.</span>
@@ -522,8 +527,13 @@ const Home = () => {
                 <div className="card-body p-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                   <div className="d-flex align-items-center">
                     <img
-                      src="/cbse.jpg"
-                      onError={(e) => { e.target.onerror = null; e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png'; }}
+                      src="/cbse.svg"
+                      onError={(e) => { 
+                        if (!e.target.dataset.retried) {
+                          e.target.dataset.retried = 'true';
+                          e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png';
+                        }
+                      }}
                       alt="CBSE"
                       className="rounded shadow-sm"
                       style={{ width: '45px', height: '45px', objectFit: 'contain', backgroundColor: 'white', padding: '4px' }}
@@ -570,66 +580,67 @@ const Home = () => {
                   <p className="mb-4" style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7 }}>
                     Get a detailed overview of my technical skills, hands-on experience, and educational background.
                   </p>
-                  
+
                   <div className="mb-4 d-flex flex-column gap-3">
                     <div>
                       <span className="badge rounded-pill" style={{ background: 'rgba(59,130,246,0.1)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.3)', padding: '8px 14px', fontSize: '0.9rem', fontWeight: '500' }}>
-                        📄 PDF • Updated April 2026
+                        PDF • Updated April 2026
                       </span>
                     </div>
                   </div>
 
                   <div className="mt-5">
-                    <a 
-                      href="/resume.pdf" 
-                      download="Sumit_Kumar_Resume.pdf"
-                      className="hero-cta-btn hero-cta-btn--primary text-decoration-none d-inline-flex align-items-center justify-content-center"
-                      style={{ padding: '14px 32px', fontSize: '1.05rem', fontWeight: '600', letterSpacing: '0.5px' }}
+                    <a
+                      href="/resume.pdf"
+                      download="Sumit_Kumar_Full_Stack_Developer_resume.pdf"
+                      className="btn-global btn-global-primary text-decoration-none"
+                      style={{ padding: '14px 32px', fontSize: '1.05rem' }}
                     >
                       Download Resume
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="col-lg-7 px-lg-5">
-                  <div 
-                    className="position-relative w-100 mx-auto" 
-                    style={{ 
+                  <div
+                    className="position-relative w-100 mx-auto"
+                    style={{
                       paddingTop: '120%', /* aspect ratio for A4 preview */
-                      background: 'rgba(15, 23, 42, 0.6)', 
-                      borderRadius: '16px', 
+                      background: 'rgba(15, 23, 42, 0.6)',
+                      borderRadius: '16px',
                       border: '1px solid rgba(59,130,246,0.3)',
                       boxShadow: '0 15px 40px rgba(0,0,0,0.5), 0 0 25px rgba(59,130,246,0.15)'
                     }}
                   >
-                    <div style={{ 
-                      position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
-                      overflow: 'hidden', 
-                      borderRadius: '15px', 
+                    <div style={{
+                      position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                      overflow: 'hidden',
+                      borderRadius: '15px',
                       transform: 'translateZ(0)',
-                      clipPath: 'inset(0px round 15px)' 
+                      clipPath: 'inset(0px round 15px)'
                     }}>
                       <div style={{ position: 'absolute', top: 0, left: '-18px', width: 'calc(100% + 36px)', height: '100%', overflow: 'hidden' }}>
-                        <object 
-                          data="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
-                          type="application/pdf" 
+                        <iframe
+                          src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                          title="Resume PDF"
                           style={{
                             width: '100%',
                             height: '100%',
-                            border: 'none',
-                            background: '#fff'
+                            display: 'block',
+                            background: '#fff',
+                            border: 'none'
                           }}
                         >
-                        <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4 text-center" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: '#1e293b' }}>
-                          <p style={{ color: '#cbd5e1', marginBottom: '15px' }}>Preview not available in this browser.</p>
-                          <a href="/resume.pdf" download="Sumit_Kumar_Resume.pdf" className="btn btn-primary px-4 py-2" style={{ borderRadius: '8px' }}>
-                            Download PDF Instead
-                          </a>
-                        </div>
-                      </object>
+                          <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4 text-center" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: '#1e293b' }}>
+                            <p style={{ color: '#cbd5e1', marginBottom: '15px' }}>Preview not available in this browser.</p>
+                            <a href="/resume.pdf" download="Sumit_Kumar_Resume.pdf" className="btn-global btn-global-primary">
+                              Download PDF Instead
+                            </a>
+                          </div>
+                        </iframe>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </div>
               </div>
             </div>

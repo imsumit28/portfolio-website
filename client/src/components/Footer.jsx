@@ -11,10 +11,10 @@ const Footer = () => {
 
         {/* Primary Action Buttons */}
         <div className="d-flex justify-content-center gap-4 mb-5 flex-wrap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-          <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="footer-cta-btn footer-cta-primary">
+          <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="btn-global btn-global-primary">
             View GitHub
           </a>
-          <a href="mailto:ersumitkumar45@gmail.com" className="footer-cta-btn footer-cta-secondary">
+          <a href="mailto:ersumitkumar45@gmail.com" className="btn-global btn-global-secondary">
             Contact Me
           </a>
         </div>
@@ -38,7 +38,7 @@ const Footer = () => {
         </p>
 
         {/* Clean End Line */}
-        <p className="footer-copyright mb-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+        <p className="footer-copyright mb-0">
           © 2026 Sumit Kumar
         </p>
       </div>

@@ -89,7 +89,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom sticky-top">
+    <nav
+      className="navbar navbar-expand-lg navbar-custom fixed-top"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        zIndex: 9999,
+        backgroundColor: 'rgba(8, 11, 26, 0.97)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        boxShadow: '0 2px 20px rgba(0,0,0,0.5)',
+        borderBottom: '1px solid rgba(255,255,255,0.07)',
+      }}
+    >
       <div className="container py-2">
         <Link className="navbar-brand navbar-brand-custom" to="/" onClick={() => handleNavClick('home')}>
           &lt;Sumit Kumar /&gt;

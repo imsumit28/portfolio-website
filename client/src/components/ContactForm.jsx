@@ -121,17 +121,8 @@ const ContactForm = () => {
         </div>
         <button
           type="submit"
-          className="btn w-100 py-3 fw-bold text-white position-relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, #10b981, #059669)',
-            borderRadius: '10px',
-            border: 'none',
-            fontSize: '1rem',
-            letterSpacing: '0.5px',
-            transition: 'all 0.3s ease',
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 25px rgba(16,185,129,0.3)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+          className="btn-global btn-global-primary w-100"
+          style={{ fontSize: '1rem' }}
           disabled={isSubmitting}
         >
           {isSubmitting ? (

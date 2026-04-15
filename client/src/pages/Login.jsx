@@ -65,7 +65,7 @@ const Login = () => {
             </div>
             <button 
               type="submit" 
-              className="btn btn-primary btn-lg w-100 rounded-pill shadow"
+              className="btn-global btn-global-primary w-100"
               disabled={isLoading}
             >
               {isLoading ? 'Authenticating...' : 'Login to Admin'}

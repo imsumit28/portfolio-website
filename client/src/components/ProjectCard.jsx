@@ -113,23 +113,23 @@ const ProjectCard = ({
 
         <div className="project-showcase-actions">
           {githubHref ? (
-            <a className="project-showcase-btn project-showcase-btn--ghost" href={githubHref} target="_blank" rel="noopener noreferrer">
+            <a className="btn-global btn-global-secondary btn-global-sm" style={{flex:1}} href={githubHref} target="_blank" rel="noopener noreferrer">
               <FaGithub />
               View Code
             </a>
           ) : (
-            <span className="project-showcase-btn project-showcase-btn--ghost project-showcase-btn--disabled" aria-disabled="true">
+            <span className="btn-global btn-global-secondary btn-global-sm btn-global--disabled" style={{flex:1}} aria-disabled="true">
               <FaGithub />
               Source Private
             </span>
           )}
           {liveLink ? (
-            <a className="project-showcase-btn project-showcase-btn--primary" href={liveLink} target="_blank" rel="noopener noreferrer">
+            <a className="btn-global btn-global-primary btn-global-sm" style={{flex:1}} href={liveLink} target="_blank" rel="noopener noreferrer">
               <FiExternalLink />
               View Live
             </a>
           ) : (
-            <span className="project-showcase-btn project-showcase-btn--primary project-showcase-btn--disabled" aria-disabled="true">
+            <span className="btn-global btn-global-primary btn-global-sm btn-global--disabled" style={{flex:1}} aria-disabled="true">
               <FiExternalLink />
               Live Demo Soon
             </span>
