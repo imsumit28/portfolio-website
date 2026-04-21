@@ -23,34 +23,14 @@ const Projects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filteredProjects =
-    filter === 'ALL'
-      ? projects
-      : projects.filter((p) => (p.type || '').toUpperCase() === filter);
-
   return (
     <div className="container py-5">
-      <div className="section-title-wrapper mt-4" data-aos="fade-right">
+      <div className="section-title-wrapper mt-4 mb-5" data-aos="fade-right">
         <h3 className="section-title">PROJECTS</h3>
         <div className="section-line"></div>
       </div>
-      
-      <div className="d-flex justify-content-center mb-5 mt-4" data-aos="fade-in">
-        <button 
-          className={`filter-btn ${filter === 'ALL' ? 'active' : ''}`}
-          onClick={() => setFilter('ALL')}
-        >ALL</button>
-        <button 
-          className={`filter-btn ${filter === 'WEB-APP' ? 'active' : ''}`}
-          onClick={() => setFilter('WEB-APP')}
-        >WEB-APP</button>
-        <button 
-          className={`filter-btn ${filter === 'PROJECT' ? 'active' : ''}`}
-          onClick={() => setFilter('PROJECT')}
-        >PROJECT</button>
-      </div>
 
-      <ProjectList projects={filteredProjects} loading={loading} />
+      <ProjectList projects={projects} loading={loading} />
     </div>
   );
 };

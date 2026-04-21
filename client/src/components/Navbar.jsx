@@ -107,7 +107,7 @@ const Navbar = () => {
     >
       <div className="container py-2">
         <Link className="navbar-brand navbar-brand-custom" to="/" onClick={() => handleNavClick('home')}>
-          &lt;Sumit Kumar /&gt;
+          &lt;<span className="text-accent">Sumit</span> Kumar /&gt;
         </Link>
         <button className="navbar-toggler border-0 shadow-none text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon" style={{filter: 'invert(1)'}}></span>

@@ -34,6 +34,13 @@ a { text-decoration: none; transition: all 0.3s ease; }
 ul { list-style: none; padding: 0; margin: 0; }
 
 .text-accent { color: var(--accent) !important; }
+.text-gradient {
+  background: linear-gradient(90deg, #ffffff 10%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 
 /* Navbar Custom */
 .navbar-custom {
@@ -114,6 +121,26 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 600;
   letter-spacing: -0.3px;
+}
+
+@keyframes slowPulseBg {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+  50% { transform: scale(1.05) translate(2%, 4%); opacity: 0.9; }
+  100% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+}
+
+.hero-bg-glow {
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  background: radial-gradient(circle, rgba(14,40,94,0.4) 0%, rgba(10,16,30,0) 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: slowPulseBg 14s ease-in-out infinite;
 }
 
 .hero-cta-row {
@@ -222,9 +249,9 @@ ul { list-style: none; padding: 0; margin: 0; }
   position: absolute;
   inset: -18px -18px -18px -18px;
   background:
-    radial-gradient(180px circle at 15% 20%, rgba(16,185,129,0.22), transparent 60%),
-    radial-gradient(220px circle at 90% 10%, rgba(59,130,246,0.14), transparent 55%),
-    radial-gradient(220px circle at 70% 95%, rgba(16,185,129,0.12), transparent 60%);
+    radial-gradient(180px circle at 15% 20%, rgba(255,255,255,0.15), transparent 60%),
+    radial-gradient(220px circle at 90% 10%, rgba(200,200,200,0.1), transparent 55%),
+    radial-gradient(220px circle at 70% 95%, rgba(255,255,255,0.1), transparent 60%);
   filter: blur(10px);
   opacity: 0.9;
   pointer-events: none;
@@ -235,10 +262,10 @@ ul { list-style: none; padding: 0; margin: 0; }
   inset: -12px;
   border-radius: 26px;
   background: conic-gradient(from 180deg,
-    rgba(16,185,129,0.0),
-    rgba(16,185,129,0.70),
-    rgba(59,130,246,0.45),
-    rgba(16,185,129,0.0));
+    rgba(255,255,255,0.0),
+    rgba(255,255,255,0.30),
+    rgba(200,200,200,0.20),
+    rgba(255,255,255,0.0));
   opacity: 0.65;
   pointer-events: none;
   -webkit-mask:
@@ -257,6 +284,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center 15%;
   max-height: 460px;
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.10);

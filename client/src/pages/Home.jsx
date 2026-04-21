@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
 import { SiSpeedtest } from 'react-icons/si';
 import { FaXTwitter } from 'react-icons/fa6';
 import Projects from './Projects';
@@ -20,11 +20,12 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="d-flex align-items-center" style={{ minHeight: '85vh', overflowX: 'hidden' }} id="home">
-        <div className="container ps-md-5">
+      <section className="d-flex align-items-center position-relative" style={{ minHeight: '85vh', overflow: 'hidden' }} id="home">
+        <div className="hero-bg-glow"></div>
+        <div className="container ps-md-5 position-relative" style={{ zIndex: 1 }}>
           <div className="row align-items-center">
             <div className="col-lg-7" data-aos="fade-right">
-              <h1 className="hero-name">Hi, I'm Sumit Kumar</h1>
+              <h1 className="hero-name">Hi, I'm <span className="text-accent">Sumit</span> Kumar</h1>
               <h2 className="hero-subtitle mt-3">
                 <span className="text-accent">
                   <Typewriter
@@ -53,7 +54,7 @@ const Home = () => {
                   maxWidth: '580px',
                 }}
               >
-                I build fast, scalable, and user-friendly web applications.
+                Building full-stack web apps — from UI to deployment
               </p>
 
               <div
@@ -86,7 +87,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  Open to Opportunities
+                  Available for Full-time · Remote / India
                 </span>
               </div>
 
@@ -147,42 +148,115 @@ const Home = () => {
           </div>
 
           <div className="row mt-5 align-items-start" data-aos="fade-up" data-aos-delay="100">
-            <div className="col-lg-3 mb-4 mb-lg-0 text-center text-lg-start">
-              <img src={aboutDevconnectImg} alt="DevConnect preview" className="about-img" />
+            <div className="col-lg-4 col-md-5 mb-5 mb-md-0 text-center text-md-start">
+              <div className="position-relative d-inline-block mb-4" style={{ width: '100%', maxWidth: '300px' }}>
+                <img src={profileImg} alt="Sumit Kumar" className="img-fluid rounded-4 shadow-lg position-relative" style={{ border: '1px solid rgba(255,255,255,0.1)', zIndex: 1, maxHeight: '380px', width: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} />
+              </div>
+
+              <div className="mb-4">
+                <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-2 text-white">
+                  <span className="about-bullet">{'>'}</span> <strong>City:</strong>&nbsp; Patna, India
+                </div>
+                <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-4 text-white">
+                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; ersumitkumar45@gmail.com
+                </div>
+                <div className="d-flex justify-content-center justify-content-md-start">
+                  <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
+                    Download Resume
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="col-lg-9 ps-lg-5">
-              <p className="mb-5" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                I am a <strong>Full Stack Developer</strong> specializing in building real-world, <strong>scalable</strong> web applications.
-                <br /><br />
-                I have built 2+ projects like <strong>DevConnect</strong>, a full-stack developer platform with <strong>authentication</strong>, <strong>user profiles</strong>, and <strong>real-time chat</strong> features, and <strong>AI Resume Analyzer</strong>, a tool that analyzes resumes and provides smart <strong>AI-based feedback</strong>.
-                <br /><br />
-                Across these projects, I have implemented <strong>secure authentication</strong>, <strong>REST APIs</strong>, and fully <strong>responsive user interfaces</strong>, focusing on writing <strong>clean</strong>, <strong>efficient</strong>, and <strong>scalable</strong> code.
-                <br /><br />
-                I enjoy building projects that go beyond tutorials and solve practical problems. I am currently <strong>open to work</strong> and looking for opportunities to contribute to impactful products and grow as a developer.
+
+            <div className="col-lg-8 col-md-7 ps-lg-5">
+              <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
+                I'm a Full Stack Developer from Patna, India, building production-ready web apps with React, Node.js, and MongoDB.
+              </p>
+              <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
+                I've built <strong>DevConnect</strong> — a developer networking platform with real-time chat and authentication — and <strong>AI Resume Analyzer</strong>, an AI-powered tool that gives smart feedback on resumes.
+              </p>
+              <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
+                I focus on clean code, responsive UI, and solid backend logic. Every project I ship is deployed and live — not just a localhost demo.
+              </p>
+              <p className="mb-4" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
+                Currently <strong>open to full-time roles</strong> — remote or India-based.
               </p>
 
-              {/* Highlights */}
+              <p className="mb-5 fst-italic" style={{ color: '#10b981', fontSize: '1.1rem', borderLeft: '3px solid #10b981', paddingLeft: '15px' }}>
+                "I learn best by building things that actually work."
+              </p>
+
+              {/* Badges */}
               <div className="mb-5 d-flex flex-wrap gap-3">
-                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.95rem' }}>
-                  <FaBriefcase className="me-2" size={16} /> Open to Work
+                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem' }}>
+                  <FaBriefcase className="me-2" size={14} /> Available for Full-time · Remote / India
                 </div>
-                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.95rem' }}>
-                  <FaCode className="me-2" size={16} /> Strong in React & Backend APIs
+                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem' }}>
+                  <FaCode className="me-2" size={14} /> React · Node.js · MongoDB · REST APIs
                 </div>
               </div>
 
-              <div className="row mt-5 mb-3">
-                <div className="col-md-6 mb-3 text-white">
-                  <span className="about-bullet">{'>'}</span> <strong>City:</strong> Patna, India
-                </div>
-                <div className="col-md-6 mb-3 text-white">
-                  <span className="about-bullet">{'>'}</span> <strong>Phone:</strong> +91 8210240106
-                </div>
-                <div className="col-md-6 mb-3 text-white">
-                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong> ersumitkumar45@gmail.com
-                </div>
+              {/* Quick Stat Cards */}
+              <div className="row g-3 mb-5">
+                {[
+                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '2', sub: 'Deployed & Live' },
+                  { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
+                  { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
+                  { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' }
+                ].map((stat, i) => (
+                  <div className="col-sm-6 col-lg-3 col-6" key={i}>
+                    <div className="p-3 rounded-3 h-100 d-flex flex-column" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease', cursor: 'default' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                      <div className="d-flex align-items-center gap-2 mb-3">
+                        <span style={{ flexShrink: 0 }}>{stat.icon}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '700', lineHeight: '1.2' }}>{stat.label}</span>
+                      </div>
+                      <div className="mt-auto" style={{ color: 'var(--text-main)', fontWeight: '600', fontSize: '0.95rem', lineHeight: '1.4' }}>
+                        {stat.val}
+                        {stat.sub && <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 'normal', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.sub}</div>}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
+
             </div>
+          </div>
+
+          {/* Timeline Strip (Full Width below right column) */}
+          <div className="mt-2 mb-5 p-4 rounded-4 mx-auto" style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(15,23,42,0.8) 100%)', border: '1px solid rgba(16,185,129,0.1)', maxWidth: '1000px' }}>
+            <h5 className="mb-4 fw-bold text-center text-md-start" style={{ color: '#cbd5e1', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>My Journey</h5>
+            <div className="d-flex flex-column flex-md-row gap-4 gap-md-2 justify-content-between position-relative timeline-strip-container">
+              {/* Horizontal line for desktop natively, hidden on mobile */}
+              <div className="d-none d-md-block" style={{ position: 'absolute', top: '15px', left: '10px', right: '10px', height: '2px', borderTop: '2px dashed rgba(16,185,129,0.3)', zIndex: 0 }}></div>
+
+              {/* Vertical line for mobile natively, hidden on desktop */}
+              <div className="d-md-none" style={{ position: 'absolute', top: '10px', bottom: '10px', left: '15px', width: '2px', borderLeft: '2px dashed rgba(16,185,129,0.3)', zIndex: 0 }}></div>
+
+              {[
+                { year: '2024', text: 'Started coding' },
+                { year: '2025', text: 'Built first project' },
+                { year: '2025', text: 'Mastered Full Stack' },
+                { year: '2026', text: 'Built DevConnect' },
+                { year: '2026', text: 'Open to work' }
+              ].map((item, i) => (
+                <div key={i} className="position-relative d-flex flex-row flex-md-column align-items-center text-md-center timeline-item" style={{ zIndex: 1, paddingLeft: '35px', paddingLeftMd: '0' }}>
+                  <div className="timeline-dot" style={{ position: 'absolute', left: '10px', top: '10px', width: '12px', height: '12px', background: '#10b981', borderRadius: '50%', border: '3px solid #0f172a' }}></div>
+                  <div className="mt-md-4 ms-2 ms-md-0 d-flex flex-column flex-md-column">
+                    <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '0.95rem' }}>{item.year}</span>
+                    <span style={{ color: '#cbd5e1', fontSize: '0.85rem', marginTop: '2px' }}>{item.text}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Adding inline style for media queries to make it perfectly responsive */}
+            <style>
+              {`
+                @media (min-width: 768px) {
+                  .timeline-item { padding-left: 0 !important; }
+                  .timeline-dot { position: relative !important; left: auto !important; top: auto !important; margin: 0 auto; margin-top: 10px; }
+                }
+              `}
+            </style>
           </div>
 
           {/* Interests */}
@@ -214,104 +288,77 @@ const Home = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-5" id="skills">
+      <section className="pt-5 pb-0" id="skills">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h3 className="section-title">SKILLS</h3>
             <div className="section-line"></div>
           </div>
-
-          <div className="mt-4 mb-4" data-aos="fade-up">
-            <p style={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: '1.6', maxWidth: '800px' }}>
-              I build full-stack web applications using the MERN stack, focusing on scalable backend systems, clean frontend architecture, and efficient API design.
-              <br />
-              <span style={{ color: '#10b981', fontWeight: '500' }}>Comfortable building full-stack applications independently.</span>
-            </p>
-          </div>
-
-          <div className="mt-5 d-flex flex-column gap-5">
+          <div className="mt-4 d-flex flex-column gap-4">
             {[
               {
-                category: 'Frontend',
+                category: 'Frontend & UI',
                 skills: [
-                  { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-                  { name: 'CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', highlight: true },
+                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Proficient', highlight: true },
+                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 'Proficient', highlight: true },
+                  { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Proficient' },
+                  { name: 'Redux', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', level: 'Familiar' },
+                  { name: 'HTML & CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', level: 'Expert' },
                 ]
               },
               {
-                category: 'Backend',
+                category: 'Backend & Database',
                 skills: [
-                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
+                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 'Proficient', highlight: true },
+                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true, level: 'Proficient', highlight: true },
+                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 'Proficient' },
+                  { name: 'Mongoose', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg', level: 'Proficient' },
+                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg', level: 'Proficient' },
+                  { name: 'JWT Auth', img: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shield-lock-fill.svg', invert: true, level: 'Proficient' },
                 ]
               },
               {
-                category: 'Database',
+                category: 'Tools & Deployment',
                 skills: [
-                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-                ]
-              },
-              {
-                category: 'Tools',
-                skills: [
-                  { name: 'Git', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-                  { name: 'GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
-                  { name: 'Postman', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postman.svg', invert: true },
-                  { name: 'VS Code', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/visualstudiocode.svg', invert: true },
-                ]
-              },
-              {
-                category: 'Deployment',
-                skills: [
-                  { name: 'Vercel (Frontend)', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true },
-                  { name: 'Render (Backend)', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true },
-                  { name: 'Railway (Backend)', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/railway.svg', invert: true },
-                ]
-              },
-              {
-                category: 'Concepts',
-                skills: [
-                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-                  { name: 'Authentication (JWT)', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/jsonwebtokens.svg', invert: true },
-                  { name: 'Database Operations (CRUD)', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+                  { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true, level: 'Proficient' },
+                  { name: 'Postman', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postman.svg', invert: true, level: 'Proficient' },
+                  { name: 'Vercel', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true, level: 'Proficient' },
+                  { name: 'Render', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true, level: 'Proficient' },
                 ]
               }
             ].map((section, idx) => (
               <div key={section.category} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <h5 className="mb-4 fw-bold" style={{ color: '#f8fafc', borderLeft: '4px solid var(--accent)', paddingLeft: '12px' }}>
+                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '3px solid var(--accent)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   {section.category}
-                </h5>
-                <div className="row g-3">
+                </h6>
+                <div className="row g-2">
                   {section.skills.map((skill) => (
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={skill.name}>
-                      <div className="d-flex align-items-center p-3 h-100 position-relative" style={{
-                        background: skill.highlight ? 'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, #1e293b 100%)' : '#1e293b',
-                        borderRadius: '12px',
-                        transition: 'all 0.3s ease',
-                        border: skill.highlight ? '1px solid rgba(34,197,94,0.8)' : '1px solid transparent',
-                        boxShadow: skill.highlight ? '0 0 15px rgba(34,197,94,0.25)' : 'none',
+                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={skill.name}>
+                      <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
+                        background: skill.highlight ? 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(15,23,42,0.6) 100%)' : 'rgba(15,23,42,0.6)',
+                        borderRadius: '8px',
+                        transition: 'all 0.2s ease',
+                        border: skill.highlight ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(255,255,255,0.05)',
                         cursor: 'default',
-                        overflow: 'hidden',
-                        transform: 'scale(1)'
+                        overflow: 'hidden'
                       }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,1)' : 'var(--accent)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(34,197,94,0.4)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,0.8)' : 'transparent'; e.currentTarget.style.boxShadow = skill.highlight ? '0 0 15px rgba(34,197,94,0.25)' : 'none'; }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,0.8)' : 'var(--accent)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,0.3)' : 'rgba(255,255,255,0.05)'; }}
                       >
                         {skill.highlight && (
                           <div style={{
-                            position: 'absolute', top: 0, right: 0, padding: '2px 8px', background: 'var(--accent)', color: '#fff', fontSize: '0.65rem', fontWeight: 'bold', borderBottomLeftRadius: '8px'
+                            position: 'absolute', top: 0, right: 0, padding: '2px 5px', background: 'var(--accent)', color: '#fff', fontSize: '0.5rem', fontWeight: 'bold', borderBottomLeftRadius: '6px'
                           }}>
                             CORE
                           </div>
                         )}
-                        <div className="d-flex align-items-center justify-content-center" style={{
-                          width: '40px', height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', marginRight: '15px', padding: '6px'
+                        <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
+                          width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
                         }}>
                           <img
                             src={skill.img}
                             alt={skill.name}
+                            onError={(e) => { e.target.style.display = 'none'; }}
                             style={{
                               width: '100%', height: '100%', objectFit: 'contain',
                               filter: skill.invert
@@ -320,7 +367,10 @@ const Home = () => {
                             }}
                           />
                         </div>
-                        <p className="mb-0 fw-semibold" style={{ fontSize: '0.95rem', color: skill.highlight ? '#22c55e' : '#e2e8f0' }}>{skill.name}</p>
+                        <div className="d-flex flex-column justify-content-center overflow-hidden">
+                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: skill.highlight ? '#10b981' : '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
+                          <span style={{ fontSize: '0.6rem', color: '#94a3b8', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{skill.level}</span>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -332,7 +382,7 @@ const Home = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-5" id="projects">
+      <section className="pt-0 pb-5" id="projects">
         <Projects />
       </section>
 
@@ -430,7 +480,7 @@ const Home = () => {
                   <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-4 gap-3">
                     <img
                       src="/vit.jpg"
-                      onError={(e) => { 
+                      onError={(e) => {
                         if (!e.target.dataset.retried) {
                           e.target.dataset.retried = 'true';
                           e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png';
@@ -528,7 +578,7 @@ const Home = () => {
                   <div className="d-flex align-items-center">
                     <img
                       src="/cbse.svg"
-                      onError={(e) => { 
+                      onError={(e) => {
                         if (!e.target.dataset.retried) {
                           e.target.dataset.retried = 'true';
                           e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png';
