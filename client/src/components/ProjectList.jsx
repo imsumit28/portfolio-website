@@ -11,15 +11,14 @@ const ProjectList = ({ projects = [], loading = false }) => {
   }
 
   return (
-    <div className="row g-5">
+    <div className="d-flex flex-column gap-5">
       {projects.map((project, i) => (
         <div
-          className="col-lg-6 col-md-6 d-flex"
           key={project._id || `${project.title}-${i}`}
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
           data-aos-delay={Math.min(i * 100, 500)}
         >
-          <ProjectCard {...project} />
+          <ProjectCard index={i} {...project} />
         </div>
       ))}
     </div>
