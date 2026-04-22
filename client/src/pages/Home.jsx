@@ -3,6 +3,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
 import { SiSpeedtest } from 'react-icons/si';
 import { FaXTwitter } from 'react-icons/fa6';
+import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
 import ContactForm from '../components/ContactForm';
 import profileImg from '../assets/profile.png';
@@ -257,6 +258,45 @@ const Home = () => {
                 }
               `}
             </style>
+          </div>
+
+          {/* GitHub Contribution Calendar */}
+          <div className="github-calendar-section" data-aos="fade-up" data-aos-delay="150">
+            <div className="section-title-wrapper mb-4">
+              <h4 className="section-title" style={{ minWidth: 'auto' }}>CODE ACTIVITY</h4>
+              <div className="section-line"></div>
+            </div>
+            <div className="github-calendar-container">
+              <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+                <div>
+                  <p className="mb-0" style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
+                    Contribution activity on GitHub over the past year
+                  </p>
+                </div>
+                <a
+                  href="https://github.com/imsumit28"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-global btn-global-secondary"
+                  style={{ padding: '8px 20px', fontSize: '0.85rem' }}
+                >
+                  <FaGithub style={{ marginRight: '6px' }} /> View Profile
+                </a>
+              </div>
+              <div className="github-calendar-inner">
+                <GitHubCalendar
+                  username="imsumit28"
+                  colorScheme="dark"
+                  theme={{
+                    dark: ['#1e293b', '#0d3321', '#14532d', '#16a34a', '#10b981'],
+                  }}
+                  fontSize={12}
+                  blockSize={13}
+                  blockMargin={4}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
           </div>
 
         </div>

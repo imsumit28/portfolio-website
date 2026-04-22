@@ -354,6 +354,43 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 
+/* GitHub Contribution Calendar */
+.github-calendar-section {
+  margin-top: 3rem;
+}
+.github-calendar-container {
+  background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(15,23,42,0.8) 100%);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(16,185,129,0.04), 0 20px 60px rgba(0,0,0,0.3);
+}
+.github-calendar-inner {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.github-calendar-inner::-webkit-scrollbar {
+  height: 4px;
+}
+.github-calendar-inner::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+  border-radius: 2px;
+}
+.github-calendar-inner::-webkit-scrollbar-thumb {
+  background: rgba(16,185,129,0.3);
+  border-radius: 2px;
+}
+/* Override calendar text colors */
+.github-calendar-inner .react-activity-calendar__legend-month,
+.github-calendar-inner .react-activity-calendar__legend-weekday {
+  fill: #64748b !important;
+  font-size: 11px !important;
+}
+.github-calendar-inner .react-activity-calendar__count {
+  color: #94a3b8 !important;
+  font-size: 0.8rem !important;
+}
+
 /* Projects */
 .filter-btn {
   background: transparent;
