@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Sumit Kumar | Full Stack Developer Portfolio</h1>
   <p>
-    A high-performance, fully responsive personal portfolio and blog built from the ground up using the MERN stack. Designed with a focus on modern UI/UX aesthetics, scalable architecture, and raw recruiter conversion.
+    A high-performance, fully responsive personal portfolio built from the ground up using the MERN stack. Designed with an Apple-inspired minimalist dark-mode aesthetic, recruiter-optimized content hierarchy, and a focus on real-world engineering impact.
   </p>
   <a href="#features"><strong>Explore the docs »</strong></a>
   <br />
@@ -15,23 +15,40 @@
 
 ---
 
-## Features:
+## Features
 
-- **Modern UI/UX:** Built with a custom "Modern Glass" aesthetic featuring emerald green accents and dark-mode optimization.
-- **Dynamic Projects Showcase:** Easily display technical projects, case studies, and code repositories with metric-driven bullet points.
+- **Apple-Inspired Dark Mode UI:** Custom design system using emerald green (`#10b981`) accents, glassmorphism containers, and smooth AOS animations throughout.
+- **Cinematic Projects Layout:** Featured Z-pattern alternating layout — each project takes full-width with a large image and detailed content panel for maximum visual weight.
+- **Live GitHub Contribution Calendar:** Embedded `react-github-calendar` in the About section showing real-time coding activity — auto-updates every time you push a commit.
+- **Recruiter-Optimized Experience Section:** Verified internship card (EncodersPro, June–July 2025) with measurable impact metrics displayed as the primary experience entry.
+- **Professional Contact Section:** Availability indicator ("Actively looking — responding within 24hrs"), hover-underline links, and a correctly labeled contact form.
+- **Back-to-Top Footer:** `<Sumit Kumar />` logo link in the footer scrolls back to hero; consistent social icon hover states across GitHub, LinkedIn, and Email.
 - **Admin Dashboard:** Secure backend portal protected by JWT authentication to manage portfolio data and view unread contact messages.
-- **Direct Mail Integration:** Contact form wired directly to Nodemailer, pushing encrypted messages securely to an admin inbox with rate limiting for spam protection.
-- **Fully Responsive:** Fluid layouts designed with Bootstrap and Flexbox to guarantee a 10/10 experience on all devices, from massive ultra-wides to mobile screens.
+- **Direct Mail Integration:** Contact form wired directly to Nodemailer with rate limiting for spam protection.
+- **Fully Responsive:** Fluid layouts with Bootstrap and Flexbox across all device sizes.
 
-##  Built With:
+## Built With
 
 * **Frontend:** React.js, Vite, Vanilla CSS, Bootstrap
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB (Mongoose)
 * **Authentication:** JSON Web Tokens (JWT)
-* **Utilities:** Nodemailer (Emails), Express-Rate-Limit (Security), AOS (Animations)
+* **Key Libraries:** `react-github-calendar`, `react-simple-typewriter`, AOS, Nodemailer, Express-Rate-Limit
 
-## Local Setup:
+## Sections
+
+| Section | Description |
+|---|---|
+| **Hero** | Typewriter role animation, CTA buttons, social links |
+| **About** | Stats grid, Journey timeline, live GitHub calendar |
+| **Skills** | Categorized tech stack with icon chips |
+| **Experience** | Internship card + independent projects (Agile/metric-driven) |
+| **Education** | Condensed academic section with key project highlights |
+| **Projects** | Cinematic featured layout with live demo & GitHub links |
+| **Resume** | Inline PDF preview with download button |
+| **Contact** | Contact form + availability status + social links |
+
+## Local Setup
 
 Follow these steps to spin up the project locally on your machine.
 
@@ -40,7 +57,7 @@ Follow these steps to spin up the project locally on your machine.
 Ensure you have the following installed:
 * Node.js (v18 or higher)
 * MongoDB (running locally or a MongoDB Atlas connection string)
-* npm or yarn
+* npm
 
 ### Installation
 
@@ -63,7 +80,7 @@ Ensure you have the following installed:
    ```
 
 4. **Set up Environment Variables**
-   Create a `.env` file in the `server` directory and add the following keys:
+   Create a `.env` file in the `server` directory with the following keys:
    ```env
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/portfolio
@@ -88,11 +105,12 @@ Ensure you have the following installed:
 
 6. Open your browser and navigate to `http://localhost:5173/`.
 
-###  Admin Dashboard Access:
-To access the Admin panel, navigate to `/auth` on your frontend and log in. You will need to manually seed a user document into your MongoDB `users` collection with the matching credentials.
+### Admin Dashboard Access
 
-## Contact / Network:
+Navigate to `/admin/login` on the frontend and log in. You will need to manually seed a user document into your MongoDB `users` collection with the matching credentials.
 
-Sumit Kumar - [LinkedIn](https://linkedin.com/in/imsumit45/) - [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
+## Contact / Network
+
+Sumit Kumar — [LinkedIn](https://linkedin.com/in/imsumit45/) — [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
 
 Project Link: [https://github.com/imsumit28/portfolio-website](https://github.com/imsumit28/portfolio-website)
