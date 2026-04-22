@@ -29,9 +29,11 @@ A personal portfolio built with the MERN stack (MongoDB, Express, React, Node.js
 - **Recruiter-Optimized Experience Section:** Verified internship card with measurable impact metrics (20% bug backlog reduction) displayed as the primary experience entry.
 - **Professional Contact Section:** Availability indicator ("Actively looking — responding within 24hrs"), hover-underline social links, and correct placeholder labels.
 - **Back-to-Top Footer:** `<Sumit Kumar />` logo link scrolls back to hero; consistent social icon states across GitHub, LinkedIn, and Email.
+- **Custom Mobile Navigation:** Slide-in drawer with animated hamburger → ✕ icon, emerald active-link highlighting, body scroll lock, and auto-close on tap.
+- **Performance Optimized:** Tree-shaken icon imports, Suspense skeleton for the GitHub API call, corrected heading hierarchy (`h1 → h2`), and SEO meta tags + `robots.txt`.
 - **Admin Dashboard:** JWT-protected portal to view and manage incoming contact messages.
 - **Direct Mail Integration:** Contact form wired to Nodemailer with rate limiting for spam protection.
-- **Fully Responsive:** Fluid layouts with Bootstrap and Flexbox across all device sizes.
+- **Fully Responsive:** Fluid layouts with Flexbox across all device sizes — desktop, tablet, and mobile.
 
 ---
 
