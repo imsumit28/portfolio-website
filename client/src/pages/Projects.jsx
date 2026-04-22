@@ -26,7 +26,7 @@ const Projects = () => {
   return (
     <div className="container py-5">
       <div className="section-title-wrapper mt-4 mb-5" data-aos="fade-right">
-        <h3 className="section-title">PROJECTS</h3>
+        <h2 className="section-title">PROJECTS</h2>
         <div className="section-line"></div>
       </div>
 

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
-import { SiSpeedtest } from 'react-icons/si';
 import { FaXTwitter } from 'react-icons/fa6';
 import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
@@ -144,7 +143,7 @@ const Home = () => {
       <section className="pt-5 pb-3" id="about">
         <div className="container py-2">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title">Who I Am</h3>
+            <h2 className="section-title">Who I Am</h2>
             <div className="section-line"></div>
           </div>
 
@@ -263,7 +262,7 @@ const Home = () => {
           {/* GitHub Contribution Calendar */}
           <div className="github-calendar-section" data-aos="fade-up" data-aos-delay="150">
             <div className="section-title-wrapper mb-4">
-              <h4 className="section-title" style={{ minWidth: 'auto' }}>CODE ACTIVITY</h4>
+              <h2 className="section-title" style={{ minWidth: 'auto' }}>CODE ACTIVITY</h2>
               <div className="section-line"></div>
             </div>
             <div className="github-calendar-container">
@@ -284,17 +283,26 @@ const Home = () => {
                 </a>
               </div>
               <div className="github-calendar-inner">
-                <GitHubCalendar
-                  username="imsumit28"
-                  colorScheme="dark"
-                  theme={{
-                    dark: ['#1e293b', '#0d3321', '#14532d', '#16a34a', '#10b981'],
-                  }}
-                  fontSize={12}
-                  blockSize={13}
-                  blockMargin={4}
-                  style={{ width: '100%' }}
-                />
+                <Suspense fallback={
+                  <div style={{
+                    height: '150px',
+                    background: 'rgba(255,255,255,0.04)',
+                    borderRadius: '8px',
+                    animation: 'pulse 1.5s ease-in-out infinite'
+                  }} />
+                }>
+                  <GitHubCalendar
+                    username="imsumit28"
+                    colorScheme="dark"
+                    theme={{
+                      dark: ['#1e293b', '#0d3321', '#14532d', '#16a34a', '#10b981'],
+                    }}
+                    fontSize={12}
+                    blockSize={13}
+                    blockMargin={4}
+                    style={{ width: '100%' }}
+                  />
+                </Suspense>
               </div>
             </div>
           </div>
@@ -306,7 +314,7 @@ const Home = () => {
       <section className="pt-5 pb-0" id="skills">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title">SKILLS</h3>
+            <h2 className="section-title">SKILLS</h2>
             <div className="section-line"></div>
           </div>
           <div className="mt-4 d-flex flex-column gap-4">
@@ -405,7 +413,7 @@ const Home = () => {
       <section className="py-5" id="experience">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title" style={{ width: '145px' }}>EXPERIENCE</h3>
+            <h2 className="section-title" style={{ width: '145px' }}>EXPERIENCE</h2>
             <div className="section-line"></div>
           </div>
 
@@ -518,7 +526,7 @@ const Home = () => {
       <section className="py-5" id="education">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px' }}>Education & Learning</h3>
+            <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px' }}>Education & Learning</h2>
             <div className="section-line"></div>
           </div>
 
@@ -634,7 +642,7 @@ const Home = () => {
       <section className="py-5" id="resume">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title">RESUME</h3>
+            <h2 className="section-title">RESUME</h2>
             <div className="section-line"></div>
           </div>
 
@@ -728,7 +736,7 @@ const Home = () => {
       <section className="py-5" id="contact">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h3 className="section-title">CONTACT</h3>
+            <h2 className="section-title">CONTACT</h2>
             <div className="section-line"></div>
           </div>
 
