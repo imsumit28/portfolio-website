@@ -85,7 +85,7 @@ const ContactForm = () => {
               onFocus={focusStyle}
               onBlur={blurStyle}
               required
-              placeholder="Sumit Kumar"
+              placeholder="Your name"
             />
           </div>
           <div className="col-md-6">

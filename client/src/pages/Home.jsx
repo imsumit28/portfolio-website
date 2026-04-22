@@ -259,31 +259,6 @@ const Home = () => {
             </style>
           </div>
 
-          {/* Interests */}
-          <div className="mt-5" data-aos="fade-up" data-aos-delay="200">
-            <div className="section-title-wrapper mb-4">
-              <h4 className="section-title" style={{ minWidth: 'auto' }}>INTERESTS</h4>
-              <div className="section-line"></div>
-            </div>
-
-            <div className="row g-3">
-              {[
-                { icon: <FaReact />, label: 'Frontend Development', sub: 'React', color: '#61dafb' },
-                { icon: <FaServer />, label: 'Backend APIs', sub: 'Node & Express', color: '#68a063' },
-                { icon: <FaDatabase />, label: 'Database Design', sub: 'MongoDB', color: '#4db33d' },
-                { icon: <SiSpeedtest />, label: 'Performance', sub: 'Optimization', color: '#f59e0b' },
-                { icon: <FaMobileAlt />, label: 'Responsive', sub: 'Web Apps', color: '#8b5cf6' },
-                { icon: <FaShieldAlt />, label: 'Authentication', sub: '& Security', color: '#22c55e' },
-              ].map((item, i) => (
-                <div className="col-lg-4 col-md-4 col-sm-6" key={i} data-aos="zoom-in" data-aos-delay={i * 100}>
-                  <div className="interest-card">
-                    <span className="interest-icon" style={{ color: item.color }}>{item.icon}</span>
-                    <span>{item.label}<br />{item.sub}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -394,6 +369,7 @@ const Home = () => {
             <div className="section-line"></div>
           </div>
 
+          {/* PRIMARY: Real Internship */}
           <div className="mt-5" data-aos="fade-up">
             <div className="position-relative p-4 p-md-5" style={{
               background: 'linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.9) 100%)',
@@ -401,7 +377,7 @@ const Home = () => {
               borderRadius: '16px',
               boxShadow: '0 0 40px rgba(16,185,129,0.06), 0 20px 60px rgba(0,0,0,0.4)',
             }}>
-              {/* Glow blob top-right */}
+              {/* Glow blob */}
               <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }}></div>
 
               <div className="position-relative" style={{ zIndex: 1 }}>
@@ -410,30 +386,26 @@ const Home = () => {
                     {/* Icon badge */}
                     <div className="d-flex align-items-center justify-content-center rounded-3 shadow" style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #10b981, #059669)', flexShrink: 0 }}>
                       <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.3rem' }}>Full Stack Developer</h4>
-                      <p className="mb-0 mt-1" style={{ color: '#10b981', fontWeight: '500', fontSize: '0.95rem' }}>Full Stack Developer | Independent Projects</p>
+                      <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.3rem' }}>Full Stack Developer Intern</h4>
+                      <p className="mb-0 mt-1" style={{ color: '#10b981', fontWeight: '600', fontSize: '0.95rem' }}>EncodersPro Private Limited · Noida, India</p>
                     </div>
                   </div>
                   <span style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', borderRadius: '30px', padding: '6px 18px', fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
-                    2025 – Present (Personal Projects)
+                    June 2025 – July 2025
                   </span>
                 </div>
 
                 <hr style={{ borderColor: 'rgba(255,255,255,0.07)', margin: '1.5rem 0' }} />
 
-                <ul className="d-flex flex-column gap-3 mb-4 list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0 }}>
+                <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
                   {[
-                    'Built and deployed full-stack applications including DevConnect and AI Resume Analyzer',
-                    'Implemented real-time chat functionality using Socket.io, handling 50+ concurrent users',
-                    'Designed systems focusing on scalability, performance, and real-world usability',
-                    'Developed secure authentication systems',
-                    'Designed responsive UI using React and modern frontend practices',
-                    'Built and integrated REST APIs with MongoDB database',
-                    'Gained hands-on experience building scalable full-stack applications and real-time systems',
+                    'Contributed to full-stack tasks in a production engineering team using Agile/Scrum workflows',
+                    'Developed and reviewed React.js and Node.js features, participating in code reviews and sprint planning',
+                    'Implemented 3+ new UI components and REST API endpoints, reducing bug backlog by 20%',
                   ].map((item, i) => (
                     <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#94a3b8', fontSize: '0.97rem' }}>
                       <span style={{ color: '#10b981', marginTop: '3px', flexShrink: 0 }}>▸</span>
@@ -441,18 +413,17 @@ const Home = () => {
                     </li>
                   ))}
 
-                  {/* Differentiator Highlight */}
-                  <li className="d-flex align-items-center gap-3 mt-1 p-3 rounded" style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.25)', boxShadow: '0 4px 20px rgba(59,130,246,0.06)' }}>
-                    <span style={{ color: '#3b82f6', flexShrink: 0, fontSize: '1.2rem', lineHeight: 1 }}>⚡</span>
+                  {/* Impact Highlight */}
+                  <li className="d-flex align-items-center gap-3 mt-1 p-3 rounded" style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+                    <span style={{ color: '#10b981', flexShrink: 0, fontSize: '1.2rem', lineHeight: 1 }}>⚡</span>
                     <span style={{ color: '#f8fafc', fontSize: '0.98rem', fontWeight: '600', letterSpacing: '0.3px' }}>
-                      Built projects beyond tutorials, focusing on solving real-world problems with scalable solutions
+                      Reduced bug backlog by 20% — measurable production impact in a real engineering team
                     </span>
                   </li>
                 </ul>
 
-                {/* Tech tag chips */}
                 <div className="d-flex flex-wrap gap-2">
-                  {['MongoDB', 'Express.js', 'React', 'Node.js', 'REST APIs', 'JWT'].map(tag => (
+                  {['React.js', 'Node.js', 'REST APIs', 'Agile/Scrum', 'Code Reviews', 'MongoDB'].map(tag => (
                     <span key={tag} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#cbd5e1', borderRadius: '6px', padding: '4px 14px', fontSize: '0.8rem', fontWeight: '500' }}>
                       {tag}
                     </span>
@@ -461,6 +432,45 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* SECONDARY: Independent Projects */}
+          <div className="mt-4" data-aos="fade-up" data-aos-delay="100">
+            <div className="p-4 p-md-4" style={{
+              background: 'rgba(15,23,42,0.4)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              borderRadius: '14px',
+            }}>
+              <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                <div className="d-flex align-items-center gap-3">
+                  <div className="d-flex align-items-center justify-content-center rounded-3" style={{ width: '42px', height: '42px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-0" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>Independent Projects</h5>
+                    <p className="mb-0 mt-1" style={{ color: '#64748b', fontWeight: '500', fontSize: '0.88rem' }}>Self-Directed · Remote</p>
+                  </div>
+                </div>
+                <span style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b', borderRadius: '30px', padding: '4px 14px', fontSize: '0.82rem', fontWeight: '500', whiteSpace: 'nowrap' }}>
+                  Jan 2025 – Present
+                </span>
+              </div>
+
+              <ul className="d-flex flex-column gap-2 mb-0" style={{ listStyle: 'none', paddingLeft: 0 }}>
+                {[
+                  'Built and deployed DevConnect — real-time developer network with Socket.io and JWT auth',
+                  'Built AI Resume Analyzer using Gemini API with ATS scoring and section-level feedback',
+                ].map((item, i) => (
+                  <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#64748b', fontSize: '0.92rem' }}>
+                    <span style={{ color: '#475569', marginTop: '3px', flexShrink: 0 }}>▸</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -503,7 +513,7 @@ const Home = () => {
 
                   <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                     <h6 className="fw-bold mb-2" style={{ color: '#3b82f6', fontSize: '0.85rem', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                      Coursework Project Signal
+                      Academic Projects
                     </h6>
                     <p className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1rem' }}>
                       Open Source Audit & Automation Capstone (OSS – NGMC)
@@ -511,25 +521,13 @@ const Home = () => {
                     <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
                       <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                         <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                        <span>Audited Python (open-source software) through Linux-based automation scripts.</span>
-                      </li>
-                      <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                        <span>Developed 5 Bash scripts for system reporting, package inspection, log analysis, and disk auditing, reducing manual audit effort by 40%.</span>
-                      </li>
-                      <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                        <span>Implemented concepts like loops, conditionals, file handling, and system utilities (grep, awk, dpkg).</span>
-                      </li>
-                      <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                        <span>Applied core OS and scripting concepts in real-world automation scenarios</span>
+                        <span>Developed 5 Bash scripts for system reporting and auditing, reducing manual effort by 40%.</span>
                       </li>
                       <li className="d-flex align-items-start gap-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                         <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
                         <span>
-                          Built an interactive Open Source Manifesto Generator showcasing OSS philosophy.{' '}
-                          <a href="https://github.com/imsumit28/Vityarthi-Open-Source-OSS" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>View on GitHub →</a>
+                          Audited Python (OSS) and built an interactive Manifesto Generator.{' '}
+                          <a href="https://github.com/imsumit28/Vityarthi-Open-Source-OSS" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>GitHub →</a>
                         </span>
                       </li>
                     </ul>
@@ -541,25 +539,13 @@ const Home = () => {
                       <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
                         <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                           <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>Engineered a resume analysis application in Java (OOP) to evaluate content quality and structure.</span>
-                        </li>
-                        <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                          <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>Implemented skill extraction, section validation, and scoring algorithm processing resumes with 85% accuracy.</span>
-                        </li>
-                        <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                          <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>Built a rule-based suggestion engine to generate actionable resume improvements.</span>
-                        </li>
-                        <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                          <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>Developed both CLI and Swing-based GUI, improving usability and user interaction.</span>
+                          <span>Engineered a Java application using OOP to score resumes with 85% accuracy.</span>
                         </li>
                         <li className="d-flex align-items-start gap-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
                           <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
                           <span>
-                            Structured application using modular architecture (Analyzer, Reader, Suggestion Engine).{' '}
-                            <a href="https://github.com/imsumit28/AIResumeAnalyzer" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>View on GitHub →</a>
+                            Developed a modular CLI/GUI architecture with a rule-based suggestion engine.{' '}
+                            <a href="https://github.com/imsumit28/AIResumeAnalyzer" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>GitHub →</a>
                           </span>
                         </li>
                       </ul>
@@ -625,7 +611,7 @@ const Home = () => {
               <div className="row align-items-center">
                 <div className="col-lg-5 mb-5 mb-lg-0">
                   <h4 className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1.8rem' }}>
-                    My Resume
+                    Full Stack Developer
                   </h4>
                   <p className="mb-4" style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7 }}>
                     Get a detailed overview of my technical skills, hands-on experience, and educational background.
@@ -720,19 +706,23 @@ const Home = () => {
                 <h4 className="fw-bold mb-2" style={{ color: '#f8fafc' }}>
                   Let’s build something
                 </h4>
+                <div className="d-flex align-items-center gap-2 mb-4" style={{ fontSize: '0.85rem' }}>
+                  <span style={{ color: '#10b981', display: 'inline-block', transform: 'scale(1.2)' }}>●</span>
+                  <span style={{ color: '#94a3b8', fontWeight: '500' }}>Actively looking — responding within 24hrs</span>
+                </div>
                 <p className="mb-4" style={{ color: '#94a3b8', lineHeight: 1.7, fontSize: '1.05rem' }}>
                   Open to internships, freelance, and full-time opportunities. Feel free to connect!
                 </p>
 
                 <div className="d-flex flex-column gap-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(16,185,129,0.15)' }}>
-                  <a href="mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio&body=Hi%20Sumit,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity%20with%20you!%0A%0A" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = '#10b981'} onMouseOut={(e) => e.currentTarget.style.color = '#cbd5e1'}>
+                  <a href="mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio&body=Hi%20Sumit,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity%20with%20you!%0A%0A" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#10b981'; e.currentTarget.style.textDecoration = 'underline'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.textDecoration = 'none'; }}>
                     <div className="d-flex align-items-center justify-content-center rounded" style={{ width: '40px', height: '40px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
                       <FaEnvelope size={18} />
                     </div>
                     <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>ersumitkumar45@gmail.com</span>
                   </a>
 
-                  <a href="https://linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = '#10b981'} onMouseOut={(e) => e.currentTarget.style.color = '#cbd5e1'}>
+                   <a href="https://linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#10b981'; e.currentTarget.style.textDecoration = 'underline'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.textDecoration = 'none'; }}>
                     <div className="d-flex align-items-center justify-content-center rounded" style={{ width: '40px', height: '40px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
                       <FaLinkedinIn size={18} />
                     </div>
