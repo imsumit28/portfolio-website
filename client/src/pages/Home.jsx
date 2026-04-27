@@ -163,7 +163,7 @@ const Home = () => {
                   <span className="about-bullet">{'>'}</span> <strong>City:</strong>&nbsp; Patna, India
                 </div>
                 <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-4 text-white">
-                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; ersumitkumar45@gmail.com
+                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; <button onClick={() => scrollToSection('contact')} style={{ background: 'none', border: 'none', color: '#10b981', padding: 0, font: 'inherit', cursor: 'pointer', textDecoration: 'underline' }}>Available via Contact Form</button>
                 </div>
                 <div className="d-flex justify-content-center justify-content-md-start">
                   <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
@@ -239,16 +239,37 @@ const Home = () => {
 
               {[
                 { year: '2024', text: 'Started coding' },
-                { year: '2025', text: 'Built first project' },
-                { year: '2025', text: 'Mastered Full Stack' },
-                { year: '2026', text: 'Built DevConnect' },
-                { year: '2026', text: 'Open to work' }
+                { year: 'Late 2025', text: 'Learned MERN Stack' },
+                { year: '2026', text: 'Started building projects', sub: 'DevConnect (Deployed & Live)', link: 'https://devconnect2026.vercel.app/' },
               ].map((item, i) => (
                 <div key={i} className="position-relative d-flex flex-row flex-md-column align-items-center text-md-center timeline-item" style={{ zIndex: 1, paddingLeft: '35px', paddingLeftMd: '0' }}>
                   <div className="timeline-dot" style={{ position: 'absolute', left: '10px', top: '10px', width: '12px', height: '12px', background: '#10b981', borderRadius: '50%', border: '3px solid #0f172a' }}></div>
                   <div className="mt-md-4 ms-2 ms-md-0 d-flex flex-column flex-md-column">
                     <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '0.95rem' }}>{item.year}</span>
                     <span style={{ color: '#cbd5e1', fontSize: '0.85rem', marginTop: '2px' }}>{item.text}</span>
+                    {item.sub && (
+                      item.link ? (
+                        <a 
+                          href={item.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="timeline-sub-link"
+                          style={{ 
+                            color: '#10b981', 
+                            fontSize: '0.75rem', 
+                            fontWeight: '700', 
+                            marginTop: '2px',
+                            textDecoration: 'none',
+                            transition: 'all 0.2s ease',
+                            display: 'inline-block'
+                          }}
+                        >
+                          {item.sub}
+                        </a>
+                      ) : (
+                        <span style={{ color: '#10b981', fontSize: '0.75rem', fontWeight: '600', marginTop: '2px' }}>{item.sub}</span>
+                      )
+                    )}
                   </div>
                 </div>
               ))}
@@ -259,6 +280,11 @@ const Home = () => {
                 @media (min-width: 768px) {
                   .timeline-item { padding-left: 0 !important; }
                   .timeline-dot { position: relative !important; left: auto !important; top: auto !important; margin: 0 auto; margin-top: 10px; }
+                }
+                .timeline-sub-link:hover {
+                  color: #34d399 !important;
+                  transform: translateY(-1px);
+                  text-decoration: underline !important;
                 }
               `}
             </style>
@@ -325,33 +351,44 @@ const Home = () => {
           <div className="mt-4 d-flex flex-column gap-4">
             {[
               {
-                category: 'Frontend & UI',
+                category: 'CORE STACK',
                 skills: [
-                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 'Proficient', highlight: true },
-                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 'Proficient', highlight: true },
-                  { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 'Proficient' },
-                  { name: 'Redux', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg', level: 'Familiar' },
-                  { name: 'HTML & CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', level: 'Expert' },
+                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
+                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
                 ]
               },
               {
-                category: 'Backend & Database',
+                category: 'UI & STYLING',
                 skills: [
-                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 'Proficient', highlight: true },
-                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true, level: 'Proficient', highlight: true },
-                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 'Proficient' },
-                  { name: 'Mongoose', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg', level: 'Proficient' },
-                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg', level: 'Proficient' },
-                  { name: 'JWT Auth', img: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shield-lock-fill.svg', invert: true, level: 'Proficient' },
+                  { name: 'HTML5', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+                  { name: 'CSS3', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+                  { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+                ]
+              },
+              {
+                category: 'AUTH & APIs',
+                skills: [
+                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+                  { name: 'JWT Auth', img: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shield-lock-fill.svg', invert: true },
                 ]
               },
               {
                 category: 'Tools & Deployment',
                 skills: [
-                  { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true, level: 'Proficient' },
-                  { name: 'Postman', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postman.svg', invert: true, level: 'Proficient' },
-                  { name: 'Vercel', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true, level: 'Proficient' },
-                  { name: 'Render', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true, level: 'Proficient' },
+                  { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
+                  { name: 'VS Code', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+                  { name: 'Vercel', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true },
+                  { name: 'Render', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true },
+                ]
+              },
+              {
+                category: 'CURRENTLY LEARNING',
+                skills: [
+                  { name: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+                  { name: 'Next.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
                 ]
               }
             ].map((section, idx) => (
@@ -363,23 +400,16 @@ const Home = () => {
                   {section.skills.map((skill) => (
                     <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={skill.name}>
                       <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
-                        background: skill.highlight ? 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(15,23,42,0.6) 100%)' : 'rgba(15,23,42,0.6)',
+                        background: 'rgba(15,23,42,0.6)',
                         borderRadius: '8px',
                         transition: 'all 0.2s ease',
-                        border: skill.highlight ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.05)',
                         cursor: 'default',
                         overflow: 'hidden'
                       }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,0.8)' : 'var(--accent)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = skill.highlight ? 'rgba(34,197,94,0.3)' : 'rgba(255,255,255,0.05)'; }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}
                       >
-                        {skill.highlight && (
-                          <div style={{
-                            position: 'absolute', top: 0, right: 0, padding: '2px 5px', background: 'var(--accent)', color: '#fff', fontSize: '0.5rem', fontWeight: 'bold', borderBottomLeftRadius: '6px'
-                          }}>
-                            CORE
-                          </div>
-                        )}
                         <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
                           width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
                         }}>
@@ -396,8 +426,7 @@ const Home = () => {
                           />
                         </div>
                         <div className="d-flex flex-column justify-content-center overflow-hidden">
-                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: skill.highlight ? '#10b981' : '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
-                          <span style={{ fontSize: '0.6rem', color: '#94a3b8', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{skill.level}</span>
+                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
                         </div>
                       </div>
                     </div>

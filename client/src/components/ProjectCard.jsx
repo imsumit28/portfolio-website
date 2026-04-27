@@ -142,13 +142,7 @@ const ProjectCard = ({
           ) : null}
         </div>
 
-        {learned && (
-          <div className="mt-4 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-            <p className="mb-0" style={{ fontSize: '0.85rem', color: '#64748b', fontStyle: 'italic' }}>
-              <span style={{ color: '#94a3b8', fontStyle: 'normal', fontWeight: '600' }}>Learned: </span> {learned}
-            </p>
-          </div>
-        )}
+        {/* Removed Learned section as requested */}
       </div>
 
       <style>{`
