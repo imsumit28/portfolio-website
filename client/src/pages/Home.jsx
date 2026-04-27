@@ -149,8 +149,13 @@ const Home = () => {
 
           <div className="row mt-5 align-items-start" data-aos="fade-up" data-aos-delay="100">
             <div className="col-lg-4 col-md-5 mb-5 mb-md-0 text-center text-md-start">
-              <div className="position-relative d-inline-block mb-4" style={{ width: '100%', maxWidth: '300px' }}>
-                <img src={profileImg} alt="Sumit Kumar" className="img-fluid rounded-4 shadow-lg position-relative" style={{ border: '1px solid rgba(255,255,255,0.1)', zIndex: 1, maxHeight: '380px', width: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} />
+              <div className="about-photo-frame mx-auto mx-md-0">
+                <img
+                  src={profileImg}
+                  alt="Sumit Kumar"
+                  className="about-photo-img"
+                  loading="lazy"
+                />
               </div>
 
               <div className="mb-4">
