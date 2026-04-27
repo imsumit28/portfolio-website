@@ -12,7 +12,7 @@
 
 </div>
 
-![Portfolio Preview](./preview.png)
+![Portfolio Preview](./preview.png?v=2)
 
 ---
 
