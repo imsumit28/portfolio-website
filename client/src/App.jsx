@@ -9,6 +9,7 @@ import './index.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import LoadingScreen from './components/LoadingScreen';
 
 // Pages
 import Home from './pages/Home';
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <AuthProvider>
+      <LoadingScreen />
       <Router>
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
