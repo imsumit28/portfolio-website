@@ -18,7 +18,7 @@
 
 ## What This Is
 
-A personal portfolio built with the MERN stack (MongoDB, Express, React, Node.js). It showcases projects, verified work experience, education, and a live GitHub contribution calendar — structured specifically for recruiter and engineering review. Features a dark-mode UI with emerald green accents, AOS scroll animations, and a secure admin dashboard for managing contact messages.
+A personal portfolio built with the MERN stack (MongoDB, Express, React, Node.js) with a custom loading animation. It showcases 3 production-grade projects, verified work experience, education, and a live GitHub contribution calendar — structured specifically for recruiter and engineering review. Features a dark-mode UI with emerald green accents, AOS scroll animations, custom loading screen with video animation, and a secure admin dashboard for managing contact messages.
 
 ---
 
@@ -34,6 +34,7 @@ A personal portfolio built with the MERN stack (MongoDB, Express, React, Node.js
 - **Admin Dashboard:** JWT-protected portal to view and manage incoming contact messages.
 - **Direct Mail Integration:** Contact form wired to Nodemailer with rate limiting for spam protection.
 - **Fully Responsive:** Fluid layouts with Flexbox across all device sizes — desktop, tablet, and mobile.
+- **Custom Loading Animation:** Beautiful video-based loading screen that plays on page load before displaying the portfolio.
 
 ---
 
@@ -46,6 +47,27 @@ A personal portfolio built with the MERN stack (MongoDB, Express, React, Node.js
 | Database | MongoDB (Mongoose) |
 | Auth | JWT (JSON Web Tokens) |
 | Key Libraries | `react-github-calendar`, `react-simple-typewriter`, AOS, Nodemailer, Express-Rate-Limit |
+
+---
+
+## Featured Projects
+
+### 1. **DevConnect** — Real-time Developer Network
+A full-stack developer networking platform with real-time chat, JWT authentication, and profile-based developer discovery.
+- **Tech:** React, Vite, Node.js, MongoDB, Socket.io
+- **Live:** [devconnect2026.vercel.app](https://devconnect2026.vercel.app/)
+- **GitHub:** [imsumit28/DevConnect](https://github.com/imsumit28/DevConnect)
+
+### 2. **NotifyX** — Distributed Notification System
+Production-grade notification platform with real-time delivery, BullMQ job queue, Redis Pub/Sub, and two-layer idempotency for fault tolerance.
+- **Tech:** Node.js, Express, BullMQ, Redis, Socket.io, MongoDB
+- **GitHub:** [imsumit28/NotifyX](https://github.com/imsumit28/NotifyX)
+
+### 3. **CollabDocs** — Real-time Collaborative Document Editor
+Production-ready document editor with Y.js CRDT for conflict-free synchronization, AI writing assistance via Groq, live cursors, comments, and version history. Includes 45+ test cases with ~60% coverage.
+- **Tech:** Next.js, Node.js, TypeScript, Socket.io, Y.js, MongoDB, Groq API
+- **Live:** [collabdocs2026.vercel.app](https://collabdocs2026.vercel.app/)
+- **GitHub:** [imsumit28/CollabDocs](https://github.com/imsumit28/CollabDocs)
 
 ---
 
