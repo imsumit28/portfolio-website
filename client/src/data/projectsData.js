@@ -1,5 +1,6 @@
 import devconnectCover from '../assets/projects/devconnect-cover.png';
 import devconnectIcon from '../assets/projects/devconnect-icon.png';
+import notifyxCover from '../assets/projects/notifyx-cover.png';
 
 export const LOCAL_PROJECTS = [
   {
@@ -38,8 +39,7 @@ export const LOCAL_PROJECTS = [
       'Engineered batch notifications for repeated actions within 30s window',
     ],
     metrics: ['30-day TTL auto-archive', 'Sub-50ms latency', 'Fault-tolerant DLQ'],
-    coverImage:
-      'https://images.unsplash.com/photo-1553821552-896250663a55?auto=format&fit=crop&w=1200&q=80',
+    coverImage: notifyxCover,
     tech: ['Node.js', 'Express', 'BullMQ', 'Redis', 'Socket.io', 'MongoDB', 'Mongoose'],
     githubLink: 'https://github.com/imsumit28/NotifyX',
     liveLink: null,
