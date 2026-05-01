@@ -1,6 +1,7 @@
 import devconnectCover from '../assets/projects/devconnect-cover.png';
 import devconnectIcon from '../assets/projects/devconnect-icon.png';
 import notifyxCover from '../assets/projects/notifyx-cover.png';
+import collabdocsCover from '../assets/projects/collabdocs-cover.png';
 
 export const LOCAL_PROJECTS = [
   {
@@ -60,8 +61,7 @@ export const LOCAL_PROJECTS = [
       'Shipped comprehensive test suite (~60% coverage) with 45+ test cases across auth, docs, and sync',
     ],
     metrics: ['45+ test cases', '60% code coverage', 'Horizontal scalable with Redis adapter'],
-    coverImage:
-      'https://images.unsplash.com/photo-1484807352052-23338dd3b312?auto=format&fit=crop&w=1200&q=80',
+    coverImage: collabdocsCover,
     tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Socket.io', 'Y.js', 'MongoDB', 'Groq API'],
     githubLink: 'https://github.com/imsumit28/CollabDocs',
     liveLink: 'https://collabdocs2026.vercel.app/',
