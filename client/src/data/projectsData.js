@@ -23,23 +23,47 @@ export const LOCAL_PROJECTS = [
     liveLink: 'https://devconnect2026.vercel.app/',
   },
   {
-    _id: 'ai-resume-analyzer',
-    title: 'AI Resume Analyzer',
+    _id: 'notifyx',
+    title: 'NotifyX',
     type: 'WEB-APP',
     value:
-      'Built an AI-powered resume evaluation tool that helps users produce clearer, stronger, ATS-ready resumes faster.',
+      'Production-grade distributed notification platform with real-time delivery, offline sync, and two-layer idempotency.',
     description:
-      'An AI-based tool that analyzes resume quality and provides actionable suggestions to improve impact.',
+      'A real-time notification system built with Node.js, Redis, BullMQ, and Socket.io. Handles async job processing, fault tolerance, and sub-50ms delivery.',
     features: [
-      'Built automated resume diagnostics with targeted, section-level suggestions',
-      'Engineered ATS-scoring logic with Gemini LLM to detect weak verbs and structural gaps',
-      'Integrated ATS-focused guidance for keyword fit and formatting quality',
+      'Architected BullMQ job queue with 5 retry attempts and exponential backoff',
+      'Shipped Redis Pub/Sub → Socket.io pipeline for real-time delivery with offline sync',
+      'Built two-layer idempotency (Redis SETNX + MongoDB unique index) to prevent duplicates',
+      'Implemented sliding window rate limiting (10K req/min global, 50 req/min per user)',
+      'Engineered batch notifications for repeated actions within 30s window',
     ],
-    metrics: ['2 AI analysis modes', 'ATS scoring system', 'Gemini powered'],
+    metrics: ['30-day TTL auto-archive', 'Sub-50ms latency', 'Fault-tolerant DLQ'],
     coverImage:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Gemini API'],
-    githubLink: 'https://github.com/imsumit28/AI-Resume-Analyzer',
-    liveLink: 'https://ai-resume-analyzer-2026.vercel.app/',
+      'https://images.unsplash.com/photo-1553821552-896250663a55?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Node.js', 'Express', 'BullMQ', 'Redis', 'Socket.io', 'MongoDB', 'Mongoose'],
+    githubLink: 'https://github.com/imsumit28/NotifyX',
+    liveLink: null,
+  },
+  {
+    _id: 'collabdocs',
+    title: 'CollabDocs',
+    type: 'WEB-APP',
+    value:
+      'Real-time collaborative document editor with AI writing assistance, live cursors, and CRDT-based conflict resolution.',
+    description:
+      'A production-ready doc editor built with Next.js, Y.js CRDT, and Socket.io. Features conflict-free sync, version history, comments, and AI-powered suggestions.',
+    features: [
+      'Implemented Y.js CRDT for conflict-free real-time collaboration with ~100ms latency',
+      'Built custom suggestions/track-changes mode using TipTap open-source extensions',
+      'Engineered debounce strategy (5s inactivity) to limit writes to ≤12 per minute',
+      'Integrated Groq Llama 3.3 API for AI writing assistant (improve, grammar fix, summarize)',
+      'Shipped comprehensive test suite (~60% coverage) with 45+ test cases across auth, docs, and sync',
+    ],
+    metrics: ['45+ test cases', '60% code coverage', 'Horizontal scalable with Redis adapter'],
+    coverImage:
+      'https://images.unsplash.com/photo-1484807352052-23338dd3b312?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Socket.io', 'Y.js', 'MongoDB', 'Groq API'],
+    githubLink: 'https://github.com/imsumit28/CollabDocs',
+    liveLink: 'https://collabdocs2026.vercel.app/',
   },
 ];

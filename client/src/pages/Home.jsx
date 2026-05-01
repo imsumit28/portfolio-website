@@ -75,7 +75,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  2+ Projects Built
+                  3 Projects Built
                 </span>
                 <span style={{ opacity: 0.7 }}>•</span>
                 <span
@@ -178,7 +178,7 @@ const Home = () => {
                 I'm a Full Stack Developer from Patna, India, building production-ready web apps with React, Node.js, and MongoDB.
               </p>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                I've built <strong>DevConnect</strong> — a developer networking platform with real-time chat and authentication — and <strong>AI Resume Analyzer</strong>, an AI-powered tool that gives smart feedback on resumes.
+                I've built <strong>DevConnect</strong> — a real-time developer network, <strong>NotifyX</strong> — a distributed notification system with BullMQ and Redis, and <strong>CollabDocs</strong> — a collaborative document editor with AI writing assistance and CRDT-based sync.
               </p>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 I focus on clean code, responsive UI, and solid backend logic. Every project I ship is deployed and live — not just a localhost demo.
@@ -542,7 +542,8 @@ const Home = () => {
               <ul className="d-flex flex-column gap-2 mb-0" style={{ listStyle: 'none', paddingLeft: 0 }}>
                 {[
                   'Built and deployed DevConnect — real-time developer network with Socket.io and JWT auth',
-                  'Built AI Resume Analyzer using Gemini API with ATS scoring and section-level feedback',
+                  'Architected NotifyX — distributed notification platform with BullMQ, Redis Pub/Sub, and two-layer idempotency',
+                  'Engineered CollabDocs — collaborative editor with Y.js CRDT, 45+ test cases, and Groq AI integration',
                 ].map((item, i) => (
                   <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#64748b', fontSize: '0.92rem' }}>
                     <span style={{ color: '#475569', marginTop: '3px', flexShrink: 0 }}>▸</span>
@@ -613,25 +614,6 @@ const Home = () => {
                         </span>
                       </li>
                     </ul>
-
-                    <div className="mt-4 pt-4" style={{ borderTop: '1px dashed rgba(255,255,255,0.08)' }}>
-                      <p className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1rem' }}>
-                        Resume Analyzer (Core Java)
-                      </p>
-                      <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
-                        <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                          <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>Engineered a Java application using OOP to score resumes with 85% accuracy.</span>
-                        </li>
-                        <li className="d-flex align-items-start gap-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                          <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
-                          <span>
-                            Developed a modular CLI/GUI architecture with a rule-based suggestion engine.{' '}
-                            <a href="https://github.com/imsumit28/AIResumeAnalyzer" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>GitHub →</a>
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>
