@@ -106,8 +106,7 @@ Real-time Chat  ·  JWT Auth  ·  Profile Discovery  ·  Live Deployment
 **Links:** [Live](https://devconnect2026.vercel.app/) · [GitHub](https://github.com/imsumit28/DevConnect)
 
 ---
-```
----
+
 ## Tech Stack
 
 | Category | Technologies |
