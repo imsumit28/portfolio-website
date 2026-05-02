@@ -52,36 +52,24 @@ A comprehensive full-stack portfolio application built with the **MERN stack** (
 - **Custom Loading Animation** — Professionally designed video-based loading screen with smooth fade-out
 - **Dark Mode UI** — Emerald green accent palette with smooth AOS scroll animations
 
-### Technical Excellence
-- **Performance Optimized** — Tree-shaken imports, lazy loading, and optimized GitHub API calls
-- **Security Hardened** — JWT auth, bcrypt password hashing, CORS, and rate limiting
-- **SEO Ready** — Semantic HTML, meta tags, Open Graph, and robots.txt
-- **Accessible** — WCAG-compliant with keyboard navigation and screen reader support
-
-### Features
-- **Live GitHub Calendar** — Auto-updating contribution calendar (no API key required)
-- **Experience Section** — Recruiter-optimized with measurable impact metrics
-- **Contact Form** — Nodemailer integration with Spam protection and rate limiting
-- **Admin Portal** — JWT-protected dashboard to manage incoming messages
-- **Resume Preview** — Inline PDF viewer with one-click download
-
----
-
 ##  Featured Projects
 
-### 1. DevConnect — Real-time Developer Network
-**A full-stack social platform for developers to connect, collaborate, and share projects.**
+### 1. CollabDocs — Real-time Collaborative Document Editor
+**Production-ready Google Docs alternative with CRDT-based conflict-free sync, AI writing assistance, and comprehensive test coverage.**
 
 ```
-Real-time Chat  ·  JWT Auth  ·  Profile Discovery  ·  Live Deployment
+Y.js CRDT  ·  TypeScript  ·  AI Assistant  ·  45+ Test Cases  ·  60% Coverage
 ```
 
-- Built JWT auth with refresh token rotation and protected routes
-- Implemented low-latency Socket.io chat with sub-100ms delivery
-- Engineered profile & project discovery matching algorithm
+- Implemented Y.js CRDT for conflict-free real-time collaboration (~100ms latency)
+- Built custom suggestions/track-changes using TipTap open-source extensions
+- Engineered write-debounce strategy (5s inactivity) limiting writes to ≤12 per minute
+- Integrated Groq Llama 3.3 70B API for AI writing assistant
+- Shipped comprehensive Jest test suite (45+ tests, ~60% coverage)
+- Designed horizontal scalability with Redis Socket.io adapter
 
-**Tech Stack:** `React` `Vite` `Node.js` `MongoDB` `Socket.io`  
-**Links:** [Live](https://devconnect2026.vercel.app/) · [GitHub](https://github.com/imsumit28/DevConnect)
+**Tech Stack:** `Next.js 14` `React` `Node.js` `TypeScript` `Socket.io` `Y.js` `MongoDB` `Groq API`  
+**Links:** [Live](https://collabdocs2026.vercel.app/) · [GitHub](https://github.com/imsumit28/CollabDocs)
 
 ---
 
@@ -103,9 +91,21 @@ BullMQ Job Queue  ·  Redis Pub/Sub  ·  Idempotency  ·  Rate Limiting
 
 ---
 
-### 3. CollabDocs — Real-time Collaborative Document Editor
-**Production-ready Google Docs alternative with CRDT-based conflict-free sync, AI writing assistance, and comprehensive test coverage.**
+### 3. DevConnect — Real-time Developer Network
+**A full-stack social platform for developers to connect, collaborate, and share projects.**
 
+```
+Real-time Chat  ·  JWT Auth  ·  Profile Discovery  ·  Live Deployment
+```
+
+- Built JWT auth with refresh token rotation and protected routes
+- Implemented low-latency Socket.io chat with sub-100ms delivery
+- Engineered profile & project discovery matching algorithm
+
+**Tech Stack:** `React` `Vite` `Node.js` `MongoDB` `Socket.io`  
+**Links:** [Live](https://devconnect2026.vercel.app/) · [GitHub](https://github.com/imsumit28/DevConnect)
+
+---
 ```
 Y.js CRDT  ·  TypeScript  ·  AI Assistant  ·  45+ Test Cases  ·  60% Coverage
 ```
