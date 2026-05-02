@@ -204,7 +204,7 @@ const Home = () => {
               {/* Quick Stat Cards */}
               <div className="row g-3 mb-5">
                 {[
-                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '2', sub: 'Deployed & Live' },
+                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '3', sub: 'Deployed & Live' },
                   { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
                   { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
                   { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' }
