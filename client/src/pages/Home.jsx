@@ -202,10 +202,20 @@ const Home = () => {
 
               {/* Badges */}
               <div className="mb-5 d-flex flex-wrap gap-3">
-                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem' }}>
+                <div
+                  className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
+                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'all 0.25s ease' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#3b82f6'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#3b82f6'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(59,130,246,0.35)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(59,130,246,0.1)'; e.currentTarget.style.color = '#3b82f6'; e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)'; e.currentTarget.style.boxShadow = ''; }}
+                >
                   <FaBriefcase className="me-2" size={14} /> Open to Full-time Roles
                 </div>
-                <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem' }}>
+                <div
+                  className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
+                  style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'all 0.25s ease' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#10b981'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(16,185,129,0.35)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(16,185,129,0.1)'; e.currentTarget.style.color = '#10b981'; e.currentTarget.style.borderColor = 'rgba(16,185,129,0.3)'; e.currentTarget.style.boxShadow = ''; }}
+                >
                   <FaCode className="me-2" size={14} /> React · Node.js · TypeScript · Redis
                 </div>
               </div>
