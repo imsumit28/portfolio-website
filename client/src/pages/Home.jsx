@@ -6,6 +6,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
 import ContactForm from '../components/ContactForm';
 import profileImg from '../assets/profile.png';
+import profileVideo from '../assets/profile-video.mp4';
 import aboutDevconnectImg from '../assets/about-devconnect.png';
 
 const Home = () => {
@@ -150,12 +151,15 @@ const Home = () => {
           <div className="row mt-5 align-items-start" data-aos="fade-up" data-aos-delay="100">
             <div className="col-lg-4 col-md-5 mb-5 mb-md-0 text-center text-md-start">
               <div className="about-photo-frame mx-auto mx-md-0">
-                <img
-                  src={profileImg}
-                  alt="Sumit Kumar"
+                <video
+                  autoPlay
+                  loop
+                  muted
                   className="about-photo-img"
-                  loading="lazy"
-                />
+                  style={{ display: 'block', width: '100%' }}
+                >
+                  <source src={profileVideo} type="video/mp4" />
+                </video>
               </div>
 
               <div className="mb-4">
