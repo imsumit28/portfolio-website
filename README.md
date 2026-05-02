@@ -107,7 +107,7 @@ Real-time Chat  ·  JWT Auth  ·  Profile Discovery  ·  Live Deployment
 
 ---
 ```
-
+---
 ## Tech Stack
 
 | Category | Technologies |
