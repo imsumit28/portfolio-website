@@ -245,7 +245,7 @@ db.users.insertOne({
 
 ---
 
-## 📊 Metrics
+##  Metrics
 
 | Metric | Value |
 |--------|-------|
