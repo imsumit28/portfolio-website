@@ -169,7 +169,6 @@ const Home = () => {
               <div className="about-photo-frame mx-auto mx-md-0">
                 <video
                   autoPlay
-                  loop
                   muted
                   className="about-photo-img"
                   style={{ display: 'block', width: '100%' }}
