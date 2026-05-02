@@ -308,7 +308,7 @@ const Navbar = () => {
         {/* Drawer footer */}
         <div style={{ padding: '20px 28px 0', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <p style={{ color: '#475569', fontSize: '0.78rem', margin: 0 }}>
-            ● Actively looking — open to work
+            ● Available for new opportunities
           </p>
         </div>
       </div>

@@ -30,9 +30,9 @@ const Home = () => {
                 <span className="text-accent">
                   <Typewriter
                     words={[
-                      'a Full Stack Developer',
-                      'Building real-world projects',
-                      'JavaScript | React | Node.js',
+                      'Full Stack Developer',
+                      'Distributed systems & real-time apps',
+                      'React · Node.js · TypeScript · Redis',
                     ]}
                     loop={0}
                     cursor
@@ -54,7 +54,7 @@ const Home = () => {
                   maxWidth: '580px',
                 }}
               >
-                Building full-stack web apps — from UI to deployment
+                I design and ship real-time, distributed systems — handling concurrency, fault tolerance, and production load. Not localhost demos.
               </p>
 
               <div
@@ -75,7 +75,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  3 Projects Built
+                  3 Projects — All Deployed
                 </span>
                 <span style={{ opacity: 0.7 }}>•</span>
                 <span
@@ -87,7 +87,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  Available for Full-time · Remote / India
+                  Open to Full-time Roles
                 </span>
               </div>
 
@@ -188,16 +188,16 @@ const Home = () => {
               </p>
 
               <p className="mb-5 fst-italic" style={{ color: '#10b981', fontSize: '1.1rem', borderLeft: '3px solid #10b981', paddingLeft: '15px' }}>
-                "I learn best by building things that actually work."
+                "The interesting problems happen when two users hit save at the same time. That's what I build for."
               </p>
 
               {/* Badges */}
               <div className="mb-5 d-flex flex-wrap gap-3">
                 <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem' }}>
-                  <FaBriefcase className="me-2" size={14} /> Available for Full-time · Remote / India
+                  <FaBriefcase className="me-2" size={14} /> Open to Full-time Roles
                 </div>
                 <div className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm" style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem' }}>
-                  <FaCode className="me-2" size={14} /> React · Node.js · MongoDB · REST APIs
+                  <FaCode className="me-2" size={14} /> React · Node.js · TypeScript · Redis
                 </div>
               </div>
 
@@ -355,7 +355,9 @@ const Home = () => {
                 skills: [
                   { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
                   { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+                  { name: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
                   { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+                  { name: 'Next.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
                   { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
                   { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
                 ]
@@ -385,10 +387,11 @@ const Home = () => {
                 ]
               },
               {
-                category: 'CURRENTLY LEARNING',
+                category: 'REAL-TIME & QUEUES',
                 skills: [
-                  { name: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-                  { name: 'Next.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
+                  { name: 'Socket.io', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/socketdotio.svg', invert: true },
+                  { name: 'Redis', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+                  { name: 'BullMQ', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bull.svg', invert: true },
                 ]
               }
             ].map((section, idx) => (
@@ -477,7 +480,7 @@ const Home = () => {
                     </div>
                   </div>
                   <span style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', borderRadius: '30px', padding: '6px 18px', fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
-                    June 2025 – July 2025
+                    June 2025 – August 2025
                   </span>
                 </div>
 
@@ -772,7 +775,7 @@ const Home = () => {
                 </h4>
                 <div className="d-flex align-items-center gap-2 mb-4" style={{ fontSize: '0.85rem' }}>
                   <span style={{ color: '#10b981', display: 'inline-block', transform: 'scale(1.2)' }}>●</span>
-                  <span style={{ color: '#94a3b8', fontWeight: '500' }}>Actively looking — responding within 24hrs</span>
+                  <span style={{ color: '#94a3b8', fontWeight: '500' }}>Available for new opportunities</span>
                 </div>
                 <p className="mb-4" style={{ color: '#94a3b8', lineHeight: 1.7, fontSize: '1.05rem' }}>
                   Open to internships, freelance, and full-time opportunities. Feel free to connect!

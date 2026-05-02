@@ -17,6 +17,7 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
+import ProjectChallenges from './pages/ProjectChallenges';
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin/login" element={<Login />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/challenges/:projectId" element={<ProjectChallenges />} />
             </Routes>
           </main>
           <Footer />
