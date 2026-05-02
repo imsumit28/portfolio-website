@@ -1,20 +1,40 @@
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToProjects = () => {
+    const el = document.getElementById('projects');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior: 'smooth' });
+    } else {
+      navigate('/#projects');
+    }
+  };
+
+  const socials = [
+    { icon: <FaGithub size={22} />, label: 'View Code', href: 'https://github.com/imsumit28', target: '_blank' },
+    { icon: <FaLinkedinIn size={22} />, label: 'Connect', href: 'https://www.linkedin.com/in/imsumit45/', target: '_blank' },
+    { icon: <FaEnvelope size={22} />, label: 'Contact Me', href: 'mailto:ersumitkumar45@gmail.com', target: '_self' },
+  ];
+
   return (
     <footer className="footer-custom">
       <div className="container text-center">
-        {/* Logo Link Back to Top */}
-        <div className="mb-4" data-aos="fade-up" data-aos-duration="800">
-          <a href="#hero" onClick={scrollToTop} className="footer-logo-link" style={{ 
-            color: '#10b981', 
-            fontSize: '1.4rem', 
-            fontWeight: '700', 
+
+        {/* Logo */}
+        <div className="mb-4">
+          <a href="#hero" onClick={scrollToTop} className="footer-logo-link" style={{
+            color: '#10b981',
+            fontSize: '1.4rem',
+            fontWeight: '700',
             textDecoration: 'none',
             letterSpacing: '-0.5px',
             display: 'inline-block'
@@ -23,28 +43,72 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Strong Closing Line */}
-        <h2 className="footer-closing-line mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-          Currently open to full-time roles — let's build something together.
+        {/* Headline */}
+        <h2 className="footer-closing-line mb-3">
+          Full Stack Engineer focused on real-time systems,<br className="d-none d-md-block" /> distributed architecture, and scalable backend design.
         </h2>
 
-        {/* Social Links */}
-        <div className="d-flex justify-content-center gap-4 pb-4 mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-          <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="GitHub">
-            <FaGithub />
-          </a>
-          <a href="https://www.linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">
-            <FaLinkedinIn />
-          </a>
-          <a href="mailto:ersumitkumar45@gmail.com" className="footer-social-btn" aria-label="Email">
-            <FaEnvelope />
-          </a>
+        {/* Proof line */}
+        <p style={{
+          color: '#64748b',
+          fontSize: '0.95rem',
+          maxWidth: '580px',
+          margin: '0 auto 1.75rem',
+          lineHeight: '1.7'
+        }}>
+          Built and deployed systems using WebSockets, Redis queues, and CRDT-based sync — handling concurrent users in real-time.
+        </p>
+
+        {/* CTA Button */}
+        <div className="mb-5">
+          <button
+            onClick={scrollToProjects}
+            className="btn-global btn-global-primary"
+            style={{ padding: '11px 30px', fontSize: '0.95rem' }}
+          >
+            View Projects
+          </button>
         </div>
 
-        {/* Clean End Line */}
-        <p className="footer-copyright mb-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        {/* Divider */}
+        <div style={{ width: '40px', height: '1px', background: 'rgba(16,185,129,0.3)', margin: '0 auto 2rem' }} />
+
+        {/* Social Links */}
+        <div className="d-flex justify-content-center gap-5 mb-4">
+          {socials.map(({ icon, label, href, target }) => (
+            <a
+              key={label}
+              href={href}
+              target={target}
+              rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+            >
+              <div className="social-icon-btn" style={{ fontSize: '1.25rem' }}>
+                {icon}
+              </div>
+              <span style={{ color: '#64748b', fontSize: '0.72rem', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                {label}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Availability */}
+        <p style={{
+          color: '#10b981',
+          fontSize: '0.82rem',
+          fontWeight: '600',
+          letterSpacing: '0.5px',
+          marginBottom: '1.5rem'
+        }}>
+          Available for Full-Time &nbsp;·&nbsp; Remote / India
+        </p>
+
+        {/* Copyright */}
+        <p className="footer-copyright mb-0">
           © 2026 Sumit Kumar
         </p>
+
       </div>
     </footer>
   );
