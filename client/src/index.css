@@ -575,9 +575,9 @@ ul {
 
 /* Projects Showcase */
 .projects-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -1281,16 +1281,14 @@ ul {
 }
 
 .project-showcase-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 0;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-showcase-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #020617;
 }
@@ -1332,10 +1330,11 @@ ul {
 }
 
 .project-showcase-content {
-  padding: 2.5rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.85rem;
+  flex: 1;
 }
 
 .project-showcase-header {
@@ -1346,11 +1345,11 @@ ul {
 }
 
 .project-showcase-title {
-  font-size: 1.8rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-main);
   margin: 0;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
 }
 
 .project-badge {
@@ -1367,10 +1366,119 @@ ul {
 }
 
 .project-showcase-description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
+}
+
+.project-showcase-highlights {
+  margin: 0;
+}
+
+.project-highlights-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+}
+
+.project-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.project-highlights-list li {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.project-highlights-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+
+.project-architecture {
+  position: relative;
+  margin: 0;
+}
+
+.project-architecture::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0.4rem;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to right, transparent, rgba(8, 12, 28, 0.95));
+  border-radius: 0 10px 10px 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-arch-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0.65rem 0.9rem;
+  background: linear-gradient(135deg, rgba(8, 12, 28, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 10px;
+  margin-top: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.project-arch-flow::-webkit-scrollbar {
+  display: none;
+}
+
+.project-arch-node {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #c7d2fe;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(79, 70, 229, 0.1) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.32);
+  border-radius: 6px;
+  padding: 0.25rem 0.65rem;
+  white-space: nowrap;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+}
+
+.project-arch-node:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28) 0%, rgba(79, 70, 229, 0.22) 100%);
+  border-color: rgba(129, 140, 248, 0.55);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.25);
+}
+
+.project-arch-arrow {
+  color: rgba(99, 102, 241, 0.35);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  padding: 0 0.3rem;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .project-showcase-metrics {
@@ -1418,40 +1526,18 @@ ul {
 }
 
 @media (max-width: 1024px) {
-  .project-showcase-inner {
-    grid-template-columns: 1fr 0.9fr;
-    gap: 1.5rem;
-  }
-
-  .project-showcase-content {
-    padding: 2rem;
-  }
-
-  .project-showcase-title {
-    font-size: 1.5rem;
+  .projects-showcase {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .project-showcase-inner {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .project-showcase-inner.order-last {
+@media (max-width: 600px) {
+  .projects-showcase {
     grid-template-columns: 1fr;
   }
 
   .project-showcase-content {
-    padding: 1.75rem;
-  }
-
-  .project-showcase-title {
-    font-size: 1.3rem;
-  }
-
-  .project-showcase-image {
-    aspect-ratio: 16 / 9;
+    padding: 1.25rem;
   }
 }
 

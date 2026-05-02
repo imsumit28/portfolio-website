@@ -175,13 +175,18 @@ const Home = () => {
 
             <div className="col-lg-8 col-md-7 ps-lg-5">
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                I'm a Full Stack Developer from Patna, India, building production-ready web apps with React, Node.js, and MongoDB.
+                Full Stack Developer focused on real-time systems and scalable backend architecture.
               </p>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                I've built <strong>DevConnect</strong> — a real-time developer network, <strong>NotifyX</strong> — a distributed notification system with BullMQ and Redis, and <strong>CollabDocs</strong> — a collaborative document editor with AI writing assistance and CRDT-based sync.
+                <strong>Built:</strong>
               </p>
+              <ul style={{ listStyle: 'none', paddingLeft: 0, marginBottom: '1rem', color: '#cbd5e1', fontSize: '1.05rem', lineHeight: '1.8' }}>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>DevConnect</strong> → real-time developer network</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>NotifyX</strong> → distributed notification system using Redis & BullMQ</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>CollabDocs</strong> → CRDT-based collaborative editor with AI assistance</li>
+              </ul>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                I focus on clean code, responsive UI, and solid backend logic. Every project I ship is deployed and live — not just a localhost demo.
+                All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live — not just a localhost demo.
               </p>
               <p className="mb-4" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 Currently <strong>open to full-time roles</strong> — remote or India-based.
@@ -225,69 +230,6 @@ const Home = () => {
               </div>
 
             </div>
-          </div>
-
-          {/* Timeline Strip (Full Width below right column) */}
-          <div className="mt-2 mb-5 p-4 rounded-4 mx-auto" style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(15,23,42,0.8) 100%)', border: '1px solid rgba(16,185,129,0.1)', maxWidth: '1000px' }}>
-            <h5 className="mb-4 fw-bold text-center text-md-start" style={{ color: '#cbd5e1', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>My Journey</h5>
-            <div className="d-flex flex-column flex-md-row gap-4 gap-md-2 justify-content-between position-relative timeline-strip-container">
-              {/* Horizontal line for desktop natively, hidden on mobile */}
-              <div className="d-none d-md-block" style={{ position: 'absolute', top: '15px', left: '10px', right: '10px', height: '2px', borderTop: '2px dashed rgba(16,185,129,0.3)', zIndex: 0 }}></div>
-
-              {/* Vertical line for mobile natively, hidden on desktop */}
-              <div className="d-md-none" style={{ position: 'absolute', top: '10px', bottom: '10px', left: '15px', width: '2px', borderLeft: '2px dashed rgba(16,185,129,0.3)', zIndex: 0 }}></div>
-
-              {[
-                { year: '2024', text: 'Started coding' },
-                { year: 'Late 2025', text: 'Learned MERN Stack' },
-                { year: '2026', text: 'Started building projects', sub: 'DevConnect (Deployed & Live)', link: 'https://devconnect2026.vercel.app/' },
-              ].map((item, i) => (
-                <div key={i} className="position-relative d-flex flex-row flex-md-column align-items-center text-md-center timeline-item" style={{ zIndex: 1, paddingLeft: '35px', paddingLeftMd: '0' }}>
-                  <div className="timeline-dot" style={{ position: 'absolute', left: '10px', top: '10px', width: '12px', height: '12px', background: '#10b981', borderRadius: '50%', border: '3px solid #0f172a' }}></div>
-                  <div className="mt-md-4 ms-2 ms-md-0 d-flex flex-column flex-md-column">
-                    <span style={{ color: '#10b981', fontWeight: 'bold', fontSize: '0.95rem' }}>{item.year}</span>
-                    <span style={{ color: '#cbd5e1', fontSize: '0.85rem', marginTop: '2px' }}>{item.text}</span>
-                    {item.sub && (
-                      item.link ? (
-                        <a 
-                          href={item.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="timeline-sub-link"
-                          style={{ 
-                            color: '#10b981', 
-                            fontSize: '0.75rem', 
-                            fontWeight: '700', 
-                            marginTop: '2px',
-                            textDecoration: 'none',
-                            transition: 'all 0.2s ease',
-                            display: 'inline-block'
-                          }}
-                        >
-                          {item.sub}
-                        </a>
-                      ) : (
-                        <span style={{ color: '#10b981', fontSize: '0.75rem', fontWeight: '600', marginTop: '2px' }}>{item.sub}</span>
-                      )
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* Adding inline style for media queries to make it perfectly responsive */}
-            <style>
-              {`
-                @media (min-width: 768px) {
-                  .timeline-item { padding-left: 0 !important; }
-                  .timeline-dot { position: relative !important; left: auto !important; top: auto !important; margin: 0 auto; margin-top: 10px; }
-                }
-                .timeline-sub-link:hover {
-                  color: #34d399 !important;
-                  transform: translateY(-1px);
-                  text-decoration: underline !important;
-                }
-              `}
-            </style>
           </div>
 
           {/* GitHub Contribution Calendar */}
@@ -544,13 +486,15 @@ const Home = () => {
 
               <ul className="d-flex flex-column gap-2 mb-0" style={{ listStyle: 'none', paddingLeft: 0 }}>
                 {[
-                  'Built and deployed DevConnect — real-time developer network with Socket.io and JWT auth',
-                  'Architected NotifyX — distributed notification platform with BullMQ, Redis Pub/Sub, and two-layer idempotency',
-                  'Engineered CollabDocs — collaborative editor with Y.js CRDT, 45+ test cases, and Groq AI integration',
+                  { text: 'Built and deployed DevConnect — real-time developer network with Socket.io and JWT auth', link: 'https://devconnect2026.vercel.app/', color: '#8b5cf6' },
+                  { text: 'Architected NotifyX — distributed notification platform with BullMQ, Redis Pub/Sub, and two-layer idempotency', link: 'https://github.com/imsumit28/NotifyX', color: '#3b82f6' },
+                  { text: 'Engineered CollabDocs — collaborative editor with Y.js CRDT, 45+ test cases, and Groq AI integration', link: 'https://collabdocs2026.vercel.app/', color: '#10b981' },
                 ].map((item, i) => (
                   <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#64748b', fontSize: '0.92rem' }}>
                     <span style={{ color: '#475569', marginTop: '3px', flexShrink: 0 }}>▸</span>
-                    {item}
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', transition: 'all 0.2s ease', cursor: 'pointer' }} onMouseEnter={(e) => { e.target.style.color = item.color; }} onMouseLeave={(e) => { e.target.style.color = '#64748b'; }}>
+                      {item.text}
+                    </a>
                   </li>
                 ))}
               </ul>

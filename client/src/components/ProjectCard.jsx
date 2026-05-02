@@ -20,6 +20,9 @@ const ProjectCard = ({
   githubLink = '',
   github = '',
   metrics = [],
+  highlights = [],
+  highlightsLabel = 'HIGHLIGHTS',
+  architecture = [],
   challenge,
   index = 0,
 }) => {
@@ -36,13 +39,11 @@ const ProjectCard = ({
   const techStack = Array.isArray(tech) ? tech : [];
   const categoryLabel = category || type || 'PROJECT';
   const githubHref = githubLink || github || '';
-  const primaryHref = liveLink || githubHref;
-  const isEven = index % 2 === 0;
 
   return (
     <div className="project-showcase-card" data-aos="fade-up">
       <div className="project-showcase-inner">
-        <div className={`project-showcase-image ${!isEven ? 'order-last' : ''}`}>
+        <div className="project-showcase-image">
           {coverSrc && <img src={coverSrc} alt={title} loading="lazy" />}
           <div className="project-showcase-overlay"></div>
           {logoSrc && (
@@ -59,11 +60,70 @@ const ProjectCard = ({
           </div>
           <p className="project-showcase-description">{valueText}</p>
 
+          {Array.isArray(highlights) && highlights.length > 0 && (
+            <div className="project-showcase-highlights">
+              <div className="project-highlights-label">{highlightsLabel}</div>
+              <ul className="project-highlights-list">
+                {highlights.map((h, i) => (
+                  <li key={i}>{h}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {Array.isArray(architecture) && architecture.length > 0 && (
+            <div className="project-architecture">
+              <div className="project-highlights-label">ARCHITECTURE</div>
+              <div className="project-arch-flow">
+                {architecture.map((step, i) => (
+                  <React.Fragment key={step}>
+                    <span className="project-arch-node">{step}</span>
+                    {i < architecture.length - 1 && (
+                      <span className="project-arch-arrow">→</span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          )}
+
           {Array.isArray(metrics) && metrics.length > 0 && (
             <div className="project-showcase-metrics">
-              {metrics.map((metric, i) => (
-                <span key={i} className="project-metric-tag">{metric}</span>
-              ))}
+              {metrics.map((metric, i) => {
+                const isTestMetric = title === 'CollabDocs' && (metric.toLowerCase().includes('test') || metric.toLowerCase().includes('coverage'));
+                return (
+                  <span
+                    key={i}
+                    className="project-metric-tag"
+                    onClick={() => isTestMetric && navigate('/testing-guide')}
+                    style={{
+                      cursor: isTestMetric ? 'pointer' : 'default',
+                      transition: 'all 0.2s ease',
+                      ...(isTestMetric && {
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16,185,129,0.1)',
+                      })
+                    }}
+                    onMouseEnter={(e) => {
+                      if (isTestMetric) {
+                        e.target.style.borderColor = '#10b981';
+                        e.target.style.backgroundColor = 'rgba(16,185,129,0.15)';
+                        e.target.style.transform = 'translateY(-2px)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (isTestMetric) {
+                        e.target.style.borderColor = 'rgba(255,255,255,0.1)';
+                        e.target.style.backgroundColor = 'rgba(255,255,255,0.04)';
+                        e.target.style.transform = 'translateY(0)';
+                      }
+                    }}
+                    title={isTestMetric ? 'Click to view testing guide' : ''}
+                  >
+                    {metric}
+                  </span>
+                );
+              })}
             </div>
           )}
 

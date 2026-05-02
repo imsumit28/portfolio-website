@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { LOCAL_PROJECTS } from '../data/projectsData';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -7,6 +7,10 @@ const ProjectChallenges = () => {
   const { projectId } = useParams();
   const navigate = useNavigate();
   const project = LOCAL_PROJECTS.find((p) => p._id === projectId);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [projectId]);
 
   if (!project || !project.challenge) {
     return (
