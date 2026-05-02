@@ -117,10 +117,26 @@ const Home = () => {
               </div>
 
               <div className="hero-social-row mt-4">
-                <a href="https://www.linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="LinkedIn"><FaLinkedinIn /></a>
-                <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="GitHub"><FaGithub /></a>
-                <a href="https://x.com/imsumit4545" target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="X (Twitter)"><FaXTwitter /></a>
-                <a href="mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you." className="social-icon-btn" aria-label="Email"><FaEnvelope /></a>
+                {[
+                  { href: 'https://www.linkedin.com/in/imsumit45/', icon: <FaLinkedinIn />, label: 'LinkedIn', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)', target: '_blank' },
+                  { href: 'https://github.com/imsumit28', icon: <FaGithub />, label: 'GitHub', color: '#10b981', shadow: 'rgba(16,185,129,0.4)', target: '_blank' },
+                  { href: 'https://x.com/imsumit4545', icon: <FaXTwitter />, label: 'X (Twitter)', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)', target: '_blank' },
+                  { href: 'mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you.', icon: <FaEnvelope />, label: 'Email', color: '#10b981', shadow: 'rgba(16,185,129,0.4)', target: '_self' },
+                ].map(({ href, icon, label, color, shadow, target }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={target}
+                    rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                    className="social-icon-btn"
+                    aria-label={label}
+                    style={{ transition: 'all 0.25s ease' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = color; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = color; e.currentTarget.style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = ''; e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
+                  >
+                    {icon}
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -740,26 +756,30 @@ const Home = () => {
                 </p>
 
                 <div className="d-flex flex-column gap-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(16,185,129,0.15)' }}>
-                  <a href="mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio&body=Hi%20Sumit,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity%20with%20you!%0A%0A" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#10b981'; e.currentTarget.style.textDecoration = 'underline'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.textDecoration = 'none'; }}>
-                    <div className="d-flex align-items-center justify-content-center rounded" style={{ width: '40px', height: '40px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
-                      <FaEnvelope size={18} />
-                    </div>
-                    <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>ersumitkumar45@gmail.com</span>
-                  </a>
-
-                   <a href="https://linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#10b981'; e.currentTarget.style.textDecoration = 'underline'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.textDecoration = 'none'; }}>
-                    <div className="d-flex align-items-center justify-content-center rounded" style={{ width: '40px', height: '40px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
-                      <FaLinkedinIn size={18} />
-                    </div>
-                    <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>linkedin.com/in/imsumit45</span>
-                  </a>
-
-                  <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer" className="d-flex align-items-center gap-3 text-decoration-none" style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = '#10b981'} onMouseOut={(e) => e.currentTarget.style.color = '#cbd5e1'}>
-                    <div className="d-flex align-items-center justify-content-center rounded" style={{ width: '40px', height: '40px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
-                      <FaGithub size={18} />
-                    </div>
-                    <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>github.com/imsumit28</span>
-                  </a>
+                  {[
+                    { href: 'mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio&body=Hi%20Sumit,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity%20with%20you!%0A%0A', icon: <FaEnvelope size={18} />, label: 'Email Me', sub: 'ersumitkumar45@gmail.com', color: '#10b981', bg: 'rgba(16,185,129,0.1)', target: '_self' },
+                    { href: 'https://linkedin.com/in/imsumit45/', icon: <FaLinkedinIn size={18} />, label: 'Connect on LinkedIn', sub: 'linkedin.com/in/imsumit45', color: '#3b82f6', bg: 'rgba(59,130,246,0.1)', target: '_blank' },
+                    { href: 'https://github.com/imsumit28', icon: <FaGithub size={18} />, label: 'View My Work', sub: 'github.com/imsumit28', color: '#10b981', bg: 'rgba(16,185,129,0.1)', target: '_blank' },
+                  ].map(({ href, icon, label, sub, color, bg, target }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={target}
+                      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                      className="d-flex align-items-center gap-3 text-decoration-none"
+                      style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = color; e.currentTarget.querySelector('.contact-icon-box').style.background = color; e.currentTarget.querySelector('.contact-icon-box').style.color = '#fff'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.querySelector('.contact-icon-box').style.background = bg; e.currentTarget.querySelector('.contact-icon-box').style.color = color; }}
+                    >
+                      <div className="contact-icon-box d-flex align-items-center justify-content-center rounded flex-shrink-0" style={{ width: '42px', height: '42px', background: bg, color, transition: 'all 0.2s ease' }}>
+                        {icon}
+                      </div>
+                      <div className="d-flex flex-column">
+                        <span style={{ fontSize: '0.95rem', fontWeight: '600', lineHeight: 1.3 }}>{label}</span>
+                        <span style={{ fontSize: '0.78rem', color: '#475569', marginTop: '2px' }}>{sub}</span>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
