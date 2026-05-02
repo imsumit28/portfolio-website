@@ -751,8 +751,11 @@ const Home = () => {
                   <span style={{ color: '#10b981', display: 'inline-block', transform: 'scale(1.2)' }}>●</span>
                   <span style={{ color: '#94a3b8', fontWeight: '500' }}>Available for new opportunities</span>
                 </div>
-                <p className="mb-4" style={{ color: '#94a3b8', lineHeight: 1.7, fontSize: '1.05rem' }}>
+                <p className="mb-3" style={{ color: '#94a3b8', lineHeight: 1.7, fontSize: '1.05rem' }}>
                   Open to internships, freelance, and full-time opportunities. Feel free to connect!
+                </p>
+                <p className="mb-4" style={{ color: '#64748b', fontSize: '0.88rem' }}>
+                  I usually respond within 24 hours.
                 </p>
 
                 <div className="d-flex flex-column gap-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(16,185,129,0.15)' }}>
