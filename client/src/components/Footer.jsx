@@ -20,9 +20,9 @@ const Footer = () => {
   };
 
   const socials = [
-    { icon: <FaGithub size={22} />, label: 'View Code', href: 'https://github.com/imsumit28', target: '_blank' },
-    { icon: <FaLinkedinIn size={22} />, label: 'Connect', href: 'https://www.linkedin.com/in/imsumit45/', target: '_blank' },
-    { icon: <FaEnvelope size={22} />, label: 'Contact Me', href: 'mailto:ersumitkumar45@gmail.com', target: '_self' },
+    { icon: <FaGithub size={22} />, label: 'View Code', href: 'https://github.com/imsumit28', target: '_blank', color: '#10b981', shadow: 'rgba(16,185,129,0.4)' },
+    { icon: <FaLinkedinIn size={22} />, label: 'Connect', href: 'https://www.linkedin.com/in/imsumit45/', target: '_blank', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)' },
+    { icon: <FaEnvelope size={22} />, label: 'Contact Me', href: 'mailto:ersumitkumar45@gmail.com', target: '_self', color: '#10b981', shadow: 'rgba(16,185,129,0.4)' },
   ];
 
   return (
@@ -75,7 +75,7 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="d-flex justify-content-center gap-5 mb-4">
-          {socials.map(({ icon, label, href, target }) => (
+          {socials.map(({ icon, label, href, target, color, shadow }) => (
             <a
               key={label}
               href={href}
@@ -83,7 +83,12 @@ const Footer = () => {
               rel={target === '_blank' ? 'noopener noreferrer' : undefined}
               style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
             >
-              <div className="social-icon-btn" style={{ fontSize: '1.25rem' }}>
+              <div
+                className="social-icon-btn"
+                style={{ fontSize: '1.25rem', transition: 'all 0.25s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.background = color; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = color; e.currentTarget.style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = ''; e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
+              >
                 {icon}
               </div>
               <span style={{ color: '#64748b', fontSize: '0.72rem', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
