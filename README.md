@@ -107,20 +107,6 @@ Real-time Chat  ·  JWT Auth  ·  Profile Discovery  ·  Live Deployment
 
 ---
 ```
-Y.js CRDT  ·  TypeScript  ·  AI Assistant  ·  45+ Test Cases  ·  60% Coverage
-```
-
-- Implemented Y.js CRDT for conflict-free real-time collaboration (~100ms latency)
-- Built custom suggestions/track-changes using TipTap open-source extensions
-- Engineered write-debounce strategy (5s inactivity) limiting writes to ≤12 per minute
-- Integrated Groq Llama 3.3 70B API for AI writing assistant
-- Shipped comprehensive Jest test suite (45+ tests, ~60% coverage)
-- Designed horizontal scalability with Redis Socket.io adapter
-
-**Tech Stack:** `Next.js 14` `React` `Node.js` `TypeScript` `Socket.io` `Y.js` `MongoDB` `Groq API`  
-**Links:** [Live](https://collabdocs2026.vercel.app/) · [GitHub](https://github.com/imsumit28/CollabDocs)
-
----
 
 ## Tech Stack
 
