@@ -67,7 +67,7 @@ A comprehensive full-stack portfolio application built with the **MERN stack** (
 
 ---
 
-## 🚀 Featured Projects
+##  Featured Projects
 
 ### 1. DevConnect — Real-time Developer Network
 **A full-stack social platform for developers to connect, collaborate, and share projects.**
@@ -138,7 +138,7 @@ Y.js CRDT  ·  TypeScript  ·  AI Assistant  ·  45+ Test Cases  ·  60% Coverag
 
 ---
 
-## 📄 Portfolio Sections
+##  Portfolio Sections
 
 | Section | Features |
 |---------|----------|
@@ -215,7 +215,7 @@ cd server && npm run build
 
 ---
 
-## 🔐 Admin Dashboard
+##  Admin Dashboard
 
 ### Access
 Navigate to `/admin/login` after setting up MongoDB and seeding an admin user.
@@ -237,11 +237,11 @@ db.users.insertOne({
 **Note:** Use [bcrypt-generator.com](https://bcrypt-generator.com) to hash your password before inserting.
 
 ### Features
-- ✅ View all incoming contact form submissions
-- ✅ Mark messages as read/unread
-- ✅ Delete spam or resolved messages
-- ✅ Real-time message notifications
-- ✅ JWT-protected access
+-  View all incoming contact form submissions
+-  Mark messages as read/unread
+-  Delete spam or resolved messages
+-  Real-time message notifications
+-  JWT-protected access
 
 ---
 
@@ -259,7 +259,7 @@ db.users.insertOne({
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -270,21 +270,21 @@ Contributions are welcome! Please follow these steps:
 5. Open a Pull Request
 
 ### Code Standards
-- ✅ TypeScript with strict mode
-- ✅ ESLint + Prettier formatting
-- ✅ 60%+ test coverage for new features
-- ✅ Semantic commit messages
+-  TypeScript with strict mode
+-  ESLint + Prettier formatting
+-  60%+ test coverage for new features
+-  Semantic commit messages
 
 ---
 
-## 📞 Contact
+##  Contact
 
 **Sumit Kumar**  
 Full Stack Developer | MERN Stack Specialist
 
-- 💼 [LinkedIn](https://linkedin.com/in/imsumit45/)
-- 📧 [Email](mailto:ersumitkumar45@gmail.com)
-- 🐙 [GitHub](https://github.com/imsumit28)
+-  [LinkedIn](https://linkedin.com/in/imsumit45/)
+-  [Email](mailto:ersumitkumar45@gmail.com)
+-  [GitHub](https://github.com/imsumit28)
 
 ---
 
