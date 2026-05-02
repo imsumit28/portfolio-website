@@ -102,7 +102,7 @@ const Home = () => {
                 </button>
                 <a
                   href="/resume.pdf"
-                  download="Sumit_Kumar_Full_Stack_Developer_resume.pdf"
+                  download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf"
                   className="btn-global btn-global-secondary text-decoration-none"
                 >
                   Download Resume
@@ -185,7 +185,7 @@ const Home = () => {
                   <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; <button onClick={() => scrollToSection('contact')} style={{ background: 'none', border: 'none', color: '#10b981', padding: 0, font: 'inherit', cursor: 'pointer', textDecoration: 'underline' }}>Available via Contact Form</button>
                 </div>
                 <div className="d-flex justify-content-center justify-content-md-start">
-                  <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
+                  <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
                     Download Resume
                   </a>
                 </div>
@@ -668,7 +668,7 @@ const Home = () => {
                   <div className="mt-5">
                     <a
                       href="/resume.pdf"
-                      download="Sumit_Kumar_Full_Stack_Developer_resume.pdf"
+                      download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf"
                       className="btn-global btn-global-primary text-decoration-none"
                       style={{ padding: '14px 32px', fontSize: '1.05rem' }}
                     >
@@ -709,7 +709,7 @@ const Home = () => {
                         >
                           <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4 text-center" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: '#1e293b' }}>
                             <p style={{ color: '#cbd5e1', marginBottom: '15px' }}>Preview not available in this browser.</p>
-                            <a href="/resume.pdf" download="Sumit_Kumar_Resume.pdf" className="btn-global btn-global-primary">
+                            <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="btn-global btn-global-primary">
                               Download PDF Instead
                             </a>
                           </div>
