@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
@@ -23,10 +23,12 @@ const ProjectCard = ({
   highlights = [],
   highlightsLabel = 'HIGHLIGHTS',
   architecture = [],
+  architectureDecisions = [],
   challenge,
   index = 0,
 }) => {
   const navigate = useNavigate();
+  const [showDecisions, setShowDecisions] = useState(false);
   const coverSrc = (() => {
     if (coverImage) return coverImage;
     if (typeof image === 'string' && image.startsWith('http')) return image;
@@ -73,7 +75,33 @@ const ProjectCard = ({
 
           {Array.isArray(architecture) && architecture.length > 0 && (
             <div className="project-architecture">
-              <div className="project-highlights-label">ARCHITECTURE</div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <div className="project-highlights-label" style={{ marginBottom: 0 }}>ARCHITECTURE</div>
+                {architectureDecisions.length > 0 && (
+                  <button
+                    onClick={() => setShowDecisions(v => !v)}
+                    style={{
+                      background: 'none',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '6px',
+                      color: showDecisions ? '#10b981' : '#64748b',
+                      fontSize: '0.72rem',
+                      fontWeight: 600,
+                      padding: '3px 10px',
+                      cursor: 'pointer',
+                      letterSpacing: '0.3px',
+                      transition: 'all 0.2s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.color = '#10b981'; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = showDecisions ? '#10b981' : '#64748b'; }}
+                  >
+                    Why this? {showDecisions ? '↑' : '↓'}
+                  </button>
+                )}
+              </div>
               <div className="project-arch-flow">
                 {architecture.map((step, i) => (
                   <React.Fragment key={step}>
@@ -84,6 +112,27 @@ const ProjectCard = ({
                   </React.Fragment>
                 ))}
               </div>
+              {showDecisions && architectureDecisions.length > 0 && (
+                <div
+                  style={{
+                    marginTop: '12px',
+                    padding: '14px 16px',
+                    background: 'rgba(16,185,129,0.04)',
+                    border: '1px solid rgba(16,185,129,0.15)',
+                    borderRadius: '8px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  {architectureDecisions.map(({ q, a }, i) => (
+                    <div key={i}>
+                      <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.82rem', marginBottom: '3px' }}>{q}</div>
+                      <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.6 }}>{a}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
