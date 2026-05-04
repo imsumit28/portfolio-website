@@ -294,9 +294,9 @@ const Home = () => {
                 <strong>Built:</strong>
               </p>
               <ul style={{ listStyle: 'none', paddingLeft: 0, marginBottom: '1rem', color: '#cbd5e1', fontSize: '1.05rem', lineHeight: '1.8' }}>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>DevConnect</strong> → real-time developer network</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>NotifyX</strong> → distributed notification system using Redis & BullMQ</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <strong>CollabDocs</strong> → CRDT-based collaborative editor with AI assistance</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://devconnect2026.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>DevConnect</a> → real-time developer network</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://github.com/imsumit28/NotifyX" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>NotifyX</a> → distributed notification system using Redis & BullMQ</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://collabdocs2026.vercel.app/login" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>CollabDocs</a> → CRDT-based collaborative editor with AI assistance</li>
               </ul>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live — not just a localhost demo.
