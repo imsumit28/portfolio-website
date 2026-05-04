@@ -1639,6 +1639,20 @@ ul {
   }
 }
 
+@keyframes heroBlink {
+  50% { opacity: 0; }
+}
+
+.hero-terminal {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-terminal:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16,185,129,0.35) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 30px rgba(16,185,129,0.08) !important;
+}
+
 @media (max-width: 768px) {
   .coming-soon-content {
     padding: 1.75rem 1.5rem;

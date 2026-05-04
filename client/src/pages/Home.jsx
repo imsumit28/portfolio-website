@@ -1,5 +1,4 @@
-import React, { Suspense } from 'react';
-import { Typewriter } from 'react-simple-typewriter';
+import React, { Suspense, useState, useEffect } from 'react';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { GitHubCalendar } from 'react-github-calendar';
@@ -9,7 +8,25 @@ import profileImg from '../assets/profile.png';
 import profileVideo from '../assets/profile-video.mp4';
 import aboutDevconnectImg from '../assets/about-devconnect.png';
 
+const terminalLines = [
+  { type: 'cmd', text: 'whoami' },
+  { type: 'out', text: 'Full-stack engineer focused on scalable systems & real-time apps' },
+  { type: 'cmd', text: 'cat work.txt' },
+  { type: 'out', text: 'Real-time collaborative editor syncing updates across users (<200ms latency)' },
+  { type: 'cmd', text: 'cat philosophy.txt' },
+  { type: 'out', text: 'I build production-grade systems — not CRUD demos' },
+];
+
 const Home = () => {
+  const [terminalStep, setTerminalStep] = useState(0);
+
+  useEffect(() => {
+    if (terminalStep >= terminalLines.length) return;
+    const delay = terminalLines[terminalStep].type === 'cmd' ? 650 : 350;
+    const t = setTimeout(() => setTerminalStep((s) => s + 1), delay);
+    return () => clearTimeout(t);
+  }, [terminalStep]);
+
   const scrollToSection = (sectionId) => {
     const el = sectionId === 'home' ? document.body : document.getElementById(sectionId);
     if (!el) return;
@@ -27,24 +44,6 @@ const Home = () => {
           <div className="row align-items-center">
             <div className="col-lg-7" data-aos="fade-right">
               <h1 className="hero-name">Hi, I'm <span className="text-accent">Sumit</span> Kumar</h1>
-              <h2 className="hero-subtitle mt-3">
-                <span className="text-accent">
-                  <Typewriter
-                    words={[
-                      'Full Stack Developer',
-                      'Distributed systems & real-time apps',
-                      'React · Node.js · TypeScript · Redis',
-                    ]}
-                    loop={0}
-                    cursor
-                    cursorStyle="_"
-                    cursorColor="#10b981"
-                    typeSpeed={70}
-                    deleteSpeed={50}
-                    delaySpeed={1000}
-                  />
-                </span>
-              </h2>
 
               <p
                 className="mt-3 mb-0"
@@ -55,8 +54,84 @@ const Home = () => {
                   maxWidth: '580px',
                 }}
               >
-                I design and ship real-time, distributed systems — handling concurrency, fault tolerance, and production load. Not localhost demos.
+                Built real-time apps with WebSockets, handling concurrent users and live updates with low latency.
               </p>
+
+              {/* Terminal-style intro */}
+              <div
+                className="mt-4 hero-terminal"
+                style={{
+                  maxWidth: '520px',
+                  background: 'rgba(2, 6, 23, 0.85)',
+                  border: '1px solid rgba(16,185,129,0.18)',
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  fontFamily: '"JetBrains Mono", "Fira Code", ui-monospace, monospace',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.02)',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 14px',
+                    background: 'rgba(15,23,42,0.9)',
+                    borderBottom: '1px solid rgba(255,255,255,0.05)',
+                  }}
+                >
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444' }} />
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#f59e0b' }} />
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#10b981' }} />
+                  <span style={{ marginLeft: 8, color: '#64748b', fontSize: '0.75rem', letterSpacing: '0.3px' }}>
+                    sumit@portfolio: ~
+                  </span>
+                </div>
+                <div
+                  style={{
+                    padding: '18px 20px',
+                    fontSize: '0.86rem',
+                    lineHeight: 2.1,
+                    color: '#cbd5e1',
+                    minHeight: '210px',
+                  }}
+                >
+                  {terminalLines.map((line, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        opacity: terminalStep > i ? 1 : 0,
+                        transform: terminalStep > i ? 'translateY(0)' : 'translateY(4px)',
+                        transition: 'opacity 0.25s ease, transform 0.25s ease',
+                      }}
+                    >
+                      {line.type === 'cmd' ? (
+                        <>
+                          <span style={{ color: '#10b981', marginRight: 8 }}>$</span>
+                          <span style={{ color: '#f8fafc' }}>{line.text}</span>
+                        </>
+                      ) : (
+                        <span style={{ color: '#94a3b8', marginLeft: 14 }}>{line.text}</span>
+                      )}
+                    </div>
+                  ))}
+                  {terminalStep >= terminalLines.length && (
+                    <div>
+                      <span style={{ color: '#10b981', marginRight: 8 }}>$</span>
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          color: '#10b981',
+                          animation: 'heroBlink 1s steps(2) infinite',
+                        }}
+                      >
+                        _
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <div
                 className="mt-3 d-inline-flex align-items-center gap-2"
@@ -116,31 +191,50 @@ const Home = () => {
                 </button>
               </div>
 
-              <div className="hero-social-row mt-4">
+            </div>
+
+            <div className="col-lg-5 mt-5 mt-lg-0 text-center" data-aos="fade-left" data-aos-delay="200">
+              <div className="d-flex justify-content-center gap-3 mb-4 flex-wrap">
                 {[
-                  { href: 'https://www.linkedin.com/in/imsumit45/', icon: <FaLinkedinIn />, label: 'LinkedIn', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)', target: '_blank' },
-                  { href: 'https://github.com/imsumit28', icon: <FaGithub />, label: 'GitHub', color: '#10b981', shadow: 'rgba(16,185,129,0.4)', target: '_blank' },
-                  { href: 'https://x.com/imsumit4545', icon: <FaXTwitter />, label: 'X (Twitter)', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)', target: '_blank' },
-                  { href: 'mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you.', icon: <FaEnvelope />, label: 'Email', color: '#10b981', shadow: 'rgba(16,185,129,0.4)', target: '_self' },
+                  { href: 'https://www.linkedin.com/in/imsumit45/', icon: <FaLinkedinIn size={16} />, label: 'Connect', color: '#3b82f6', shadow: 'rgba(59,130,246,0.35)', target: '_blank' },
+                  { href: 'https://github.com/imsumit28', icon: <FaGithub size={16} />, label: 'GitHub', color: '#10b981', shadow: 'rgba(16,185,129,0.35)', target: '_blank' },
+                  { href: 'https://x.com/imsumit4545', icon: <FaXTwitter size={16} />, label: 'Follow', color: '#f8fafc', shadow: 'rgba(248,250,252,0.2)', target: '_blank' },
+                  { href: 'mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you.', icon: <FaEnvelope size={16} />, label: 'Say Hi', color: '#10b981', shadow: 'rgba(16,185,129,0.35)', target: '_self' },
                 ].map(({ href, icon, label, color, shadow, target }) => (
                   <a
                     key={label}
                     href={href}
                     target={target}
                     rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-                    className="social-icon-btn"
-                    aria-label={label}
-                    style={{ transition: 'all 0.25s ease' }}
-                    onMouseEnter={e => { e.currentTarget.style.background = color; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = color; e.currentTarget.style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = ''; e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
+                    className="text-decoration-none d-flex flex-column align-items-center gap-1"
+                    style={{ transition: 'transform 0.2s ease' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.cta-icon-box').style.borderColor = color; e.currentTarget.querySelector('.cta-icon-box').style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.querySelector('.cta-icon-box').style.color = color; e.currentTarget.querySelector('.cta-label').style.color = color; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.querySelector('.cta-icon-box').style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.querySelector('.cta-icon-box').style.boxShadow = ''; e.currentTarget.querySelector('.cta-icon-box').style.color = '#94a3b8'; e.currentTarget.querySelector('.cta-label').style.color = '#64748b'; }}
                   >
-                    {icon}
+                    <div
+                      className="cta-icon-box d-flex align-items-center justify-content-center"
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 14,
+                        background: 'rgba(15,23,42,0.7)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        color: '#94a3b8',
+                        transition: 'all 0.2s ease',
+                      }}
+                    >
+                      {icon}
+                    </div>
+                    <span
+                      className="cta-label"
+                      style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.3px', transition: 'color 0.2s ease' }}
+                    >
+                      {label}
+                    </span>
                   </a>
                 ))}
               </div>
-            </div>
 
-            <div className="col-lg-5 mt-5 mt-lg-0 text-center" data-aos="fade-left" data-aos-delay="200">
               <div className="hero-photo-frame mt-4 mt-lg-0">
                 <div className="hero-photo-glow" aria-hidden="true"></div>
                 <div className="hero-photo-border" aria-hidden="true"></div>
