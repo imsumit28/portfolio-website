@@ -519,108 +519,353 @@ const Home = () => {
             <div className="section-line"></div>
           </div>
 
-          {/* PRIMARY: Real Internship */}
-          <div className="mt-5" data-aos="fade-up">
-            <div className="position-relative p-4 p-md-5" style={{
-              background: 'linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.9) 100%)',
-              border: '1px solid rgba(16,185,129,0.25)',
-              borderRadius: '16px',
-              boxShadow: '0 0 40px rgba(16,185,129,0.06), 0 20px 60px rgba(0,0,0,0.4)',
-            }}>
-              {/* Glow blob */}
-              <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }}></div>
+          {/* Timeline container */}
+          <div className="position-relative mt-5">
+            {/* Vertical timeline rail */}
+            <div className="d-none d-md-block position-absolute" style={{
+              left: '23px',
+              top: '50px',
+              bottom: '50px',
+              width: '2px',
+              background: 'linear-gradient(180deg, rgba(16,185,129,0.55) 0%, rgba(16,185,129,0.25) 35%, rgba(59,130,246,0.35) 70%, rgba(255,255,255,0.04) 100%)',
+              zIndex: 0,
+            }}></div>
 
-              <div className="position-relative" style={{ zIndex: 1 }}>
-                <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-2">
-                  <div className="d-flex align-items-center gap-3">
-                    {/* Icon badge */}
-                    <div className="d-flex align-items-center justify-content-center rounded-3 shadow" style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #10b981, #059669)', flexShrink: 0 }}>
-                      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+            {/* === CARD 1: Internship === */}
+            <div className="position-relative mb-4" data-aos="fade-up">
+              {/* Timeline node */}
+              <div className="d-none d-md-flex position-absolute align-items-center justify-content-center" style={{
+                left: '12px',
+                top: '50px',
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #10b981, #059669)',
+                boxShadow: '0 0 0 5px rgba(16,185,129,0.12), 0 0 20px rgba(16,185,129,0.45)',
+                zIndex: 2,
+              }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fff' }}></span>
+              </div>
+
+              <div className="ms-md-5">
+                <div className="position-relative p-4 p-md-5 overflow-hidden" style={{
+                  background: 'linear-gradient(135deg, rgba(16,185,129,0.07) 0%, rgba(15,23,42,0.85) 55%, rgba(15,23,42,0.95) 100%)',
+                  border: '1px solid rgba(16,185,129,0.22)',
+                  borderRadius: '18px',
+                  boxShadow: '0 0 50px rgba(16,185,129,0.06), 0 25px 60px rgba(0,0,0,0.4)',
+                }}>
+                  {/* Decorative blobs */}
+                  <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+                  <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+
+                  <div className="position-relative" style={{ zIndex: 1 }}>
+                    {/* Date pill (top-right) */}
+                    <div className="d-flex justify-content-end mb-3">
+                      <span style={{
+                        background: 'rgba(16,185,129,0.12)',
+                        border: '1px solid rgba(16,185,129,0.3)',
+                        color: '#10b981',
+                        borderRadius: '999px',
+                        padding: '5px 14px',
+                        fontSize: '0.75rem',
+                        fontWeight: '700',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        June 2025 – August 2025
+                      </span>
                     </div>
+
+                    {/* Header */}
+                    <div className="d-flex align-items-start gap-3 mb-4">
+                      <div className="d-flex align-items-center justify-content-center rounded-3 shadow flex-shrink-0" style={{
+                        width: '54px',
+                        height: '54px',
+                        background: 'linear-gradient(135deg, #10b981, #059669)',
+                      }}>
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 className="fw-bold mb-1" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
+                          Full Stack Developer Intern
+                        </h4>
+                        <p className="mb-0" style={{ color: '#10b981', fontWeight: '600', fontSize: '0.95rem' }}>
+                          EncodersPro Private Limited
+                          <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
+                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Noida, India</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Bullets */}
+                    <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
+                      {[
+                        'Built and shipped production-ready frontend components and backend APIs using React.js and Node.js in an Agile/Scrum environment',
+                        'Implemented 3+ UI components and REST endpoints, contributing to a 20% reduction in bug backlog by improving stability and fixing critical issues',
+                        'Participated in code reviews and sprint planning, ensuring code quality, maintainability, and alignment with team standards',
+                        'Diagnosed and resolved UI and API-level issues, improving overall application reliability and reducing recurring defects',
+                        'Collaborated with cross-functional team members to deliver features on time in a production engineering environment',
+                      ].map((item, i) => (
+                        <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#cbd5e1', fontSize: '0.97rem', lineHeight: 1.65 }}>
+                          <span style={{ color: '#10b981', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Result metric */}
+                    <div className="d-flex flex-wrap align-items-stretch mb-4 overflow-hidden" style={{
+                      background: 'rgba(2,6,23,0.5)',
+                      border: '1px solid rgba(16,185,129,0.2)',
+                      borderRadius: '12px',
+                    }}>
+                      <div className="d-flex flex-column justify-content-center px-4 py-3" style={{
+                        background: 'linear-gradient(135deg, rgba(16,185,129,0.16) 0%, rgba(16,185,129,0.03) 100%)',
+                        borderRight: '1px solid rgba(16,185,129,0.18)',
+                        minWidth: '150px',
+                      }}>
+                        <div className="d-flex align-items-baseline" style={{ gap: '2px' }}>
+                          <span style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: '700', marginRight: '6px', fontFamily: '"JetBrains Mono","Fira Code",monospace' }}>↓</span>
+                          <span style={{
+                            color: '#10b981',
+                            fontSize: '2.3rem',
+                            fontWeight: '800',
+                            lineHeight: 1,
+                            fontFamily: '"JetBrains Mono","Fira Code",monospace',
+                            letterSpacing: '-1.5px',
+                          }}>
+                            20
+                          </span>
+                          <span style={{
+                            color: '#10b981',
+                            fontSize: '1.3rem',
+                            fontWeight: '700',
+                            fontFamily: '"JetBrains Mono","Fira Code",monospace',
+                          }}>
+                            %
+                          </span>
+                        </div>
+                        <span style={{
+                          color: '#94a3b8',
+                          fontSize: '0.78rem',
+                          marginTop: '6px',
+                          fontWeight: '500',
+                        }}>
+                          bug backlog
+                        </span>
+                      </div>
+                      <div className="d-flex align-items-center flex-fill px-4 py-3" style={{
+                        color: '#cbd5e1',
+                        fontSize: '0.94rem',
+                        lineHeight: 1.6,
+                        minWidth: '240px',
+                      }}>
+                        Delivered stable features and resolved high-priority issues in a live production system.
+                      </div>
+                    </div>
+
+                    {/* Tech Stack */}
                     <div>
-                      <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.3rem' }}>Full Stack Developer Intern</h4>
-                      <p className="mb-0 mt-1" style={{ color: '#10b981', fontWeight: '600', fontSize: '0.95rem' }}>EncodersPro Private Limited · Noida, India</p>
+                      <p className="mb-2" style={{ color: '#64748b', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
+                        Tech Stack
+                      </p>
+                      <div className="d-flex flex-wrap gap-2">
+                        {['React.js', 'Node.js', 'REST APIs', 'MongoDB', 'Agile/Scrum', 'Code Reviews'].map(tag => (
+                          <span key={tag} style={{
+                            background: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            color: '#cbd5e1',
+                            borderRadius: '8px',
+                            padding: '5px 12px',
+                            fontSize: '0.8rem',
+                            fontWeight: '500',
+                          }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <span style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', borderRadius: '30px', padding: '6px 18px', fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
-                    June 2025 – August 2025
-                  </span>
-                </div>
-
-                <hr style={{ borderColor: 'rgba(255,255,255,0.07)', margin: '1.5rem 0' }} />
-
-                <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
-                  {[
-                    'Contributed to full-stack tasks in a production engineering team using Agile/Scrum workflows',
-                    'Developed and reviewed React.js and Node.js features, participating in code reviews and sprint planning',
-                    'Implemented 3+ new UI components and REST API endpoints, reducing bug backlog by 20%',
-                  ].map((item, i) => (
-                    <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#94a3b8', fontSize: '0.97rem' }}>
-                      <span style={{ color: '#10b981', marginTop: '3px', flexShrink: 0 }}>▸</span>
-                      {item}
-                    </li>
-                  ))}
-
-                  {/* Impact Highlight */}
-                  <li className="d-flex align-items-center gap-3 mt-1 p-3 rounded" style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
-                    <span style={{ color: '#10b981', flexShrink: 0, fontSize: '1.2rem', lineHeight: 1 }}>⚡</span>
-                    <span style={{ color: '#f8fafc', fontSize: '0.98rem', fontWeight: '600', letterSpacing: '0.3px' }}>
-                      Reduced bug backlog by 20% — measurable production impact in a real engineering team
-                    </span>
-                  </li>
-                </ul>
-
-                <div className="d-flex flex-wrap gap-2">
-                  {['React.js', 'Node.js', 'REST APIs', 'Agile/Scrum', 'Code Reviews', 'MongoDB'].map(tag => (
-                    <span key={tag} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#cbd5e1', borderRadius: '6px', padding: '4px 14px', fontSize: '0.8rem', fontWeight: '500' }}>
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* SECONDARY: Independent Projects */}
-          <div className="mt-4" data-aos="fade-up" data-aos-delay="100">
-            <div className="p-4 p-md-4" style={{
-              background: 'rgba(15,23,42,0.4)',
-              border: '1px solid rgba(255,255,255,0.07)',
-              borderRadius: '14px',
-            }}>
-              <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="d-flex align-items-center justify-content-center rounded-3" style={{ width: '42px', height: '42px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }}>
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h5 className="fw-bold mb-0" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>Independent Projects</h5>
-                    <p className="mb-0 mt-1" style={{ color: '#64748b', fontWeight: '500', fontSize: '0.88rem' }}>Self-Directed · Remote</p>
-                  </div>
-                </div>
-                <span style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b', borderRadius: '30px', padding: '4px 14px', fontSize: '0.82rem', fontWeight: '500', whiteSpace: 'nowrap' }}>
-                  Jan 2025 – Present
-                </span>
+            {/* === CARD 2: Independent Systems === */}
+            <div className="position-relative" data-aos="fade-up" data-aos-delay="100">
+              {/* Timeline node */}
+              <div className="d-none d-md-flex position-absolute align-items-center justify-content-center" style={{
+                left: '12px',
+                top: '50px',
+                width: '24px',
+                height: '24px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                boxShadow: '0 0 0 5px rgba(59,130,246,0.12), 0 0 20px rgba(59,130,246,0.45)',
+                zIndex: 2,
+              }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fff' }}></span>
               </div>
 
-              <ul className="d-flex flex-column gap-2 mb-0" style={{ listStyle: 'none', paddingLeft: 0 }}>
-                {[
-                  { text: 'Built and deployed DevConnect — real-time developer network with Socket.io and JWT auth', link: 'https://devconnect2026.vercel.app/', color: '#8b5cf6' },
-                  { text: 'Architected NotifyX — distributed notification platform with BullMQ, Redis Pub/Sub, and two-layer idempotency', link: 'https://github.com/imsumit28/NotifyX', color: '#3b82f6' },
-                  { text: 'Engineered CollabDocs — collaborative editor with Y.js CRDT, 45+ test cases, and Groq AI integration', link: 'https://collabdocs2026.vercel.app/', color: '#10b981' },
-                ].map((item, i) => (
-                  <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#64748b', fontSize: '0.92rem' }}>
-                    <span style={{ color: '#475569', marginTop: '3px', flexShrink: 0 }}>▸</span>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'none', transition: 'all 0.2s ease', cursor: 'pointer' }} onMouseEnter={(e) => { e.target.style.color = item.color; }} onMouseLeave={(e) => { e.target.style.color = '#64748b'; }}>
-                      {item.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <div className="ms-md-5">
+                <div className="position-relative p-4 p-md-5 overflow-hidden" style={{
+                  background: 'linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(15,23,42,0.85) 55%, rgba(15,23,42,0.95) 100%)',
+                  border: '1px solid rgba(59,130,246,0.22)',
+                  borderRadius: '18px',
+                  boxShadow: '0 0 40px rgba(59,130,246,0.05), 0 20px 50px rgba(0,0,0,0.35)',
+                }}>
+                  {/* Decorative blobs */}
+                  <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: 'radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+                  <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
+
+                  <div className="position-relative" style={{ zIndex: 1 }}>
+                    {/* Date pill */}
+                    <div className="d-flex justify-content-end mb-3">
+                      <span style={{
+                        background: 'rgba(59,130,246,0.12)',
+                        border: '1px solid rgba(59,130,246,0.3)',
+                        color: '#60a5fa',
+                        borderRadius: '999px',
+                        padding: '5px 14px',
+                        fontSize: '0.75rem',
+                        fontWeight: '700',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        Jan 2025 – Present
+                      </span>
+                    </div>
+
+                    {/* Header */}
+                    <div className="d-flex align-items-start gap-3 mb-4">
+                      <div className="d-flex align-items-center justify-content-center rounded-3 shadow flex-shrink-0" style={{
+                        width: '54px',
+                        height: '54px',
+                        background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                      }}>
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 className="fw-bold mb-1" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
+                          Independent Systems
+                        </h4>
+                        <p className="mb-0" style={{ color: '#60a5fa', fontWeight: '600', fontSize: '0.95rem' }}>
+                          Self-Directed Projects
+                          <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
+                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Remote</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Bullets */}
+                    <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
+                      {[
+                        { text: 'Designed and built a real-time developer network (DevConnect) with WebSocket-based messaging and JWT authentication', link: 'https://devconnect2026.vercel.app/' },
+                        { text: 'Engineered a distributed notification system (NotifyX) using Redis Pub/Sub, BullMQ queues, and idempotency layers for reliable event processing', link: 'https://github.com/imsumit28/NotifyX' },
+                        { text: 'Developed a CRDT-based collaborative editor (CollabDocs) using Y.js, enabling concurrent multi-user editing without conflicts', link: 'https://collabdocs2026.vercel.app/' },
+                        { text: 'Implemented real-time systems handling high concurrency, focusing on low latency, fault tolerance, and scalable architecture', link: null },
+                        { text: 'Built and deployed all systems to production environments with live demos and full-stack architecture', link: null },
+                      ].map((item, i) => (
+                        <li key={i} className="d-flex align-items-start gap-3" style={{ fontSize: '0.97rem', lineHeight: 1.65 }}>
+                          <span style={{ color: '#3b82f6', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
+                          {item.link ? (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ color: '#cbd5e1', textDecoration: 'none', transition: 'color 0.2s ease', borderBottom: '1px dashed rgba(59,130,246,0.25)' }}
+                              onMouseEnter={(e) => { e.currentTarget.style.color = '#60a5fa'; e.currentTarget.style.borderBottomColor = '#60a5fa'; }}
+                              onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.borderBottomColor = 'rgba(59,130,246,0.25)'; }}
+                            >
+                              {item.text}
+                            </a>
+                          ) : (
+                            <span style={{ color: '#cbd5e1' }}>{item.text}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Focus areas */}
+                    <div>
+                      <p className="mb-3" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: '500' }}>
+                        Engineering focus
+                      </p>
+                      <div className="row g-2">
+                        {[
+                          {
+                            label: 'Real-time systems',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M3 12h3l3-9 4 18 3-12 2 3h3" />
+                              </svg>
+                            ),
+                          },
+                          {
+                            label: 'Distributed architecture',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="5" r="2" />
+                                <circle cx="5" cy="19" r="2" />
+                                <circle cx="19" cy="19" r="2" />
+                                <path d="M12 7v3M11 11l-5 6M13 11l5 6" />
+                              </svg>
+                            ),
+                          },
+                          {
+                            label: 'Concurrency handling',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 4v16M19 4v16" />
+                                <path d="M5 9h14M5 15h14" />
+                              </svg>
+                            ),
+                          },
+                          {
+                            label: 'Scalable backend design',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <ellipse cx="12" cy="5" rx="8" ry="2.5" />
+                                <path d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5" />
+                                <path d="M4 11v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6" />
+                              </svg>
+                            ),
+                          },
+                        ].map(item => (
+                          <div key={item.label} className="col-sm-6">
+                            <div className="d-flex align-items-center gap-3 px-3 py-2 h-100" style={{
+                              background: 'rgba(15,23,42,0.55)',
+                              border: '1px solid rgba(59,130,246,0.15)',
+                              borderRadius: '10px',
+                              transition: 'all 0.2s ease',
+                            }}
+                              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                            >
+                              <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
+                                width: '34px',
+                                height: '34px',
+                                background: 'rgba(59,130,246,0.1)',
+                                borderRadius: '8px',
+                              }}>
+                                {item.svg}
+                              </div>
+                              <span style={{ color: '#cbd5e1', fontSize: '0.9rem', fontWeight: '500' }}>
+                                {item.label}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -628,19 +873,19 @@ const Home = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-5" id="education">
-        <div className="container py-4">
+      <section className="py-4" id="education">
+        <div className="container py-2">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px' }}>Education & Learning</h2>
+            <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px', fontSize: '1.1rem', opacity: 0.85 }}>Education</h2>
             <div className="section-line"></div>
           </div>
 
-          <div className="row mt-5">
+          <div className="row mt-4">
             {/* Primary Focus: VIT */}
-            <div className="col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div className="col-12 mb-3" data-aos="fade-up" data-aos-delay="100">
               <div className="card h-100" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px' }}>
-                <div className="card-body p-4 p-md-5">
-                  <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-4 gap-3">
+                <div className="card-body p-3 p-md-4">
+                  <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-3 gap-3">
                     <img
                       src="/vit.jpg"
                       onError={(e) => {
@@ -651,33 +896,30 @@ const Home = () => {
                       }}
                       alt="VIT"
                       className="rounded shadow-sm"
-                      style={{ width: '140px', height: '75px', objectFit: 'cover' }}
+                      style={{ width: '100px', height: '55px', objectFit: 'cover' }}
                     />
                     <div>
-                      <h5 className="fw-bold mb-1" style={{ color: 'var(--text-main)', fontSize: '1.15rem', lineHeight: '1.4' }}>Vellore Institute of Technology</h5>
-                      <p className="text-accent mb-0 fw-medium" style={{ fontSize: '0.95rem' }}>2024 - 2028</p>
+                      <h5 className="fw-bold mb-1" style={{ color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.4' }}>Vellore Institute of Technology</h5>
+                      <p className="text-accent mb-0 fw-medium" style={{ fontSize: '0.85rem' }}>2024 - 2028</p>
                     </div>
                   </div>
-                  <h6 className="fw-bold mb-2" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>B.Tech. in Computer Science and Engineering</h6>
-                  <p className="mb-2" style={{ fontSize: '1rem', color: '#e2e8f0' }}>CGPA: <span style={{ color: '#10b981', fontWeight: '600' }}>8.03 (till now)</span></p>
-                  <p className="mb-3" style={{ fontSize: '0.95rem', lineHeight: '1.5', color: '#e2e8f0' }}>
-                    <span style={{ color: '#f8fafc', fontWeight: '700' }}>Relevant Coursework:</span> Data Structures, DBMS, Operating Systems
-                  </p>
+                  <h6 className="fw-semibold mb-2" style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>B.Tech. in Computer Science and Engineering</h6>
+                  <p className="mb-2" style={{ fontSize: '0.88rem', color: '#94a3b8' }}>CGPA: <span style={{ color: '#10b981', fontWeight: '600' }}>8.03</span> &nbsp;·&nbsp; <span style={{ color: '#94a3b8' }}>Data Structures, DBMS, Operating Systems</span></p>
 
-                  <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <h6 className="fw-bold mb-2" style={{ color: '#3b82f6', fontSize: '0.85rem', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                      Academic Projects
-                    </h6>
-                    <p className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1rem' }}>
+                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+                    <p className="mb-2" style={{ color: '#64748b', fontSize: '0.78rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+                      Academic Project
+                    </p>
+                    <p className="fw-semibold mb-2" style={{ color: '#cbd5e1', fontSize: '0.88rem' }}>
                       Open Source Audit & Automation Capstone (OSS – NGMC)
                     </p>
                     <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
-                      <li className="d-flex align-items-start gap-2 mb-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
+                      <li className="d-flex align-items-start gap-2 mb-1" style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: '1.5' }}>
+                        <span style={{ color: '#10b981', fontSize: '0.9rem', flexShrink: 0 }}>▸</span>
                         <span>Developed 5 Bash scripts for system reporting and auditing, reducing manual effort by 40%.</span>
                       </li>
-                      <li className="d-flex align-items-start gap-2" style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '1rem', flexShrink: 0 }}>▸</span>
+                      <li className="d-flex align-items-start gap-2" style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: '1.5' }}>
+                        <span style={{ color: '#10b981', fontSize: '0.9rem', flexShrink: 0 }}>▸</span>
                         <span>
                           Audited Python (OSS) and built an interactive Manifesto Generator.{' '}
                           <a href="https://github.com/imsumit28/Vityarthi-Open-Source-OSS" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>GitHub →</a>
@@ -693,7 +935,7 @@ const Home = () => {
           {/* Secondary Focus: CBSE */}
           <div className="row" data-aos="fade-up" data-aos-delay="200">
             <div className="col-12">
-              <div className="card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px' }}>
+              <div className="card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '8px' }}>
                 <div className="card-body p-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                   <div className="d-flex align-items-center">
                     <img
@@ -706,16 +948,14 @@ const Home = () => {
                       }}
                       alt="CBSE"
                       className="rounded shadow-sm"
-                      style={{ width: '45px', height: '45px', objectFit: 'contain', backgroundColor: 'white', padding: '4px' }}
+                      style={{ width: '38px', height: '38px', objectFit: 'contain', backgroundColor: 'white', padding: '3px' }}
                     />
                     <div className="ms-3">
-                      <h6 className="fw-bold mb-0" style={{ color: 'var(--text-main)', fontSize: '0.95rem' }}>Central Board Of Secondary Education</h6>
-                      <p className="mb-0" style={{ color: '#e2e8f0', fontSize: '0.85rem' }}>Class XII</p>
+                      <h6 className="fw-semibold mb-0" style={{ color: '#94a3b8', fontSize: '0.88rem' }}>Central Board Of Secondary Education — Class XII</h6>
                     </div>
                   </div>
                   <div className="text-md-end">
-                    <p className="mb-0 text-accent fw-medium" style={{ fontSize: '0.85rem' }}>May 2021 - May 2023</p>
-                    <p className="mb-0" style={{ color: '#e2e8f0', fontSize: '0.85rem' }}>Score: <span style={{ color: '#f8fafc', fontWeight: '600' }}>89.4%</span></p>
+                    <p className="mb-0" style={{ color: '#64748b', fontSize: '0.82rem' }}>May 2021 – May 2023 &nbsp;·&nbsp; <span style={{ color: '#94a3b8', fontWeight: '600' }}>89.4%</span></p>
                   </div>
                 </div>
               </div>
