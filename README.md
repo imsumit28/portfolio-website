@@ -22,7 +22,7 @@ flowchart LR
   S --> E[Nodemailer / Gmail SMTP]
   A[Admin User] --> C
   C -->|Bearer JWT| S
-  S --> F[/uploads static files/]
+  S --> F["/uploads static files"]
 ```
 
 Detailed diagrams: [docs/architecture.md](./docs/architecture.md)

@@ -10,7 +10,7 @@ flowchart LR
   Frontend -->|REST /api/*| API[Express API]
   API --> DB[(MongoDB)]
   API --> Mail[SMTP via Nodemailer]
-  API --> Files[/uploads]
+  API --> Files["/uploads"]
 ```
 
 ## Auth flow
