@@ -128,6 +128,32 @@ Open: `http://localhost:5173`
 - `GET /api/contact` - list messages (protected)
 - `PUT /api/contact/:id/read` - mark message as read (protected)
 
+## Admin access
+
+### Admin routes
+- `GET /admin/login` - admin login page
+- `GET /admin/dashboard` - admin dashboard (requires valid JWT in local storage)
+
+### How to access locally
+1. Start client and server from the Local setup section.
+2. Create a user account using API:
+   - `POST /api/auth/register` with `email` and `password`
+3. Open `http://localhost:5173/admin/login`
+4. Login with the same credentials.
+
+### Example register request
+
+```bash
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d "{\"email\":\"admin@example.com\",\"password\":\"StrongPass123!\"}"
+```
+
+### Security note
+- Current implementation protects admin endpoints by JWT authentication.
+- There is no `role` field check yet, so any authenticated user can access the dashboard.
+- Recommended next step: add role-based authorization (`admin` role) on backend routes.
+
 ## Engineering decisions
 
 1. JWT auth with request interceptor
