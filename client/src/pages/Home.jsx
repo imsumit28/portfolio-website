@@ -406,112 +406,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="pt-5 pb-0" id="skills">
-        <div className="container py-4">
-          <div className="section-title-wrapper" data-aos="fade-right">
-            <h2 className="section-title">SKILLS</h2>
-            <div className="section-line"></div>
-          </div>
-          <div className="mt-4 d-flex flex-column gap-4">
-            {[
-              {
-                category: 'CORE STACK',
-                skills: [
-                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-                  { name: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-                  { name: 'Next.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
-                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
-                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-                ]
-              },
-              {
-                category: 'UI & STYLING',
-                skills: [
-                  { name: 'HTML5', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-                  { name: 'CSS3', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-                  { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-                ]
-              },
-              {
-                category: 'AUTH & APIs',
-                skills: [
-                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-                  { name: 'JWT Auth', img: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shield-lock-fill.svg', invert: true },
-                ]
-              },
-              {
-                category: 'Tools & Deployment',
-                skills: [
-                  { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
-                  { name: 'VS Code', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-                  { name: 'Vercel', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true },
-                  { name: 'Render', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true },
-                ]
-              },
-              {
-                category: 'REAL-TIME & QUEUES',
-                skills: [
-                  { name: 'Socket.io', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/socketdotio.svg', invert: true },
-                  { name: 'Redis', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-                  { name: 'BullMQ', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bull.svg', invert: true },
-                ]
-              }
-            ].map((section, idx) => (
-              <div key={section.category} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '3px solid var(--accent)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  {section.category}
-                </h6>
-                <div className="row g-2">
-                  {section.skills.map((skill) => (
-                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={skill.name}>
-                      <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
-                        background: 'rgba(15,23,42,0.6)',
-                        borderRadius: '8px',
-                        transition: 'all 0.2s ease',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        cursor: 'default',
-                        overflow: 'hidden'
-                      }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}
-                      >
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
-                          width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
-                        }}>
-                          <img
-                            src={skill.img}
-                            alt={skill.name}
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                            style={{
-                              width: '100%', height: '100%', objectFit: 'contain',
-                              filter: skill.invert
-                                ? 'invert(1) brightness(1.25) contrast(1.15)'
-                                : 'brightness(1.06) contrast(1.05)',
-                            }}
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center overflow-hidden">
-                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="pt-0 pb-5" id="projects">
-        <Projects />
-      </section>
-
-      {/* Experience Section */}
+{/* Experience Section */}
       <section className="py-5" id="experience">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
@@ -869,6 +764,111 @@ const Home = () => {
             </div>
           </div>
 
+        </div>
+      </section>
+
+{/* Projects Section */}
+      <section className="pt-0 pb-5" id="projects">
+        <Projects />
+      </section>
+
+{/* Skills Section */}
+      <section className="pt-5 pb-0" id="skills">
+        <div className="container py-4">
+          <div className="section-title-wrapper" data-aos="fade-right">
+            <h2 className="section-title">SKILLS</h2>
+            <div className="section-line"></div>
+          </div>
+          <div className="mt-4 d-flex flex-column gap-4">
+            {[
+              {
+                category: 'CORE STACK',
+                skills: [
+                  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+                  { name: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+                  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+                  { name: 'Next.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
+                  { name: 'Express.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
+                  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+                ]
+              },
+              {
+                category: 'UI & STYLING',
+                skills: [
+                  { name: 'HTML5', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+                  { name: 'CSS3', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+                  { name: 'Tailwind CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+                ]
+              },
+              {
+                category: 'AUTH & APIs',
+                skills: [
+                  { name: 'REST APIs', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+                  { name: 'JWT Auth', img: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/shield-lock-fill.svg', invert: true },
+                ]
+              },
+              {
+                category: 'Tools & Deployment',
+                skills: [
+                  { name: 'Git & GitHub', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
+                  { name: 'VS Code', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+                  { name: 'Vercel', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg', invert: true },
+                  { name: 'Render', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg', invert: true },
+                ]
+              },
+              {
+                category: 'REAL-TIME & QUEUES',
+                skills: [
+                  { name: 'Socket.io', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/socketdotio.svg', invert: true },
+                  { name: 'Redis', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+                  { name: 'BullMQ', img: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bull.svg', invert: true },
+                ]
+              }
+            ].map((section, idx) => (
+              <div key={section.category} data-aos="fade-up" data-aos-delay={idx * 100}>
+                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '3px solid var(--accent)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  {section.category}
+                </h6>
+                <div className="row g-2">
+                  {section.skills.map((skill) => (
+                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={skill.name}>
+                      <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
+                        background: 'rgba(15,23,42,0.6)',
+                        borderRadius: '8px',
+                        transition: 'all 0.2s ease',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        cursor: 'default',
+                        overflow: 'hidden'
+                      }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}
+                      >
+                        <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
+                          width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
+                        }}>
+                          <img
+                            src={skill.img}
+                            alt={skill.name}
+                            onError={(e) => { e.target.style.display = 'none'; }}
+                            style={{
+                              width: '100%', height: '100%', objectFit: 'contain',
+                              filter: skill.invert
+                                ? 'invert(1) brightness(1.25) contrast(1.15)'
+                                : 'brightness(1.06) contrast(1.05)',
+                            }}
+                          />
+                        </div>
+                        <div className="d-flex flex-column justify-content-center overflow-hidden">
+                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

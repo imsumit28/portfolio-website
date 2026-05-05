@@ -30,7 +30,7 @@ const Navbar = () => {
     }
 
     const handleScroll = () => {
-      const sections = ['about', 'skills', 'projects', 'experience', 'education', 'resume', 'contact'];
+      const sections = ['about', 'experience', 'projects', 'skills', 'education', 'resume', 'contact'];
       const scrollPosition = window.scrollY + 200;
       let current = 'home';
       for (const section of sections) {
@@ -93,9 +93,9 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Home', section: 'home' },
     { label: 'About', section: 'about' },
-    { label: 'Skills', section: 'skills' },
-    { label: 'Projects', section: 'projects' },
     { label: 'Experience', section: 'experience' },
+    { label: 'Projects', section: 'projects' },
+    { label: 'Skills', section: 'skills' },
     { label: 'Education', section: 'education' },
     { label: 'Resume', section: 'resume' },
     { label: 'Contact', section: 'contact' },
