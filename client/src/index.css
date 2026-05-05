@@ -1671,3 +1671,17 @@ ul {
     font-size: 0.85rem;
   }
 }
+
+/* Admin readability overrides */
+.admin-theme .admin-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: #e2e8f0;
+  --bs-table-border-color: rgba(255, 255, 255, 0.08);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.03);
+  margin-bottom: 0;
+}
+
+.admin-theme .form-control::placeholder,
+.admin-theme .form-control::-ms-input-placeholder {
+  color: rgba(148, 163, 184, 0.8);
+}

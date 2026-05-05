@@ -33,31 +33,33 @@ const Login = () => {
   };
 
   return (
-    <div className="container py-5 d-flex justify-content-center align-items-center" style={{ minHeight: '70vh' }}>
-      <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%' }}>
-        <div className="card-header bg-dark text-white text-center py-4 border-0">
+    <div className="container py-5 d-flex justify-content-center align-items-center admin-theme" style={{ minHeight: '70vh' }}>
+      <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="card-header text-white text-center py-4 border-0" style={{ background: 'rgba(15,23,42,0.9)' }}>
           <FaUserShield size={40} className="mb-3 text-primary" />
           <h3 className="fw-bold mb-0">Admin Login</h3>
         </div>
-        <div className="card-body p-4 p-md-5">
+        <div className="card-body p-4 p-md-5" style={{ background: 'transparent', color: 'var(--text-main)' }}>
           {error && <div className="alert alert-danger">{error}</div>}
           
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="form-label fw-medium text-muted">Email address</label>
+              <label className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Email address</label>
               <input 
                 type="email" 
                 className="form-control form-control-lg" 
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="mb-5">
-              <label className="form-label fw-medium text-muted">Password</label>
+              <label className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Password</label>
               <input 
                 type="password" 
                 className="form-control form-control-lg" 
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

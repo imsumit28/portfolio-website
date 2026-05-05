@@ -121,12 +121,12 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="container py-5" style={{ minHeight: '100vh', color: 'var(--text-main)' }}>
+    <div className="container py-5 admin-theme" style={{ minHeight: '100vh', color: 'var(--text-main)' }}>
       {/* Header section */}
       <div className="d-flex justify-content-between align-items-center mb-5 border-bottom border-secondary border-opacity-10 pb-4">
         <div>
           <h2 className="fw-bold mb-1" style={{ letterSpacing: '-0.5px', fontFamily: 'var(--font-display)' }}>Admin Dashboard</h2>
-          <p className="text-muted small mb-0">Manage your portfolio content and messages</p>
+          <p className="small mb-0" style={{ color: 'rgba(148,163,184,0.9)' }}>Manage your portfolio content and messages</p>
         </div>
         <div className="d-flex align-items-center gap-3">
           <span className="badge bg-success bg-opacity-10 text-success border border-success border-opacity-20 fs-6 py-2 px-4 rounded-pill fw-normal">
@@ -140,8 +140,8 @@ const AdminDashboard = () => {
       <ul className="nav nav-pills mb-5 gap-3 p-1 rounded-4" style={{ background: 'rgba(255,255,255,0.03)', width: 'fit-content' }}>
         <li className="nav-item">
           <button 
-            className={`nav-link rounded-4 px-4 py-2 fw-semibold transition-all ${activeTab === 'projects' ? 'active' : 'text-muted border-0'}`}
-            style={activeTab === 'projects' ? { background: 'var(--accent)', color: '#000' } : {}}
+            className={`nav-link rounded-4 px-4 py-2 fw-semibold transition-all border-0`}
+            style={activeTab === 'projects' ? { background: 'var(--accent)', color: '#000' } : { color: 'rgba(226,232,240,0.85)' }}
             onClick={() => setActiveTab('projects')}
           >
             Manage Projects
@@ -149,8 +149,8 @@ const AdminDashboard = () => {
         </li>
         <li className="nav-item">
           <button 
-            className={`nav-link rounded-4 px-4 py-2 fw-semibold transition-all ${activeTab === 'messages' ? 'active' : 'text-muted border-0'}`}
-            style={activeTab === 'messages' ? { background: 'var(--accent)', color: '#000' } : {}}
+            className={`nav-link rounded-4 px-4 py-2 fw-semibold transition-all border-0`}
+            style={activeTab === 'messages' ? { background: 'var(--accent)', color: '#000' } : { color: 'rgba(226,232,240,0.85)' }}
             onClick={() => setActiveTab('messages')}
           >
             Messages {messages.filter(m => !m.isRead).length > 0 && 
@@ -174,18 +174,18 @@ const AdminDashboard = () => {
           </div>
 
           <div className="table-responsive">
-            <table className="table table-hover align-middle" style={{ color: 'var(--text-main)' }}>
+            <table className="table table-hover align-middle admin-table" style={{ color: 'var(--text-main)' }}>
               <thead style={{ borderBottom: '2px solid rgba(255,255,255,0.05)' }}>
                 <tr>
-                  <th className="py-3 text-muted small uppercase tracking-wider">Image</th>
-                  <th className="py-3 text-muted small uppercase tracking-wider">Title</th>
-                  <th className="py-3 text-muted small uppercase tracking-wider">Order</th>
-                  <th className="py-3 text-muted small uppercase tracking-wider">Actions</th>
+                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Image</th>
+                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Title</th>
+                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</th>
+                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Actions</th>
                 </tr>
               </thead>
               <tbody style={{ border: 'none' }}>
                 {projects.length === 0 ? (
-                  <tr><td colSpan="4" className="text-center py-5 text-muted">No projects found. Add your first project!</td></tr>
+                  <tr><td colSpan="4" className="text-center py-5" style={{ color: 'rgba(148,163,184,0.95)' }}>No projects found. Add your first project!</td></tr>
                 ) : (
                   projects.map(project => (
                     <tr key={project._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
@@ -193,11 +193,11 @@ const AdminDashboard = () => {
                         {project.image ? (
                           <img src={`http://localhost:5000${project.image}`} alt={project.title} className="rounded-3" style={{width: '60px', height: '40px', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.1)'}} />
                         ) : (
-                          <div className="rounded-3 d-flex align-items-center justify-content-center text-muted" style={{width: '60px', height: '40px', background: 'rgba(255,255,255,0.05)', fontSize: '10px'}}>No Img</div>
+                          <div className="rounded-3 d-flex align-items-center justify-content-center" style={{width: '60px', height: '40px', background: 'rgba(255,255,255,0.05)', color: 'rgba(148,163,184,0.95)', fontSize: '10px'}}>No Img</div>
                         )}
                       </td>
                       <td className="fw-medium py-3">{project.title}</td>
-                      <td className="py-3"><span className="badge bg-secondary bg-opacity-10 text-muted px-3 py-2 rounded-pill fw-normal">{project.order}</span></td>
+                      <td className="py-3"><span className="badge bg-secondary bg-opacity-10 px-3 py-2 rounded-pill fw-normal" style={{ color: 'rgba(148,163,184,0.95)' }}>{project.order}</span></td>
                       <td className="py-3">
                         <div className="d-flex gap-2">
                           <button className="btn p-2 rounded-3 text-white border-0 transition-all" style={{ background: 'rgba(255,255,255,0.05)' }} onClick={() => openEditModal(project)}>
@@ -246,7 +246,7 @@ const AdminDashboard = () => {
                           <h5 className="fw-bold mb-1" style={{ color: msg.isRead ? 'var(--text-muted)' : 'var(--text-main)' }}>
                             {msg.name}
                           </h5>
-                          <h6 className="small mb-3" style={{ color: 'var(--accent)' }}>{msg.email}</h6>
+                          <h6 className="small mb-3" style={{ color: 'var(--accent)', opacity: 0.95 }}>{msg.email}</h6>
                         </div>
                         {!msg.isRead && (
                           <span className="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 rounded-pill px-3">
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
                       </p>
                       
                       <div className="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-10">
-                        <small className="text-muted">{new Date(msg.createdAt).toLocaleDateString()}</small>
+                        <small style={{ color: 'rgba(148,163,184,0.9)' }}>{new Date(msg.createdAt).toLocaleDateString()}</small>
                         {!msg.isRead && (
                           <button 
                             className="btn-global btn-global-primary btn-global-sm d-flex align-items-center" 
@@ -299,7 +299,7 @@ const AdminDashboard = () => {
                 <form onSubmit={handleProjectSubmit}>
                   <div className="row g-2">
                     <div className="col-md-9">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Title *</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Title *</label>
                       <input 
                         type="text" 
                         className="form-control" 
@@ -310,7 +310,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     <div className="col-md-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Order</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</label>
                       <input 
                         type="number" 
                         className="form-control" 
@@ -321,7 +321,7 @@ const AdminDashboard = () => {
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Description *</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Description *</label>
                       <textarea 
                         className="form-control" 
                         rows="3" 
@@ -333,7 +333,7 @@ const AdminDashboard = () => {
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Technologies</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Technologies</label>
                       <input 
                         type="text" 
                         className="form-control" 
@@ -345,7 +345,7 @@ const AdminDashboard = () => {
                     </div>
                     
                     <div className="col-md-6 mt-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Live Link</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Live Link</label>
                       <input 
                         type="url" 
                         className="form-control" 
@@ -356,7 +356,7 @@ const AdminDashboard = () => {
                       />
                     </div>
                     <div className="col-md-6 mt-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">GitHub URL</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>GitHub URL</label>
                       <input 
                         type="url" 
                         className="form-control" 
@@ -368,7 +368,7 @@ const AdminDashboard = () => {
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium text-muted small uppercase tracking-wider mb-1">Project Image</label>
+                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Project Image</label>
                       <input 
                         type="file" 
                         className="form-control" 
@@ -376,7 +376,7 @@ const AdminDashboard = () => {
                         accept="image/*" 
                         onChange={(e) => setImageFile(e.target.files[0])} 
                       />
-                      {editingProject && editingProject.image && <small className="text-muted d-block mt-1" style={{ fontSize: '0.75rem' }}>Current: {editingProject.image}</small>}
+                      {editingProject && editingProject.image && <small className="d-block mt-1" style={{ fontSize: '0.75rem', color: 'rgba(148,163,184,0.85)' }}>Current: {editingProject.image}</small>}
                     </div>
                   </div>
                   
