@@ -1,0 +1,214 @@
+/* ===== Intro Curtain Wipe Animation ===== */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #0a101e;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.9s cubic-bezier(0.83, 0, 0.17, 1),
+              opacity 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Phase 3: whole overlay slides up off-screen */
+.intro-overlay.intro-exiting {
+  transform: translateY(-100%);
+}
+
+/* === Sliding curtain panel === */
+.intro-curtain {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(16,185,129,0.28) 0%, transparent 55%),
+    linear-gradient(135deg, #0a101e 0%, #064e3b 55%, #10b981 100%);
+  transform: translateX(0);
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: 3;
+  border-right: 3px solid #10b981;
+  box-shadow: 8px 0 40px rgba(16, 185, 129, 0.5),
+              inset -2px 0 30px rgba(16, 185, 129, 0.25);
+}
+
+/* Phase 2: curtain wipes off to the left */
+.intro-overlay.intro-revealed .intro-curtain {
+  transform: translateX(-105%);
+}
+
+/* === Text behind curtain === */
+.intro-text-wrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.intro-overlay.intro-revealed .intro-text-wrap,
+.intro-overlay.intro-holding .intro-text-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-text {
+  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.9rem, 9vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #f8fafc;
+  margin: 0;
+  line-height: 1.05;
+  text-shadow: 0 4px 30px rgba(16, 185, 129, 0.18);
+  word-break: break-word;
+}
+
+.intro-text-accent {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.45));
+}
+
+.intro-line {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981 50%, transparent);
+  margin: 22px auto 18px;
+  transition: width 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.55s;
+}
+
+.intro-overlay.intro-revealed .intro-line,
+.intro-overlay.intro-holding .intro-line {
+  width: min(260px, 60vw);
+}
+
+.intro-subtitle {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  color: #94a3b8;
+  font-size: clamp(0.78rem, 1.3vw, 0.95rem);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease 0.85s, transform 0.5s ease 0.85s;
+}
+
+.intro-overlay.intro-revealed .intro-subtitle,
+.intro-overlay.intro-holding .intro-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-subtitle .intro-blink {
+  display: inline-block;
+  color: #10b981;
+  margin-left: 6px;
+  animation: introCaretBlink 1s steps(2) infinite;
+}
+
+@keyframes introCaretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* === Top + bottom emerald accent bars (decorative) === */
+.intro-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  z-index: 4;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.35s;
+}
+
+.intro-bar-top { top: 24px; }
+.intro-bar-bottom { bottom: 24px; }
+
+.intro-overlay.intro-revealed .intro-bar,
+.intro-overlay.intro-holding .intro-bar {
+  transform: scaleX(1);
+}
+
+/* === Mobile / small screens (≤ 600px) === */
+@media (max-width: 600px) {
+  .intro-text-wrap {
+    padding: 0 16px;
+  }
+
+  .intro-text {
+    font-size: clamp(1.8rem, 11vw, 3rem);
+    letter-spacing: -1px;
+  }
+
+  .intro-line {
+    margin: 16px auto 14px;
+  }
+
+  .intro-overlay.intro-revealed .intro-line,
+  .intro-overlay.intro-holding .intro-line {
+    width: min(180px, 55vw);
+  }
+
+  .intro-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+  }
+
+  .intro-bar-top { top: 16px; }
+  .intro-bar-bottom { bottom: 16px; }
+
+  .intro-curtain {
+    box-shadow: 6px 0 24px rgba(16, 185, 129, 0.45),
+                inset -2px 0 22px rgba(16, 185, 129, 0.22);
+  }
+}
+
+/* === Very small screens (≤ 360px) === */
+@media (max-width: 360px) {
+  .intro-text {
+    font-size: clamp(1.5rem, 10vw, 2.4rem);
+  }
+
+  .intro-subtitle {
+    letter-spacing: 2px;
+    font-size: 0.65rem;
+  }
+}
+
+/* === Landscape phones with short height === */
+@media (max-height: 480px) and (orientation: landscape) {
+  .intro-text {
+    font-size: clamp(1.6rem, 6vw, 2.6rem);
+  }
+
+  .intro-line {
+    margin: 12px auto 10px;
+  }
+
+  .intro-bar-top { top: 12px; }
+  .intro-bar-bottom { bottom: 12px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay,
+  .intro-curtain,
+  .intro-text-wrap,
+  .intro-line,
+  .intro-subtitle,
+  .intro-bar {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

@@ -9,7 +9,7 @@ import './index.css';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import LoadingScreen from './components/LoadingScreen';
+import IntroAnimation from './components/IntroAnimation';
 
 // Pages
 import Home from './pages/Home';
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <LoadingScreen />
+      <IntroAnimation />
       <Router>
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
