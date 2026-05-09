@@ -2,6 +2,7 @@ import devconnectCover from '../assets/projects/devconnect-cover.png';
 import devconnectIcon from '../assets/projects/devconnect-icon.png';
 import notifyxCover from '../assets/projects/notifyx-cover.png';
 import collabdocsCover from '../assets/projects/collabdocs-cover.png';
+import curlixCover from '../assets/projects/curlix-cover.png';
 
 export const LOCAL_PROJECTS = [
   {
@@ -140,6 +141,54 @@ export const LOCAL_PROJECTS = [
         { t: 'code',    text: 'buf.push(msg); buf.sort((a, b) => a.seq - b.seq);' },
       ],
       takeaway: 'Socket.io parallel emits have no ordering guarantee. Sequence numbers fixed it.',
+    },
+  },
+  {
+    _id: 'curlix',
+    title: 'Curlix',
+    type: 'WEB-APP',
+    value:
+      'A production-grade URL shortener with sub-10 ms redirects, async analytics, and zero-account UX.',
+    description:
+      'A URL shortener built with React, Express, Redis, and Postgres. Features bearer-token ownership, Redis-cached redirects, BullMQ async analytics, and Cloudflare Turnstile bot protection.',
+    features: [
+      'Architected zero-account UX — each link is owned by a bearer token issued at creation, no email or password required',
+      'Built sub-10 ms redirect path using Redis cache with 24-hour TTL, falling back to Postgres only on cache miss',
+      'Engineered async analytics pipeline via BullMQ — click events are fire-and-forget, never blocking the redirect',
+      'Implemented tiered rate limiting (create / redirect / mutate) enforced via Redis INCR + EXPIRE',
+      'Shipped per-link analytics dashboard with daily breakdown, device split, and top referrers using Recharts',
+    ],
+    metrics: ['Sub-10ms redirects', 'Zero-account UX', 'Async analytics via BullMQ'],
+    highlights: [
+      'Redis-first redirect path — no DB hit on the happy path',
+      'BullMQ queue decouples analytics from the redirect hot path',
+      'Bearer token ownership with one-time reveal and client-side persistence',
+      'Health endpoints with active Redis, Postgres, and queue probing',
+    ],
+    highlightsLabel: 'SYSTEM DESIGN',
+    architecture: ['Client', 'Turnstile', 'Express API', 'Redis Cache', 'BullMQ', 'Postgres'],
+    architectureDecisions: [
+      { q: 'Why bearer tokens instead of accounts?', a: 'No signup friction. A token is issued at creation and shown once — the user copies it or loses it. Zero auth overhead, zero email infrastructure, zero session state.' },
+      { q: 'Why Redis in front of Postgres?', a: 'The redirect path must be fast. Redis GET is <5 ms. Postgres is the source of truth but only touched on cache miss or by the analytics worker — never on the hot path.' },
+      { q: 'Why BullMQ for analytics?', a: 'Click tracking must never slow down a redirect. BullMQ fire-and-forget enqueue adds ~1 ms. The worker drains asynchronously with 3× retry and exponential backoff.' },
+    ],
+    coverImage: curlixCover,
+    tech: ['React', 'Vite', 'Node.js', 'Express', 'Redis', 'PostgreSQL', 'BullMQ', 'Tailwind CSS'],
+    githubLink: 'https://github.com/imsumit28/Curlix',
+    liveLink: 'https://curlix.vercel.app',
+    challenge: {
+      accentColor: '#2563eb',
+      context: 'Analytics inserts were adding 40–80 ms to every redirect. Users waited for a DB write they\'d never see.',
+      codeLines: [
+        { t: 'comment', text: '// before: synchronous insert on every click' },
+        { t: 'code',    text: 'await db.query("INSERT INTO analytics ...");' },
+        { t: 'code',    text: 'res.redirect(302, longUrl);' },
+        { t: 'spacer' },
+        { t: 'comment', text: '// after: fire-and-forget enqueue, redirect instantly' },
+        { t: 'code',    text: 'analyticsQueue.add("click", payload); // ~1 ms' },
+        { t: 'code',    text: 'res.redirect(302, longUrl);' },
+      ],
+      takeaway: 'Decoupling analytics from the redirect cut p99 latency from ~80 ms to under 10 ms.',
     },
   },
 ];

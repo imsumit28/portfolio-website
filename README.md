@@ -1,194 +1,173 @@
-# Sumit Kumar Portfolio Website
+<div align="center">
+  <h1>Sumit Kumar's Portfolio</h1>
+  <p>A production-ready portfolio application featuring a React frontend and a Node/Express backend.</p>
 
-[![CI](https://github.com/imsumit28/portfolio-website/actions/workflows/ci.yml/badge.svg)](https://github.com/imsumit28/portfolio-website/actions/workflows/ci.yml)
+  [![CI](https://github.com/imsumit28/portfolio-website/actions/workflows/ci.yml/badge.svg)](https://github.com/imsumit28/portfolio-website/actions/workflows/ci.yml)
+  [![React](https://img.shields.io/badge/React-18-blue.svg?style=flat&logo=react)](https://reactjs.org/)
+  [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg?style=flat&logo=node.js)](https://nodejs.org/)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green.svg?style=flat&logo=mongodb)](https://mongodb.com/)
+</div>
 
-Production portfolio application with a React frontend and Node/Express backend.
+<hr />
 
-## Why this repo exists
+## Overview
 
-This project is designed to showcase both UI quality and engineering fundamentals:
-- clear frontend information architecture
-- authenticated admin workflows
-- persistent project/contact data
-- pragmatic backend security controls (JWT + rate limiting)
+This project is more than just a portfolio—it's a demonstration of UI quality, engineering fundamentals, and full-stack development best practices. It includes:
+- **Clean Frontend Architecture**: Built with React, Vite, and Bootstrap for a snappy, responsive experience.
+- **Authenticated Admin Workflows**: Secure dashboard to manage projects and contact requests.
+- **Persistent Data**: MongoDB integration for reliable data storage.
+- **Pragmatic Security Controls**: JWT-based authentication and rate limiting to protect endpoints.
+
+---
 
 ## Architecture
 
+The application follows a standard MERN stack architecture, decoupled into a distinct client and API server.
+
 ```mermaid
 flowchart LR
-  U[Visitor / Recruiter] --> C[React + Vite Client]
-  C -->|REST /api/*| S[Express API Server]
-  S --> M[(MongoDB)]
-  S --> E[Nodemailer / Gmail SMTP]
-  A[Admin User] --> C
-  C -->|Bearer JWT| S
-  S --> F["/uploads static files"]
+    %% Define styles
+    classDef user fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef client fill:#61dafb,stroke:#333,stroke-width:2px,color:#000;
+    classDef server fill:#83cd29,stroke:#333,stroke-width:2px,color:#000;
+    classDef db fill:#13aa52,stroke:#333,stroke-width:2px,color:#fff;
+    classDef ext fill:#ff9900,stroke:#333,stroke-width:2px;
+
+    %% Nodes
+    U[Visitor / Recruiter]:::user
+    A[Admin User]:::user
+    C[React + Vite Client]:::client
+    S[Express API Server]:::server
+    M[(MongoDB)]:::db
+    E[Nodemailer / Gmail SMTP]:::ext
+    F[/uploads Static Files]:::server
+
+    %% Connections
+    U --> C
+    A --> C
+    C -->|REST /api/*| S
+    C -->|Bearer JWT| S
+    S --> M
+    S --> E
+    S --> F
 ```
 
-Detailed diagrams: [docs/architecture.md](./docs/architecture.md)
+### High-Level Request Flow
+1. **Client Layer**: The client sends API requests through an Axios instance (`client/src/utils/api.js`) which automatically attaches auth tokens.
+2. **Routing**: The server handles incoming requests in `server/routes/*`.
+3. **Security**: Protected routes use JWT middleware (`server/middleware/auth.js`) to verify identities.
+4. **Data Layer**: Data is structured and persisted using Mongoose models (`server/models/*`).
+5. **External Services**: Contact form submissions trigger email notifications via Nodemailer.
 
-### High-level request flow
-1. Client sends API requests through `client/src/utils/api.js`.
-2. Server routes requests in `server/routes/*`.
-3. Protected routes use JWT middleware (`server/middleware/auth.js`).
-4. Data is persisted via Mongoose models in `server/models/*`.
-5. Contact form additionally sends an email notification through Nodemailer.
+---
 
-## Repository structure
+## Engineering Decisions
 
-```text
-portfolio-website/
-  client/                    # React + Vite frontend
-    src/
-      components/            # Reusable UI blocks (navbar, forms, lists)
-      pages/                 # Route and section-level pages
-      utils/api.js           # Axios instance + auth token interceptor
-  server/                    # Express backend
-    routes/                  # auth, projects, contact APIs
-    models/                  # MongoDB schemas
-    middleware/              # auth + file upload middleware
-    server.js                # app bootstrap + DB connection
-```
+Every technical choice in this project was made with a focus on maintainability, performance, and security. Here is the *why* behind the code:
 
-## Tech stack
+### 1. JWT Auth with Request Interceptors
+- **Decision**: Store the authentication token client-side and attach it automatically via an Axios interceptor.
+- **Why**: This pattern keeps protected route calls simple, prevents repetitive auth boilerplate across components, and ensures all outbound authenticated requests are securely signed.
 
-- Frontend: React 18, Vite, Bootstrap, React Router
-- Backend: Node.js, Express, Mongoose
-- Database: MongoDB
-- Auth: JWT (Bearer token)
-- Ops helpers: Multer (uploads), Nodemailer (contact emails), express-rate-limit
+### 2. Rate Limiting on Public Endpoints
+- **Decision**: Apply `express-rate-limit` on `POST /api/contact`.
+- **Why**: Public-facing forms are prime targets for bots. Rate limiting prevents spam bursts, protecting the server from being overwhelmed and preserving SMTP email quotas.
 
-## Local setup
+### 3. Hybrid Projects Source on Frontend
+- **Decision**: Merge static `LOCAL_PROJECTS` with dynamically fetched API projects in `Projects.jsx`.
+- **Why**: High availability. Even if the backend API goes down or experiences latency, the portfolio remains populated and fully functional for visitors and recruiters.
+
+### 4. File Upload Abstraction
+- **Decision**: Isolate file upload behavior within `server/middleware/upload.js` and serve `/uploads` statically.
+- **Why**: This separation of concerns keeps route handlers focused strictly on business logic, making the codebase easier to read and test, while providing a streamlined way to manage dynamic project images.
+
+---
+
+## How to Run Locally
+
+Get the project up and running on your local machine in three simple steps.
 
 ### Prerequisites
-- Node.js 18+
-- MongoDB running locally or a MongoDB Atlas URI
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [MongoDB](https://www.mongodb.com/) (running locally or an Atlas URI)
+- Git
 
-### 1. Clone and install
-
+### 1. Clone & Install Dependencies
 ```bash
+# Clone the repository
 git clone https://github.com/imsumit28/portfolio-website.git
 cd portfolio-website
+
+# Install frontend dependencies
 cd client && npm install
+
+# Install backend dependencies
 cd ../server && npm install
 ```
 
-### 2. Configure environment
-
-Create `server/.env`:
-
+### 2. Configure Environment Variables
+Create a `.env` file in the `server` directory:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
-JWT_SECRET=replace_with_a_long_random_secret
+JWT_SECRET=your_super_secret_jwt_key
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_gmail_app_password
 ```
 
-Optional client env (`client/.env`):
-
+*(Optional)* Create a `.env` file in the `client` directory:
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-If `VITE_API_URL` is not set, the client defaults to `http://localhost:5000/api`.
+### 3. Start the Development Servers
+You will need two terminal windows.
 
-### 3. Run development servers
-
-Terminal 1:
+**Terminal 1: Start the Backend**
 ```bash
 cd server
 npm start
 ```
 
-Terminal 2:
+**Terminal 2: Start the Frontend**
 ```bash
 cd client
 npm run dev
 ```
+Open your browser and navigate to **[http://localhost:5173](http://localhost:5173)** to see the app live!
 
-Open: `http://localhost:5173`
-
-## API overview
-
-### Auth
-- `POST /api/auth/register` - create user
-- `POST /api/auth/login` - login and receive JWT
-- `GET /api/auth/user` - get current user (protected)
-
-### Projects
-- `GET /api/projects` - list projects
-- `GET /api/projects/:id` - get one project (protected)
-- `POST /api/projects` - create project with optional image upload (protected)
-- `PUT /api/projects/:id` - update project (protected)
-- `DELETE /api/projects/:id` - delete project (protected)
-
-### Contact
-- `POST /api/contact` - submit contact message (rate limited)
-- `GET /api/contact` - list messages (protected)
-- `PUT /api/contact/:id/read` - mark message as read (protected)
-
-## Admin access
-
-### Admin routes
-- `GET /admin/login` - admin login page
-- `GET /admin/dashboard` - admin dashboard (requires valid JWT in local storage)
-
-### How to access locally
-1. Start client and server from the Local setup section.
-2. Create a user account using API:
-   - `POST /api/auth/register` with `email` and `password`
-3. Open `http://localhost:5173/admin/login`
-4. Login with the same credentials.
-
-### Example register request
-
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"admin@example.com\",\"password\":\"StrongPass123!\"}"
-```
-
-### Security note
-- Current implementation protects admin endpoints by JWT authentication.
-- There is no `role` field check yet, so any authenticated user can access the dashboard.
-- Recommended next step: add role-based authorization (`admin` role) on backend routes.
-
-## Engineering decisions
-
-1. JWT auth with request interceptor
-- Decision: store token client-side and attach it automatically in Axios interceptor.
-- Why: keeps protected route calls simple and avoids repeating auth plumbing across components.
-
-2. Rate limiting on public contact endpoint
-- Decision: apply `express-rate-limit` on `POST /api/contact`.
-- Why: prevents spam bursts and protects SMTP quota.
-
-3. Hybrid projects source on frontend
-- Decision: merge static `LOCAL_PROJECTS` with API projects in `Projects.jsx`.
-- Why: portfolio stays populated even when backend/API is unavailable.
-
-4. File upload abstraction
-- Decision: isolate upload behavior in `server/middleware/upload.js` and expose `/uploads` statically.
-- Why: keeps route handlers focused on business logic and supports project image management.
-
-## Current limitations / next improvements
-
-- Test coverage is currently minimal (health smoke test only).
-- CORS currently uses default `app.use(cors())`; production should restrict origins.
-- Admin bootstrap is manual (no seed script yet).
+---
 
 ## Screenshots
 
-![Portfolio preview](./preview.png)
+| Home Page | Admin Dashboard |
+| :---: | :---: |
+| <img src="./docs/screenshots/home.png" alt="Home Page" width="400" /> | <img src="./docs/screenshots/dashboard.png" alt="Admin Dashboard" width="400" /> |
+| **Projects Gallery** | **Contact Form** |
+| <img src="./docs/screenshots/projects.png" alt="Projects Gallery" width="400" /> | <img src="./docs/screenshots/contact.png" alt="Contact Form" width="400" /> |
 
-## Contact
+*(Note: Create a `docs/screenshots` folder and add your images with these names to populate this section)*
 
-- LinkedIn: https://linkedin.com/in/imsumit45/
-- GitHub: https://github.com/imsumit28
-- Email: ersumitkumar45@gmail.com
+---
 
-## Project hygiene
+## Admin Access (Local)
+To access the admin dashboard locally:
+1. Start both servers.
+2. Create an admin user by sending a POST request:
+   ```bash
+   curl -X POST http://localhost:5000/api/auth/register \
+     -H "Content-Type: application/json" \
+     -d "{\"email\":\"admin@example.com\",\"password\":\"StrongPass123!\"}"
+   ```
+3. Navigate to `http://localhost:5173/admin/login` and log in with the created credentials.
 
-- Contribution guide: [CONTRIBUTING.md](./CONTRIBUTING.md)
-- License: [MIT](./LICENSE)
+---
+
+## Contact & Connect
+
+- **LinkedIn**: [linkedin.com/in/imsumit45](https://linkedin.com/in/imsumit45/)
+- **GitHub**: [imsumit28](https://github.com/imsumit28)
+- **Email**: [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
+
+---
+*Built by Sumit Kumar - Full Stack Developer*

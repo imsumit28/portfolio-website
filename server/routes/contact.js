@@ -9,7 +9,9 @@ const { protect } = require('../middleware/auth');
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 3,
-  message: { message: 'Too many messages sent. Please wait 15 minutes before sending another.' }
+  message: { message: 'Too many messages sent. Please wait 15 minutes before sending another.' },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 // Configure Nodemailer transporter

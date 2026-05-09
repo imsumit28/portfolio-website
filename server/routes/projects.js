@@ -3,6 +3,16 @@ const router = express.Router();
 const Project = require('../models/Project');
 const { protect } = require('../middleware/auth');
 const upload = require('../middleware/upload');
+const rateLimit = require('express-rate-limit');
+
+// Rate limiter for project creation and updates (file uploads)
+const uploadLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 20, // max 20 project creation/updates per hour
+  message: { message: 'Too many project upload operations. Please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // @route   GET api/projects
 router.get('/', async (req, res) => {
@@ -26,7 +36,7 @@ router.get('/:id', protect, async (req, res) => {
 });
 
 // @route   POST api/projects
-router.post('/', protect, upload.single('image'), async (req, res) => {
+router.post('/', protect, uploadLimiter, upload.single('image'), async (req, res) => {
   try {
     const projectData = { ...req.body };
     if (req.file) {
@@ -45,7 +55,7 @@ router.post('/', protect, upload.single('image'), async (req, res) => {
 });
 
 // @route   PUT api/projects/:id
-router.put('/:id', protect, upload.single('image'), async (req, res) => {
+router.put('/:id', protect, uploadLimiter, upload.single('image'), async (req, res) => {
   try {
     let project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: 'Project not found' });

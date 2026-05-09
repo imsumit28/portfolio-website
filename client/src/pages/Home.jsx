@@ -151,7 +151,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  3 Projects — All Deployed
+                  4 Projects — All Deployed
                 </span>
                 <span style={{ opacity: 0.7 }}>•</span>
                 <span
@@ -297,6 +297,7 @@ const Home = () => {
                 <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://devconnect2026.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>DevConnect</a> → real-time developer network</li>
                 <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://github.com/imsumit28/NotifyX" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>NotifyX</a> → distributed notification system using Redis & BullMQ</li>
                 <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://collabdocs2026.vercel.app/login" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>CollabDocs</a> → CRDT-based collaborative editor with AI assistance</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://curlix.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>Curlix</a> → production-grade URL shortener with sub-10 ms redirects & async analytics</li>
               </ul>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live — not just a localhost demo.
@@ -332,7 +333,7 @@ const Home = () => {
               {/* Quick Stat Cards */}
               <div className="row g-3 mb-5">
                 {[
-                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '3', sub: 'Deployed & Live' },
+                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '4', sub: 'Deployed & Live' },
                   { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
                   { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
                   { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' }
@@ -663,6 +664,7 @@ const Home = () => {
                         { text: 'Designed and built a real-time developer network (DevConnect) with WebSocket-based messaging and JWT authentication', link: 'https://devconnect2026.vercel.app/' },
                         { text: 'Engineered a distributed notification system (NotifyX) using Redis Pub/Sub, BullMQ queues, and idempotency layers for reliable event processing', link: 'https://github.com/imsumit28/NotifyX' },
                         { text: 'Developed a CRDT-based collaborative editor (CollabDocs) using Y.js, enabling concurrent multi-user editing without conflicts', link: 'https://collabdocs2026.vercel.app/' },
+                        { text: 'Built a production-grade URL shortener (Curlix) with Redis-cached sub-10 ms redirects, BullMQ async analytics, and zero-account bearer-token UX', link: 'https://curlix.vercel.app' },
                         { text: 'Implemented real-time systems handling high concurrency, focusing on low latency, fault tolerance, and scalable architecture', link: null },
                         { text: 'Built and deployed all systems to production environments with live demos and full-stack architecture', link: null },
                       ].map((item, i) => (
