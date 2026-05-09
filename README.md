@@ -27,11 +27,11 @@ The application follows a standard MERN stack architecture, decoupled into a dis
 ```mermaid
 flowchart LR
     %% Define styles
-    classDef user fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef user fill:#f9f,stroke:#333,stroke-width:2px,color:#000;
     classDef client fill:#61dafb,stroke:#333,stroke-width:2px,color:#000;
     classDef server fill:#83cd29,stroke:#333,stroke-width:2px,color:#000;
     classDef db fill:#13aa52,stroke:#333,stroke-width:2px,color:#fff;
-    classDef ext fill:#ff9900,stroke:#333,stroke-width:2px;
+    classDef ext fill:#ff9900,stroke:#333,stroke-width:2px,color:#000;
 
     %% Nodes
     U[Visitor / Recruiter]:::user
