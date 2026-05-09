@@ -40,7 +40,7 @@ flowchart LR
     S[Express API Server]:::server
     M[(MongoDB)]:::db
     E[Nodemailer / Gmail SMTP]:::ext
-    F[/uploads Static Files]:::server
+    F["/uploads Static Files"]:::server
 
     %% Connections
     U --> C
