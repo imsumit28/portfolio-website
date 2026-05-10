@@ -170,4 +170,13 @@ To access the admin dashboard locally:
 - **Email**: [ersumitkumar45@gmail.com](mailto:ersumitkumar45@gmail.com)
 
 ---
+
+## Project Documents
+
+- [Architecture](./docs/architecture.md)
+- [Contributing Guide](./docs/CONTRIBUTING.md)
+- [License (MIT)](./docs/LICENSE)
+- [Resume (PDF)](./docs/Sumit_Kumar_Full_Stack_Developer_Resume.pdf)
+
+---
 *Built by Sumit Kumar - Full Stack Developer*
