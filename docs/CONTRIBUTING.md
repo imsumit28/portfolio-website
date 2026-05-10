@@ -10,7 +10,7 @@ Thanks for your interest in contributing.
    - `cd ../server && npm install`
 3. Create `server/.env` (see README).
 4. Start both apps:
-   - `cd server && npm start`
+   - `cd server && npm run dev`
    - `cd client && npm run dev`
 
 ## Branch and commit conventions

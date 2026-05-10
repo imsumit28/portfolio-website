@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import api from '../utils/api';
+import api, { ASSET_BASE_URL } from '../utils/api';
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaEnvelope } from 'react-icons/fa';
 
 const AdminDashboard = () => {
@@ -191,7 +191,7 @@ const AdminDashboard = () => {
                     <tr key={project._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
                       <td className="py-3">
                         {project.image ? (
-                          <img src={`http://localhost:5000${project.image}`} alt={project.title} className="rounded-3" style={{width: '60px', height: '40px', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.1)'}} />
+                          <img src={`${ASSET_BASE_URL}${project.image}`} alt={project.title} className="rounded-3" style={{width: '60px', height: '40px', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.1)'}} />
                         ) : (
                           <div className="rounded-3 d-flex align-items-center justify-content-center" style={{width: '60px', height: '40px', background: 'rgba(255,255,255,0.05)', color: 'rgba(148,163,184,0.95)', fontSize: '10px'}}>No Img</div>
                         )}

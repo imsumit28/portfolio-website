@@ -126,7 +126,7 @@ You will need two terminal windows.
 **Terminal 1: Start the Backend**
 ```bash
 cd server
-npm start
+npm run dev
 ```
 
 **Terminal 2: Start the Frontend**

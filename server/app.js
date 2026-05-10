@@ -4,6 +4,10 @@ const rateLimit = require('express-rate-limit');
 
 const app = express();
 
+// Required when running behind a proxy/CDN (Render, Vercel, Heroku, Nginx)
+// so express-rate-limit reads the real client IP from X-Forwarded-For.
+app.set('trust proxy', 1);
+
 // Global API rate limiter
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -44,5 +48,16 @@ app.use('/api/projects', require('./routes/projects'));
 app.use('/api/contact', require('./routes/contact'));
 
 app.get('/', (req, res) => res.send('Portfolio API Running'));
+
+app.use((req, res) => res.status(404).json({ message: 'Not found' }));
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error(err);
+  if (err && err.message === 'Not allowed by CORS') {
+    return res.status(403).json({ message: err.message });
+  }
+  res.status(err.status || 500).json({ message: 'Server error' });
+});
 
 module.exports = app;

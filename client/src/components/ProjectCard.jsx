@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { TbBug } from 'react-icons/tb';
+import { ASSET_BASE_URL } from '../utils/api';
 
 const ProjectCard = ({
   _id,
@@ -32,7 +33,7 @@ const ProjectCard = ({
   const coverSrc = (() => {
     if (coverImage) return coverImage;
     if (typeof image === 'string' && image.startsWith('http')) return image;
-    if (image) return `http://localhost:5000${image}`;
+    if (image) return `${ASSET_BASE_URL}${image}`;
     return 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
   })();
 
