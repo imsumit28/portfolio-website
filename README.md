@@ -175,7 +175,7 @@ To access the admin dashboard locally:
 
 - [Architecture](./docs/architecture.md)
 - [Contributing Guide](./docs/CONTRIBUTING.md)
-- [License (MIT)](./docs/LICENSE)
+- [License (MIT)](./LICENSE)
 - [Resume (PDF)](./docs/Sumit_Kumar_Full_Stack_Developer_Resume.pdf)
 
 ---
