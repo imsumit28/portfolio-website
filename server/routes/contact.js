@@ -22,32 +22,6 @@ router.post('/', contactLimiter, async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Send email notification using Web3Forms asynchronously
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        access_key: '59b9ab9e-c86b-443b-a182-9b891ef567e1',
-        name: name,
-        email: email,
-        message: message,
-        subject: `New Portfolio Message from ${name}`,
-        from_name: 'Portfolio Contact'
-      })
-    })
-    .then(async (response) => {
-      let json = await response.json();
-      if (!response.ok) {
-        console.error('Web3Forms Error:', json);
-      }
-    })
-    .catch(error => {
-      console.error('Failed to send email via Web3Forms:', error);
-    });
-
     res.status(201).json({ message: 'Message sent successfully' });
   } catch (error) {
     console.error('Contact error:', error);

@@ -23,7 +23,26 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
+      // 1. Save to MongoDB via backend
       await api.post('/contact', formData);
+
+      // 2. Send email notification directly from browser via Web3Forms
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '59b9ab9e-c86b-443b-a182-9b891ef567e1',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`,
+          from_name: 'Portfolio Contact'
+        })
+      });
+
       setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
