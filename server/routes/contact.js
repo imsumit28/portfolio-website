@@ -54,7 +54,10 @@ router.post('/', contactLimiter, async (req, res) => {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    // Send email asynchronously so it doesn't block the frontend response
+    transporter.sendMail(mailOptions).catch(err => {
+      console.error('Failed to send email:', err);
+    });
 
     res.status(201).json({ message: 'Message sent successfully' });
   } catch (error) {
