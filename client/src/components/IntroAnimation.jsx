@@ -26,11 +26,17 @@ const IntroAnimation = () => {
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
 
+    const restoreScroll = () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.touchAction = originalTouchAction;
+    };
+
     const timers = [
       setTimeout(() => setStage('revealed'), 80),
       setTimeout(() => setStage('holding'), 1100),
       setTimeout(() => setStage('exiting'), 2600),
       setTimeout(() => {
+        restoreScroll();
         safeStorage.set(STORAGE_KEY, '1');
         setStage('done');
       }, 3500),
@@ -38,8 +44,7 @@ const IntroAnimation = () => {
 
     return () => {
       timers.forEach(clearTimeout);
-      document.body.style.overflow = originalOverflow;
-      document.body.style.touchAction = originalTouchAction;
+      restoreScroll();
     };
   }, []);
 
