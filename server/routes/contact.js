@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
 const Contact = require('../models/Contact');
 const { protect } = require('../middleware/auth');
@@ -14,17 +13,6 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Configure Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
 // @route   POST api/contact
 router.post('/', contactLimiter, async (req, res) => {
   try {
@@ -34,29 +22,30 @@ router.post('/', contactLimiter, async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Send email notification
-    const mailOptions = {
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `New Portfolio Message from ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f8fafc; border-radius: 10px;">
-          <h2 style="color: #10b981; margin-bottom: 20px;">📬 New Contact Message</h2>
-          <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981;">
-            <p style="margin: 0 0 10px;"><strong>Name:</strong> ${name}</p>
-            <p style="margin: 0 0 10px;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p style="margin: 0 0 10px;"><strong>Message:</strong></p>
-            <p style="margin: 0; padding: 10px; background: #f1f5f9; border-radius: 6px; white-space: pre-wrap;">${message}</p>
-          </div>
-          <p style="color: #94a3b8; font-size: 12px; margin-top: 20px; text-align: center;">Sent from your Portfolio Website</p>
-        </div>
-      `,
-    };
-
-    // Send email asynchronously so it doesn't block the frontend response
-    transporter.sendMail(mailOptions).catch(err => {
-      console.error('Failed to send email:', err);
+    // Send email notification using Web3Forms asynchronously
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: '59b9ab9e-c86b-443b-a182-9b891ef567e1',
+        name: name,
+        email: email,
+        message: message,
+        subject: `New Portfolio Message from ${name}`,
+        from_name: 'Portfolio Contact'
+      })
+    })
+    .then(async (response) => {
+      let json = await response.json();
+      if (!response.ok) {
+        console.error('Web3Forms Error:', json);
+      }
+    })
+    .catch(error => {
+      console.error('Failed to send email via Web3Forms:', error);
     });
 
     res.status(201).json({ message: 'Message sent successfully' });
