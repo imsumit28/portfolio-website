@@ -208,6 +208,7 @@ To access the admin dashboard locally:
 ## Project Documents
 
 - [Architecture](./docs/architecture.md)
+- [Performance Benchmarks](./docs/performance.md)
 - [Contributing Guide](./docs/CONTRIBUTING.md)
 - [License (MIT)](./LICENSE)
 - [Resume (PDF)](./docs/Sumit_Kumar_Full_Stack_Developer_Resume.pdf)
