@@ -485,9 +485,22 @@ const Home = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="fw-bold mb-1" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
-                          Full Stack Developer Intern
-                        </h4>
+                        <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                          <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
+                            Full Stack Developer Intern
+                          </h4>
+                          <span style={{
+                            background: 'rgba(16,185,129,0.1)',
+                            border: '1px solid rgba(16,185,129,0.25)',
+                            color: '#10b981',
+                            borderRadius: '6px',
+                            padding: '2px 8px',
+                            fontSize: '0.68rem',
+                            fontWeight: '700',
+                            letterSpacing: '0.8px',
+                            textTransform: 'uppercase',
+                          }}>Internship</span>
+                        </div>
                         <p className="mb-0" style={{ color: '#10b981', fontWeight: '600', fontSize: '0.95rem' }}>
                           EncodersPro Private Limited
                           <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
@@ -499,11 +512,10 @@ const Home = () => {
                     {/* Bullets */}
                     <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
                       {[
-                        'Built and shipped production-ready frontend components and backend APIs using React.js and Node.js in an Agile/Scrum environment',
-                        'Implemented 3+ UI components and REST endpoints, contributing to a 20% reduction in bug backlog by improving stability and fixing critical issues',
-                        'Participated in code reviews and sprint planning, ensuring code quality, maintainability, and alignment with team standards',
-                        'Diagnosed and resolved UI and API-level issues, improving overall application reliability and reducing recurring defects',
-                        'Collaborated with cross-functional team members to deliver features on time in a production engineering environment',
+                        'Shipped React components and Node.js REST endpoints straight into production — picked up unassigned tasks, understood the codebase, and delivered without hand-holding',
+                        'Cut the bug backlog by 20% in two months by diagnosing root causes instead of patching symptoms — actually read the stack traces',
+                        'Pushed back in sprint planning when ticket scope was too vague; rewrote unclear acceptance criteria before writing a line of code',
+                        'Traced a recurring API timeout to a missing index on a MongoDB query — fixed in 10 minutes once the root cause was visible',
                       ].map((item, i) => (
                         <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#cbd5e1', fontSize: '0.97rem', lineHeight: 1.65 }}>
                           <span style={{ color: '#10b981', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
@@ -647,13 +659,43 @@ const Home = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="fw-bold mb-1" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
-                          Independent Systems
-                        </h4>
+                        <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                          <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
+                            Personal Projects
+                          </h4>
+                          <span style={{
+                            background: 'rgba(59,130,246,0.1)',
+                            border: '1px solid rgba(59,130,246,0.25)',
+                            color: '#60a5fa',
+                            borderRadius: '6px',
+                            padding: '2px 8px',
+                            fontSize: '0.68rem',
+                            fontWeight: '700',
+                            letterSpacing: '0.8px',
+                            textTransform: 'uppercase',
+                          }}>Open Source</span>
+                          <span style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            background: 'rgba(16,185,129,0.08)',
+                            border: '1px solid rgba(16,185,129,0.2)',
+                            color: '#10b981',
+                            borderRadius: '6px',
+                            padding: '2px 8px',
+                            fontSize: '0.68rem',
+                            fontWeight: '700',
+                            letterSpacing: '0.8px',
+                            textTransform: 'uppercase',
+                          }}>
+                            <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse 2s infinite' }}></span>
+                            Active
+                          </span>
+                        </div>
                         <p className="mb-0" style={{ color: '#60a5fa', fontWeight: '600', fontSize: '0.95rem' }}>
-                          Self-Directed Projects
+                          4 systems shipped to production
                           <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
-                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Remote</span>
+                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Live demos available</span>
                         </p>
                       </div>
                     </div>
@@ -661,12 +703,10 @@ const Home = () => {
                     {/* Bullets */}
                     <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
                       {[
-                        { text: 'Designed and built a real-time developer network (DevConnect) with WebSocket-based messaging and JWT authentication', link: 'https://devconnect2026.vercel.app/' },
-                        { text: 'Engineered a distributed notification system (NotifyX) using Redis Pub/Sub, BullMQ queues, and idempotency layers for reliable event processing', link: 'https://github.com/imsumit28/NotifyX' },
-                        { text: 'Developed a CRDT-based collaborative editor (CollabDocs) using Y.js, enabling concurrent multi-user editing without conflicts', link: 'https://collabdocs2026.vercel.app/' },
-                        { text: 'Built a production-grade URL shortener (Curlix) with Redis-cached sub-10 ms redirects, BullMQ async analytics, and zero-account bearer-token UX', link: 'https://curlix.vercel.app' },
-                        { text: 'Implemented real-time systems handling high concurrency, focusing on low latency, fault tolerance, and scalable architecture', link: null },
-                        { text: 'Built and deployed all systems to production environments with live demos and full-stack architecture', link: null },
+                        { text: 'DevConnect — live chat over WebSocket, JWT auth, and developer profile discovery. The interesting part: keeping presence state consistent when users reconnect', link: 'https://devconnect2026.vercel.app/' },
+                        { text: 'NotifyX — distributed notification pipeline. Redis Pub/Sub for fanout, BullMQ for async jobs, idempotency keys so retries never fire an event twice', link: 'https://github.com/imsumit28/NotifyX' },
+                        { text: 'CollabDocs — multi-user document editor where two people can type at the same time without overwriting each other. Y.js CRDTs handle the conflict resolution automatically', link: 'https://collabdocs2026.vercel.app/' },
+                        { text: 'Curlix — URL shortener with sub-10ms redirects. Redis sits in front of the DB, analytics go through BullMQ async so the redirect path stays fast', link: 'https://curlix.vercel.app' },
                       ].map((item, i) => (
                         <li key={i} className="d-flex align-items-start gap-3" style={{ fontSize: '0.97rem', lineHeight: 1.65 }}>
                           <span style={{ color: '#3b82f6', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
@@ -688,15 +728,25 @@ const Home = () => {
                       ))}
                     </ul>
 
-                    {/* Focus areas */}
+                    {/* Technical decisions */}
                     <div>
-                      <p className="mb-3" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: '500' }}>
-                        Engineering focus
+                      <p className="mb-3" style={{ color: '#64748b', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
+                        Decisions that mattered
                       </p>
                       <div className="row g-2">
                         {[
                           {
-                            label: 'Real-time systems',
+                            label: 'CRDTs over OT',
+                            sub: 'conflict-free merges',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                              </svg>
+                            ),
+                          },
+                          {
+                            label: 'Redis before DB',
+                            sub: 'sub-10ms redirect path',
                             svg: (
                               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M3 12h3l3-9 4 18 3-12 2 3h3" />
@@ -704,32 +754,21 @@ const Home = () => {
                             ),
                           },
                           {
-                            label: 'Distributed architecture',
+                            label: 'Idempotency keys',
+                            sub: 'safe retry on failure',
                             svg: (
                               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="5" r="2" />
-                                <circle cx="5" cy="19" r="2" />
-                                <circle cx="19" cy="19" r="2" />
+                                <path d="M5 4v16M19 4v16" /><path d="M5 9h14M5 15h14" />
+                              </svg>
+                            ),
+                          },
+                          {
+                            label: 'Async via BullMQ',
+                            sub: 'fast path stays fast',
+                            svg: (
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" />
                                 <path d="M12 7v3M11 11l-5 6M13 11l5 6" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            label: 'Concurrency handling',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 4v16M19 4v16" />
-                                <path d="M5 9h14M5 15h14" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            label: 'Scalable backend design',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <ellipse cx="12" cy="5" rx="8" ry="2.5" />
-                                <path d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5" />
-                                <path d="M4 11v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6" />
                               </svg>
                             ),
                           },
@@ -752,9 +791,14 @@ const Home = () => {
                               }}>
                                 {item.svg}
                               </div>
-                              <span style={{ color: '#cbd5e1', fontSize: '0.9rem', fontWeight: '500' }}>
-                                {item.label}
-                              </span>
+                              <div>
+                                <span style={{ color: '#cbd5e1', fontSize: '0.88rem', fontWeight: '600', display: 'block', lineHeight: 1.2 }}>
+                                  {item.label}
+                                </span>
+                                <span style={{ color: '#475569', fontSize: '0.75rem', fontWeight: '400' }}>
+                                  {item.sub}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         ))}
