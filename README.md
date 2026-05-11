@@ -39,7 +39,7 @@ flowchart LR
     C[React + Vite Client]:::client
     S[Express API Server]:::server
     M[(MongoDB)]:::db
-    E[Nodemailer / Gmail SMTP]:::ext
+    E[Web3Forms API]:::ext
     F["/uploads Static Files"]:::server
 
     %% Connections
@@ -57,7 +57,7 @@ flowchart LR
 2. **Routing**: The server handles incoming requests in `server/routes/*`.
 3. **Security**: Protected routes use JWT middleware (`server/middleware/auth.js`) to verify identities.
 4. **Data Layer**: Data is structured and persisted using Mongoose models (`server/models/*`).
-5. **External Services**: Contact form submissions trigger email notifications via Nodemailer.
+5. **External Services**: Contact form submissions trigger email notifications via the Web3Forms API.
 
 ---
 
@@ -80,6 +80,42 @@ Every technical choice in this project was made with a focus on maintainability,
 ### 4. File Upload Abstraction
 - **Decision**: Isolate file upload behavior within `server/middleware/upload.js` and serve `/uploads` statically.
 - **Why**: This separation of concerns keeps route handlers focused strictly on business logic, making the codebase easier to read and test, while providing a streamlined way to manage dynamic project images.
+
+### 5. Web3Forms Email Delivery
+- **Decision**: Replaced traditional Nodemailer SMTP with the Web3Forms HTTP API.
+- **Why**: Cloud platforms like Render frequently block outbound SMTP connections (like Gmail) on free tiers, causing requests to time out. Using a native `fetch` call to Web3Forms bypasses SMTP completely, ensuring fast and reliable email notifications.
+
+---
+
+## Deployment Guide
+
+This project is configured for split deployment: **Vercel** for the frontend and **Render** for the backend.
+
+### Backend (Render)
+1. **Setup**: Create a new Web Service, set the root directory to `server`, and use `npm start` as the start command.
+2. **Environment Variables**: Include `MONGODB_URI` (Atlas connection string), `JWT_SECRET`, and `CLIENT_URL` (your Vercel URL).
+3. **Important Configurations**:
+   - The server explicitly binds to `0.0.0.0` in `server.js` for compatibility with Render.
+   - To prevent the free tier from spinning down after 15 minutes of inactivity, set up a free [Cron-job.org](https://cron-job.org) ping to hit the root `GET /` endpoint every 14 minutes.
+
+### Frontend (Vercel)
+1. **Setup**: Create a new project, set the root directory to `client`, and select the Vite framework preset.
+2. **Environment Variables**: Set `VITE_API_URL` to your Render backend URL **with the `/api` suffix** (e.g., `https://portfolio-backend.onrender.com/api`).
+3. **Routing**: The `client/vercel.json` file is included to rewrite all requests to `index.html`, fixing the common "404 NOT_FOUND" error on page refresh for React Single Page Applications.
+
+### Live Admin Setup
+When deploying to a new cloud database (like MongoDB Atlas), the database starts empty. To create your first admin user on the live site:
+1. Go to your live Vercel website.
+2. Open the browser Developer Tools -> Console.
+3. Run this script (changing the email and password to your preference):
+   ```javascript
+   fetch("https://your-render-url.onrender.com/api/auth/register", {
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     body: JSON.stringify({ email: "admin@example.com", password: "your_secure_password" })
+   }).then(r => r.json()).then(console.log);
+   ```
+4. Navigate to `/admin/login` and log in with those credentials.
 
 ---
 
@@ -111,8 +147,6 @@ Create a `.env` file in the `server` directory:
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
 JWT_SECRET=your_super_secret_jwt_key
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_gmail_app_password
 ```
 
 *(Optional)* Create a `.env` file in the `client` directory:
