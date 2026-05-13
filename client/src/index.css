@@ -1245,6 +1245,26 @@ ul {
   box-shadow: 0 6px 14px rgba(16, 185, 129, 0.25);
 }
 
+/* Internship metric box — responsive split */
+.metric-left-panel {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(16, 185, 129, 0.03) 100%);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+}
+
+@media (min-width: 576px) {
+  .metric-left-panel {
+    border-bottom: none;
+    border-right: 1px solid rgba(16, 185, 129, 0.18);
+    align-items: flex-start;
+    min-width: 150px;
+  }
+}
+
 .footer-copyright {
   font-size: 0.8rem;
   color: rgba(148, 163, 184, 0.55);

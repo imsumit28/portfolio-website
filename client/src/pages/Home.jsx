@@ -525,53 +525,50 @@ const Home = () => {
                     </ul>
 
                     {/* Result metric */}
-                    <div className="d-flex flex-wrap align-items-stretch mb-4 overflow-hidden" style={{
+                    <div className="mb-4 overflow-hidden" style={{
                       background: 'rgba(2,6,23,0.5)',
                       border: '1px solid rgba(16,185,129,0.2)',
                       borderRadius: '12px',
                     }}>
-                      <div className="d-flex flex-column justify-content-center px-4 py-3" style={{
-                        background: 'linear-gradient(135deg, rgba(16,185,129,0.16) 0%, rgba(16,185,129,0.03) 100%)',
-                        borderRight: '1px solid rgba(16,185,129,0.18)',
-                        minWidth: '150px',
-                      }}>
-                        <div className="d-flex align-items-baseline" style={{ gap: '2px' }}>
-                          <span style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: '700', marginRight: '6px', fontFamily: '"JetBrains Mono","Fira Code",monospace' }}>↓</span>
+                      <div className="d-flex flex-column flex-sm-row align-items-stretch">
+                        <div className="metric-left-panel">
+                          <div className="d-flex align-items-baseline" style={{ gap: '2px' }}>
+                            <span style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: '700', marginRight: '6px', fontFamily: '"JetBrains Mono","Fira Code",monospace' }}>↓</span>
+                            <span style={{
+                              color: '#10b981',
+                              fontSize: '2.3rem',
+                              fontWeight: '800',
+                              lineHeight: 1,
+                              fontFamily: '"JetBrains Mono","Fira Code",monospace',
+                              letterSpacing: '-1.5px',
+                            }}>
+                              20
+                            </span>
+                            <span style={{
+                              color: '#10b981',
+                              fontSize: '1.8rem',
+                              fontWeight: '700',
+                              fontFamily: '"JetBrains Mono","Fira Code",monospace',
+                            }}>
+                              %
+                            </span>
+                          </div>
                           <span style={{
-                            color: '#10b981',
-                            fontSize: '2.3rem',
-                            fontWeight: '800',
-                            lineHeight: 1,
-                            fontFamily: '"JetBrains Mono","Fira Code",monospace',
-                            letterSpacing: '-1.5px',
+                            color: '#94a3b8',
+                            fontSize: '0.78rem',
+                            marginTop: '6px',
+                            fontWeight: '500',
                           }}>
-                            20
-                          </span>
-                          <span style={{
-                            color: '#10b981',
-                            fontSize: '1.3rem',
-                            fontWeight: '700',
-                            fontFamily: '"JetBrains Mono","Fira Code",monospace',
-                          }}>
-                            %
+                            bug backlog
                           </span>
                         </div>
-                        <span style={{
-                          color: '#94a3b8',
-                          fontSize: '0.78rem',
-                          marginTop: '6px',
-                          fontWeight: '500',
+                        <div className="d-flex align-items-center flex-fill px-4 py-3" style={{
+                          color: '#cbd5e1',
+                          fontSize: '0.94rem',
+                          lineHeight: 1.6,
                         }}>
-                          bug backlog
-                        </span>
-                      </div>
-                      <div className="d-flex align-items-center flex-fill px-4 py-3" style={{
-                        color: '#cbd5e1',
-                        fontSize: '0.94rem',
-                        lineHeight: 1.6,
-                        minWidth: '240px',
-                      }}>
-                        Delivered stable features and resolved high-priority issues in a live production system.
+                          Delivered stable features and resolved high-priority issues in a live production system.
+                        </div>
                       </div>
                     </div>
 
