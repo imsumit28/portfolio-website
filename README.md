@@ -63,6 +63,16 @@ npm test
 - Backend: Render (`server/` root)
 - Keep `CLIENT_URL` and `VITE_API_URL` aligned
 
+## Screenshots
+
+| Home | Projects |
+| --- | --- |
+| ![Home](./docs/screenshots/home.png) | ![Projects](./docs/screenshots/projects.png) |
+
+| Contact | Admin Dashboard |
+| --- | --- |
+| ![Contact](./docs/screenshots/contact.png) | ![Admin Dashboard](./docs/screenshots/dashboard.png) |
+
 ## Notes
 - Do not expose third-party form keys in frontend code.
 - If `WEB3FORMS_ACCESS_KEY` is unset, contact submissions still persist to MongoDB.
