@@ -9,7 +9,7 @@ flowchart LR
   Browser[Browser Client] -->|HTTP| Frontend[React + Vite]
   Frontend -->|REST /api/*| API[Express API]
   API --> DB[(MongoDB)]
-  API --> Mail[SMTP via Nodemailer]
+  API --> Mail[Web3Forms API]
   API --> Files["/uploads"]
 ```
 
@@ -60,13 +60,13 @@ sequenceDiagram
   participant R as Rate Limiter
   participant K as API (/api/contact)
   participant D as MongoDB
-  participant S as SMTP
+  participant S as Web3Forms API
 
   V->>C: Submit contact form
   C->>R: POST /api/contact
   R-->>K: Allowed request
   K->>D: Save message record
-  K->>S: Send notification email
+  K->>S: Send notification via HTTP API
   K-->>C: 201 success
 ```
 

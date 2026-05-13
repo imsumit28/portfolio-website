@@ -14,10 +14,26 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const normalizeCredentials = (email, password) => ({
+  email: typeof email === 'string' ? email.trim().toLowerCase() : '',
+  password: typeof password === 'string' ? password : ''
+});
+
 // @route   POST api/auth/register
 router.post('/register', authLimiter, async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = normalizeCredentials(req.body.email, req.body.password);
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ message: 'Invalid email format' });
+    }
+    if (password.length < 8) {
+      return res.status(400).json({ message: 'Password must be at least 8 characters' });
+    }
+
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ message: 'User already exists' });
@@ -35,7 +51,11 @@ router.post('/register', authLimiter, async (req, res) => {
 // @route   POST api/auth/login
 router.post('/login', authLimiter, async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = normalizeCredentials(req.body.email, req.body.password);
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
     const user = await User.findOne({ email });
     if (user && (await user.matchPassword(password))) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });

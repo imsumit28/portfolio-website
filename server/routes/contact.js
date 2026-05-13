@@ -17,10 +17,50 @@ const contactLimiter = rateLimit({
 router.post('/', contactLimiter, async (req, res) => {
   try {
     const { name, email, message } = req.body;
+    const normalizedName = typeof name === 'string' ? name.trim() : '';
+    const normalizedEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+    const normalizedMessage = typeof message === 'string' ? message.trim() : '';
+
+    if (!normalizedName || !normalizedEmail || !normalizedMessage) {
+      return res.status(400).json({ message: 'Name, email, and message are required' });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+      return res.status(400).json({ message: 'Invalid email format' });
+    }
+    if (normalizedName.length > 100 || normalizedMessage.length > 2000) {
+      return res.status(400).json({ message: 'Input exceeds allowed length' });
+    }
 
     // Save to database
-    const contact = new Contact({ name, email, message });
+    const contact = new Contact({
+      name: normalizedName,
+      email: normalizedEmail,
+      message: normalizedMessage
+    });
     await contact.save();
+
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (accessKey) {
+      const web3FormsResponse = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: normalizedName,
+          email: normalizedEmail,
+          message: normalizedMessage,
+          subject: `New Portfolio Message from ${normalizedName}`,
+          from_name: 'Portfolio Contact'
+        })
+      });
+
+      if (!web3FormsResponse.ok) {
+        console.error('Web3Forms request failed with status', web3FormsResponse.status);
+      }
+    }
 
     res.status(201).json({ message: 'Message sent successfully' });
   } catch (error) {

@@ -36,9 +36,6 @@ api.interceptors.response.use(
         displayMessage += ` (Please wait ${retryAfter} seconds)`;
       }
       
-      // Never silently swallow: explicitly alert the user
-      window.alert(`Rate Limit Exceeded: ${displayMessage}`);
-      
       return Promise.reject(new Error(displayMessage));
     }
     return Promise.reject(error);
