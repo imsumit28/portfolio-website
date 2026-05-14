@@ -4,20 +4,18 @@ import ProjectList from '../components/ProjectList';
 import { LOCAL_PROJECTS } from '../data/projectsData';
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('ALL');
+  // Combined projects+loading state to avoid cascading setState calls
+  const [{ projects, loading }, setFetchState] = useState({ projects: [], loading: true });
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const res = await api.get('/projects');
         const apiProjects = Array.isArray(res.data) ? res.data : [];
-        setProjects([...LOCAL_PROJECTS, ...apiProjects]);
+        setFetchState({ projects: [...LOCAL_PROJECTS, ...apiProjects], loading: false });
       } catch (err) {
-        setProjects(LOCAL_PROJECTS);
+        setFetchState({ projects: LOCAL_PROJECTS, loading: false });
       }
-      setLoading(false);
     };
     fetchProjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -32,17 +32,24 @@ const Contact = () => {
             { icon: <FaEnvelope size={20} />, title: 'Email', text: 'ersumitkumar45@gmail.com', color: '#10b981', link: 'mailto:ersumitkumar45@gmail.com' },
             { icon: <FaPhone size={20} />, title: 'Phone', text: '+91 8210240106', color: '#3b82f6', link: 'tel:+918210240106' },
           ].map((item, i) => (
-            <div key={i} className="d-flex align-items-center p-4 mb-3" data-aos="fade-up" data-aos-delay={i * 100}
+            <div
+              key={item.title}
+              className="d-flex align-items-center p-4 mb-3"
+              data-aos="fade-up"
+              data-aos-delay={i * 100}
+              role={item.link ? 'button' : undefined}
+              tabIndex={item.link ? 0 : undefined}
               style={{
                 background: '#1e293b',
                 borderRadius: '12px',
                 border: '1px solid rgba(255,255,255,0.05)',
-                transition: 'all 0.3s ease',
+                transition: 'transform 0.3s ease, border-color 0.3s ease',
                 cursor: item.link ? 'pointer' : 'default',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateX(8px)'; e.currentTarget.style.borderColor = item.color; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}
+              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { transform: 'translateX(8px)', borderColor: item.color })}
+              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { transform: 'translateX(0)', borderColor: 'rgba(255,255,255,0.05)' })}
               onClick={() => item.link && window.open(item.link)}
+              onKeyDown={(e) => { if (item.link && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); window.open(item.link); } }}
             >
               <div className="d-flex align-items-center justify-content-center rounded-3 me-4" style={{ width: '48px', height: '48px', background: `${item.color}20`, flexShrink: 0 }}>
                 <span style={{ color: item.color }}>{item.icon}</span>
@@ -58,25 +65,25 @@ const Contact = () => {
           <div className="d-flex gap-3 mt-4 ms-1" data-aos="fade-up" data-aos-delay="300">
             <a href="https://github.com/imsumit28" target="_blank" rel="noopener noreferrer"
               className="d-flex align-items-center justify-content-center"
-              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'all 0.3s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#10b981'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#1e293b'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'background-color 0.3s, color 0.3s, transform 0.3s' }}
+              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { background: '#10b981', color: 'white', transform: 'translateY(-4px)' })}
+              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { background: '#1e293b', color: '#94a3b8', transform: 'translateY(0)' })}
             >
               <FaGithub size={22} />
             </a>
             <a href="https://www.linkedin.com/in/imsumit45/" target="_blank" rel="noopener noreferrer"
               className="d-flex align-items-center justify-content-center"
-              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'all 0.3s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#0077b5'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#1e293b'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'background-color 0.3s, color 0.3s, transform 0.3s' }}
+              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { background: '#0077b5', color: 'white', transform: 'translateY(-4px)' })}
+              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { background: '#1e293b', color: '#94a3b8', transform: 'translateY(0)' })}
             >
               <FaLinkedinIn size={22} />
             </a>
             <a href="https://x.com/imsumit4545" target="_blank" rel="noopener noreferrer"
               className="d-flex align-items-center justify-content-center"
-              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'all 0.3s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#000000'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#1e293b'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#1e293b', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8', transition: 'background-color 0.3s, color 0.3s, transform 0.3s' }}
+              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { background: '#000000', color: 'white', transform: 'translateY(-4px)' })}
+              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { background: '#1e293b', color: '#94a3b8', transform: 'translateY(0)' })}
             >
               <FaXTwitter size={22} />
             </a>

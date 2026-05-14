@@ -5,13 +5,48 @@ import { FiExternalLink } from 'react-icons/fi';
 import { TbBug } from 'react-icons/tb';
 import { ASSET_BASE_URL } from '../utils/api';
 
+// Module-level constants to avoid new array references on every render
+const EMPTY_TECH = [];
+const EMPTY_FEATURES = [];
+const EMPTY_METRICS = [];
+const EMPTY_HIGHLIGHTS = [];
+const EMPTY_ARCHITECTURE = [];
+const EMPTY_ARCH_DECISIONS = [];
+
+// Extracted style objects
+const decisionsPanelStyle = {
+  marginTop: '12px',
+  padding: '14px 16px',
+  background: 'rgba(16,185,129,0.04)',
+  border: '1px solid rgba(16,185,129,0.15)',
+  borderRadius: '8px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+};
+
+const whyButtonStyle = {
+  background: 'none',
+  border: '1px solid rgba(255,255,255,0.1)',
+  borderRadius: '6px',
+  fontSize: '0.75rem',
+  fontWeight: 600,
+  padding: '3px 10px',
+  cursor: 'pointer',
+  letterSpacing: '0.3px',
+  transition: 'border-color 0.2s ease, color 0.2s ease',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '5px',
+};
+
 const ProjectCard = ({
   _id,
   title = 'Untitled',
   description = '',
   value = '',
-  tech = [],
-  features = [],
+  tech = EMPTY_TECH,
+  features = EMPTY_FEATURES,
   coverImage,
   image,
   logoImage,
@@ -20,11 +55,11 @@ const ProjectCard = ({
   liveLink = '',
   githubLink = '',
   github = '',
-  metrics = [],
-  highlights = [],
+  metrics = EMPTY_METRICS,
+  highlights = EMPTY_HIGHLIGHTS,
   highlightsLabel = 'HIGHLIGHTS',
-  architecture = [],
-  architectureDecisions = [],
+  architecture = EMPTY_ARCHITECTURE,
+  architectureDecisions = EMPTY_ARCH_DECISIONS,
   challenge,
   index = 0,
 }) => {
@@ -68,7 +103,7 @@ const ProjectCard = ({
               <div className="project-highlights-label">{highlightsLabel}</div>
               <ul className="project-highlights-list">
                 {highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
+                  <li key={`highlight-${i}-${h.slice(0, 20)}`}>{h}</li>
                 ))}
               </ul>
             </div>
@@ -81,23 +116,9 @@ const ProjectCard = ({
                 {architectureDecisions.length > 0 && (
                   <button
                     onClick={() => setShowDecisions(v => !v)}
-                    style={{
-                      background: 'none',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '6px',
-                      color: showDecisions ? '#10b981' : '#64748b',
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      padding: '3px 10px',
-                      cursor: 'pointer',
-                      letterSpacing: '0.3px',
-                      transition: 'all 0.2s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.color = '#10b981'; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = showDecisions ? '#10b981' : '#64748b'; }}
+                    style={{ ...whyButtonStyle, color: showDecisions ? '#10b981' : '#64748b' }}
+                    onMouseEnter={e => Object.assign(e.currentTarget.style, { borderColor: '#10b981', color: '#10b981' })}
+                    onMouseLeave={e => Object.assign(e.currentTarget.style, { borderColor: 'rgba(255,255,255,0.1)', color: showDecisions ? '#10b981' : '#64748b' })}
                   >
                     Why this? {showDecisions ? '↑' : '↓'}
                   </button>
@@ -114,20 +135,9 @@ const ProjectCard = ({
                 ))}
               </div>
               {showDecisions && architectureDecisions.length > 0 && (
-                <div
-                  style={{
-                    marginTop: '12px',
-                    padding: '14px 16px',
-                    background: 'rgba(16,185,129,0.04)',
-                    border: '1px solid rgba(16,185,129,0.15)',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                  }}
-                >
+                <div style={decisionsPanelStyle}>
                   {architectureDecisions.map(({ q, a }, i) => (
-                    <div key={i}>
+                    <div key={q || i}>
                       <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.82rem', marginBottom: '3px' }}>{q}</div>
                       <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.6 }}>{a}</div>
                     </div>
@@ -143,12 +153,15 @@ const ProjectCard = ({
                 const isTestMetric = title === 'CollabDocs' && (metric.toLowerCase().includes('test') || metric.toLowerCase().includes('coverage'));
                 return (
                   <span
-                    key={i}
+                    key={metric}
                     className="project-metric-tag"
+                    role={isTestMetric ? 'button' : undefined}
+                    tabIndex={isTestMetric ? 0 : undefined}
                     onClick={() => isTestMetric && navigate('/testing-guide')}
+                    onKeyDown={isTestMetric ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navigate('/testing-guide'); } } : undefined}
                     style={{
                       cursor: isTestMetric ? 'pointer' : 'default',
-                      transition: 'all 0.2s ease',
+                      transition: 'border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease',
                       ...(isTestMetric && {
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16,185,129,0.1)',
@@ -156,16 +169,12 @@ const ProjectCard = ({
                     }}
                     onMouseEnter={(e) => {
                       if (isTestMetric) {
-                        e.target.style.borderColor = '#10b981';
-                        e.target.style.backgroundColor = 'rgba(16,185,129,0.15)';
-                        e.target.style.transform = 'translateY(-2px)';
+                        Object.assign(e.target.style, { borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.15)', transform: 'translateY(-2px)' });
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (isTestMetric) {
-                        e.target.style.borderColor = 'rgba(255,255,255,0.1)';
-                        e.target.style.backgroundColor = 'rgba(255,255,255,0.04)';
-                        e.target.style.transform = 'translateY(0)';
+                        Object.assign(e.target.style, { borderColor: 'rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.04)', transform: 'translateY(0)' });
                       }
                     }}
                     title={isTestMetric ? 'Click to view testing guide' : ''}
@@ -213,4 +222,3 @@ const ProjectCard = ({
 };
 
 export default ProjectCard;
-

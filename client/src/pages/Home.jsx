@@ -14,7 +14,7 @@ const terminalLines = [
   { type: 'cmd', text: 'cat work.txt' },
   { type: 'out', text: 'Real-time collaborative editor syncing updates across users (<200ms latency)' },
   { type: 'cmd', text: 'cat philosophy.txt' },
-  { type: 'out', text: 'I build production-grade systems — not CRUD demos' },
+  { type: 'out', text: 'I build production-grade systems, not CRUD demos' },
 ];
 
 const Home = () => {
@@ -99,7 +99,7 @@ const Home = () => {
                 >
                   {terminalLines.map((line, i) => (
                     <div
-                      key={i}
+                      key={`${line.type}-${i}`}
                       style={{
                         opacity: terminalStep > i ? 1 : 0,
                         transform: terminalStep > i ? 'translateY(0)' : 'translateY(4px)',
@@ -151,7 +151,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  4 Projects — All Deployed
+                  4 Projects, All Deployed
                 </span>
                 <span style={{ opacity: 0.7 }}>•</span>
                 <span
@@ -220,14 +220,14 @@ const Home = () => {
                         background: 'rgba(15,23,42,0.7)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         color: '#94a3b8',
-                        transition: 'all 0.2s ease',
+                        transition: 'border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease',
                       }}
                     >
                       {icon}
                     </div>
                     <span
                       className="cta-label"
-                      style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.3px', transition: 'color 0.2s ease' }}
+                      style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.3px', transition: 'color 0.2s ease' }}
                     >
                       {label}
                     </span>
@@ -314,17 +314,17 @@ const Home = () => {
               <div className="mb-5 d-flex flex-wrap gap-3">
                 <div
                   className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
-                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'all 0.25s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#3b82f6'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#3b82f6'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(59,130,246,0.35)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(59,130,246,0.1)'; e.currentTarget.style.color = '#3b82f6'; e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)'; e.currentTarget.style.boxShadow = ''; }}
+                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
+                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: '#3b82f6', color: '#fff', borderColor: '#3b82f6', boxShadow: '0 6px 20px rgba(59,130,246,0.35)' })}
+                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'rgba(59,130,246,0.1)', color: '#3b82f6', borderColor: 'rgba(59,130,246,0.3)', boxShadow: '' })}
                 >
                   <FaBriefcase className="me-2" size={14} /> Open to Full-time Roles
                 </div>
                 <div
                   className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
-                  style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'all 0.25s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#10b981'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#10b981'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(16,185,129,0.35)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(16,185,129,0.1)'; e.currentTarget.style.color = '#10b981'; e.currentTarget.style.borderColor = 'rgba(16,185,129,0.3)'; e.currentTarget.style.boxShadow = ''; }}
+                  style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
+                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: '#10b981', color: '#fff', borderColor: '#10b981', boxShadow: '0 6px 20px rgba(16,185,129,0.35)' })}
+                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'rgba(16,185,129,0.1)', color: '#10b981', borderColor: 'rgba(16,185,129,0.3)', boxShadow: '' })}
                 >
                   <FaCode className="me-2" size={14} /> React · Node.js · TypeScript · Redis
                 </div>
@@ -337,16 +337,16 @@ const Home = () => {
                   { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
                   { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
                   { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' }
-                ].map((stat, i) => (
-                  <div className="col-sm-6 col-lg-3 col-6" key={i}>
+                ].map((stat) => (
+                  <div className="col-sm-6 col-lg-3 col-6" key={stat.label}>
                     <div className="p-3 rounded-3 h-100 d-flex flex-column" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease', cursor: 'default' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
                       <div className="d-flex align-items-center gap-2 mb-3">
                         <span style={{ flexShrink: 0 }}>{stat.icon}</span>
-                        <span style={{ color: 'var(--text-muted)', fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '700', lineHeight: '1.2' }}>{stat.label}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '700', lineHeight: '1.2' }}>{stat.label}</span>
                       </div>
                       <div className="mt-auto" style={{ color: 'var(--text-main)', fontWeight: '600', fontSize: '0.95rem', lineHeight: '1.4' }}>
                         {stat.val}
-                        {stat.sub && <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 'normal', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.sub}</div>}
+                        {stat.sub && <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'normal', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.sub}</div>}
                       </div>
                     </div>
                   </div>
@@ -495,7 +495,7 @@ const Home = () => {
                             color: '#10b981',
                             borderRadius: '6px',
                             padding: '2px 8px',
-                            fontSize: '0.68rem',
+                            fontSize: '0.75rem',
                             fontWeight: '700',
                             letterSpacing: '0.8px',
                             textTransform: 'uppercase',
@@ -517,7 +517,7 @@ const Home = () => {
                         'Pushed back in sprint planning when ticket scope was too vague; rewrote unclear acceptance criteria before writing a line of code',
                         'Traced a recurring API timeout to a missing index on a MongoDB query — fixed in 10 minutes once the root cause was visible',
                       ].map((item, i) => (
-                        <li key={i} className="d-flex align-items-start gap-3" style={{ color: '#cbd5e1', fontSize: '0.97rem', lineHeight: 1.65 }}>
+                        <li key={`exp-bullet-${i}`} className="d-flex align-items-start gap-3" style={{ color: '#cbd5e1', fontSize: '0.97rem', lineHeight: 1.65 }}>
                           <span style={{ color: '#10b981', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
                           <span>{item}</span>
                         </li>
@@ -574,7 +574,7 @@ const Home = () => {
 
                     {/* Tech Stack */}
                     <div>
-                      <p className="mb-2" style={{ color: '#64748b', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
+                      <p className="mb-2" style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
                         Tech Stack
                       </p>
                       <div className="d-flex flex-wrap gap-2">
@@ -666,7 +666,7 @@ const Home = () => {
                             color: '#60a5fa',
                             borderRadius: '6px',
                             padding: '2px 8px',
-                            fontSize: '0.68rem',
+                            fontSize: '0.75rem',
                             fontWeight: '700',
                             letterSpacing: '0.8px',
                             textTransform: 'uppercase',
@@ -680,7 +680,7 @@ const Home = () => {
                             color: '#10b981',
                             borderRadius: '6px',
                             padding: '2px 8px',
-                            fontSize: '0.68rem',
+                            fontSize: '0.75rem',
                             fontWeight: '700',
                             letterSpacing: '0.8px',
                             textTransform: 'uppercase',
@@ -705,7 +705,7 @@ const Home = () => {
                         { text: 'CollabDocs — multi-user document editor where two people can type at the same time without overwriting each other. Y.js CRDTs handle the conflict resolution automatically', link: 'https://collabdocs2026.vercel.app/' },
                         { text: 'Curlix — URL shortener with sub-10ms redirects. Redis sits in front of the DB, analytics go through BullMQ async so the redirect path stays fast', link: 'https://curlix.vercel.app' },
                       ].map((item, i) => (
-                        <li key={i} className="d-flex align-items-start gap-3" style={{ fontSize: '0.97rem', lineHeight: 1.65 }}>
+                        <li key={`proj-bullet-${i}`} className="d-flex align-items-start gap-3" style={{ fontSize: '0.97rem', lineHeight: 1.65 }}>
                           <span style={{ color: '#3b82f6', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
                           {item.link ? (
                             <a
@@ -727,7 +727,7 @@ const Home = () => {
 
                     {/* Technical decisions */}
                     <div>
-                      <p className="mb-3" style={{ color: '#64748b', fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
+                      <p className="mb-3" style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
                         Decisions that mattered
                       </p>
                       <div className="row g-2">
@@ -775,10 +775,10 @@ const Home = () => {
                               background: 'rgba(15,23,42,0.55)',
                               border: '1px solid rgba(59,130,246,0.15)',
                               borderRadius: '10px',
-                              transition: 'all 0.2s ease',
+                              transition: 'border-color 0.2s ease, transform 0.2s ease',
                             }}
-                              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(59,130,246,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { borderColor: 'rgba(59,130,246,0.4)', transform: 'translateY(-2px)' })}
+                              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { borderColor: 'rgba(59,130,246,0.15)', transform: 'translateY(0)' })}
                             >
                               <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
                                 width: '34px',
@@ -879,13 +879,13 @@ const Home = () => {
                       <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
                         background: 'rgba(15,23,42,0.6)',
                         borderRadius: '8px',
-                        transition: 'all 0.2s ease',
+                        transition: 'transform 0.2s ease, border-color 0.2s ease',
                         border: '1px solid rgba(255,255,255,0.05)',
                         cursor: 'default',
                         overflow: 'hidden'
                       }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; }}
+                        onMouseEnter={(e) => Object.assign(e.currentTarget.style, { transform: 'translateY(-2px)', borderColor: 'var(--accent)' })}
+                        onMouseLeave={(e) => Object.assign(e.currentTarget.style, { transform: 'translateY(0)', borderColor: 'rgba(255,255,255,0.05)' })}
                       >
                         <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
                           width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
@@ -994,7 +994,7 @@ const Home = () => {
                       style={{ width: '38px', height: '38px', objectFit: 'contain', backgroundColor: 'white', padding: '3px' }}
                     />
                     <div className="ms-3">
-                      <h6 className="fw-semibold mb-0" style={{ color: '#94a3b8', fontSize: '0.88rem' }}>Central Board Of Secondary Education — Class XII</h6>
+                      <h6 className="fw-semibold mb-0" style={{ color: '#94a3b8', fontSize: '0.88rem' }}>Central Board Of Secondary Education, Class XII</h6>
                     </div>
                   </div>
                   <div className="text-md-end">
@@ -1146,11 +1146,11 @@ const Home = () => {
                       target={target}
                       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
                       className="d-flex align-items-center gap-3 text-decoration-none"
-                      style={{ color: '#cbd5e1', transition: 'all 0.2s ease' }}
+                      style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}
                       onMouseEnter={e => { e.currentTarget.style.color = color; e.currentTarget.querySelector('.contact-icon-box').style.background = color; e.currentTarget.querySelector('.contact-icon-box').style.color = '#fff'; }}
                       onMouseLeave={e => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.querySelector('.contact-icon-box').style.background = bg; e.currentTarget.querySelector('.contact-icon-box').style.color = color; }}
                     >
-                      <div className="contact-icon-box d-flex align-items-center justify-content-center rounded flex-shrink-0" style={{ width: '42px', height: '42px', background: bg, color, transition: 'all 0.2s ease' }}>
+                      <div className="contact-icon-box d-flex align-items-center justify-content-center rounded flex-shrink-0" style={{ width: '42px', height: '42px', background: bg, color, transition: 'background-color 0.2s ease, color 0.2s ease' }}>
                         {icon}
                       </div>
                       <div className="d-flex flex-column">

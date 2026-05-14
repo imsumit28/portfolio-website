@@ -2,6 +2,19 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+// Shared pre-block style extracted to avoid repetitive inline objects
+const codeBlockStyle = {
+  background: '#0f172a',
+  border: '1px solid rgba(16,185,129,0.2)',
+  padding: '1rem',
+  borderRadius: '6px',
+  overflow: 'auto',
+  color: '#e2e8f0',
+  marginBottom: '1.5rem',
+  fontSize: '0.85rem',
+};
+const codeBlockLastStyle = { ...codeBlockStyle, marginBottom: 0 };
+
 const TestingGuide = () => {
   const navigate = useNavigate();
 
@@ -35,7 +48,7 @@ const TestingGuide = () => {
         <div style={{ color: '#cbd5e1', lineHeight: '1.8' }}>
           {/* Quick Start */}
           <section className="mb-5">
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Quick Start
             </h4>
             <div style={{ background: 'rgba(15,23,42,0.6)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '8px', padding: '1.5rem' }}>
@@ -74,7 +87,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
 
           {/* Test Structure */}
           <section className="mb-5">
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Test Structure
             </h4>
             <pre style={{ background: '#0f172a', border: '1px solid rgba(16,185,129,0.2)', padding: '1.5rem', borderRadius: '8px', overflow: 'auto', color: '#e2e8f0' }}>
@@ -93,7 +106,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
 
           {/* Coverage Goals */}
           <section className="mb-5">
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Test Coverage Goals
             </h4>
             <p style={{ marginBottom: '1rem' }}>Target: <strong style={{ color: '#10b981' }}>60%+ coverage</strong> on critical paths</p>
@@ -101,10 +114,10 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
               <table style={{ width: '100%', borderCollapse: 'collapse', color: '#cbd5e1', fontSize: '0.95rem' }}>
                 <thead>
                   <tr style={{ borderBottom: '2px solid rgba(16,185,129,0.3)' }}>
-                    <th style={{ textAlign: 'left', padding: '0.75rem', color: '#10b981', fontWeight: '700' }}>Module</th>
-                    <th style={{ textAlign: 'center', padding: '0.75rem', color: '#10b981', fontWeight: '700' }}>Current</th>
-                    <th style={{ textAlign: 'center', padding: '0.75rem', color: '#10b981', fontWeight: '700' }}>Target</th>
-                    <th style={{ textAlign: 'left', padding: '0.75rem', color: '#10b981', fontWeight: '700' }}>Coverage Includes</th>
+                    <th style={{ textAlign: 'left', padding: '0.75rem', color: '#10b981', fontWeight: 700 }}>Module</th>
+                    <th style={{ textAlign: 'center', padding: '0.75rem', color: '#10b981', fontWeight: 700 }}>Current</th>
+                    <th style={{ textAlign: 'center', padding: '0.75rem', color: '#10b981', fontWeight: 700 }}>Target</th>
+                    <th style={{ textAlign: 'left', padding: '0.75rem', color: '#10b981', fontWeight: 700 }}>Coverage Includes</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,12 +152,12 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
 
           {/* Writing Tests */}
           <section className="mb-5">
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Writing Tests
             </h4>
 
             <h5 style={{ color: '#10b981', marginBottom: '0.8rem', fontSize: '1.05rem' }}>1. Auth Flow Test Example</h5>
-            <pre style={{ background: '#0f172a', border: '1px solid rgba(16,185,129,0.2)', padding: '1rem', borderRadius: '6px', overflow: 'auto', color: '#e2e8f0', marginBottom: '1.5rem', fontSize: '0.85rem' }}>
+            <pre style={codeBlockStyle}>
 {`describe('POST /signup', () => {
   it('should create user with valid credentials', async () => {
     const res = await request(app)
@@ -163,7 +176,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
             </pre>
 
             <h5 style={{ color: '#10b981', marginBottom: '0.8rem', fontSize: '1.05rem' }}>2. Permission Test Example</h5>
-            <pre style={{ background: '#0f172a', border: '1px solid rgba(16,185,129,0.2)', padding: '1rem', borderRadius: '6px', overflow: 'auto', color: '#e2e8f0', marginBottom: '1.5rem', fontSize: '0.85rem' }}>
+            <pre style={codeBlockStyle}>
 {`describe('Document access control', () => {
   it('owner should read document', async () => {
     const res = await request(app)
@@ -177,7 +190,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
             </pre>
 
             <h5 style={{ color: '#10b981', marginBottom: '0.8rem', fontSize: '1.05rem' }}>3. WebSocket Sync Test Example</h5>
-            <pre style={{ background: '#0f172a', border: '1px solid rgba(16,185,129,0.2)', padding: '1rem', borderRadius: '6px', overflow: 'auto', color: '#e2e8f0', fontSize: '0.85rem' }}>
+            <pre style={codeBlockLastStyle}>
 {`describe('Y.js CRDT Sync', () => {
   it('should resolve concurrent edits', () => {
     const doc1 = new Y.Doc();
@@ -198,7 +211,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
 
           {/* Best Practices */}
           <section className="mb-5">
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Best Practices
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
@@ -207,7 +220,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
                 <ul style={{ margin: 0, paddingLeft: '1.5rem' }}>
                   <li style={{ marginBottom: '0.5rem' }}>Test behavior, not implementation</li>
                   <li style={{ marginBottom: '0.5rem' }}>Use meaningful test names</li>
-                  <li style={{ marginBottom: '0.5rem' }}>Isolate tests — no test order dependency</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Isolate tests; no test order dependency</li>
                   <li style={{ marginBottom: '0.5rem' }}>Clean up after tests</li>
                   <li style={{ marginBottom: '0.5rem' }}>Test error cases</li>
                   <li>Mock external services</li>
@@ -228,7 +241,7 @@ Coverage HTML report: server/coverage/lcov-report/index.html`}
 
           {/* Next Steps */}
           <section>
-            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: '700' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '1.3rem', marginBottom: '1rem', fontWeight: 600 }}>
               Next Steps
             </h4>
             <ol style={{ paddingLeft: '1.5rem' }}>

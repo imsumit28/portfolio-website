@@ -6,8 +6,10 @@ const ContactForm = () => {
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Functional update avoids stale-closure bugs when multiple fields change quickly
+  const updateFormField = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -42,17 +44,12 @@ const ContactForm = () => {
     color: '#f8fafc',
     padding: '14px 18px',
     fontSize: '0.95rem',
-    transition: 'all 0.3s ease',
+    transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
   };
 
-  const focusStyle = (e) => {
-    e.target.style.borderColor = '#10b981';
-    e.target.style.boxShadow = '0 0 0 3px rgba(16,185,129,0.1)';
-  };
-  const blurStyle = (e) => {
-    e.target.style.borderColor = 'rgba(255,255,255,0.1)';
-    e.target.style.boxShadow = 'none';
-  };
+  // Batch both style properties in a single assignment to avoid extra reflows
+  const onInputFocus = (e) => Object.assign(e.target.style, { borderColor: '#10b981', boxShadow: '0 0 0 3px rgba(16,185,129,0.1)' });
+  const onInputBlur  = (e) => Object.assign(e.target.style, { borderColor: 'rgba(255,255,255,0.1)', boxShadow: 'none' });
 
   return (
     <div className="position-relative" style={{ zIndex: 1 }}>
@@ -76,47 +73,50 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="row g-3 mb-3">
           <div className="col-md-6">
-            <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR NAME</label>
+            <label htmlFor="contact-name" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR NAME</label>
             <input
+              id="contact-name"
               type="text"
               style={inputStyle}
               className="form-control contact-input"
               name="name"
               value={formData.name}
-              onChange={handleChange}
-              onFocus={focusStyle}
-              onBlur={blurStyle}
+              onChange={updateFormField}
+              onFocus={onInputFocus}
+              onBlur={onInputBlur}
               required
               placeholder="Your name"
             />
           </div>
           <div className="col-md-6">
-            <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR EMAIL</label>
+            <label htmlFor="contact-email" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR EMAIL</label>
             <input
+              id="contact-email"
               type="email"
               style={inputStyle}
               className="form-control contact-input"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              onFocus={focusStyle}
-              onBlur={blurStyle}
+              onChange={updateFormField}
+              onFocus={onInputFocus}
+              onBlur={onInputBlur}
               required
               placeholder="you@example.com"
             />
           </div>
         </div>
         <div className="mb-4">
-          <label className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>MESSAGE</label>
+          <label htmlFor="contact-message" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>MESSAGE</label>
           <textarea
+            id="contact-message"
             style={{ ...inputStyle, resize: 'none' }}
             className="form-control contact-input"
             name="message"
             rows="5"
             value={formData.message}
-            onChange={handleChange}
-            onFocus={focusStyle}
-            onBlur={blurStyle}
+            onChange={updateFormField}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
             required
             placeholder="Tell me about your project, idea, or opportunity..."
           ></textarea>
@@ -128,7 +128,7 @@ const ContactForm = () => {
           disabled={isSubmitting}
         >
           {isSubmitting ? (
-            <><span className="spinner-border spinner-border-sm me-2" role="status"></span> Sending...</>
+            <><span className="spinner-border spinner-border-sm me-2" role="status"></span> Sending{'…'}</>
           ) : (
             'Send Message'
           )}

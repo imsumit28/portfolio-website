@@ -45,7 +45,7 @@ const Navbar = () => {
       setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     setTimeout(handleScroll, 100);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [currentPath]);
@@ -110,10 +110,10 @@ const Navbar = () => {
           left: 0,
           right: 0,
           width: '100%',
-          zIndex: 9999,
+          zIndex: 50,
           backgroundColor: 'rgba(8, 11, 26, 0.97)',
-          backdropFilter: 'blur(14px)',
-          WebkitBackdropFilter: 'blur(14px)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
           boxShadow: '0 2px 20px rgba(0,0,0,0.5)',
           borderBottom: '1px solid rgba(255,255,255,0.07)',
         }}
@@ -178,21 +178,21 @@ const Navbar = () => {
               display: 'block', width: '22px', height: '2px',
               background: menuOpen ? '#10b981' : '#f8fafc',
               borderRadius: '2px',
-              transition: 'all 0.3s ease',
+              transition: 'background-color 0.3s ease, transform 0.3s ease',
               transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'
             }} />
             <span style={{
               display: 'block', width: '22px', height: '2px',
               background: '#f8fafc',
               borderRadius: '2px',
-              transition: 'all 0.3s ease',
+              transition: 'opacity 0.3s ease',
               opacity: menuOpen ? 0 : 1,
             }} />
             <span style={{
               display: 'block', width: '22px', height: '2px',
               background: menuOpen ? '#10b981' : '#f8fafc',
               borderRadius: '2px',
-              transition: 'all 0.3s ease',
+              transition: 'background-color 0.3s ease, transform 0.3s ease',
               transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none'
             }} />
           </button>
@@ -202,12 +202,17 @@ const Navbar = () => {
       {/* Mobile drawer overlay */}
       {menuOpen && (
         <div
+          role="button"
+          aria-label="Close menu"
+          tabIndex={0}
           style={{
-            position: 'fixed', inset: 0, zIndex: 9998,
+            position: 'fixed', inset: 0, zIndex: 49,
             background: 'rgba(0,0,0,0.5)',
             backdropFilter: 'blur(4px)',
+            cursor: 'default',
           }}
           onClick={() => setMenuOpen(false)}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMenuOpen(false); } }}
         />
       )}
 
@@ -220,10 +225,10 @@ const Navbar = () => {
           bottom: 0,
           width: '75vw',
           maxWidth: '300px',
-          zIndex: 9999,
+          zIndex: 50,
           background: 'rgba(8, 11, 26, 0.98)',
           borderLeft: '1px solid rgba(16,185,129,0.2)',
-          backdropFilter: 'blur(20px)',
+          backdropFilter: 'blur(12px)',
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
           display: 'flex',
@@ -274,7 +279,7 @@ const Navbar = () => {
                       fontSize: '1rem',
                       borderLeft: isActive ? '3px solid #10b981' : '3px solid transparent',
                       background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
-                      transition: 'all 0.2s ease',
+                      transition: 'color 0.2s ease, font-weight 0.2s ease, border-color 0.2s ease, background-color 0.2s ease',
                     }}
                   >
                     {label}
@@ -294,7 +299,7 @@ const Navbar = () => {
                       fontSize: '1rem',
                       borderLeft: isActive ? '3px solid #10b981' : '3px solid transparent',
                       background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
-                      transition: 'all 0.2s ease',
+                      transition: 'color 0.2s ease, font-weight 0.2s ease, border-color 0.2s ease, background-color 0.2s ease',
                     }}
                   >
                     {label}

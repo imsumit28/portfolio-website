@@ -154,7 +154,7 @@ const AdminDashboard = () => {
             onClick={() => setActiveTab('messages')}
           >
             Messages {messages.filter(m => !m.isRead).length > 0 && 
-              <span className="badge bg-danger ms-2 rounded-pill" style={{ fontSize: '10px' }}>{messages.filter(m => !m.isRead).length}</span>
+              <span className="badge bg-danger ms-2 rounded-pill" style={{ fontSize: '12px' }}>{messages.filter(m => !m.isRead).length}</span>
             }
           </button>
         </li>
@@ -193,7 +193,7 @@ const AdminDashboard = () => {
                         {project.image ? (
                           <img src={`${ASSET_BASE_URL}${project.image}`} alt={project.title} className="rounded-3" style={{width: '60px', height: '40px', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.1)'}} />
                         ) : (
-                          <div className="rounded-3 d-flex align-items-center justify-content-center" style={{width: '60px', height: '40px', background: 'rgba(255,255,255,0.05)', color: 'rgba(148,163,184,0.95)', fontSize: '10px'}}>No Img</div>
+                          <div className="rounded-3 d-flex align-items-center justify-content-center" style={{width: '60px', height: '40px', background: 'rgba(255,255,255,0.05)', color: 'rgba(148,163,184,0.95)', fontSize: '12px'}}>No Img</div>
                         )}
                       </td>
                       <td className="fw-medium py-3">{project.title}</td>
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
                       </p>
                       
                       <div className="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-10">
-                        <small style={{ color: 'rgba(148,163,184,0.9)' }}>{new Date(msg.createdAt).toLocaleDateString()}</small>
+                        <small suppressHydrationWarning style={{ color: 'rgba(148,163,184,0.9)' }}>{new Date(msg.createdAt).toLocaleDateString()}</small>
                         {!msg.isRead && (
                           <button 
                             className="btn-global btn-global-primary btn-global-sm d-flex align-items-center" 
@@ -281,7 +281,7 @@ const AdminDashboard = () => {
 
       {/* Project Modal */}
       {showProjectModal && (
-        <div className="modal d-block custom-scrollbar" style={{ backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)', zIndex: 9999, position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', overflowY: 'auto', padding: '20px 0' }}>
+        <div className="modal d-block custom-scrollbar" style={{ backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)', zIndex: 50, position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', overflowY: 'auto', padding: '20px 0' }}>
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content" style={{ background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', overflow: 'hidden', maxWidth: '600px', margin: 'auto' }}>
               <div className="modal-header border-bottom border-secondary border-opacity-10 p-3 px-4">
@@ -299,82 +299,89 @@ const AdminDashboard = () => {
                 <form onSubmit={handleProjectSubmit}>
                   <div className="row g-2">
                     <div className="col-md-9">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Title *</label>
-                      <input 
-                        type="text" 
-                        className="form-control" 
+                      <label htmlFor="project-title" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Title *</label>
+                      <input
+                        id="project-title"
+                        type="text"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        value={projectForm.title} 
-                        onChange={(e) => setProjectForm({...projectForm, title: e.target.value})} 
-                        required 
+                        value={projectForm.title}
+                        onChange={(e) => setProjectForm(prev => ({...prev, title: e.target.value}))}
+                        required
                       />
                     </div>
                     <div className="col-md-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</label>
-                      <input 
-                        type="number" 
-                        className="form-control" 
+                      <label htmlFor="project-order" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</label>
+                      <input
+                        id="project-order"
+                        type="number"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        value={projectForm.order} 
-                        onChange={(e) => setProjectForm({...projectForm, order: e.target.value})} 
+                        value={projectForm.order}
+                        onChange={(e) => setProjectForm(prev => ({...prev, order: e.target.value}))}
                       />
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Description *</label>
-                      <textarea 
-                        className="form-control" 
-                        rows="3" 
+                      <label htmlFor="project-description" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Description *</label>
+                      <textarea
+                        id="project-description"
+                        className="form-control"
+                        rows="3"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        value={projectForm.description} 
-                        onChange={(e) => setProjectForm({...projectForm, description: e.target.value})} 
+                        value={projectForm.description}
+                        onChange={(e) => setProjectForm(prev => ({...prev, description: e.target.value}))}
                         required
                       ></textarea>
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Technologies</label>
-                      <input 
-                        type="text" 
-                        className="form-control" 
+                      <label htmlFor="project-tech" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Technologies</label>
+                      <input
+                        id="project-tech"
+                        type="text"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        placeholder="React, Node.js, MongoDB" 
-                        value={projectForm.technologies} 
-                        onChange={(e) => setProjectForm({...projectForm, technologies: e.target.value})} 
+                        placeholder="React, Node.js, MongoDB"
+                        value={projectForm.technologies}
+                        onChange={(e) => setProjectForm(prev => ({...prev, technologies: e.target.value}))}
                       />
                     </div>
                     
                     <div className="col-md-6 mt-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Live Link</label>
-                      <input 
-                        type="url" 
-                        className="form-control" 
+                      <label htmlFor="project-live-link" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Live Link</label>
+                      <input
+                        id="project-live-link"
+                        type="url"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        placeholder="https://" 
-                        value={projectForm.liveLink} 
-                        onChange={(e) => setProjectForm({...projectForm, liveLink: e.target.value})} 
+                        placeholder="https://"
+                        value={projectForm.liveLink}
+                        onChange={(e) => setProjectForm(prev => ({...prev, liveLink: e.target.value}))}
                       />
                     </div>
                     <div className="col-md-6 mt-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>GitHub URL</label>
-                      <input 
-                        type="url" 
-                        className="form-control" 
+                      <label htmlFor="project-github-url" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>GitHub URL</label>
+                      <input
+                        id="project-github-url"
+                        type="url"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '10px', fontSize: '0.9rem' }}
-                        placeholder="https://" 
-                        value={projectForm.githubLink} 
-                        onChange={(e) => setProjectForm({...projectForm, githubLink: e.target.value})} 
+                        placeholder="https://"
+                        value={projectForm.githubLink}
+                        onChange={(e) => setProjectForm(prev => ({...prev, githubLink: e.target.value}))}
                       />
                     </div>
                     
                     <div className="col-12 mt-3">
-                      <label className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Project Image</label>
-                      <input 
-                        type="file" 
-                        className="form-control" 
+                      <label htmlFor="project-image" className="form-label fw-medium small uppercase tracking-wider mb-1" style={{ color: 'rgba(148,163,184,0.95)' }}>Project Image</label>
+                      <input
+                        id="project-image"
+                        type="file"
+                        className="form-control"
                         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '10px', padding: '8px', fontSize: '0.85rem' }}
-                        accept="image/*" 
-                        onChange={(e) => setImageFile(e.target.files[0])} 
+                        accept="image/*"
+                        onChange={(e) => setImageFile(e.target.files[0])}
                       />
                       {editingProject && editingProject.image && <small className="d-block mt-1" style={{ fontSize: '0.75rem', color: 'rgba(148,163,184,0.85)' }}>Current: {editingProject.image}</small>}
                     </div>

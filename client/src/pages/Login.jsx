@@ -44,10 +44,11 @@ const Login = () => {
           
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Email address</label>
-              <input 
-                type="email" 
-                className="form-control form-control-lg" 
+              <label htmlFor="login-email" className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Email address</label>
+              <input
+                id="login-email"
+                type="email"
+                className="form-control form-control-lg"
                 style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -55,10 +56,11 @@ const Login = () => {
               />
             </div>
             <div className="mb-5">
-              <label className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Password</label>
-              <input 
-                type="password" 
-                className="form-control form-control-lg" 
+              <label htmlFor="login-password" className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Password</label>
+              <input
+                id="login-password"
+                type="password"
+                className="form-control form-control-lg"
                 style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

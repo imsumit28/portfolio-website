@@ -23,12 +23,10 @@ const IntroAnimation = () => {
 
     const originalOverflow = document.body.style.overflow;
     const originalTouchAction = document.body.style.touchAction;
-    document.body.style.overflow = 'hidden';
-    document.body.style.touchAction = 'none';
+    Object.assign(document.body.style, { overflow: 'hidden', touchAction: 'none' });
 
     const restoreScroll = () => {
-      document.body.style.overflow = originalOverflow;
-      document.body.style.touchAction = originalTouchAction;
+      Object.assign(document.body.style, { overflow: originalOverflow, touchAction: originalTouchAction });
     };
 
     const timers = [

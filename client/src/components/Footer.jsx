@@ -56,7 +56,7 @@ const Footer = () => {
           margin: '0 auto 1.75rem',
           lineHeight: '1.7'
         }}>
-          Built and deployed systems using WebSockets, Redis queues, and CRDT-based sync — handling concurrent users in real-time.
+          Built and deployed systems using WebSockets, Redis queues, and CRDT-based sync, handling concurrent users in real-time.
         </p>
 
         {/* CTA Button */}
@@ -85,13 +85,13 @@ const Footer = () => {
             >
               <div
                 className="social-icon-btn"
-                style={{ fontSize: '1.25rem', transition: 'all 0.25s ease' }}
-                onMouseEnter={e => { e.currentTarget.style.background = color; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = color; e.currentTarget.style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = ''; e.currentTarget.style.borderColor = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; }}
+                style={{ fontSize: '1.25rem', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease' }}
+                onMouseEnter={e => Object.assign(e.currentTarget.style, { background: color, color: '#fff', borderColor: color, boxShadow: `0 6px 20px ${shadow}`, transform: 'translateY(-3px) scale(1.08)' })}
+                onMouseLeave={e => Object.assign(e.currentTarget.style, { background: '', color: '', borderColor: '', boxShadow: '', transform: '' })}
               >
                 {icon}
               </div>
-              <span style={{ color: '#64748b', fontSize: '0.72rem', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+              <span style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                 {label}
               </span>
             </a>

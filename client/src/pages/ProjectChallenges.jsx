@@ -68,10 +68,10 @@ const ProjectChallenges = () => {
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
                 fontSize: '0.75rem',
-                letterSpacing: '1.2px',
+                letterSpacing: '1px',
               }}
             >
-              {project.title.toUpperCase()} — THE PROBLEM
+              {project.title.toUpperCase()}: THE PROBLEM
             </span>
             <p className="mb-0 mt-2" style={{ color: '#64748b', fontSize: '0.93rem', lineHeight: '1.65' }}>
               {challenge.context}
@@ -96,15 +96,16 @@ const ProjectChallenges = () => {
               }}
             >
               {challenge.codeLines.map((line, i) => {
-                if (line.t === 'spacer') return <br key={i} />;
+                const key = `${line.t}-${i}`;
+                if (line.t === 'spacer') return <br key={key} />;
                 if (line.t === 'comment')
                   return (
-                    <span key={i} style={{ color: '#475569', display: 'block' }}>
+                    <span key={key} style={{ color: '#475569', display: 'block' }}>
                       {line.text}
                     </span>
                   );
                 return (
-                  <span key={i} style={{ color: '#e2e8f0', display: 'block' }}>
+                  <span key={key} style={{ color: '#e2e8f0', display: 'block' }}>
                     {line.text}
                   </span>
                 );
@@ -119,7 +120,7 @@ const ProjectChallenges = () => {
                 color: challenge.accentColor,
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: '0.72rem',
+                fontSize: '0.75rem',
                 letterSpacing: '1px',
                 textTransform: 'uppercase',
               }}

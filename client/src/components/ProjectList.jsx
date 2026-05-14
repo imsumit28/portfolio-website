@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
 
-const ProjectList = ({ projects = [], loading = false }) => {
+const EMPTY_PROJECTS = [];
+
+const ProjectList = ({ projects = EMPTY_PROJECTS, loading = false }) => {
   const [selectedTech, setSelectedTech] = useState(null);
 
   if (loading) {
@@ -13,7 +15,7 @@ const ProjectList = ({ projects = [], loading = false }) => {
   }
 
   // Get all unique technologies for filter
-  const allTechs = [...new Set(projects.flatMap(p => p.tech || []))].sort();
+  const allTechs = [...new Set(projects.flatMap(p => p.tech || []))].toSorted();
 
   // Filter projects based on selected tech
   const filteredProjects = selectedTech
