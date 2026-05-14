@@ -144,13 +144,13 @@ const Navbar = () => {
                     {label}
                   </Link>
                 ) : (
-                  <a
+                  <button
+                    type="button"
                     className={`nav-link nav-link-custom ${currentPath === '/' && activeSection === section ? 'active' : ''}`}
-                    href={`#${section}`}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(section); }}
+                    onClick={() => handleNavClick(section)}
                   >
                     {label}
-                  </a>
+                  </button>
                 )}
               </li>
             ))}
@@ -228,7 +228,7 @@ const Navbar = () => {
           zIndex: 50,
           background: 'rgba(8, 11, 26, 0.98)',
           borderLeft: '1px solid rgba(16,185,129,0.2)',
-          backdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(8px)',
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
           display: 'flex',
@@ -285,25 +285,28 @@ const Navbar = () => {
                     {label}
                   </Link>
                 ) : (
-                  <a
-                    href={`#${section}`}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(section); }}
+                  <button
+                    type="button"
+                    onClick={() => handleNavClick(section)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '12px',
                       padding: '14px 28px',
                       color: isActive ? '#10b981' : '#cbd5e1',
-                      textDecoration: 'none',
+                      background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
                       fontWeight: isActive ? '600' : '400',
                       fontSize: '1rem',
+                      border: 'none',
                       borderLeft: isActive ? '3px solid #10b981' : '3px solid transparent',
-                      background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
+                      width: '100%',
+                      textAlign: 'left',
+                      cursor: 'pointer',
                       transition: 'color 0.2s ease, font-weight 0.2s ease, border-color 0.2s ease, background-color 0.2s ease',
                     }}
                   >
                     {label}
-                  </a>
+                  </button>
                 )}
               </li>
             );

@@ -208,8 +208,8 @@ const Home = () => {
                     rel={target === '_blank' ? 'noopener noreferrer' : undefined}
                     className="text-decoration-none d-flex flex-column align-items-center gap-1"
                     style={{ transition: 'transform 0.2s ease' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.querySelector('.cta-icon-box').style.borderColor = color; e.currentTarget.querySelector('.cta-icon-box').style.boxShadow = `0 6px 20px ${shadow}`; e.currentTarget.querySelector('.cta-icon-box').style.color = color; e.currentTarget.querySelector('.cta-label').style.color = color; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.querySelector('.cta-icon-box').style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.querySelector('.cta-icon-box').style.boxShadow = ''; e.currentTarget.querySelector('.cta-icon-box').style.color = '#94a3b8'; e.currentTarget.querySelector('.cta-label').style.color = '#64748b'; }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; Object.assign(e.currentTarget.querySelector('.cta-icon-box').style, { borderColor: color, boxShadow: `0 6px 20px ${shadow}`, color }); e.currentTarget.querySelector('.cta-label').style.color = color; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = ''; Object.assign(e.currentTarget.querySelector('.cta-icon-box').style, { borderColor: 'rgba(255,255,255,0.08)', boxShadow: '', color: '#94a3b8' }); e.currentTarget.querySelector('.cta-label').style.color = '#64748b'; }}
                   >
                     <div
                       className="cta-icon-box d-flex align-items-center justify-content-center"
@@ -300,13 +300,13 @@ const Home = () => {
                 <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://devconnect2026.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>DevConnect</a> → real-time developer network</li>
               </ul>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live — not just a localhost demo.
+                All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live, not just a localhost demo.
               </p>
               <p className="mb-4" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                Currently <strong>open to full-time roles</strong> — remote or India-based.
+                Currently <strong>open to full-time roles</strong>, remote or India-based.
               </p>
 
-              <p className="mb-5 fst-italic" style={{ color: '#10b981', fontSize: '1.1rem', borderLeft: '3px solid #10b981', paddingLeft: '15px' }}>
+              <p className="mb-5 fst-italic" style={{ color: '#10b981', fontSize: '1.1rem', borderLeft: '2px solid rgba(16,185,129,0.4)', paddingLeft: '15px' }}>
                 "The interesting problems happen when two users hit save at the same time. That's what I build for."
               </p>
 
@@ -385,7 +385,7 @@ const Home = () => {
                     height: '150px',
                     background: 'rgba(255,255,255,0.04)',
                     borderRadius: '8px',
-                    animation: 'pulse 1.5s ease-in-out infinite'
+                    animation: 'pulse 0.8s ease-in-out infinite'
                   }} />
                 }>
                   <GitHubCalendar
@@ -685,7 +685,7 @@ const Home = () => {
                             letterSpacing: '0.8px',
                             textTransform: 'uppercase',
                           }}>
-                            <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse 2s infinite' }}></span>
+                            <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse 0.8s infinite' }}></span>
                             Active
                           </span>
                         </div>
@@ -713,8 +713,8 @@ const Home = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{ color: '#cbd5e1', textDecoration: 'none', transition: 'color 0.2s ease', borderBottom: '1px dashed rgba(59,130,246,0.25)' }}
-                              onMouseEnter={(e) => { e.currentTarget.style.color = '#60a5fa'; e.currentTarget.style.borderBottomColor = '#60a5fa'; }}
-                              onMouseLeave={(e) => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.borderBottomColor = 'rgba(59,130,246,0.25)'; }}
+                              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { color: '#60a5fa', borderBottomColor: '#60a5fa' })}
+                              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { color: '#cbd5e1', borderBottomColor: 'rgba(59,130,246,0.25)' })}
                             >
                               {item.text}
                             </a>
@@ -870,7 +870,7 @@ const Home = () => {
               }
             ].map((section, idx) => (
               <div key={section.category} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '3px solid var(--accent)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '2px solid rgba(16,185,129,0.4)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   {section.category}
                 </h6>
                 <div className="row g-2">
@@ -1147,8 +1147,8 @@ const Home = () => {
                       rel={target === '_blank' ? 'noopener noreferrer' : undefined}
                       className="d-flex align-items-center gap-3 text-decoration-none"
                       style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}
-                      onMouseEnter={e => { e.currentTarget.style.color = color; e.currentTarget.querySelector('.contact-icon-box').style.background = color; e.currentTarget.querySelector('.contact-icon-box').style.color = '#fff'; }}
-                      onMouseLeave={e => { e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.querySelector('.contact-icon-box').style.background = bg; e.currentTarget.querySelector('.contact-icon-box').style.color = color; }}
+                      onMouseEnter={e => { e.currentTarget.style.color = color; Object.assign(e.currentTarget.querySelector('.contact-icon-box').style, { background: color, color: '#fff' }); }}
+                      onMouseLeave={e => { e.currentTarget.style.color = '#cbd5e1'; Object.assign(e.currentTarget.querySelector('.contact-icon-box').style, { background: bg, color }); }}
                     >
                       <div className="contact-icon-box d-flex align-items-center justify-content-center rounded flex-shrink-0" style={{ width: '42px', height: '42px', background: bg, color, transition: 'background-color 0.2s ease, color 0.2s ease' }}>
                         {icon}

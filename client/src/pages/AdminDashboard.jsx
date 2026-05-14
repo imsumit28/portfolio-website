@@ -4,6 +4,19 @@ import { AuthContext } from '../context/AuthContext';
 import api, { ASSET_BASE_URL } from '../utils/api';
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaEnvelope } from 'react-icons/fa';
 
+const MODAL_OVERLAY_STYLE = {
+  backgroundColor: 'rgba(0,0,0,0.85)',
+  backdropFilter: 'blur(8px)',
+  zIndex: 50,
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  overflowY: 'auto',
+  padding: '20px 0',
+};
+
 const AdminDashboard = () => {
   const { user } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState('projects');
@@ -281,7 +294,7 @@ const AdminDashboard = () => {
 
       {/* Project Modal */}
       {showProjectModal && (
-        <div className="modal d-block custom-scrollbar" style={{ backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)', zIndex: 50, position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', overflowY: 'auto', padding: '20px 0' }}>
+        <div className="modal d-block custom-scrollbar" style={MODAL_OVERLAY_STYLE}>
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content" style={{ background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', overflow: 'hidden', maxWidth: '600px', margin: 'auto' }}>
               <div className="modal-header border-bottom border-secondary border-opacity-10 p-3 px-4">

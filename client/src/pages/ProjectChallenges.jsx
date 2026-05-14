@@ -68,7 +68,7 @@ const ProjectChallenges = () => {
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
                 fontSize: '0.75rem',
-                letterSpacing: '1px',
+                letterSpacing: '0.5px',
               }}
             >
               {project.title.toUpperCase()}: THE PROBLEM
