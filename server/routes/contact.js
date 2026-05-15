@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const rateLimit = require('express-rate-limit');
 const Contact = require('../models/Contact');
-const { protect } = require('../middleware/auth');
+const { protect, requireAdmin } = require('../middleware/auth');
 
 // Rate limiter: max 3 requests per 15 minutes
 const contactLimiter = rateLimit({
@@ -70,7 +70,7 @@ router.post('/', contactLimiter, async (req, res) => {
 });
 
 // @route   GET api/contact
-router.get('/', protect, async (req, res) => {
+router.get('/', protect, requireAdmin, async (req, res) => {
   try {
     const messages = await Contact.find().sort({ createdAt: -1 });
     res.json(messages);
@@ -80,7 +80,7 @@ router.get('/', protect, async (req, res) => {
 });
 
 // @route   PUT api/contact/:id/read
-router.put('/:id/read', protect, async (req, res) => {
+router.put('/:id/read', protect, requireAdmin, async (req, res) => {
   try {
     const message = await Contact.findById(req.params.id);
     if (!message) return res.status(404).json({ message: 'Message not found' });

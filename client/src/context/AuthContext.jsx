@@ -9,28 +9,30 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkUser = async () => {
-      if (localStorage.getItem('token')) {
-        try {
-          const res = await api.get('/auth/user');
-          setUser(res.data);
-        } catch (error) {
-          localStorage.removeItem('token');
-        }
+      try {
+        const res = await api.get('/auth/user');
+        setUser(res.data);
+      } catch {
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     checkUser();
   }, []);
 
   const login = async (email, password) => {
     const res = await api.post('/auth/login', { email, password });
-    localStorage.setItem('token', res.data.token);
     setUser(res.data.user);
     return true;
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
+  const logout = async () => {
+    try {
+      await api.post('/auth/logout');
+    } catch {
+      // ignore — cookie may already be invalid
+    }
     setUser(null);
   };
 

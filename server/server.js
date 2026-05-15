@@ -2,6 +2,19 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 
+// Fail fast on insecure config
+const requiredEnv = ['MONGODB_URI', 'JWT_SECRET'];
+for (const key of requiredEnv) {
+  if (!process.env[key]) {
+    console.error(`FATAL: ${key} is not set`);
+    process.exit(1);
+  }
+}
+if (process.env.JWT_SECRET.length < 32) {
+  console.error('FATAL: JWT_SECRET must be at least 32 characters');
+  process.exit(1);
+}
+
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB connection error:', err));
