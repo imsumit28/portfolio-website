@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import VisitorCounter from './VisitorCounter';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -108,6 +109,11 @@ const Footer = () => {
         }}>
           Available for Full-Time &nbsp;·&nbsp; Remote / India
         </p>
+
+        {/* Visitor counter */}
+        <div className="mb-3">
+          <VisitorCounter />
+        </div>
 
         {/* Copyright */}
         <p className="footer-copyright mb-0">
