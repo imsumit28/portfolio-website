@@ -17,6 +17,7 @@ describe('Contact validation', () => {
     jest.clearAllMocks();
     mockSave.mockResolvedValue({});
     delete process.env.WEB3FORMS_ACCESS_KEY;
+    global.fetch = jest.fn();
   });
 
   it('rejects missing payload fields', async () => {
@@ -42,19 +43,44 @@ describe('Contact validation', () => {
     expect(res.body.message).toMatch(/invalid email/i);
   });
 
-  it('accepts valid payload and stores normalized values', async () => {
+  it('stores valid payload and reports missing email configuration', async () => {
     const res = await request(app).post('/api/contact').send({
       name: '  Sumit Kumar  ',
       email: '  SUMIT@EXAMPLE.COM  ',
       message: '  Looking forward to connecting.  '
     });
 
-    expect(res.statusCode).toBe(201);
+    expect(res.statusCode).toBe(202);
+    expect(res.body.message).toMatch(/not configured/i);
     expect(Contact).toHaveBeenCalledWith({
       name: 'Sumit Kumar',
       email: 'sumit@example.com',
       message: 'Looking forward to connecting.'
     });
     expect(mockSave).toHaveBeenCalled();
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it('sends notification when Web3Forms is configured', async () => {
+    process.env.WEB3FORMS_ACCESS_KEY = 'test-access-key';
+    global.fetch.mockResolvedValue({ ok: true });
+
+    const res = await request(app).post('/api/contact').send({
+      name: 'Sumit Kumar',
+      email: 'sumit@example.com',
+      message: 'Looking forward to connecting.'
+    });
+
+    expect(res.statusCode).toBe(201);
+    expect(global.fetch).toHaveBeenCalledWith(
+      'https://api.web3forms.com/submit',
+      expect.objectContaining({
+        method: 'POST',
+        headers: expect.objectContaining({
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        })
+      })
+    );
   });
 });

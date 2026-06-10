@@ -26,9 +26,12 @@ const ContactForm = () => {
 
     try {
       // Backend handles persistence and notification delivery.
-      await api.post('/contact', formData);
+      const response = await api.post('/contact', formData);
 
-      setStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+      setStatus({
+        type: response.status === 202 ? 'warning' : 'success',
+        message: response.data?.message || 'Message sent successfully! I will get back to you soon.'
+      });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setStatus({ type: 'danger', message: 'Failed to send message. Please try again later.' });

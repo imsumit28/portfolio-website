@@ -7,11 +7,45 @@ const { protect, requireAdmin } = require('../middleware/auth');
 // Rate limiter: max 3 requests per 15 minutes
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 3,
+  max: process.env.NODE_ENV === 'test' ? 100 : 3,
   message: { message: 'Too many messages sent. Please wait 15 minutes before sending another.' },
   standardHeaders: true,
   legacyHeaders: false,
 });
+
+const sendWeb3FormsNotification = async ({ name, email, message }) => {
+  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+  if (!accessKey) {
+    return { ok: false, reason: 'missing_key' };
+  }
+
+  const response = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      access_key: accessKey,
+      name,
+      email,
+      message,
+      subject: `New Portfolio Message from ${name}`,
+      from_name: 'Portfolio Contact'
+    })
+  });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => '');
+    console.error('Web3Forms request failed', {
+      status: response.status,
+      body: body.slice(0, 500)
+    });
+    return { ok: false, reason: 'provider_error', status: response.status };
+  }
+
+  return { ok: true };
+};
 
 // @route   POST api/contact
 router.post('/', contactLimiter, async (req, res) => {
@@ -39,27 +73,23 @@ router.post('/', contactLimiter, async (req, res) => {
     });
     await contact.save();
 
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-    if (accessKey) {
-      const web3FormsResponse = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: normalizedName,
-          email: normalizedEmail,
-          message: normalizedMessage,
-          subject: `New Portfolio Message from ${normalizedName}`,
-          from_name: 'Portfolio Contact'
-        })
-      });
+    const notification = await sendWeb3FormsNotification({
+      name: normalizedName,
+      email: normalizedEmail,
+      message: normalizedMessage
+    });
 
-      if (!web3FormsResponse.ok) {
-        console.error('Web3Forms request failed with status', web3FormsResponse.status);
+    if (!notification.ok) {
+      if (notification.reason === 'missing_key') {
+        console.error('WEB3FORMS_ACCESS_KEY is not set; contact message was saved but no email was sent.');
+        return res.status(202).json({
+          message: 'Message saved, but email notification is not configured.'
+        });
       }
+
+      return res.status(502).json({
+        message: 'Message saved, but email notification failed. Please try again later.'
+      });
     }
 
     res.status(201).json({ message: 'Message sent successfully' });
