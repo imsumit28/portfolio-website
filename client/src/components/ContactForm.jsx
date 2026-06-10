@@ -34,7 +34,8 @@ const ContactForm = () => {
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      setStatus({ type: 'danger', message: 'Failed to send message. Please try again later.' });
+      const message = error.response?.data?.message || error.message || 'Failed to send message. Please try again later.';
+      setStatus({ type: 'danger', message });
     } finally {
       setIsSubmitting(false);
     }
