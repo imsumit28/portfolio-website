@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
 import ContactForm from '../components/ContactForm';
@@ -34,6 +35,22 @@ const Home = () => {
     const top = sectionId === 'home' ? 0 : el.getBoundingClientRect().top + window.scrollY - 90;
     window.scrollTo({ top, behavior: 'smooth' });
   };
+
+  const experienceContributions = [
+    'Developed React.js frontend features used in production.',
+    'Built and maintained Node.js REST APIs for core product workflows.',
+    'Worked with MongoDB queries and backend integrations across modules.',
+    'Investigated and resolved production bugs with engineering and QA teams.',
+  ];
+
+  const experienceTechnologies = ['React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Git', 'Agile'];
+
+  const areasOfWork = [
+    { title: 'Frontend Development', subtitle: 'React.js Components', icon: <FaReact size={16} /> },
+    { title: 'Backend APIs', subtitle: 'Node.js + Express', icon: <FaServer size={16} /> },
+    { title: 'Database', subtitle: 'MongoDB', icon: <FaDatabase size={16} /> },
+    { title: 'Bug Fixing', subtitle: 'Production Support', icon: <FaShieldAlt size={16} /> },
+  ];
 
   return (
     <div>
@@ -407,406 +424,151 @@ const Home = () => {
         </div>
       </section>
 
-{/* Experience Section */}
+      {/* Experience Section */}
       <section className="py-5" id="experience">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title" style={{ width: '145px' }}>EXPERIENCE</h2>
             <div className="section-line"></div>
           </div>
-
-          {/* Timeline container */}
-          <div className="position-relative mt-5">
-            {/* Vertical timeline rail */}
-            <div className="d-none d-md-block position-absolute" style={{
-              left: '23px',
-              top: '50px',
-              bottom: '50px',
-              width: '2px',
-              background: 'linear-gradient(180deg, rgba(16,185,129,0.55) 0%, rgba(16,185,129,0.25) 35%, rgba(59,130,246,0.35) 70%, rgba(255,255,255,0.04) 100%)',
-              zIndex: 0,
-            }}></div>
-
-            {/* === CARD 1: Internship === */}
-            <div className="position-relative mb-4" data-aos="fade-up">
-              {/* Timeline node */}
-              <div className="d-none d-md-flex position-absolute align-items-center justify-content-center" style={{
-                left: '12px',
-                top: '50px',
-                width: '24px',
-                height: '24px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #10b981, #059669)',
-                boxShadow: '0 0 0 5px rgba(16,185,129,0.12), 0 0 20px rgba(16,185,129,0.45)',
-                zIndex: 2,
-              }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fff' }}></span>
-              </div>
-
-              <div className="ms-md-5">
-                <div className="position-relative p-4 p-md-5 overflow-hidden" style={{
-                  background: 'linear-gradient(135deg, rgba(16,185,129,0.07) 0%, rgba(15,23,42,0.85) 55%, rgba(15,23,42,0.95) 100%)',
-                  border: '1px solid rgba(16,185,129,0.22)',
-                  borderRadius: '18px',
-                  boxShadow: '0 0 50px rgba(16,185,129,0.06), 0 25px 60px rgba(0,0,0,0.4)',
-                }}>
-                  {/* Decorative blobs */}
-                  <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-                  <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-
-                  <div className="position-relative" style={{ zIndex: 1 }}>
-                    {/* Date pill (top-right) */}
-                    <div className="d-flex justify-content-end mb-3">
-                      <span style={{
-                        background: 'rgba(16,185,129,0.12)',
-                        border: '1px solid rgba(16,185,129,0.3)',
-                        color: '#10b981',
-                        borderRadius: '999px',
-                        padding: '5px 14px',
-                        fontSize: '0.75rem',
-                        fontWeight: '700',
-                        letterSpacing: '0.5px',
-                        textTransform: 'uppercase',
-                        whiteSpace: 'nowrap',
-                      }}>
-                        June 2025 – August 2025
-                      </span>
+          <motion.div
+            className="mt-5"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+          >
+            <motion.article
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="rounded-4 p-4 p-md-5 backdrop-blur-sm"
+              style={{
+                background: 'linear-gradient(145deg, rgba(7,18,41,0.85) 0%, rgba(2,8,23,0.92) 100%)',
+                border: '1px solid rgba(45,212,191,0.28)',
+                boxShadow: '0 18px 42px rgba(0,0,0,0.38), 0 0 0 1px rgba(45,212,191,0.12)',
+              }}
+            >
+              <div className="d-flex flex-column gap-4">
+                <div className="d-flex flex-column flex-md-row justify-content-between gap-4">
+                  <div className="d-flex align-items-start gap-3">
+                    <div
+                      className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        background: 'rgba(45,212,191,0.16)',
+                        border: '1px solid rgba(45,212,191,0.3)',
+                        color: '#5eead4',
+                      }}
+                      aria-hidden="true"
+                    >
+                      <FaBriefcase size={22} />
                     </div>
-
-                    {/* Header */}
-                    <div className="d-flex align-items-start gap-3 mb-4">
-                      <div className="d-flex align-items-center justify-content-center rounded-3 shadow flex-shrink-0" style={{
-                        width: '54px',
-                        height: '54px',
-                        background: 'linear-gradient(135deg, #10b981, #059669)',
-                      }}>
-                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
-                          <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
-                            Full Stack Developer Intern
-                          </h4>
-                          <span style={{
-                            background: 'rgba(16,185,129,0.1)',
-                            border: '1px solid rgba(16,185,129,0.25)',
-                            color: '#10b981',
-                            borderRadius: '6px',
-                            padding: '2px 8px',
-                            fontSize: '0.75rem',
-                            fontWeight: '700',
-                            letterSpacing: '0.8px',
-                            textTransform: 'uppercase',
-                          }}>Internship</span>
-                        </div>
-                        <p className="mb-0" style={{ color: '#10b981', fontWeight: '600', fontSize: '0.95rem' }}>
-                          EncodersPro Private Limited
-                          <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
-                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Noida, India</span>
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Bullets */}
-                    <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
-                      {[
-                        'Shipped React components and Node.js REST endpoints straight into production — picked up unassigned tasks, understood the codebase, and delivered without hand-holding',
-                        'Cut the bug backlog by 20% in two months by diagnosing root causes instead of patching symptoms — actually read the stack traces',
-                        'Pushed back in sprint planning when ticket scope was too vague; rewrote unclear acceptance criteria before writing a line of code',
-                        'Traced a recurring API timeout to a missing index on a MongoDB query — fixed in 10 minutes once the root cause was visible',
-                      ].map((item, i) => (
-                        <li key={`exp-bullet-${i}`} className="d-flex align-items-start gap-3" style={{ color: '#cbd5e1', fontSize: '0.97rem', lineHeight: 1.65 }}>
-                          <span style={{ color: '#10b981', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Result metric */}
-                    <div className="mb-4 overflow-hidden" style={{
-                      background: 'rgba(2,6,23,0.5)',
-                      border: '1px solid rgba(16,185,129,0.2)',
-                      borderRadius: '12px',
-                    }}>
-                      <div className="d-flex flex-column flex-sm-row align-items-stretch">
-                        <div className="metric-left-panel">
-                          <div className="d-flex align-items-baseline" style={{ gap: '2px' }}>
-                            <span style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: '700', marginRight: '6px', fontFamily: '"JetBrains Mono","Fira Code",monospace' }}>↓</span>
-                            <span style={{
-                              color: '#10b981',
-                              fontSize: '2.3rem',
-                              fontWeight: '800',
-                              lineHeight: 1,
-                              fontFamily: '"JetBrains Mono","Fira Code",monospace',
-                              letterSpacing: '-1.5px',
-                            }}>
-                              20
-                            </span>
-                            <span style={{
-                              color: '#10b981',
-                              fontSize: '1.8rem',
-                              fontWeight: '700',
-                              fontFamily: '"JetBrains Mono","Fira Code",monospace',
-                            }}>
-                              %
-                            </span>
-                          </div>
-                          <span style={{
-                            color: '#94a3b8',
-                            fontSize: '0.78rem',
-                            marginTop: '6px',
-                            fontWeight: '500',
-                          }}>
-                            bug backlog
-                          </span>
-                        </div>
-                        <div className="d-flex align-items-center flex-fill px-4 py-3" style={{
-                          color: '#cbd5e1',
-                          fontSize: '0.94rem',
-                          lineHeight: 1.6,
-                        }}>
-                          Delivered stable features and resolved high-priority issues in a live production system.
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tech Stack */}
                     <div>
-                      <p className="mb-2" style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
-                        Tech Stack
+                      <h3 className="mb-1 fw-bold" style={{ color: '#f8fafc', fontSize: 'clamp(1.35rem, 2.5vw, 1.8rem)' }}>
+                        Full Stack Developer Intern
+                      </h3>
+                      <p className="mb-1 fw-semibold" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>
+                        EncodersPro Private Limited
                       </p>
-                      <div className="d-flex flex-wrap gap-2">
-                        {['React.js', 'Node.js', 'REST APIs', 'MongoDB', 'Agile/Scrum', 'Code Reviews'].map(tag => (
-                          <span key={tag} style={{
-                            background: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            color: '#cbd5e1',
-                            borderRadius: '8px',
-                            padding: '5px 12px',
-                            fontSize: '0.8rem',
-                            fontWeight: '500',
-                          }}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="mb-0 d-flex align-items-center gap-2" style={{ color: '#94a3b8', fontSize: '0.92rem' }}>
+                        <FaMapMarkerAlt size={13} aria-hidden="true" />
+                        <span>Noida, India</span>
+                      </p>
                     </div>
+                  </div>
+
+                  <div className="align-self-start">
+                    <span
+                      className="d-inline-flex align-items-center rounded-pill"
+                      style={{
+                        background: 'rgba(45,212,191,0.12)',
+                        border: '1px solid rgba(45,212,191,0.34)',
+                        color: '#5eead4',
+                        padding: '8px 14px',
+                        fontSize: '0.78rem',
+                        fontWeight: '700',
+                        letterSpacing: '0.3px',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      June 2025 – August 2025
+                    </span>
+                  </div>
+                </div>
+
+                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
+
+                <div>
+                  <h4 className="mb-2 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Key Contributions</h4>
+                  <p className="mb-3 fw-semibold" style={{ color: '#5eead4', fontSize: '0.95rem' }}>
+                    Reduced 20% bug backlog
+                  </p>
+                  <ul className="m-0 p-0 d-flex flex-column gap-2" style={{ listStyle: 'none' }}>
+                    {experienceContributions.map((item) => (
+                      <li key={item} className="d-flex align-items-start gap-2" style={{ color: '#cbd5e1', lineHeight: 1.6 }}>
+                        <span style={{ color: '#5eead4', marginTop: '1px' }} aria-hidden="true">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
+
+                <div>
+                  <h4 className="mb-3 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Technologies</h4>
+                  <div className="d-flex flex-wrap gap-2">
+                    {experienceTechnologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-pill"
+                        style={{
+                          padding: '6px 12px',
+                          background: 'rgba(15,23,42,0.72)',
+                          border: '1px solid rgba(148,163,184,0.25)',
+                          color: '#dbeafe',
+                          fontSize: '0.82rem',
+                          fontWeight: '500',
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
+
+                <div>
+                  <h4 className="mb-3 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Areas of Work</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {areasOfWork.map((area, idx) => (
+                      <motion.div
+                        key={area.title}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.45 }}
+                        transition={{ duration: 0.25, delay: idx * 0.04 }}
+                        whileHover={{ y: -3 }}
+                        className="rounded-3 p-3"
+                        style={{
+                          background: 'rgba(15,23,42,0.72)',
+                          border: '1px solid rgba(45,212,191,0.2)',
+                        }}
+                      >
+                        <div className="d-flex align-items-center gap-2 mb-1">
+                          <span style={{ color: '#5eead4' }} aria-hidden="true">{area.icon}</span>
+                          <p className="mb-0 fw-semibold" style={{ color: '#f1f5f9', fontSize: '0.92rem' }}>{area.title}</p>
+                        </div>
+                        <p className="mb-0" style={{ color: '#94a3b8', fontSize: '0.83rem' }}>{area.subtitle}</p>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* === CARD 2: Independent Systems === */}
-            <div className="position-relative" data-aos="fade-up" data-aos-delay="100">
-              {/* Timeline node */}
-              <div className="d-none d-md-flex position-absolute align-items-center justify-content-center" style={{
-                left: '12px',
-                top: '50px',
-                width: '24px',
-                height: '24px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-                boxShadow: '0 0 0 5px rgba(59,130,246,0.12), 0 0 20px rgba(59,130,246,0.45)',
-                zIndex: 2,
-              }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#fff' }}></span>
-              </div>
-
-              <div className="ms-md-5">
-                <div className="position-relative p-4 p-md-5 overflow-hidden" style={{
-                  background: 'linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(15,23,42,0.85) 55%, rgba(15,23,42,0.95) 100%)',
-                  border: '1px solid rgba(59,130,246,0.22)',
-                  borderRadius: '18px',
-                  boxShadow: '0 0 40px rgba(59,130,246,0.05), 0 20px 50px rgba(0,0,0,0.35)',
-                }}>
-                  {/* Decorative blobs */}
-                  <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: 'radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-                  <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '180px', height: '180px', background: 'radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
-
-                  <div className="position-relative" style={{ zIndex: 1 }}>
-                    {/* Date pill */}
-                    <div className="d-flex justify-content-end mb-3">
-                      <span style={{
-                        background: 'rgba(59,130,246,0.12)',
-                        border: '1px solid rgba(59,130,246,0.3)',
-                        color: '#60a5fa',
-                        borderRadius: '999px',
-                        padding: '5px 14px',
-                        fontSize: '0.75rem',
-                        fontWeight: '700',
-                        letterSpacing: '0.5px',
-                        textTransform: 'uppercase',
-                        whiteSpace: 'nowrap',
-                      }}>
-                        Jan 2025 – Present
-                      </span>
-                    </div>
-
-                    {/* Header */}
-                    <div className="d-flex align-items-start gap-3 mb-4">
-                      <div className="d-flex align-items-center justify-content-center rounded-3 shadow flex-shrink-0" style={{
-                        width: '54px',
-                        height: '54px',
-                        background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-                      }}>
-                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
-                          <h4 className="fw-bold mb-0" style={{ color: '#f8fafc', fontSize: '1.4rem', letterSpacing: '-0.3px' }}>
-                            Personal Projects
-                          </h4>
-                          <span style={{
-                            background: 'rgba(59,130,246,0.1)',
-                            border: '1px solid rgba(59,130,246,0.25)',
-                            color: '#60a5fa',
-                            borderRadius: '6px',
-                            padding: '2px 8px',
-                            fontSize: '0.75rem',
-                            fontWeight: '700',
-                            letterSpacing: '0.8px',
-                            textTransform: 'uppercase',
-                          }}>Open Source</span>
-                          <span style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '5px',
-                            background: 'rgba(16,185,129,0.08)',
-                            border: '1px solid rgba(16,185,129,0.2)',
-                            color: '#10b981',
-                            borderRadius: '6px',
-                            padding: '2px 8px',
-                            fontSize: '0.75rem',
-                            fontWeight: '700',
-                            letterSpacing: '0.8px',
-                            textTransform: 'uppercase',
-                          }}>
-                            <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse 0.8s infinite' }}></span>
-                            Active
-                          </span>
-                        </div>
-                        <p className="mb-0" style={{ color: '#60a5fa', fontWeight: '600', fontSize: '0.95rem' }}>
-                          4 systems shipped to production
-                          <span style={{ color: '#64748b', fontWeight: '400', margin: '0 8px' }}>•</span>
-                          <span style={{ color: '#94a3b8', fontWeight: '500' }}>Live demos available</span>
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Bullets */}
-                    <ul className="d-flex flex-column gap-3 mb-4" style={{ listStyle: 'none', paddingLeft: 0 }}>
-                      {[
-                        { text: 'DevConnect — live chat over WebSocket, JWT auth, and developer profile discovery. The interesting part: keeping presence state consistent when users reconnect', link: 'https://devconnect2026.vercel.app/' },
-                        { text: 'NotifyX — distributed notification pipeline. Redis Pub/Sub for fanout, BullMQ for async jobs, idempotency keys so retries never fire an event twice', link: 'https://github.com/imsumit28/NotifyX' },
-                        { text: 'CollabDocs — multi-user document editor where two people can type at the same time without overwriting each other. Y.js CRDTs handle the conflict resolution automatically', link: 'https://collabdocs2026.vercel.app/' },
-                        { text: 'Curlix — URL shortener with sub-10ms redirects. Redis sits in front of the DB, analytics go through BullMQ async so the redirect path stays fast', link: 'https://curlix.vercel.app' },
-                      ].map((item, i) => (
-                        <li key={`proj-bullet-${i}`} className="d-flex align-items-start gap-3" style={{ fontSize: '0.97rem', lineHeight: 1.65 }}>
-                          <span style={{ color: '#3b82f6', marginTop: '1px', flexShrink: 0, fontWeight: '700', fontSize: '1.15rem', lineHeight: 1.3 }}>›</span>
-                          {item.link ? (
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: '#cbd5e1', textDecoration: 'none', transition: 'color 0.2s ease', borderBottom: '1px dashed rgba(59,130,246,0.25)' }}
-                              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { color: '#60a5fa', borderBottomColor: '#60a5fa' })}
-                              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { color: '#cbd5e1', borderBottomColor: 'rgba(59,130,246,0.25)' })}
-                            >
-                              {item.text}
-                            </a>
-                          ) : (
-                            <span style={{ color: '#cbd5e1' }}>{item.text}</span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Technical decisions */}
-                    <div>
-                      <p className="mb-3" style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.4px' }}>
-                        Decisions that mattered
-                      </p>
-                      <div className="row g-2">
-                        {[
-                          {
-                            label: 'CRDTs over OT',
-                            sub: 'conflict-free merges',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            label: 'Redis before DB',
-                            sub: 'sub-10ms redirect path',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M3 12h3l3-9 4 18 3-12 2 3h3" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            label: 'Idempotency keys',
-                            sub: 'safe retry on failure',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 4v16M19 4v16" /><path d="M5 9h14M5 15h14" />
-                              </svg>
-                            ),
-                          },
-                          {
-                            label: 'Async via BullMQ',
-                            sub: 'fast path stays fast',
-                            svg: (
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" />
-                                <path d="M12 7v3M11 11l-5 6M13 11l5 6" />
-                              </svg>
-                            ),
-                          },
-                        ].map(item => (
-                          <div key={item.label} className="col-sm-6">
-                            <div className="d-flex align-items-center gap-3 px-3 py-2 h-100" style={{
-                              background: 'rgba(15,23,42,0.55)',
-                              border: '1px solid rgba(59,130,246,0.15)',
-                              borderRadius: '10px',
-                              transition: 'border-color 0.2s ease, transform 0.2s ease',
-                            }}
-                              onMouseEnter={(e) => Object.assign(e.currentTarget.style, { borderColor: 'rgba(59,130,246,0.4)', transform: 'translateY(-2px)' })}
-                              onMouseLeave={(e) => Object.assign(e.currentTarget.style, { borderColor: 'rgba(59,130,246,0.15)', transform: 'translateY(0)' })}
-                            >
-                              <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
-                                width: '34px',
-                                height: '34px',
-                                background: 'rgba(59,130,246,0.1)',
-                                borderRadius: '8px',
-                              }}>
-                                {item.svg}
-                              </div>
-                              <div>
-                                <span style={{ color: '#cbd5e1', fontSize: '0.88rem', fontWeight: '600', display: 'block', lineHeight: 1.2 }}>
-                                  {item.label}
-                                </span>
-                                <span style={{ color: '#475569', fontSize: '0.75rem', fontWeight: '400' }}>
-                                  {item.sub}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+            </motion.article>
+          </motion.div>
         </div>
       </section>
 
