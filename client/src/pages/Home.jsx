@@ -168,7 +168,7 @@ const Home = () => {
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
-                  4 Projects, All Deployed
+                  5 Projects, All Deployed
                 </span>
                 <span style={{ opacity: 0.7 }}>•</span>
                 <span
@@ -350,7 +350,7 @@ const Home = () => {
               {/* Quick Stat Cards */}
               <div className="row g-3 mb-5">
                 {[
-                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '4', sub: 'Deployed & Live' },
+                  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '5', sub: 'Deployed & Live' },
                   { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
                   { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
                   { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' }

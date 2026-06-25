@@ -1,10 +1,8 @@
 import devconnectCover from '../assets/projects/devconnect-cover.png';
-import devconnectIcon from '../assets/projects/devconnect-icon.png';
 import notifyxCover from '../assets/projects/notifyx-cover.png';
 import collabdocsCover from '../assets/projects/collabdocs-cover.png';
 import curlixCover from '../assets/projects/curlix-cover.png';
 import paperpilotCover from '../assets/projects/paperpilot-cover.png';
-import paperpilotIcon from '../assets/projects/paperpilot-icon.png';
 
 export const LOCAL_PROJECTS = [
   {
@@ -38,7 +36,6 @@ export const LOCAL_PROJECTS = [
       { q: 'Why validate twice?', a: 'LLM output is untrusted. Responses are validated against a strict Zod schema before persistence, and re-validated before PDF rendering — so a malformed paper can never reach the database or the printer.' },
     ],
     coverImage: paperpilotCover,
-    logoImage: paperpilotIcon,
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Express', 'Socket.io', 'BullMQ', 'Redis', 'MongoDB', 'Mongoose', 'Zod', 'PDFKit', 'DeepSeek', 'pnpm'],
     githubLink: 'https://github.com/imsumit28/paperpilot',
     liveLink: 'https://paperpilot2026.vercel.app',
@@ -178,7 +175,6 @@ export const LOCAL_PROJECTS = [
       { q: 'Why REST + WebSockets?', a: 'REST for standard CRUD — stateless and cacheable. WebSockets only for real-time chat. Using sockets for everything adds unnecessary complexity without benefit.' },
     ],
     coverImage: devconnectCover,
-    logoImage: devconnectIcon,
     tech: ['React', 'Vite', 'Node.js', 'MongoDB', 'Socket.io'],
     githubLink: 'https://github.com/imsumit28/DevConnect',
     liveLink: 'https://devconnect2026.vercel.app/',
