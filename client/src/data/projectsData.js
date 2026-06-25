@@ -3,10 +3,8 @@ import devconnectIcon from '../assets/projects/devconnect-icon.png';
 import notifyxCover from '../assets/projects/notifyx-cover.png';
 import collabdocsCover from '../assets/projects/collabdocs-cover.png';
 import curlixCover from '../assets/projects/curlix-cover.png';
-// PLACEHOLDER IMAGE — replace src/assets/projects/paperpilot-cover.png with your real
-// banner (the source repo has one at docs/screenshots/banner.png). Keep this filename
-// or update the import below to match.
 import paperpilotCover from '../assets/projects/paperpilot-cover.png';
+import paperpilotIcon from '../assets/projects/paperpilot-icon.png';
 
 export const LOCAL_PROJECTS = [
   {
@@ -40,9 +38,10 @@ export const LOCAL_PROJECTS = [
       { q: 'Why validate twice?', a: 'LLM output is untrusted. Responses are validated against a strict Zod schema before persistence, and re-validated before PDF rendering — so a malformed paper can never reach the database or the printer.' },
     ],
     coverImage: paperpilotCover,
+    logoImage: paperpilotIcon,
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Express', 'Socket.io', 'BullMQ', 'Redis', 'MongoDB', 'Mongoose', 'Zod', 'PDFKit', 'DeepSeek', 'pnpm'],
-    githubLink: '<PASTE_REPO_URL>',
-    liveLink: null,
+    githubLink: 'https://github.com/imsumit28/paperpilot',
+    liveLink: 'https://paperpilot2026.vercel.app',
     challenge: {
       accentColor: '#f59e0b',
       context: 'Generation took several seconds. Holding the HTTP request open for the LLM call timed out and froze the UI behind a spinner.',
