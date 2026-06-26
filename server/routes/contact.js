@@ -73,6 +73,10 @@ router.post('/', contactLimiter, async (req, res) => {
     });
     await contact.save();
 
+    if (process.env.CONTACT_NOTIFICATION_MODE === 'browser') {
+      return res.status(201).json({ message: 'Message sent successfully' });
+    }
+
     const notification = await sendWeb3FormsNotification({
       name: normalizedName,
       email: normalizedEmail,

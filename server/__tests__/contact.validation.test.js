@@ -16,6 +16,9 @@ describe('Contact validation', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockSave.mockResolvedValue({});
+    delete process.env.RESEND_API_KEY;
+    delete process.env.CONTACT_TO_EMAIL;
+    delete process.env.CONTACT_FROM_EMAIL;
     delete process.env.WEB3FORMS_ACCESS_KEY;
     global.fetch = jest.fn();
   });
@@ -61,7 +64,31 @@ describe('Contact validation', () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
-  it('sends notification when Web3Forms is configured', async () => {
+  it('sends notification with Resend when configured', async () => {
+    process.env.RESEND_API_KEY = 're_test_key';
+    process.env.CONTACT_TO_EMAIL = 'owner@example.com';
+    global.fetch.mockResolvedValue({ ok: true });
+
+    const res = await request(app).post('/api/contact').send({
+      name: 'Sumit Kumar',
+      email: 'sumit@example.com',
+      message: 'Looking forward to connecting.'
+    });
+
+    expect(res.statusCode).toBe(201);
+    expect(global.fetch).toHaveBeenCalledWith(
+      'https://api.resend.com/emails',
+      expect.objectContaining({
+        method: 'POST',
+        headers: expect.objectContaining({
+          Authorization: 'Bearer re_test_key',
+          'Content-Type': 'application/json'
+        })
+      })
+    );
+  });
+
+  it('falls back to Web3Forms when Resend is not configured', async () => {
     process.env.WEB3FORMS_ACCESS_KEY = 'test-access-key';
     global.fetch.mockResolvedValue({ ok: true });
 

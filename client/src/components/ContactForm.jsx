@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
 
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ type: '', message: '' });
@@ -25,12 +27,37 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Backend handles persistence and notification delivery.
-      const response = await api.post('/contact', formData);
+      // Backend handles persistence; Web3Forms runs from the browser to avoid server-side Cloudflare blocks.
+      await api.post('/contact', formData);
+
+      if (!WEB3FORMS_ACCESS_KEY) {
+        throw new Error('Web3Forms is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY in Vercel.');
+      }
+
+      const web3FormsResponse = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          message: formData.message.trim(),
+          subject: `New Portfolio Message from ${formData.name.trim()}`,
+          from_name: 'Portfolio Contact'
+        })
+      });
+
+      if (!web3FormsResponse.ok) {
+        const data = await web3FormsResponse.json().catch(() => null);
+        throw new Error(data?.message || 'Web3Forms could not send the email.');
+      }
 
       setStatus({
-        type: response.status === 202 ? 'warning' : 'success',
-        message: response.data?.message || 'Message sent successfully! I will get back to you soon.'
+        type: 'success',
+        message: 'Message sent successfully! I will get back to you soon.'
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
