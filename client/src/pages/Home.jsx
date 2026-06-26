@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { FaLinkedinIn, FaGithub, FaEnvelope, FaReact, FaServer, FaDatabase, FaMobileAlt, FaShieldAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaMobileAlt, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
@@ -44,13 +44,6 @@ const Home = () => {
   ];
 
   const experienceTechnologies = ['React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Git', 'Agile'];
-
-  const areasOfWork = [
-    { title: 'Frontend Development', subtitle: 'React.js Components', icon: <FaReact size={16} /> },
-    { title: 'Backend APIs', subtitle: 'Node.js + Express', icon: <FaServer size={16} /> },
-    { title: 'Database', subtitle: 'MongoDB', icon: <FaDatabase size={16} /> },
-    { title: 'Bug Fixing', subtitle: 'Production Support', icon: <FaShieldAlt size={16} /> },
-  ];
 
   return (
     <div>
@@ -432,143 +425,73 @@ const Home = () => {
             <h2 className="section-title" style={{ width: '145px' }}>EXPERIENCE</h2>
             <div className="section-line"></div>
           </div>
+
           <motion.div
-            className="mt-5"
-            initial={{ opacity: 0, y: 26 }}
+            className="exp-grid mt-5"
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <motion.article
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="rounded-4 p-4 p-md-5 backdrop-blur-sm"
-              style={{
-                background: 'linear-gradient(145deg, rgba(7,18,41,0.85) 0%, rgba(2,8,23,0.92) 100%)',
-                border: '1px solid rgba(45,212,191,0.28)',
-                boxShadow: '0 18px 42px rgba(0,0,0,0.38), 0 0 0 1px rgba(45,212,191,0.12)',
-              }}
-            >
-              <div className="d-flex flex-column gap-4">
-                <div className="d-flex flex-column flex-md-row justify-content-between gap-4">
-                  <div className="d-flex align-items-start gap-3">
-                    <div
-                      className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-                      style={{
-                        width: '56px',
-                        height: '56px',
-                        background: 'rgba(45,212,191,0.16)',
-                        border: '1px solid rgba(45,212,191,0.3)',
-                        color: '#5eead4',
-                      }}
-                      aria-hidden="true"
-                    >
-                      <FaBriefcase size={22} />
-                    </div>
-                    <div>
-                      <h3 className="mb-1 fw-bold" style={{ color: '#f8fafc', fontSize: 'clamp(1.35rem, 2.5vw, 1.8rem)' }}>
-                        Full Stack Developer Intern
-                      </h3>
-                      <p className="mb-1 fw-semibold" style={{ color: '#cbd5e1', fontSize: '1.05rem' }}>
-                        EncodersPro Private Limited
-                      </p>
-                      <p className="mb-0 d-flex align-items-center gap-2" style={{ color: '#94a3b8', fontSize: '0.92rem' }}>
-                        <FaMapMarkerAlt size={13} aria-hidden="true" />
-                        <span>Noida, India</span>
-                      </p>
-                    </div>
-                  </div>
+            {/* Left rail: period + status */}
+            <aside className="exp-rail">
+              <span className="exp-mono-label">2025</span>
+              <p className="exp-period">Jun&nbsp;—&nbsp;Aug</p>
+              <span className="exp-status">
+                <span className="exp-status-dot" aria-hidden="true" />
+                Internship
+              </span>
+              <p className="exp-location">
+                <FaMapMarkerAlt size={11} aria-hidden="true" />
+                <span>Noida, India</span>
+              </p>
+            </aside>
 
-                  <div className="align-self-start">
-                    <span
-                      className="d-inline-flex align-items-center rounded-pill"
-                      style={{
-                        background: 'rgba(45,212,191,0.12)',
-                        border: '1px solid rgba(45,212,191,0.34)',
-                        color: '#5eead4',
-                        padding: '8px 14px',
-                        fontSize: '0.78rem',
-                        fontWeight: '700',
-                        letterSpacing: '0.3px',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      June 2025 – August 2025
-                    </span>
-                  </div>
-                </div>
+            {/* Timeline node */}
+            <div className="exp-node" aria-hidden="true">
+              <span className="exp-node-dot" />
+              <span className="exp-node-line" />
+            </div>
 
-                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
+            {/* Main column */}
+            <div className="exp-main">
+              <header className="exp-head">
+                <p className="exp-company">EncodersPro Private Limited</p>
+                <h3 className="exp-role">Full&nbsp;Stack Developer Intern</h3>
+              </header>
 
-                <div>
-                  <h4 className="mb-2 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Key Contributions</h4>
-                  <p className="mb-3 fw-semibold" style={{ color: '#5eead4', fontSize: '0.95rem' }}>
-                    Reduced 20% bug backlog
-                  </p>
-                  <ul className="m-0 p-0 d-flex flex-column gap-2" style={{ listStyle: 'none' }}>
-                    {experienceContributions.map((item) => (
-                      <li key={item} className="d-flex align-items-start gap-2" style={{ color: '#cbd5e1', lineHeight: 1.6 }}>
-                        <span style={{ color: '#5eead4', marginTop: '1px' }} aria-hidden="true">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
-
-                <div>
-                  <h4 className="mb-3 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Technologies</h4>
-                  <div className="d-flex flex-wrap gap-2">
-                    {experienceTechnologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-pill"
-                        style={{
-                          padding: '6px 12px',
-                          background: 'rgba(15,23,42,0.72)',
-                          border: '1px solid rgba(148,163,184,0.25)',
-                          color: '#dbeafe',
-                          fontSize: '0.82rem',
-                          fontWeight: '500',
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <hr className="m-0" style={{ borderColor: 'rgba(148,163,184,0.22)' }} />
-
-                <div>
-                  <h4 className="mb-3 fw-semibold" style={{ color: '#f8fafc', fontSize: '1.04rem' }}>Areas of Work</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {areasOfWork.map((area, idx) => (
-                      <motion.div
-                        key={area.title}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.45 }}
-                        transition={{ duration: 0.25, delay: idx * 0.04 }}
-                        whileHover={{ y: -3 }}
-                        className="rounded-3 p-3"
-                        style={{
-                          background: 'rgba(15,23,42,0.72)',
-                          border: '1px solid rgba(45,212,191,0.2)',
-                        }}
-                      >
-                        <div className="d-flex align-items-center gap-2 mb-1">
-                          <span style={{ color: '#5eead4' }} aria-hidden="true">{area.icon}</span>
-                          <p className="mb-0 fw-semibold" style={{ color: '#f1f5f9', fontSize: '0.92rem' }}>{area.title}</p>
-                        </div>
-                        <p className="mb-0" style={{ color: '#94a3b8', fontSize: '0.83rem' }}>{area.subtitle}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+              {/* Featured metric */}
+              <div className="exp-metric">
+                <span className="exp-metric-num">20<span>%</span></span>
+                <span className="exp-metric-text">
+                  reduction in bug backlog,<br className="d-none d-sm-inline" /> shipped alongside engineering &amp; QA.
+                </span>
               </div>
-            </motion.article>
+
+              {/* Contributions — numbered editorial list */}
+              <ol className="exp-list">
+                {experienceContributions.map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.3, delay: idx * 0.06 }}
+                  >
+                    <span className="exp-list-idx">{String(idx + 1).padStart(2, '0')}</span>
+                    <span className="exp-list-text">{item}</span>
+                  </motion.li>
+                ))}
+              </ol>
+
+              {/* Tech — understated inline mono */}
+              <div className="exp-tech">
+                <span className="exp-tech-label">Stack /</span>
+                {experienceTechnologies.map((tech) => (
+                  <span key={tech} className="exp-tech-item">{tech}</span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
