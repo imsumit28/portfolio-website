@@ -79,7 +79,7 @@ const ProjectCard = ({
   const githubHref = githubLink || github || '';
 
   return (
-    <div className="project-showcase-card" data-aos="fade-up">
+    <div className="project-showcase-card">
       <div className="project-showcase-inner">
         <div className="project-showcase-image">
           {coverSrc && <img src={coverSrc} alt={title} loading="lazy" />}

@@ -6,55 +6,6 @@ import paperpilotCover from '../assets/projects/paperpilot-cover.png';
 
 export const LOCAL_PROJECTS = [
   {
-    _id: 'paperpilot',
-    title: 'Paper Pilot',
-    type: 'WEB-APP',
-    value:
-      'AI-powered assessment-creation platform that lets educators generate structured, print-ready exam papers — with answer keys — in seconds.',
-    description:
-      'A full-stack TypeScript monorepo (pnpm workspaces) where teachers fill a guided form (subject, class, question types, marks distribution), optionally upload a source PDF/DOCX/text file, and get a sectioned question paper plus downloadable PDF. Built with Next.js 14, an Express + Socket.IO API, and a BullMQ worker sharing one Zod-based type system.',
-    features: [
-      'Architected a non-blocking, queue-based pipeline — the API enqueues an LLM job and responds in under 300 ms while a dedicated worker handles all LLM + PDF work',
-      'Streamed real-time stage events (analyzing → building prompt → generating → parsing → saving) over Redis Pub/Sub bridged into per-assignment Socket.IO rooms for a live progress timeline',
-      'Built a robust LLM pipeline calling the DeepSeek model (OpenAI SDK) with strict Zod validation and automatic refinement-prompt retries on failure',
-      'Engineered defense-in-depth validation — generated content is validated before persistence and again before PDF rendering',
-      'Cached PDFKit-rendered PDFs in Redis for 24h, making repeat downloads ~12× faster',
-      'Shipped a bonus "AI Teacher\'s Toolkit" — standalone grading-rubric and lesson-plan tools on the same backend',
-    ],
-    metrics: ['Sub-300ms API response', '~12× faster cached PDFs', 'Solo full-stack build'],
-    highlights: [
-      'Queue-based, non-blocking API — LLM + PDF offloaded to a dedicated worker',
-      'Real-time step-level progress over WebSockets instead of a black-box spinner',
-      'Strict Zod schema validation with auto-retry refinement prompts',
-      'pnpm monorepo with one shared Zod type system across web, API, and worker',
-    ],
-    highlightsLabel: 'ENGINEERING HIGHLIGHTS',
-    architecture: ['Next.js Web', 'Express API', 'BullMQ Queue', 'Worker', 'DeepSeek LLM', 'Redis', 'MongoDB'],
-    architectureDecisions: [
-      { q: 'Why a queue-based API?', a: 'LLM generation takes seconds, not milliseconds. The API validates, persists, and enqueues a BullMQ job — then responds in under 300 ms. The browser never blocks on the model; all expensive work runs in a separate worker process.' },
-      { q: 'Why stream progress over WebSockets?', a: 'A multi-second generation behind a spinner feels broken. The worker publishes each stage to Redis Pub/Sub, the API bridges it via Socket.IO into a per-assignment room, and the user watches a live step-by-step timeline — no polling.' },
-      { q: 'Why validate twice?', a: 'LLM output is untrusted. Responses are validated against a strict Zod schema before persistence, and re-validated before PDF rendering — so a malformed paper can never reach the database or the printer.' },
-    ],
-    coverImage: paperpilotCover,
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Express', 'Socket.io', 'BullMQ', 'Redis', 'MongoDB', 'Mongoose', 'Zod', 'PDFKit', 'DeepSeek', 'pnpm'],
-    githubLink: 'https://github.com/imsumit28/paperpilot',
-    liveLink: 'https://paperpilot2026.vercel.app',
-    challenge: {
-      accentColor: '#f59e0b',
-      context: 'Generation took several seconds. Holding the HTTP request open for the LLM call timed out and froze the UI behind a spinner.',
-      codeLines: [
-        { t: 'comment', text: '// before: block the request on the LLM call' },
-        { t: 'code',    text: 'const paper = await deepseek.generate(spec); // 5-15s' },
-        { t: 'code',    text: 'res.json(paper);' },
-        { t: 'spacer' },
-        { t: 'comment', text: '// after: enqueue + respond instantly, stream progress' },
-        { t: 'code',    text: 'await genQueue.add("generate", spec); // ~5 ms' },
-        { t: 'code',    text: 'res.status(202).json({ assignmentId }); // <300 ms' },
-      ],
-      takeaway: 'Offloading the LLM call to a BullMQ worker plus WebSocket progress turned a frozen spinner into a live timeline.',
-    },
-  },
-  {
     _id: 'collabdocs',
     title: 'CollabDocs',
     type: 'WEB-APP',
@@ -237,6 +188,55 @@ export const LOCAL_PROJECTS = [
         { t: 'code',    text: 'res.redirect(302, longUrl);' },
       ],
       takeaway: 'Decoupling analytics from the redirect cut p99 latency from ~80 ms to under 10 ms.',
+    },
+  },
+  {
+    _id: 'paperpilot',
+    title: 'Paper Pilot',
+    type: 'WEB-APP',
+    value:
+      'AI-powered assessment-creation platform that lets educators generate structured, print-ready exam papers — with answer keys — in seconds.',
+    description:
+      'A full-stack TypeScript monorepo (pnpm workspaces) where teachers fill a guided form (subject, class, question types, marks distribution), optionally upload a source PDF/DOCX/text file, and get a sectioned question paper plus downloadable PDF. Built with Next.js 14, an Express + Socket.IO API, and a BullMQ worker sharing one Zod-based type system.',
+    features: [
+      'Architected a non-blocking, queue-based pipeline — the API enqueues an LLM job and responds in under 300 ms while a dedicated worker handles all LLM + PDF work',
+      'Streamed real-time stage events (analyzing → building prompt → generating → parsing → saving) over Redis Pub/Sub bridged into per-assignment Socket.IO rooms for a live progress timeline',
+      'Built a robust LLM pipeline calling the DeepSeek model (OpenAI SDK) with strict Zod validation and automatic refinement-prompt retries on failure',
+      'Engineered defense-in-depth validation — generated content is validated before persistence and again before PDF rendering',
+      'Cached PDFKit-rendered PDFs in Redis for 24h, making repeat downloads ~12× faster',
+      'Shipped a bonus "AI Teacher\'s Toolkit" — standalone grading-rubric and lesson-plan tools on the same backend',
+    ],
+    metrics: ['Sub-300ms API response', '~12× faster cached PDFs', 'Solo full-stack build'],
+    highlights: [
+      'Queue-based, non-blocking API — LLM + PDF offloaded to a dedicated worker',
+      'Real-time step-level progress over WebSockets instead of a black-box spinner',
+      'Strict Zod schema validation with auto-retry refinement prompts',
+      'pnpm monorepo with one shared Zod type system across web, API, and worker',
+    ],
+    highlightsLabel: 'ENGINEERING HIGHLIGHTS',
+    architecture: ['Next.js Web', 'Express API', 'BullMQ Queue', 'Worker', 'DeepSeek LLM', 'Redis', 'MongoDB'],
+    architectureDecisions: [
+      { q: 'Why a queue-based API?', a: 'LLM generation takes seconds, not milliseconds. The API validates, persists, and enqueues a BullMQ job — then responds in under 300 ms. The browser never blocks on the model; all expensive work runs in a separate worker process.' },
+      { q: 'Why stream progress over WebSockets?', a: 'A multi-second generation behind a spinner feels broken. The worker publishes each stage to Redis Pub/Sub, the API bridges it via Socket.IO into a per-assignment room, and the user watches a live step-by-step timeline — no polling.' },
+      { q: 'Why validate twice?', a: 'LLM output is untrusted. Responses are validated against a strict Zod schema before persistence, and re-validated before PDF rendering — so a malformed paper can never reach the database or the printer.' },
+    ],
+    coverImage: paperpilotCover,
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Express', 'Socket.io', 'BullMQ', 'Redis', 'MongoDB', 'Mongoose', 'Zod', 'PDFKit', 'DeepSeek', 'pnpm'],
+    githubLink: 'https://github.com/imsumit28/paperpilot',
+    liveLink: 'https://paperpilot2026.vercel.app',
+    challenge: {
+      accentColor: '#f59e0b',
+      context: 'Generation took several seconds. Holding the HTTP request open for the LLM call timed out and froze the UI behind a spinner.',
+      codeLines: [
+        { t: 'comment', text: '// before: block the request on the LLM call' },
+        { t: 'code',    text: 'const paper = await deepseek.generate(spec); // 5-15s' },
+        { t: 'code',    text: 'res.json(paper);' },
+        { t: 'spacer' },
+        { t: 'comment', text: '// after: enqueue + respond instantly, stream progress' },
+        { t: 'code',    text: 'await genQueue.add("generate", spec); // ~5 ms' },
+        { t: 'code',    text: 'res.status(202).json({ assignmentId }); // <300 ms' },
+      ],
+      takeaway: 'Offloading the LLM call to a BullMQ worker plus WebSocket progress turned a frozen spinner into a live timeline.',
     },
   },
 ];
