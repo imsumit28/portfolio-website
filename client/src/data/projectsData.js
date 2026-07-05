@@ -12,15 +12,17 @@ export const LOCAL_PROJECTS = [
     value:
       'Real-time collaborative document editor with AI writing assistance, live cursors, and CRDT-based conflict resolution.',
     description:
-      'A production-ready doc editor built with Next.js, Y.js CRDT, and Socket.io. Features conflict-free sync, version history, comments, and AI-powered suggestions.',
+      'A production-ready doc editor built with Next.js, Y.js CRDT, and Socket.io. Features conflict-free sync, offline-first PWA, version history, comments & mentions, and streaming AI writing assistance.',
     features: [
       'Implemented Y.js CRDT for conflict-free real-time collaboration with ~100ms latency',
       'Built custom suggestions/track-changes mode using TipTap open-source extensions',
-      'Engineered debounce strategy (5s inactivity) to limit writes to ≤12 per minute',
-      'Integrated Groq Llama 3.3 API for AI writing assistant (improve, grammar fix, summarize)',
-      'Shipped comprehensive test suite (~60% coverage) with 45+ test cases across auth, docs, and sync',
+      'Shipped offline-first PWA — documents stay editable offline (Y.js + IndexedDB) and auto-merge on reconnect',
+      'Integrated DeepSeek (OpenAI-compatible) API for a token-by-token streaming AI writing assistant',
+      'Added inline threaded comments, @mentions with notifications, folders, full-text search, and PDF/DOCX export',
+      'Hardened XSS-safe JWT auth (in-memory access + HttpOnly refresh cookies) with Google OAuth and email verification',
+      'Shipped 300+ server tests at 85%+ coverage, plus client component tests and Playwright E2E in CI',
     ],
-    metrics: ['45+ test cases', '60% code coverage', 'Horizontal scalable with Redis adapter'],
+    metrics: ['300+ server tests', '85%+ code coverage', 'Horizontal scalable with Redis adapter'],
     highlights: [
       'Implemented CRDT-based conflict resolution using Y.js',
       'Real-time sync via WebSockets (Socket.io)',
@@ -35,7 +37,7 @@ export const LOCAL_PROJECTS = [
       { q: 'Why Redis adapter?', a: 'Socket.io rooms don\'t scale past one server instance. The Redis Pub/Sub adapter lets multiple servers share room state, so any server can handle any user.' },
     ],
     coverImage: collabdocsCover,
-    tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Socket.io', 'Y.js', 'MongoDB', 'Groq API'],
+    tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'TipTap', 'Socket.io', 'Y.js', 'MongoDB', 'DeepSeek AI'],
     githubLink: 'https://github.com/imsumit28/CollabDocs',
     liveLink: 'https://collabdocs2026.vercel.app/',
     challenge: {
