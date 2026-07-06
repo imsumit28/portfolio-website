@@ -13,6 +13,42 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+const sendResendNotification = async ({ name, email, message }) => {
+  const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CONTACT_TO_EMAIL;
+  if (!apiKey || !toEmail) {
+    return { ok: false, reason: 'missing_key' };
+  }
+
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || 'Portfolio Contact <onboarding@resend.dev>';
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [toEmail],
+      reply_to: email,
+      subject: `New Portfolio Message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`
+    })
+  });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => '');
+    console.error('Resend request failed', {
+      status: response.status,
+      body: body.slice(0, 500)
+    });
+    return { ok: false, reason: 'provider_error', status: response.status };
+  }
+
+  return { ok: true };
+};
+
 const sendWeb3FormsNotification = async ({ name, email, message }) => {
   const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
   if (!accessKey) {
@@ -77,15 +113,23 @@ router.post('/', contactLimiter, async (req, res) => {
       return res.status(201).json({ message: 'Message sent successfully' });
     }
 
-    const notification = await sendWeb3FormsNotification({
+    let notification = await sendResendNotification({
       name: normalizedName,
       email: normalizedEmail,
       message: normalizedMessage
     });
 
+    if (!notification.ok && notification.reason === 'missing_key') {
+      notification = await sendWeb3FormsNotification({
+        name: normalizedName,
+        email: normalizedEmail,
+        message: normalizedMessage
+      });
+    }
+
     if (!notification.ok) {
       if (notification.reason === 'missing_key') {
-        console.error('WEB3FORMS_ACCESS_KEY is not set; contact message was saved but no email was sent.');
+        console.error('No email provider configured (RESEND_API_KEY/CONTACT_TO_EMAIL or WEB3FORMS_ACCESS_KEY); contact message was saved but no email was sent.');
         return res.status(202).json({
           message: 'Message saved, but email notification is not configured.'
         });
