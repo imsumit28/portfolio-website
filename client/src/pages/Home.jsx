@@ -788,90 +788,81 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-5" id="contact">
+      <section className="py-5 contact-editorial" id="contact">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title">CONTACT</h2>
             <div className="section-line"></div>
           </div>
 
-          <div className="row g-5 align-items-stretch mt-4">
-            <div className="col-lg-5" data-aos="fade-right">
-              <div
-                className="h-100 p-4 p-md-5"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.92) 100%)',
-                  border: '1px solid rgba(16,185,129,0.2)',
-                  borderRadius: '16px',
-                  boxShadow: '0 0 50px rgba(16,185,129,0.05), 0 25px 60px rgba(0,0,0,0.35)',
-                }}
-              >
-                <h4 className="fw-bold mb-2" style={{ color: '#f8fafc' }}>
-                  Let’s build something
-                </h4>
-                <div className="d-flex align-items-center gap-2 mb-4" style={{ fontSize: '0.85rem' }}>
-                  <span style={{ color: '#10b981', display: 'inline-block', transform: 'scale(1.2)' }}>●</span>
-                  <span style={{ color: '#94a3b8', fontWeight: '500' }}>Available for new opportunities</span>
-                </div>
-                <p className="mb-3" style={{ color: '#94a3b8', lineHeight: 1.7, fontSize: '1.05rem' }}>
-                  Open to internships, freelance, and full-time opportunities. Feel free to connect!
-                </p>
-                <p className="mb-4" style={{ color: '#64748b', fontSize: '0.88rem' }}>
-                  I usually respond within 24 hours.
-                </p>
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">Get in touch / 05</span>
+            <h2 className="ce-headline">
+              Let&apos;s build<br />something good<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              Open to internships, freelance, and full-time roles. Have a project,
+              a role to fill, or just want to trade ideas? I usually reply within 24 hours.
+            </p>
+            <span className="ce-status">
+              <span className="ce-status-dot"></span>
+              Available for new opportunities
+            </span>
+          </header>
 
-                <div className="d-flex flex-column gap-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(16,185,129,0.15)' }}>
-                  {[
-                    { href: 'mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio&body=Hi%20Sumit,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity%20with%20you!%0A%0A', icon: <FaEnvelope size={18} />, label: 'Email Me', sub: 'ersumitkumar45@gmail.com', color: '#10b981', bg: 'rgba(16,185,129,0.1)', target: '_self' },
-                    { href: 'https://linkedin.com/in/imsumit45/', icon: <FaLinkedinIn size={18} />, label: 'Connect on LinkedIn', sub: 'linkedin.com/in/imsumit45', color: '#3b82f6', bg: 'rgba(59,130,246,0.1)', target: '_blank' },
-                    { href: 'https://github.com/imsumit28', icon: <FaGithub size={18} />, label: 'View My Work', sub: 'github.com/imsumit28', color: '#10b981', bg: 'rgba(16,185,129,0.1)', target: '_blank' },
-                  ].map(({ href, icon, label, sub, color, bg, target }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target={target}
-                      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-                      className="d-flex align-items-center gap-3 text-decoration-none"
-                      style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}
-                      onMouseEnter={e => { e.currentTarget.style.color = color; Object.assign(e.currentTarget.querySelector('.contact-icon-box').style, { background: color, color: '#fff' }); }}
-                      onMouseLeave={e => { e.currentTarget.style.color = '#cbd5e1'; Object.assign(e.currentTarget.querySelector('.contact-icon-box').style, { background: bg, color }); }}
-                    >
-                      <div className="contact-icon-box d-flex align-items-center justify-content-center rounded flex-shrink-0" style={{ width: '42px', height: '42px', background: bg, color, transition: 'background-color 0.2s ease, color 0.2s ease' }}>
-                        {icon}
-                      </div>
-                      <div className="d-flex flex-column">
-                        <span style={{ fontSize: '0.95rem', fontWeight: '600', lineHeight: 1.3 }}>{label}</span>
-                        <span style={{ fontSize: '0.78rem', color: '#475569', marginTop: '2px' }}>{sub}</span>
-                      </div>
-                    </a>
-                  ))}
-                </div>
+          <div className="ce-grid">
+            {/* Left: direct contact + socials */}
+            <div data-aos="fade-up">
+              <p className="ce-col-label">Reach me directly</p>
+
+              {[
+                { k: 'Email', v: 'ersumitkumar45@gmail.com', link: 'mailto:ersumitkumar45@gmail.com?subject=Connecting%20from%20your%20Portfolio' },
+                { k: 'Phone', v: '+91 8210240106', link: 'tel:+918210240106' },
+                { k: 'Location', v: 'Patna, India' },
+              ].map((item, i) => {
+                const idx = String(i + 1).padStart(2, '0');
+                const external = Boolean(item.link) && item.link.startsWith('http');
+                return (
+                  <a
+                    key={item.k}
+                    className="ce-detail"
+                    href={item.link || undefined}
+                    {...(item.link
+                      ? { role: 'button', target: external ? '_blank' : undefined, rel: external ? 'noopener noreferrer' : undefined }
+                      : {})}
+                  >
+                    <span className="ce-detail-idx">{idx}</span>
+                    <span className="ce-detail-k">{item.k}</span>
+                    <span className="ce-detail-v">{item.v}</span>
+                  </a>
+                );
+              })}
+
+              <p className="ce-social-label">Elsewhere</p>
+              <div className="ce-social-row">
+                {[
+                  { icon: <FaGithub size={20} />, href: 'https://github.com/imsumit28', label: 'GitHub' },
+                  { icon: <FaLinkedinIn size={20} />, href: 'https://www.linkedin.com/in/imsumit45/', label: 'LinkedIn' },
+                  { icon: <FaXTwitter size={20} />, href: 'https://x.com/imsumit4545', label: 'X' },
+                ].map((s) => (
+                  <a
+                    key={s.label}
+                    className="ce-social"
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
             </div>
 
-            <div className="col-lg-7" data-aos="fade-left">
-              <div
-                className="position-relative p-4 p-md-5"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, #0f172a 100%)',
-                  border: '1px solid rgba(16,185,129,0.15)',
-                  borderRadius: '16px',
-                  boxShadow: '0 0 50px rgba(16,185,129,0.04), 0 25px 60px rgba(0,0,0,0.3)',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '-30px',
-                    right: '-30px',
-                    width: '150px',
-                    height: '150px',
-                    background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)',
-                    pointerEvents: 'none',
-                  }}
-                ></div>
-                <ContactForm />
-              </div>
+            {/* Right: form */}
+            <div data-aos="fade-up" data-aos-delay="100">
+              <ContactForm />
             </div>
           </div>
         </div>

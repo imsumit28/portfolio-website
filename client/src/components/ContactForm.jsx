@@ -19,7 +19,7 @@ const ContactForm = () => {
 
     // Custom validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setStatus({ type: 'warning', message: '⚠️ Please fill in all fields before sending your message.' });
+      setStatus({ type: 'warning', message: 'Please fill in all fields before sending your message.' });
       return;
     }
 
@@ -57,7 +57,7 @@ const ContactForm = () => {
 
       setStatus({
         type: 'success',
-        message: 'Message sent successfully! I will get back to you soon.'
+        message: 'Message sent successfully — I\'ll get back to you soon.'
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -68,105 +68,77 @@ const ContactForm = () => {
     }
   };
 
-  const inputStyle = {
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: '10px',
-    color: '#f8fafc',
-    padding: '14px 18px',
-    fontSize: '0.95rem',
-    transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
-  };
-
-  // Batch both style properties in a single assignment to avoid extra reflows
-  const onInputFocus = (e) => Object.assign(e.target.style, { borderColor: '#10b981', boxShadow: '0 0 0 3px rgba(16,185,129,0.1)' });
-  const onInputBlur  = (e) => Object.assign(e.target.style, { borderColor: 'rgba(255,255,255,0.1)', boxShadow: 'none' });
-
   return (
-    <div className="position-relative" style={{ zIndex: 1 }}>
-      <style>{`
-        .form-control.contact-input::placeholder {
-          color: rgba(248, 250, 252, 0.4) !important;
-        }
-        .form-control.contact-input {
-          color: #f8fafc !important;
-        }
-      `}</style>
-      <h4 className="fw-bold mb-1" style={{ color: '#f8fafc' }}>Send a Message</h4>
-      <br />
+    <div>
+      <p className="ce-col-label">Send a message</p>
+
       {status.message && (
-        <div className={`alert alert-${status.type} py-3 px-4 d-flex align-items-center justify-content-between`} style={{ borderRadius: '10px', fontSize: '0.9rem' }} role="alert">
-          {status.message}
-          <button type="button" className="btn-close btn-close-white btn-sm" onClick={() => setStatus({ type: '', message: '' })}></button>
+        <div className={`ce-alert ce-alert-${status.type}`} role="alert">
+          <span>{status.message}</span>
+          <button
+            type="button"
+            className="ce-alert-close"
+            aria-label="Dismiss"
+            onClick={() => setStatus({ type: '', message: '' })}
+          >
+            ×
+          </button>
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="row g-3 mb-3">
-          <div className="col-md-6">
-            <label htmlFor="contact-name" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR NAME</label>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="ce-form-row">
+          <div className="ce-form-field">
+            <label htmlFor="contact-name">Your name</label>
             <input
               id="contact-name"
               type="text"
-              style={inputStyle}
-              className="form-control contact-input"
+              className="ce-input"
               name="name"
               value={formData.name}
               onChange={updateFormField}
-              onFocus={onInputFocus}
-              onBlur={onInputBlur}
               required
-              placeholder="Your name"
+              placeholder="Jane Doe"
             />
           </div>
-          <div className="col-md-6">
-            <label htmlFor="contact-email" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>YOUR EMAIL</label>
+          <div className="ce-form-field">
+            <label htmlFor="contact-email">Your email</label>
             <input
               id="contact-email"
               type="email"
-              style={inputStyle}
-              className="form-control contact-input"
+              className="ce-input"
               name="email"
               value={formData.email}
               onChange={updateFormField}
-              onFocus={onInputFocus}
-              onBlur={onInputBlur}
               required
               placeholder="you@example.com"
             />
           </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="contact-message" className="form-label fw-medium" style={{ color: '#cbd5e1', fontSize: '0.85rem', letterSpacing: '0.5px' }}>MESSAGE</label>
+
+        <div className="ce-form-field">
+          <label htmlFor="contact-message">Message</label>
           <textarea
             id="contact-message"
-            style={{ ...inputStyle, resize: 'none' }}
-            className="form-control contact-input"
+            className="ce-input"
             name="message"
             rows="5"
             value={formData.message}
             onChange={updateFormField}
-            onFocus={onInputFocus}
-            onBlur={onInputBlur}
             required
-            placeholder="Tell me about your project, idea, or opportunity..."
+            placeholder="Tell me about your project, idea, or opportunity…"
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="btn-global btn-global-primary w-100"
-          style={{ fontSize: '1rem' }}
-          disabled={isSubmitting}
-        >
+
+        <button type="submit" className="ce-submit" disabled={isSubmitting}>
           {isSubmitting ? (
-            <><span className="spinner-border spinner-border-sm me-2" role="status"></span> Sending{'…'}</>
+            <><span className="spinner-border spinner-border-sm" role="status"></span> Sending…</>
           ) : (
             'Send Message'
           )}
         </button>
-        <p className="text-center mt-3 mb-0" style={{ color: '#cbd5e1', fontSize: '0.85rem' }}>
-          Or reach out directly via email or LinkedIn
-        </p>
+
+        <p className="ce-form-note">Or reach out directly via email or LinkedIn</p>
       </form>
     </div>
   );
