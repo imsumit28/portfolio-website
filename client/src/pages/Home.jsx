@@ -694,91 +694,80 @@ const Home = () => {
       </section>
 
       {/* Resume Section */}
-      <section className="py-5" id="resume">
+      <section className="py-5 resume-editorial" id="resume">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title">RESUME</h2>
             <div className="section-line"></div>
           </div>
 
-          <div className="mt-5" data-aos="fade-up">
-            <div
-              className="p-4 p-md-5"
-              style={{
-                background: 'linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(15,23,42,0.92) 100%)',
-                border: '1px solid rgba(59,130,246,0.22)',
-                borderRadius: '16px',
-                boxShadow: '0 0 40px rgba(59,130,246,0.06), 0 20px 60px rgba(0,0,0,0.4)',
-              }}
-            >
-              <div className="row align-items-center">
-                <div className="col-lg-5 mb-5 mb-lg-0">
-                  <h4 className="fw-bold mb-3" style={{ color: '#f8fafc', fontSize: '1.8rem' }}>
-                    Full Stack Developer
-                  </h4>
-                  <p className="mb-4" style={{ color: '#94a3b8', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                    Get a detailed overview of my technical skills, hands-on experience, and educational background.
-                  </p>
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">Curriculum vitae / 04</span>
+            <h2 className="ce-headline">
+              The full story,<br />on one page<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              A detailed overview of my technical skills, hands-on experience, and
+              educational background — kept current and ready to download.
+            </p>
+          </header>
 
-                  <div className="mb-4 d-flex flex-column gap-3">
-                    <div>
-                      <span className="badge rounded-pill" style={{ background: 'rgba(59,130,246,0.1)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.3)', padding: '8px 14px', fontSize: '0.9rem', fontWeight: '500' }}>
-                        PDF • Updated April 2026
-                      </span>
-                    </div>
+          <div className="re-grid">
+            {/* Left: spec + actions */}
+            <div data-aos="fade-up">
+              <p className="ce-col-label">Document</p>
+
+              <div className="re-spec">
+                {[
+                  ['Role', 'Full Stack Developer'],
+                  ['Format', 'PDF · A4'],
+                  ['Updated', 'April 2026'],
+                  ['Length', 'One page'],
+                ].map(([k, v], i) => (
+                  <div className="ce-detail" key={k}>
+                    <span className="ce-detail-idx">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="ce-detail-k">{k}</span>
+                    <span className="ce-detail-v">{v}</span>
                   </div>
+                ))}
+              </div>
 
-                  <div className="mt-5">
-                    <a
-                      href="/resume.pdf"
-                      download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf"
-                      className="btn-global btn-global-primary text-decoration-none"
-                      style={{ padding: '14px 32px', fontSize: '1.05rem' }}
+              <a
+                href="/resume.pdf"
+                download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf"
+                className="re-download"
+              >
+                Download Resume
+              </a>
+              <br />
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="re-view-link"
+              >
+                Open in new tab ↗
+              </a>
+            </div>
+
+            {/* Right: PDF preview */}
+            <div className="re-preview" data-aos="fade-up" data-aos-delay="100">
+              <span className="re-frame-tag">resume.pdf</span>
+              <div className="re-frame">
+                <div className="re-frame-clip">
+                  <div className="re-frame-crop">
+                    <iframe
+                      src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                      title="Resume PDF"
                     >
-                      Download Resume
-                    </a>
-                  </div>
-                </div>
-
-                <div className="col-lg-7 px-lg-5">
-                  <div
-                    className="position-relative w-100 mx-auto"
-                    style={{
-                      paddingTop: '120%', /* aspect ratio for A4 preview */
-                      background: 'rgba(15, 23, 42, 0.6)',
-                      borderRadius: '16px',
-                      border: '1px solid rgba(59,130,246,0.3)',
-                      boxShadow: '0 15px 40px rgba(0,0,0,0.5), 0 0 25px rgba(59,130,246,0.15)'
-                    }}
-                  >
-                    <div style={{
-                      position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-                      overflow: 'hidden',
-                      borderRadius: '15px',
-                      transform: 'translateZ(0)',
-                      clipPath: 'inset(0px round 15px)'
-                    }}>
-                      <div style={{ position: 'absolute', top: 0, left: '-18px', width: 'calc(100% + 36px)', height: '100%', overflow: 'hidden' }}>
-                        <iframe
-                          src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-                          title="Resume PDF"
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'block',
-                            background: '#fff',
-                            border: 'none'
-                          }}
-                        >
-                          <div className="d-flex flex-column align-items-center justify-content-center h-100 p-4 text-center" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: '#1e293b' }}>
-                            <p style={{ color: '#cbd5e1', marginBottom: '15px' }}>Preview not available in this browser.</p>
-                            <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="btn-global btn-global-primary">
-                              Download PDF Instead
-                            </a>
-                          </div>
-                        </iframe>
+                      <div className="re-frame-fallback">
+                        <p style={{ margin: 0 }}>Preview not available in this browser.</p>
+                        <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="re-download">
+                          Download PDF Instead
+                        </a>
                       </div>
-                    </div>
+                    </iframe>
                   </div>
                 </div>
               </div>
@@ -803,12 +792,25 @@ const Home = () => {
             </h2>
             <p className="ce-lead">
               Open to internships, freelance, and full-time roles. Have a project,
-              a role to fill, or just want to trade ideas? I usually reply within 24 hours.
+              a role to fill, or just want to trade ideas?
             </p>
-            <span className="ce-status">
-              <span className="ce-status-dot"></span>
-              Available for new opportunities
-            </span>
+            <dl className="ce-stats">
+              <div className="ce-stat">
+                <dt>Average response</dt>
+                <dd>6–12 hours</dd>
+              </div>
+              <div className="ce-stat">
+                <dt>Current status</dt>
+                <dd>
+                  <span className="ce-status-dot"></span>
+                  Available
+                </dd>
+              </div>
+              <div className="ce-stat">
+                <dt>Timezone</dt>
+                <dd>IST (UTC+5:30)</dd>
+              </div>
+            </dl>
           </header>
 
           <div className="ce-grid">
