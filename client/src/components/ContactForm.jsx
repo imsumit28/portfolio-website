@@ -72,7 +72,28 @@ const ContactForm = () => {
     <div>
       <p className="ce-col-label">Send a message</p>
 
-      {status.message && (
+      {status.message && status.type === 'success' && (
+        <div className="ce-alert ce-alert-success ce-alert-thanks" role="status">
+          <span className="ce-thanks-check" aria-hidden="true">✓</span>
+          <div className="ce-thanks-body">
+            <p className="ce-thanks-title">Thanks!</p>
+            <p className="ce-thanks-line">Your message reached my inbox.</p>
+            <p className="ce-thanks-reply">
+              <span>Expected reply</span> within 24 hours.
+            </p>
+          </div>
+          <button
+            type="button"
+            className="ce-alert-close"
+            aria-label="Dismiss"
+            onClick={() => setStatus({ type: '', message: '' })}
+          >
+            ×
+          </button>
+        </div>
+      )}
+
+      {status.message && status.type !== 'success' && (
         <div className={`ce-alert ce-alert-${status.type}`} role="alert">
           <span>{status.message}</span>
           <button
