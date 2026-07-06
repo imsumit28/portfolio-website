@@ -602,93 +602,114 @@ const Home = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-4" id="education">
-        <div className="container py-2">
+      <section className="py-5 education-editorial" id="education">
+        <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
-            <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px', fontSize: '1.1rem', opacity: 0.85 }}>Education</h2>
+            <h2 className="section-title">EDUCATION</h2>
             <div className="section-line"></div>
           </div>
 
-          <div className="row mt-4">
-            {/* Primary Focus: VIT */}
-            <div className="col-12 mb-3" data-aos="fade-up" data-aos-delay="100">
-              <div className="card h-100" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px' }}>
-                <div className="card-body p-3 p-md-4">
-                  <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center mb-3 gap-3">
-                    <img
-                      src="/vit.jpg"
-                      onError={(e) => {
-                        if (!e.target.dataset.retried) {
-                          e.target.dataset.retried = 'true';
-                          e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png';
-                        }
-                      }}
-                      alt="VIT"
-                      className="rounded shadow-sm"
-                      style={{ width: '100px', height: '55px', objectFit: 'cover' }}
-                    />
-                    <div>
-                      <h5 className="fw-bold mb-1" style={{ color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.4' }}>Vellore Institute of Technology</h5>
-                      <p className="text-accent mb-0 fw-medium" style={{ fontSize: '0.85rem' }}>2024 - 2028</p>
-                    </div>
-                  </div>
-                  <h6 className="fw-semibold mb-2" style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>B.Tech. in Computer Science and Engineering</h6>
-                  <p className="mb-2" style={{ fontSize: '0.88rem', color: '#94a3b8' }}>CGPA: <span style={{ color: '#10b981', fontWeight: '600' }}>8.03</span> &nbsp;·&nbsp; <span style={{ color: '#94a3b8' }}>Data Structures, DBMS, Operating Systems</span></p>
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">Academics / 03</span>
+            <h2 className="ce-headline">
+              Foundations,<br />formally<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              Where I picked up the fundamentals — computer science theory, systems
+              thinking, and the habit of shipping real projects alongside coursework.
+            </p>
+          </header>
 
-                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-                    <p className="mb-2" style={{ color: '#64748b', fontSize: '0.78rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
-                      Academic Project
-                    </p>
-                    <p className="fw-semibold mb-2" style={{ color: '#cbd5e1', fontSize: '0.88rem' }}>
-                      Open Source Audit & Automation Capstone (OSS – NGMC)
-                    </p>
-                    <ul className="list-mobile-padding" style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
-                      <li className="d-flex align-items-start gap-2 mb-1" style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '0.9rem', flexShrink: 0 }}>▸</span>
-                        <span>Developed 5 Bash scripts for system reporting and auditing, reducing manual effort by 40%.</span>
-                      </li>
-                      <li className="d-flex align-items-start gap-2" style={{ color: '#64748b', fontSize: '0.84rem', lineHeight: '1.5' }}>
-                        <span style={{ color: '#10b981', fontSize: '0.9rem', flexShrink: 0 }}>▸</span>
-                        <span>
-                          Audited Python (OSS) and built an interactive Manifesto Generator.{' '}
-                          <a href="https://github.com/imsumit28/Vityarthi-Open-Source-OSS" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}>GitHub →</a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
+          <div className="edu-timeline">
+            {/* Primary: VIT */}
+            <article className="edu-entry" data-aos="fade-up">
+              <div className="edu-rail">
+                <img
+                  src="/vit.jpg"
+                  onError={(e) => {
+                    if (!e.target.dataset.retried) {
+                      e.target.dataset.retried = 'true';
+                      e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Vellore_Institute_of_Technology_seal_2017.svg/1200px-Vellore_Institute_of_Technology_seal_2017.svg.png';
+                    }
+                  }}
+                  alt="VIT"
+                  className="edu-logo"
+                />
+                <span className="edu-period">2024 — 2028</span>
+                <span className="edu-status"><span className="edu-status-dot"></span> Enrolled</span>
+                <div className="edu-metric">
+                  <span className="edu-metric-num">8.18</span>
+                  <span className="edu-metric-label">CGPA / 10</span>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Secondary Focus: CBSE */}
-          <div className="row" data-aos="fade-up" data-aos-delay="200">
-            <div className="col-12">
-              <div className="card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '8px' }}>
-                <div className="card-body p-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="/cbse.svg"
-                      onError={(e) => {
-                        if (!e.target.dataset.retried) {
-                          e.target.dataset.retried = 'true';
-                          e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png';
-                        }
-                      }}
-                      alt="CBSE"
-                      className="rounded shadow-sm"
-                      style={{ width: '38px', height: '38px', objectFit: 'contain', backgroundColor: 'white', padding: '3px' }}
-                    />
-                    <div className="ms-3">
-                      <h6 className="fw-semibold mb-0" style={{ color: '#94a3b8', fontSize: '0.88rem' }}>Central Board Of Secondary Education, Class XII</h6>
-                    </div>
-                  </div>
-                  <div className="text-md-end">
-                    <p className="mb-0" style={{ color: '#64748b', fontSize: '0.82rem' }}>May 2021 – May 2023 &nbsp;·&nbsp; <span style={{ color: '#94a3b8', fontWeight: '600' }}>89.4%</span></p>
-                  </div>
+              <div className="edu-node">
+                <span className="edu-node-dot"></span>
+                <span className="edu-node-line"></span>
+              </div>
+
+              <div className="edu-main">
+                <p className="edu-inst-meta">B.Tech · Computer Science &amp; Engineering</p>
+                <h3 className="edu-inst">Vellore Institute of Technology</h3>
+
+                <div className="edu-tags">
+                  <span className="edu-tag-label">Coursework</span>
+                  <span className="edu-tag">Data Structures</span>
+                  <span className="edu-tag">DBMS</span>
+                  <span className="edu-tag">Operating Systems</span>
+                </div>
+
+                <div className="edu-project">
+                  <p className="edu-block-label">Academic project</p>
+                  <p className="edu-project-title">Open Source Audit &amp; Automation Capstone (OSS – NGMC)</p>
+                  <ul className="edu-list">
+                    <li>
+                      <span className="edu-list-idx">01</span>
+                      <span className="edu-list-text">Developed 5 Bash scripts for system reporting and auditing, reducing manual effort by 40%.</span>
+                    </li>
+                    <li>
+                      <span className="edu-list-idx">02</span>
+                      <span className="edu-list-text">Audited Python (OSS) and built an interactive Manifesto Generator.</span>
+                    </li>
+                  </ul>
+                  <a href="https://github.com/imsumit28/Vityarthi-Open-Source-OSS" target="_blank" rel="noopener noreferrer" className="edu-link">
+                    View on GitHub ↗
+                  </a>
                 </div>
               </div>
-            </div>
+            </article>
+
+            {/* Secondary: CBSE */}
+            <article className="edu-entry" data-aos="fade-up" data-aos-delay="100">
+              <div className="edu-rail">
+                <img
+                  src="/cbse.svg"
+                  onError={(e) => {
+                    if (!e.target.dataset.retried) {
+                      e.target.dataset.retried = 'true';
+                      e.target.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png';
+                    }
+                  }}
+                  alt="CBSE"
+                  className="edu-logo edu-logo--sm"
+                />
+                <span className="edu-period">2021 — 2023</span>
+              </div>
+
+              <div className="edu-node">
+                <span className="edu-node-dot"></span>
+                <span className="edu-node-line"></span>
+              </div>
+
+              <div className="edu-main edu-main--row">
+                <div>
+                  <p className="edu-inst-meta">Class XII · CBSE</p>
+                  <h3 className="edu-inst edu-inst--sm">Central Board of Secondary Education</h3>
+                </div>
+                <span className="edu-inline-score">89.4<span>%</span></span>
+              </div>
+            </article>
           </div>
         </div>
       </section>

@@ -2061,11 +2061,12 @@ ul {
 }
 
 /* ============================================================
-   Contact + Resume — warm editorial (amber)
+   Contact + Resume + Education — warm editorial (amber)
    ============================================================ */
 /* Override the section line to warm amber for these sections */
 .contact-editorial .section-line,
-.resume-editorial .section-line {
+.resume-editorial .section-line,
+.education-editorial .section-line {
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.55), transparent);
 }
 
@@ -2531,4 +2532,242 @@ textarea.ce-input { resize: none; line-height: 1.6; }
 @media (max-width: 900px) {
   .re-grid { grid-template-columns: 1fr; gap: 44px; }
   .re-preview { max-width: 460px; }
+}
+
+/* ---- Education: editorial timeline (amber) ---- */
+.edu-timeline {
+  border-top: 1px solid var(--ce-rule);
+  padding-top: 44px;
+}
+.edu-entry {
+  display: grid;
+  grid-template-columns: 168px 26px 1fr;
+  align-items: start;
+}
+.edu-entry + .edu-entry { margin-top: 8px; }
+
+/* Left rail */
+.edu-rail {
+  text-align: right;
+  padding-right: 24px;
+  padding-top: 2px;
+}
+.edu-logo {
+  width: 92px;
+  height: 50px;
+  object-fit: contain;
+  margin: 0 0 14px auto;
+  display: block;
+  border-radius: 6px;
+  opacity: 0.9;
+}
+.edu-logo--sm {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  padding: 4px;
+}
+.edu-period {
+  display: block;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+}
+.edu-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+.edu-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ca);
+  box-shadow: 0 0 0 4px var(--ca-soft);
+}
+.edu-metric {
+  margin-top: 18px;
+}
+.edu-metric-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+}
+.edu-metric-num span { color: var(--ca); font-size: 0.5em; margin-left: 1px; }
+.edu-metric-label {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Timeline node */
+.edu-node {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding-top: 6px;
+}
+.edu-node-dot {
+  position: relative;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 2px solid var(--ca);
+}
+.edu-node-line {
+  position: absolute;
+  top: 6px;
+  bottom: -8px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.5), rgba(245, 158, 11, 0));
+}
+.edu-entry:last-child .edu-node-line { display: none; }
+
+/* Main column */
+.edu-main {
+  padding-left: 28px;
+  padding-bottom: 48px;
+}
+.edu-inst-meta {
+  margin: 0 0 5px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+.edu-inst {
+  margin: 0 0 22px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+.edu-inst--sm { font-size: clamp(1.15rem, 2.4vw, 1.5rem); margin-bottom: 0; }
+
+/* Coursework tags */
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.82rem;
+  margin-bottom: 30px;
+}
+.edu-tag-label { color: var(--ca); font-weight: 600; }
+.edu-tag { color: var(--text-muted); transition: color 0.2s ease; }
+.edu-tag:hover { color: var(--text-main); }
+
+/* Academic project block */
+.edu-project {
+  border-left: 3px solid var(--ca);
+  padding: 4px 0 4px 22px;
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), rgba(245, 158, 11, 0));
+}
+.edu-block-label {
+  margin: 0 0 8px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.edu-project-title {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+.edu-list { list-style: none; margin: 0 0 14px; padding: 0; }
+.edu-list li {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: start;
+  padding: 11px 0;
+  border-top: 1px solid var(--ce-rule);
+}
+.edu-list-idx {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ca);
+  padding-top: 2px;
+}
+.edu-list-text { color: #cbd5e1; line-height: 1.6; font-size: 0.92rem; }
+.edu-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ca);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.edu-link:hover { color: var(--ca-bright); }
+
+/* Compact secondary entry (CBSE) */
+.edu-main--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+}
+.edu-inline-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+.edu-inline-score span { color: var(--ca); font-size: 0.55em; }
+
+/* Responsive — collapse rail above main */
+@media (max-width: 768px) {
+  .edu-entry { grid-template-columns: 20px 1fr; }
+  .edu-rail {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 28px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 18px;
+  }
+  .edu-logo { margin: 0; }
+  .edu-metric { margin-top: 0; }
+  .edu-metric-num { font-size: 1.6rem; }
+  .edu-metric-label { display: inline; margin: 0 0 0 6px; }
+  .edu-status { margin-top: 0; }
+  .edu-node { grid-column: 1; grid-row: 1 / span 2; }
+  .edu-main { grid-column: 2; grid-row: 2; padding-left: 28px; }
 }
