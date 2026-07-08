@@ -20,9 +20,9 @@ const Footer = () => {
   };
 
   const socials = [
-    { icon: <FaGithub size={22} />, label: 'View Code', href: 'https://github.com/imsumit28', target: '_blank', color: '#10b981', shadow: 'rgba(16,185,129,0.4)' },
+    { icon: <FaGithub size={22} />, label: 'View Code', href: 'https://github.com/imsumit28', target: '_blank', color: '#f59e0b', shadow: 'rgba(245,158,11,0.4)' },
     { icon: <FaLinkedinIn size={22} />, label: 'Connect', href: 'https://www.linkedin.com/in/imsumit45/', target: '_blank', color: '#3b82f6', shadow: 'rgba(59,130,246,0.4)' },
-    { icon: <FaEnvelope size={22} />, label: 'Contact Me', href: 'mailto:ersumitkumar45@gmail.com', target: '_self', color: '#10b981', shadow: 'rgba(16,185,129,0.4)' },
+    { icon: <FaEnvelope size={22} />, label: 'Contact Me', href: 'mailto:ersumitkumar45@gmail.com', target: '_self', color: '#f59e0b', shadow: 'rgba(245,158,11,0.4)' },
   ];
 
   return (
@@ -32,7 +32,7 @@ const Footer = () => {
         {/* Logo */}
         <div className="mb-4">
           <a href="#hero" onClick={scrollToTop} className="footer-logo-link" style={{
-            color: '#10b981',
+            color: '#f59e0b',
             fontSize: '1.4rem',
             fontWeight: '700',
             textDecoration: 'none',
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div style={{ width: '40px', height: '1px', background: 'rgba(16,185,129,0.3)', margin: '0 auto 2rem' }} />
+        <div style={{ width: '40px', height: '1px', background: 'rgba(245,158,11,0.3)', margin: '0 auto 2rem' }} />
 
         {/* Social Links */}
         <div className="d-flex justify-content-center gap-5 mb-4">
@@ -100,7 +100,7 @@ const Footer = () => {
 
         {/* Availability */}
         <p style={{
-          color: '#10b981',
+          color: '#fbbf24',
           fontSize: '0.82rem',
           fontWeight: '600',
           letterSpacing: '0.5px',

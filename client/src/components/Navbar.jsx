@@ -176,7 +176,7 @@ const Navbar = () => {
           >
             <span style={{
               display: 'block', width: '22px', height: '2px',
-              background: menuOpen ? '#10b981' : '#f8fafc',
+              background: menuOpen ? '#f59e0b' : '#f8fafc',
               borderRadius: '2px',
               transition: 'background-color 0.3s ease, transform 0.3s ease',
               transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'
@@ -190,7 +190,7 @@ const Navbar = () => {
             }} />
             <span style={{
               display: 'block', width: '22px', height: '2px',
-              background: menuOpen ? '#10b981' : '#f8fafc',
+              background: menuOpen ? '#f59e0b' : '#f8fafc',
               borderRadius: '2px',
               transition: 'background-color 0.3s ease, transform 0.3s ease',
               transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none'
@@ -227,7 +227,7 @@ const Navbar = () => {
           maxWidth: '300px',
           zIndex: 50,
           background: 'rgba(8, 11, 26, 0.98)',
-          borderLeft: '1px solid rgba(16,185,129,0.2)',
+          borderLeft: '1px solid rgba(245,158,11,0.2)',
           backdropFilter: 'blur(8px)',
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -253,7 +253,7 @@ const Navbar = () => {
 
         {/* Drawer logo */}
         <div style={{ padding: '0 28px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-          <span style={{ color: '#10b981', fontWeight: '700', fontSize: '1.1rem', letterSpacing: '-0.5px' }}>
+          <span style={{ color: '#f59e0b', fontWeight: '700', fontSize: '1.1rem', letterSpacing: '-0.5px' }}>
             &lt;<span>Sumit</span> Kumar /&gt;
           </span>
         </div>
@@ -273,12 +273,12 @@ const Navbar = () => {
                       alignItems: 'center',
                       gap: '12px',
                       padding: '14px 28px',
-                      color: isActive ? '#10b981' : '#cbd5e1',
+                      color: isActive ? '#f59e0b' : '#cbd5e1',
                       textDecoration: 'none',
                       fontWeight: isActive ? '600' : '400',
                       fontSize: '1rem',
-                      borderLeft: isActive ? '3px solid #10b981' : '3px solid transparent',
-                      background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
+                      borderLeft: isActive ? '3px solid #f59e0b' : '3px solid transparent',
+                      background: isActive ? 'rgba(245,158,11,0.06)' : 'transparent',
                       transition: 'color 0.2s ease, font-weight 0.2s ease, border-color 0.2s ease, background-color 0.2s ease',
                     }}
                   >
@@ -293,12 +293,12 @@ const Navbar = () => {
                       alignItems: 'center',
                       gap: '12px',
                       padding: '14px 28px',
-                      color: isActive ? '#10b981' : '#cbd5e1',
-                      background: isActive ? 'rgba(16,185,129,0.06)' : 'transparent',
+                      color: isActive ? '#f59e0b' : '#cbd5e1',
+                      background: isActive ? 'rgba(245,158,11,0.06)' : 'transparent',
                       fontWeight: isActive ? '600' : '400',
                       fontSize: '1rem',
                       border: 'none',
-                      borderLeft: isActive ? '3px solid #10b981' : '3px solid transparent',
+                      borderLeft: isActive ? '3px solid #f59e0b' : '3px solid transparent',
                       width: '100%',
                       textAlign: 'left',
                       cursor: 'pointer',
