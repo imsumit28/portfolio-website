@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useScrollLock from '../hooks/useScrollLock';
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,11 +18,8 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Lock body scroll when menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+  // Lock body scroll when the mobile menu is open
+  useScrollLock(menuOpen);
 
   useEffect(() => {
     if (currentPath !== '/') {

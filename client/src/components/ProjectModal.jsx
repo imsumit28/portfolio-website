@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
 import { FiX } from 'react-icons/fi';
 import ProjectCard from './ProjectCard';
+import useScrollLock from '../hooks/useScrollLock';
 
 const ProjectModal = ({ project, onClose }) => {
-  // Lock body scroll while the modal is open and close on Escape
-  useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+  // Lock body scroll while the modal is open
+  useScrollLock();
 
+  // Close on Escape
+  useEffect(() => {
     const handleKey = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKey);
-
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener('keydown', handleKey);
-    };
+    return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
   if (!project) return null;

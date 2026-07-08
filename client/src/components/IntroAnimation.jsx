@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './IntroAnimation.css';
+import useScrollLock from '../hooks/useScrollLock';
 
 const STORAGE_KEY = 'introSeen';
 
@@ -18,32 +19,24 @@ const IntroAnimation = () => {
     return safeStorage.get(STORAGE_KEY) === '1' ? 'done' : 'initial';
   });
 
+  // Lock scroll while the intro is playing
+  useScrollLock(stage !== 'done');
+
   useEffect(() => {
-    if (stage === 'done') return;
-
-    const originalOverflow = document.body.style.overflow;
-    const originalTouchAction = document.body.style.touchAction;
-    Object.assign(document.body.style, { overflow: 'hidden', touchAction: 'none' });
-
-    const restoreScroll = () => {
-      Object.assign(document.body.style, { overflow: originalOverflow, touchAction: originalTouchAction });
-    };
+    if (stage === 'done') return undefined;
 
     const timers = [
       setTimeout(() => setStage('revealed'), 80),
       setTimeout(() => setStage('holding'), 1100),
       setTimeout(() => setStage('exiting'), 2600),
       setTimeout(() => {
-        restoreScroll();
         safeStorage.set(STORAGE_KEY, '1');
         setStage('done');
       }, 3500),
     ];
 
-    return () => {
-      timers.forEach(clearTimeout);
-      restoreScroll();
-    };
+    return () => timers.forEach(clearTimeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (stage === 'done') return null;

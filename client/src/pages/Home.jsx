@@ -377,29 +377,29 @@ const Home = () => {
           </div>
 
           {/* GitHub Contribution Calendar */}
-          <div className="github-calendar-section" data-aos="fade-up" data-aos-delay="150">
+          <div className="github-calendar-section ca-editorial" data-aos="fade-up" data-aos-delay="150">
             <div className="section-title-wrapper mb-4">
               <h2 className="section-title" style={{ minWidth: 'auto' }}>CODE ACTIVITY</h2>
               <div className="section-line"></div>
             </div>
-            <div className="github-calendar-container">
-              <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+
+            <div className="ca-panel">
+              <div className="ca-head">
                 <div>
-                  <p className="mb-0" style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
-                    Contribution activity on GitHub over the past year
-                  </p>
+                  <p className="ca-kicker">GitHub · @imsumit28</p>
+                  <p className="ca-sub">Contribution activity over the past year</p>
                 </div>
                 <a
                   href="https://github.com/imsumit28"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-global btn-global-secondary"
-                  style={{ padding: '8px 20px', fontSize: '0.85rem' }}
+                  className="ca-link"
                 >
-                  <FaGithub style={{ marginRight: '6px' }} /> View Profile
+                  <FaGithub size={14} /> View profile ↗
                 </a>
               </div>
-              <div className="github-calendar-inner">
+
+              <div className="github-calendar-inner ca-grid">
                 <Suspense fallback={
                   <div style={{
                     height: '150px',
@@ -412,7 +412,7 @@ const Home = () => {
                     username="imsumit28"
                     colorScheme="dark"
                     theme={{
-                      dark: ['#1e293b', '#422006', '#854d0e', '#d97706', '#fbbf24'],
+                      dark: ['#1c2534', '#4d3610', '#8a5e16', '#d18f1e', '#fcd34d'],
                     }}
                     fontSize={12}
                     blockSize={13}
