@@ -25,7 +25,7 @@ const Contact = () => {
 
       {/* Editorial header */}
       <header className="ce-header" data-aos="fade-up">
-        <span className="ce-kicker">Get in touch / 05</span>
+        <span className="ce-kicker">Get in touch / 06</span>
         <h2 className="ce-headline">
           Let&apos;s build<br />something good<span className="ce-dot">.</span>
         </h2>

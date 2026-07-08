@@ -2068,8 +2068,31 @@ ul {
 .resume-editorial .section-line,
 .education-editorial .section-line,
 .skills-editorial .section-line,
-.projects-editorial .section-line {
+.projects-editorial .section-line,
+.experience-editorial .section-line {
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.55), transparent);
+}
+
+/* ---- Experience: amber recolor (editorial timeline) ---- */
+.experience-editorial .exp-mono-label,
+.experience-editorial .exp-metric-num span,
+.experience-editorial .exp-list-idx,
+.experience-editorial .exp-tech-label {
+  color: var(--ca);
+}
+.experience-editorial .exp-status-dot {
+  background: var(--ca);
+  box-shadow: 0 0 0 4px var(--ca-soft);
+}
+.experience-editorial .exp-node-dot {
+  border-color: var(--ca);
+}
+.experience-editorial .exp-node-line {
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.5), rgba(245, 158, 11, 0));
+}
+.experience-editorial .exp-metric {
+  border-left-color: var(--ca);
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.07), rgba(245, 158, 11, 0));
 }
 
 /* Header block */

@@ -30,7 +30,7 @@ const Projects = () => {
 
       {/* Editorial header */}
       <header className="ce-header" data-aos="fade-up">
-        <span className="ce-kicker">Selected work / 01</span>
+        <span className="ce-kicker">Selected work / 02</span>
         <h2 className="ce-headline">
           Things I&apos;ve<br />shipped<span className="ce-dot">.</span>
         </h2>

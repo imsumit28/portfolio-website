@@ -419,12 +419,24 @@ const Home = () => {
       </section>
 
       {/* Experience Section */}
-      <section className="py-5" id="experience">
+      <section className="py-5 experience-editorial" id="experience">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title" style={{ width: '145px' }}>EXPERIENCE</h2>
             <div className="section-line"></div>
           </div>
+
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">Experience / 01</span>
+            <h2 className="ce-headline">
+              Where I&apos;ve<br />shipped in production<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              Hands-on engineering work — building and maintaining real product
+              features alongside senior engineers and QA.
+            </p>
+          </header>
 
           <motion.div
             className="exp-grid mt-5"
@@ -511,7 +523,7 @@ const Home = () => {
 
           {/* Editorial header */}
           <header className="ce-header" data-aos="fade-up">
-            <span className="ce-kicker">Toolkit / 02</span>
+            <span className="ce-kicker">Toolkit / 03</span>
             <h2 className="ce-headline">
               The tools I<br />reach for<span className="ce-dot">.</span>
             </h2>
@@ -609,7 +621,7 @@ const Home = () => {
 
           {/* Editorial header */}
           <header className="ce-header" data-aos="fade-up">
-            <span className="ce-kicker">Academics / 03</span>
+            <span className="ce-kicker">Academics / 04</span>
             <h2 className="ce-headline">
               Foundations,<br />formally<span className="ce-dot">.</span>
             </h2>
@@ -722,7 +734,7 @@ const Home = () => {
 
           {/* Editorial header */}
           <header className="ce-header" data-aos="fade-up">
-            <span className="ce-kicker">Curriculum vitae / 04</span>
+            <span className="ce-kicker">Curriculum vitae / 05</span>
             <h2 className="ce-headline">
               The full story,<br />on one page<span className="ce-dot">.</span>
             </h2>
@@ -805,7 +817,7 @@ const Home = () => {
 
           {/* Editorial header */}
           <header className="ce-header" data-aos="fade-up">
-            <span className="ce-kicker">Get in touch / 05</span>
+            <span className="ce-kicker">Get in touch / 06</span>
             <h2 className="ce-headline">
               Let&apos;s build<br />something good<span className="ce-dot">.</span>
             </h2>
