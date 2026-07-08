@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="d-flex align-items-center position-relative" style={{ minHeight: '85vh', overflow: 'hidden' }} id="home">
+      <section className="d-flex align-items-center position-relative home-editorial" style={{ minHeight: '85vh', overflow: 'hidden' }} id="home">
         <div className="hero-bg-glow"></div>
         <div className="container ps-md-5 position-relative" style={{ zIndex: 1 }}>
           <div className="row align-items-center">
@@ -73,7 +73,7 @@ const Home = () => {
                 style={{
                   maxWidth: '520px',
                   background: 'rgba(2, 6, 23, 0.85)',
-                  border: '1px solid rgba(16,185,129,0.18)',
+                  border: '1px solid rgba(245,158,11,0.18)',
                   borderRadius: '10px',
                   overflow: 'hidden',
                   fontFamily: '"JetBrains Mono", "Fira Code", ui-monospace, monospace',
@@ -118,7 +118,7 @@ const Home = () => {
                     >
                       {line.type === 'cmd' ? (
                         <>
-                          <span style={{ color: '#10b981', marginRight: 8 }}>$</span>
+                          <span style={{ color: '#fbbf24', marginRight: 8 }}>$</span>
                           <span style={{ color: '#f8fafc' }}>{line.text}</span>
                         </>
                       ) : (
@@ -128,11 +128,11 @@ const Home = () => {
                   ))}
                   {terminalStep >= terminalLines.length && (
                     <div>
-                      <span style={{ color: '#10b981', marginRight: 8 }}>$</span>
+                      <span style={{ color: '#fbbf24', marginRight: 8 }}>$</span>
                       <span
                         style={{
                           display: 'inline-block',
-                          color: '#10b981',
+                          color: '#fbbf24',
                           animation: 'heroBlink 1s steps(2) infinite',
                         }}
                       >
@@ -156,8 +156,8 @@ const Home = () => {
                   style={{
                     padding: '6px 12px',
                     borderRadius: '999px',
-                    background: 'rgba(16,185,129,0.10)',
-                    border: '1px solid rgba(16,185,129,0.22)',
+                    background: 'rgba(245,158,11,0.10)',
+                    border: '1px solid rgba(245,158,11,0.22)',
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
@@ -168,8 +168,8 @@ const Home = () => {
                   style={{
                     padding: '6px 12px',
                     borderRadius: '999px',
-                    background: 'rgba(59,130,246,0.10)',
-                    border: '1px solid rgba(59,130,246,0.22)',
+                    background: 'rgba(245,158,11,0.10)',
+                    border: '1px solid rgba(245,158,11,0.22)',
                     color: 'rgba(248,250,252,0.90)',
                   }}
                 >
@@ -207,9 +207,9 @@ const Home = () => {
               <div className="d-flex justify-content-center gap-3 mb-4 flex-wrap">
                 {[
                   { href: 'https://www.linkedin.com/in/imsumit45/', icon: <FaLinkedinIn size={16} />, label: 'Connect', color: '#3b82f6', shadow: 'rgba(59,130,246,0.35)', target: '_blank' },
-                  { href: 'https://github.com/imsumit28', icon: <FaGithub size={16} />, label: 'GitHub', color: '#10b981', shadow: 'rgba(16,185,129,0.35)', target: '_blank' },
+                  { href: 'https://github.com/imsumit28', icon: <FaGithub size={16} />, label: 'GitHub', color: '#fbbf24', shadow: 'rgba(245,158,11,0.35)', target: '_blank' },
                   { href: 'https://x.com/imsumit4545', icon: <FaXTwitter size={16} />, label: 'Follow', color: '#f8fafc', shadow: 'rgba(248,250,252,0.2)', target: '_blank' },
-                  { href: 'mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you.', icon: <FaEnvelope size={16} />, label: 'Say Hi', color: '#10b981', shadow: 'rgba(16,185,129,0.35)', target: '_self' },
+                  { href: 'mailto:ersumitkumar45@gmail.com?body=Hello%20Sumit%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you.%0A%0AThank%20you.', icon: <FaEnvelope size={16} />, label: 'Say Hi', color: '#fbbf24', shadow: 'rgba(245,158,11,0.35)', target: '_self' },
                 ].map(({ href, icon, label, color, shadow, target }) => (
                   <a
                     key={label}
