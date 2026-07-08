@@ -22,11 +22,23 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="container py-5">
-      <div className="section-title-wrapper mt-4 mb-5" data-aos="fade-right">
+    <div className="container py-5 projects-editorial">
+      <div className="section-title-wrapper mt-4" data-aos="fade-right">
         <h2 className="section-title">PROJECTS</h2>
         <div className="section-line"></div>
       </div>
+
+      {/* Editorial header */}
+      <header className="ce-header" data-aos="fade-up">
+        <span className="ce-kicker">Selected work / 01</span>
+        <h2 className="ce-headline">
+          Things I&apos;ve<br />shipped<span className="ce-dot">.</span>
+        </h2>
+        <p className="ce-lead">
+          Production-grade, fully deployed builds — real-time systems, full-stack
+          apps, and developer tools. Tap any project for the full breakdown.
+        </p>
+      </header>
 
       <ProjectList projects={projects} loading={loading} />
     </div>

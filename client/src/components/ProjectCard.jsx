@@ -17,8 +17,8 @@ const EMPTY_ARCH_DECISIONS = [];
 const decisionsPanelStyle = {
   marginTop: '12px',
   padding: '14px 16px',
-  background: 'rgba(16,185,129,0.04)',
-  border: '1px solid rgba(16,185,129,0.15)',
+  background: 'rgba(245,158,11,0.05)',
+  border: '1px solid rgba(245,158,11,0.2)',
   borderRadius: '8px',
   display: 'flex',
   flexDirection: 'column',
@@ -116,9 +116,9 @@ const ProjectCard = ({
                 {architectureDecisions.length > 0 && (
                   <button
                     onClick={() => setShowDecisions(v => !v)}
-                    style={{ ...whyButtonStyle, color: showDecisions ? '#10b981' : '#64748b' }}
-                    onMouseEnter={e => Object.assign(e.currentTarget.style, { borderColor: '#10b981', color: '#10b981' })}
-                    onMouseLeave={e => Object.assign(e.currentTarget.style, { borderColor: 'rgba(255,255,255,0.1)', color: showDecisions ? '#10b981' : '#64748b' })}
+                    style={{ ...whyButtonStyle, color: showDecisions ? '#f59e0b' : '#64748b' }}
+                    onMouseEnter={e => Object.assign(e.currentTarget.style, { borderColor: '#f59e0b', color: '#f59e0b' })}
+                    onMouseLeave={e => Object.assign(e.currentTarget.style, { borderColor: 'rgba(255,255,255,0.1)', color: showDecisions ? '#f59e0b' : '#64748b' })}
                   >
                     Why this? {showDecisions ? '↑' : '↓'}
                   </button>
@@ -138,7 +138,7 @@ const ProjectCard = ({
                 <div style={decisionsPanelStyle}>
                   {architectureDecisions.map(({ q, a }, i) => (
                     <div key={q || i}>
-                      <div style={{ color: '#10b981', fontWeight: 700, fontSize: '0.82rem', marginBottom: '3px' }}>{q}</div>
+                      <div style={{ color: '#fbbf24', fontWeight: 700, fontSize: '0.82rem', marginBottom: '3px' }}>{q}</div>
                       <div style={{ color: '#94a3b8', fontSize: '0.82rem', lineHeight: 1.6 }}>{a}</div>
                     </div>
                   ))}
@@ -163,18 +163,18 @@ const ProjectCard = ({
                       cursor: isTestMetric ? 'pointer' : 'default',
                       transition: 'border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease',
                       ...(isTestMetric && {
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16,185,129,0.1)',
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245,158,11,0.18)',
                       })
                     }}
                     onMouseEnter={(e) => {
                       if (isTestMetric) {
-                        Object.assign(e.target.style, { borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.15)', transform: 'translateY(-2px)' });
+                        Object.assign(e.target.style, { borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.25)', transform: 'translateY(-2px)' });
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (isTestMetric) {
-                        Object.assign(e.target.style, { borderColor: 'rgba(255,255,255,0.1)', backgroundColor: 'rgba(255,255,255,0.04)', transform: 'translateY(0)' });
+                        Object.assign(e.target.style, { borderColor: 'rgba(245,158,11,0.5)', backgroundColor: 'rgba(245,158,11,0.18)', transform: 'translateY(0)' });
                       }
                     }}
                     title={isTestMetric ? 'Click to view testing guide' : ''}

@@ -2067,7 +2067,8 @@ ul {
 .contact-editorial .section-line,
 .resume-editorial .section-line,
 .education-editorial .section-line,
-.skills-editorial .section-line {
+.skills-editorial .section-line,
+.projects-editorial .section-line {
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.55), transparent);
 }
 
@@ -2864,4 +2865,112 @@ textarea.ce-input { resize: none; line-height: 1.6; }
 @media (max-width: 768px) {
   .sk-cat { grid-template-columns: 1fr; gap: 18px; padding: 26px 0; }
   .sk-cat-head { position: static; top: auto; }
+}
+
+/* ---- Projects: amber editorial recolor (section grid + filter) ---- */
+/* Filter — editorial treatment */
+.projects-editorial .projects-filter-section {
+  gap: 1rem;
+  border-bottom-color: var(--ce-rule);
+}
+.projects-editorial .projects-filter-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.projects-editorial .filter-tag {
+  border-radius: 6px;
+}
+.projects-editorial .filter-tag:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  color: var(--text-main);
+  background: rgba(245, 158, 11, 0.06);
+}
+.projects-editorial .filter-tag.active {
+  background: var(--ca);
+  border-color: var(--ca);
+  color: #1a1204;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+}
+
+/* Cards — amber hover/accents */
+.projects-editorial .project-grid-card:hover {
+  border-color: rgba(245, 158, 11, 0.25);
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.1);
+}
+.projects-editorial .project-grid-card--clickable:focus-visible {
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+}
+.projects-editorial .project-badge {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--ca-bright);
+  border-color: rgba(245, 158, 11, 0.28);
+}
+.projects-editorial .project-grid-card:hover .project-tech-chip-sm {
+  border-color: rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.07);
+}
+.projects-editorial .project-tech-more {
+  color: var(--ca-bright);
+}
+.projects-editorial .project-card-view-hint {
+  background: var(--ca);
+  color: #1a1204;
+}
+.projects-editorial .project-action-btn:hover {
+  background: var(--ca);
+  border-color: var(--ca);
+  color: #1a1204;
+}
+
+/* ---- Project modal: amber scheme ---- */
+.project-modal-body .project-badge {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--ca-bright);
+  border-color: rgba(245, 158, 11, 0.28);
+}
+.project-modal-body .project-highlights-label,
+.project-modal-body .project-highlights-list li::before {
+  color: var(--ca);
+}
+.project-modal-body .project-arch-flow {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.project-modal-body .project-arch-node {
+  color: var(--ca-bright);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
+  border-color: rgba(245, 158, 11, 0.32);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
+}
+.project-modal-body .project-arch-node:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0.2) 100%);
+  border-color: rgba(251, 191, 36, 0.55);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+.project-modal-body .project-arch-arrow {
+  color: rgba(245, 158, 11, 0.4);
+}
+.project-modal-body .project-metric-tag {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--ca-bright);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.project-modal-body .project-showcase-card:hover .project-tech-chip {
+  border-color: rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.08);
+}
+/* Live Demo primary button → amber inside modal */
+.project-modal-body .btn-global-primary {
+  background: linear-gradient(135deg, var(--ca) 0%, var(--ca-bright) 100%);
+  color: #1a1204;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+}
+.project-modal-body .btn-global-primary:hover {
+  background: linear-gradient(135deg, #d97706 0%, var(--ca) 100%);
+  color: #1a1204;
+  box-shadow: 0 10px 28px rgba(245, 158, 11, 0.38);
 }
