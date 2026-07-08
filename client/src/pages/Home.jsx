@@ -502,13 +502,26 @@ const Home = () => {
       </section>
 
 {/* Skills Section */}
-      <section className="pt-5 pb-0" id="skills">
+      <section className="pt-5 pb-0 skills-editorial" id="skills">
         <div className="container py-4">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title">SKILLS</h2>
             <div className="section-line"></div>
           </div>
-          <div className="mt-4 d-flex flex-column gap-4">
+
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">Toolkit / 02</span>
+            <h2 className="ce-headline">
+              The tools I<br />reach for<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              A working stack for building and shipping full-stack, real-time
+              applications — from interface to infrastructure.
+            </p>
+          </header>
+
+          <div className="sk-list-wrap">
             {[
               {
                 category: 'CORE STACK',
@@ -555,43 +568,28 @@ const Home = () => {
                 ]
               }
             ].map((section, idx) => (
-              <div key={section.category} data-aos="fade-up" data-aos-delay={idx * 100}>
-                <h6 className="mb-3 fw-bold" style={{ color: '#cbd5e1', borderLeft: '2px solid rgba(16,185,129,0.4)', paddingLeft: '10px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  {section.category}
-                </h6>
-                <div className="row g-2">
+              <div className="sk-cat" key={section.category} data-aos="fade-up" data-aos-delay={idx * 60}>
+                <div className="sk-cat-head">
+                  <span className="sk-cat-idx">{String(idx + 1).padStart(2, '0')}</span>
+                  <span className="sk-cat-name">{section.category}</span>
+                  <span className="sk-cat-count">{String(section.skills.length).padStart(2, '0')}</span>
+                </div>
+                <div className="sk-list">
                   {section.skills.map((skill) => (
-                    <div className="col-6 col-sm-4 col-md-3 col-xl-2" key={skill.name}>
-                      <div className="d-flex align-items-center p-2 h-100 position-relative" style={{
-                        background: 'rgba(15,23,42,0.6)',
-                        borderRadius: '8px',
-                        transition: 'transform 0.2s ease, border-color 0.2s ease',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        cursor: 'default',
-                        overflow: 'hidden'
-                      }}
-                        onMouseEnter={(e) => Object.assign(e.currentTarget.style, { transform: 'translateY(-2px)', borderColor: 'var(--accent)' })}
-                        onMouseLeave={(e) => Object.assign(e.currentTarget.style, { transform: 'translateY(0)', borderColor: 'rgba(255,255,255,0.05)' })}
-                      >
-                        <div className="d-flex align-items-center justify-content-center flex-shrink-0" style={{
-                          width: '32px', height: '32px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', marginRight: '10px', padding: '5px'
-                        }}>
-                          <img
-                            src={skill.img}
-                            alt={skill.name}
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                            style={{
-                              width: '100%', height: '100%', objectFit: 'contain',
-                              filter: skill.invert
-                                ? 'invert(1) brightness(1.25) contrast(1.15)'
-                                : 'brightness(1.06) contrast(1.05)',
-                            }}
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center overflow-hidden">
-                          <p className="mb-0 fw-semibold text-truncate" style={{ fontSize: '0.85rem', color: '#f8fafc', lineHeight: '1.2' }}>{skill.name}</p>
-                        </div>
-                      </div>
+                    <div className="sk-chip" key={skill.name}>
+                      <span className="sk-chip-ico">
+                        <img
+                          src={skill.img}
+                          alt={skill.name}
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                          style={{
+                            filter: skill.invert
+                              ? 'invert(1) brightness(1.25) contrast(1.15)'
+                              : 'brightness(1.06) contrast(1.05)',
+                          }}
+                        />
+                      </span>
+                      <span className="sk-chip-name">{skill.name}</span>
                     </div>
                   ))}
                 </div>
