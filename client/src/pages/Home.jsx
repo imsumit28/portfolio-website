@@ -261,12 +261,24 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="pt-5 pb-3" id="about">
+      <section className="pt-5 pb-3 about-editorial" id="about">
         <div className="container py-2">
           <div className="section-title-wrapper" data-aos="fade-right">
             <h2 className="section-title">Who I Am</h2>
             <div className="section-line"></div>
           </div>
+
+          {/* Editorial header */}
+          <header className="ce-header" data-aos="fade-up">
+            <span className="ce-kicker">About / 00</span>
+            <h2 className="ce-headline">
+              I ship real-time<br />systems<span className="ce-dot">.</span>
+            </h2>
+            <p className="ce-lead">
+              Full Stack Developer focused on real-time systems and scalable backend
+              architecture — every project I build is deployed and live, not a localhost demo.
+            </p>
+          </header>
 
           <div className="row mt-5 align-items-start" data-aos="fade-up" data-aos-delay="100">
             <div className="col-lg-4 col-md-5 mb-5 mb-md-0 text-center text-md-start">
@@ -286,7 +298,7 @@ const Home = () => {
                   <span className="about-bullet">{'>'}</span> <strong>City:</strong>&nbsp; Patna, India
                 </div>
                 <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-4 text-white">
-                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; <button onClick={() => scrollToSection('contact')} style={{ background: 'none', border: 'none', color: '#10b981', padding: 0, font: 'inherit', cursor: 'pointer', textDecoration: 'underline' }}>Available via Contact Form</button>
+                  <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp; <button onClick={() => scrollToSection('contact')} style={{ background: 'none', border: 'none', color: '#fbbf24', padding: 0, font: 'inherit', cursor: 'pointer', textDecoration: 'underline' }}>Available via Contact Form</button>
                 </div>
                 <div className="d-flex justify-content-center justify-content-md-start">
                   <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
@@ -298,17 +310,14 @@ const Home = () => {
 
             <div className="col-lg-8 col-md-7 ps-lg-5">
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-                Full Stack Developer focused on real-time systems and scalable backend architecture.
-              </p>
-              <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 <strong>Built:</strong>
               </p>
               <ul style={{ listStyle: 'none', paddingLeft: 0, marginBottom: '1rem', color: '#cbd5e1', fontSize: '1.05rem', lineHeight: '1.8' }}>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://paperpilot2026.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>Paper Pilot</a> → AI-powered exam-paper generator with queue-based LLM pipeline</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://collabdocs2026.vercel.app/login" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>CollabDocs</a> → CRDT-based collaborative editor with AI assistance</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://github.com/imsumit28/NotifyX" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>NotifyX</a> → distributed notification system using Redis & BullMQ</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://curlix.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>Curlix</a> → production-grade URL shortener with sub-10 ms redirects & async analytics</li>
-                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://devconnect2026.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(16,185,129,0.4)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#10b981'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(16,185,129,0.4)'}>DevConnect</a> → real-time developer network</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://paperpilot2026.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(245,158,11,0.45)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#fbbf24'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(245,158,11,0.45)'}>Paper Pilot</a> → AI-powered exam-paper generator with queue-based LLM pipeline</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://collabdocs2026.vercel.app/login" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(245,158,11,0.45)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#fbbf24'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(245,158,11,0.45)'}>CollabDocs</a> → CRDT-based collaborative editor with AI assistance</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://github.com/imsumit28/NotifyX" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(245,158,11,0.45)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#fbbf24'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(245,158,11,0.45)'}>NotifyX</a> → distributed notification system using Redis & BullMQ</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://curlix.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(245,158,11,0.45)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#fbbf24'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(245,158,11,0.45)'}>Curlix</a> → production-grade URL shortener with sub-10 ms redirects & async analytics</li>
+                <li style={{ marginBottom: '0.5rem' }}>▸ <a href="https://devconnect2026.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 700, borderBottom: '1px dashed rgba(245,158,11,0.45)', transition: 'border-color 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderBottomColor = '#fbbf24'} onMouseLeave={e => e.currentTarget.style.borderBottomColor = 'rgba(245,158,11,0.45)'}>DevConnect</a> → real-time developer network</li>
               </ul>
               <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
                 All projects are deployed, handle real-time interactions, and solve concurrency problems. Every project I ship is deployed and live, not just a localhost demo.
@@ -317,7 +326,7 @@ const Home = () => {
                 Currently <strong>open to full-time roles</strong>, remote or India-based.
               </p>
 
-              <p className="mb-5 fst-italic" style={{ color: '#10b981', fontSize: '1.1rem', borderLeft: '2px solid rgba(16,185,129,0.4)', paddingLeft: '15px' }}>
+              <p className="mb-5 fst-italic" style={{ color: '#fbbf24', fontSize: '1.1rem', borderLeft: '2px solid rgba(245,158,11,0.45)', paddingLeft: '15px' }}>
                 "The interesting problems happen when two users hit save at the same time. That's what I build for."
               </p>
 
@@ -325,17 +334,17 @@ const Home = () => {
               <div className="mb-5 d-flex flex-wrap gap-3">
                 <div
                   className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
-                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
-                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: '#3b82f6', color: '#fff', borderColor: '#3b82f6', boxShadow: '0 6px 20px rgba(59,130,246,0.35)' })}
-                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'rgba(59,130,246,0.1)', color: '#3b82f6', borderColor: 'rgba(59,130,246,0.3)', boxShadow: '' })}
+                  style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.35)', color: '#fbbf24', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
+                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: '#f59e0b', color: '#1a1204', borderColor: '#f59e0b', boxShadow: '0 6px 20px rgba(245,158,11,0.35)' })}
+                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'rgba(245,158,11,0.12)', color: '#fbbf24', borderColor: 'rgba(245,158,11,0.35)', boxShadow: '' })}
                 >
                   <FaBriefcase className="me-2" size={14} /> Open to Full-time Roles
                 </div>
                 <div
                   className="d-flex align-items-center px-4 py-2 rounded-pill shadow-sm"
-                  style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', color: '#10b981', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
-                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: '#10b981', color: '#fff', borderColor: '#10b981', boxShadow: '0 6px 20px rgba(16,185,129,0.35)' })}
-                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'rgba(16,185,129,0.1)', color: '#10b981', borderColor: 'rgba(16,185,129,0.3)', boxShadow: '' })}
+                  style={{ background: 'transparent', border: '1px solid rgba(148,163,184,0.3)', color: '#cbd5e1', fontWeight: '500', fontSize: '0.9rem', cursor: 'default', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease' }}
+                  onMouseEnter={e => Object.assign(e.currentTarget.style, { background: 'rgba(245,158,11,0.1)', color: '#fbbf24', borderColor: 'rgba(245,158,11,0.5)', boxShadow: '' })}
+                  onMouseLeave={e => Object.assign(e.currentTarget.style, { background: 'transparent', color: '#cbd5e1', borderColor: 'rgba(148,163,184,0.3)', boxShadow: '' })}
                 >
                   <FaCode className="me-2" size={14} /> React · Node.js · TypeScript · Redis
                 </div>
@@ -403,7 +412,7 @@ const Home = () => {
                     username="imsumit28"
                     colorScheme="dark"
                     theme={{
-                      dark: ['#1e293b', '#0d3321', '#14532d', '#16a34a', '#10b981'],
+                      dark: ['#1e293b', '#422006', '#854d0e', '#d97706', '#fbbf24'],
                     }}
                     fontSize={12}
                     blockSize={13}
