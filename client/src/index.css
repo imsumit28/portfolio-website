@@ -324,7 +324,7 @@ ul {
 .hero-photo-frame {
   position: relative;
   display: inline-block;
-  width: min(320px, 86vw);
+  width: min(440px, 100%);
   border-radius: 22px;
   overflow: hidden;
   border: 2px solid rgba(245, 158, 11, 0.3);
@@ -377,7 +377,7 @@ ul {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 15%;
-  max-height: 460px;
+  max-height: 520px;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
@@ -388,11 +388,12 @@ ul {
 
 @media (min-width: 992px) {
   .hero-photo-frame {
-    width: 340px;
+    width: 100%;
+    max-width: 460px;
   }
 
   .hero-photo-img {
-    max-height: 480px;
+    max-height: 560px;
   }
 }
 

@@ -13,7 +13,7 @@ const terminalLines = [
   { type: 'cmd', text: 'whoami' },
   { type: 'out', text: 'Full-stack engineer focused on scalable systems & real-time apps' },
   { type: 'cmd', text: 'cat work.txt' },
-  { type: 'out', text: 'Real-time collaborative editor syncing updates across users (<200ms latency)' },
+  { type: 'out', text: 'Real-time collaborative editor · syncing at <200ms latency' },
   { type: 'cmd', text: 'cat philosophy.txt' },
   { type: 'out', text: 'I build production-grade systems, not CRUD demos' },
 ];
@@ -71,7 +71,7 @@ const Home = () => {
               <div
                 className="mt-4 hero-terminal"
                 style={{
-                  maxWidth: '520px',
+                  maxWidth: '600px',
                   background: 'rgba(2, 6, 23, 0.85)',
                   border: '1px solid rgba(245,158,11,0.18)',
                   borderRadius: '10px',
@@ -156,9 +156,9 @@ const Home = () => {
                   style={{
                     padding: '6px 12px',
                     borderRadius: '999px',
-                    background: 'rgba(245,158,11,0.10)',
-                    border: '1px solid rgba(245,158,11,0.22)',
-                    color: 'rgba(248,250,252,0.90)',
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(245,158,11,0.30)',
+                    color: 'rgba(248,250,252,0.92)',
                   }}
                 >
                   5 Projects, All Deployed
@@ -168,9 +168,9 @@ const Home = () => {
                   style={{
                     padding: '6px 12px',
                     borderRadius: '999px',
-                    background: 'rgba(245,158,11,0.10)',
-                    border: '1px solid rgba(245,158,11,0.22)',
-                    color: 'rgba(248,250,252,0.90)',
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(245,158,11,0.30)',
+                    color: 'rgba(248,250,252,0.92)',
                   }}
                 >
                   Open to Full-time Roles
