@@ -14,6 +14,8 @@ import IntroAnimation from './components/IntroAnimation';
 // Pages
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import Blogs from './pages/Blogs';
+import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
@@ -40,6 +42,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin/login" element={<Login />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />

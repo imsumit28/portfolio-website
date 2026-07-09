@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -61,17 +61,53 @@ const Footer = () => {
 
         {/* CTA Button */}
         <div className="mb-5">
-          <button
-            onClick={scrollToProjects}
-            className="btn-global btn-global-primary"
-            style={{ padding: '11px 30px', fontSize: '0.95rem' }}
-          >
-            View Projects
-          </button>
+          <div className="d-flex flex-wrap justify-content-center gap-3">
+            <button
+              onClick={scrollToProjects}
+              className="btn-global btn-global-primary"
+              style={{ padding: '11px 30px', fontSize: '0.95rem' }}
+            >
+              View Projects
+            </button>
+            <Link
+              to="/blogs"
+              className="btn-global btn-global-secondary"
+              style={{ padding: '11px 30px', fontSize: '0.95rem', textDecoration: 'none' }}
+            >
+              Read Blogs
+            </Link>
+          </div>
         </div>
 
         {/* Divider */}
         <div style={{ width: '40px', height: '1px', background: 'rgba(245,158,11,0.3)', margin: '0 auto 2rem' }} />
+
+        <div className="mb-4">
+          <p
+            style={{
+              color: '#64748b',
+              fontSize: '0.72rem',
+              fontWeight: '700',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              marginBottom: '0.85rem',
+            }}
+          >
+            Explore
+          </p>
+          <div className="d-flex justify-content-center flex-wrap gap-4">
+            <Link to="/blogs" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: '600' }}>
+              Blogs
+            </Link>
+            <button
+              type="button"
+              onClick={scrollToProjects}
+              style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: '600', background: 'none', border: 'none', padding: 0 }}
+            >
+              Projects
+            </button>
+          </div>
+        </div>
 
         {/* Social Links */}
         <div className="d-flex justify-content-center gap-5 mb-4">
