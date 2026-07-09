@@ -6,6 +6,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
 import ContactForm from '../components/ContactForm';
 import profileImg from '../assets/profile-new.jpeg';
+import profileImgWebp from '../assets/profile-new.webp';
 import profileVideo from '../assets/profile-video.mp4';
 import aboutDevconnectImg from '../assets/about-devconnect.png';
 
@@ -20,6 +21,17 @@ const terminalLines = [
 
 const Home = () => {
   const [terminalStep, setTerminalStep] = useState(0);
+  // Mobile browsers (iOS Safari, Android Chrome) can't render PDFs inside an
+  // iframe, and the iframe's child fallback markup never renders there either.
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: coarse)');
+    const update = () => setIsTouchDevice(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     if (terminalStep >= terminalLines.length) return;
@@ -247,12 +259,15 @@ const Home = () => {
 
               <div className="hero-photo-frame mt-4 mt-lg-0">
                 <div className="hero-photo-glow" aria-hidden="true"></div>
-                <img
-                  src={profileImg}
-                  alt="Sumit Kumar"
-                  className="hero-photo-img"
-                  loading="eager"
-                />
+                <picture>
+                  <source srcSet={profileImgWebp} type="image/webp" />
+                  <img
+                    src={profileImg}
+                    alt="Sumit Kumar"
+                    className="hero-photo-img"
+                    loading="eager"
+                  />
+                </picture>
               </div>
             </div>
           </div>
@@ -285,6 +300,7 @@ const Home = () => {
                 <video
                   autoPlay
                   muted
+                  playsInline
                   className="about-photo-img"
                   style={{ display: 'block', width: '100%' }}
                 >
@@ -796,17 +812,22 @@ const Home = () => {
               <div className="re-frame">
                 <div className="re-frame-clip">
                   <div className="re-frame-crop">
-                    <iframe
-                      src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-                      title="Resume PDF"
-                    >
+                    {isTouchDevice ? (
                       <div className="re-frame-fallback">
-                        <p style={{ margin: 0 }}>Preview not available in this browser.</p>
+                        <p style={{ margin: 0 }}>PDF preview isn't supported on this device.</p>
                         <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="re-download">
                           Download PDF Instead
                         </a>
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="re-view-link">
+                          Open in new tab ↗
+                        </a>
                       </div>
-                    </iframe>
+                    ) : (
+                      <iframe
+                        src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                        title="Resume PDF"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
