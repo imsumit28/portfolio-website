@@ -1,10 +1,17 @@
-/* ===== Intro Curtain Wipe Animation ===== */
+/* ===== Intro Curtain Wipe Animation — Amber Theme ===== */
+
+:root {
+  --intro-bg: #0a101e;
+  --intro-accent: #f59e0b;
+  --intro-accent-bright: #fbbf24;
+  --intro-accent-soft: #fcd34d;
+}
 
 .intro-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #0a101e;
+  background: radial-gradient(circle at 50% 40%, #101827 0%, #0a101e 70%);
   overflow: hidden;
   transform: translateY(0);
   transition: transform 0.9s cubic-bezier(0.83, 0, 0.17, 1),
@@ -12,6 +19,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* soft ambient amber glow behind the text */
+.intro-overlay::before {
+  content: '';
+  position: absolute;
+  width: min(70vw, 640px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.20) 0%, transparent 65%);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.9s ease 0.25s, transform 1.2s ease 0.25s;
+  filter: blur(8px);
+}
+
+.intro-overlay.intro-revealed::before,
+.intro-overlay.intro-holding::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Phase 3: whole overlay slides up off-screen */
@@ -24,14 +54,14 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 30% 30%, rgba(16,185,129,0.28) 0%, transparent 55%),
-    linear-gradient(135deg, #0a101e 0%, #064e3b 55%, #10b981 100%);
+    radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.30) 0%, transparent 55%),
+    linear-gradient(135deg, #0a101e 0%, #7c4a03 55%, #f59e0b 100%);
   transform: translateX(0);
   transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
   z-index: 3;
-  border-right: 3px solid #10b981;
-  box-shadow: 8px 0 40px rgba(16, 185, 129, 0.5),
-              inset -2px 0 30px rgba(16, 185, 129, 0.25);
+  border-right: 3px solid var(--intro-accent);
+  box-shadow: 8px 0 40px rgba(245, 158, 11, 0.5),
+              inset -2px 0 30px rgba(245, 158, 11, 0.25);
 }
 
 /* Phase 2: curtain wipes off to the left */
@@ -64,22 +94,22 @@
   color: #f8fafc;
   margin: 0;
   line-height: 1.05;
-  text-shadow: 0 4px 30px rgba(16, 185, 129, 0.18);
+  text-shadow: 0 4px 30px rgba(245, 158, 11, 0.20);
   word-break: break-word;
 }
 
 .intro-text-accent {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.45));
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.45));
 }
 
 .intro-line {
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #10b981 50%, transparent);
+  background: linear-gradient(90deg, transparent, var(--intro-accent) 50%, transparent);
   margin: 22px auto 18px;
   transition: width 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.55s;
 }
@@ -91,7 +121,7 @@
 
 .intro-subtitle {
   font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-  color: #94a3b8;
+  color: #cbd5e1;
   font-size: clamp(0.78rem, 1.3vw, 0.95rem);
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -109,7 +139,7 @@
 
 .intro-subtitle .intro-blink {
   display: inline-block;
-  color: #10b981;
+  color: var(--intro-accent);
   margin-left: 6px;
   animation: introCaretBlink 1s steps(2) infinite;
 }
@@ -119,13 +149,13 @@
   50% { opacity: 0; }
 }
 
-/* === Top + bottom emerald accent bars (decorative) === */
+/* === Top + bottom amber accent bars (decorative) === */
 .intro-bar {
   position: absolute;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  background: linear-gradient(90deg, transparent, var(--intro-accent), transparent);
   z-index: 4;
   transform: scaleX(0);
   transform-origin: center;
@@ -140,7 +170,7 @@
   transform: scaleX(1);
 }
 
-/* === Mobile / small screens (≤ 600px) === */
+/* === Mobile / small screens (<= 600px) === */
 @media (max-width: 600px) {
   .intro-text-wrap {
     padding: 0 16px;
@@ -169,12 +199,12 @@
   .intro-bar-bottom { bottom: 16px; }
 
   .intro-curtain {
-    box-shadow: 6px 0 24px rgba(16, 185, 129, 0.45),
-                inset -2px 0 22px rgba(16, 185, 129, 0.22);
+    box-shadow: 6px 0 24px rgba(245, 158, 11, 0.45),
+                inset -2px 0 22px rgba(245, 158, 11, 0.22);
   }
 }
 
-/* === Very small screens (≤ 360px) === */
+/* === Very small screens (<= 360px) === */
 @media (max-width: 360px) {
   .intro-text {
     font-size: clamp(1.5rem, 10vw, 2.4rem);
@@ -203,6 +233,7 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .intro-overlay,
+  .intro-overlay::before,
   .intro-curtain,
   .intro-text-wrap,
   .intro-line,
