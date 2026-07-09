@@ -19,20 +19,19 @@ const IntroAnimation = () => {
     return safeStorage.get(STORAGE_KEY) === '1' ? 'done' : 'initial';
   });
 
-  // Lock scroll while the intro is playing
   useScrollLock(stage !== 'done');
 
   useEffect(() => {
     if (stage === 'done') return undefined;
 
     const timers = [
-      setTimeout(() => setStage('revealed'), 80),
-      setTimeout(() => setStage('holding'), 1100),
-      setTimeout(() => setStage('exiting'), 2600),
+      setTimeout(() => setStage('revealed'), 120),
+      setTimeout(() => setStage('holding'), 2000),
+      setTimeout(() => setStage('exiting'), 3200),
       setTimeout(() => {
         safeStorage.set(STORAGE_KEY, '1');
         setStage('done');
-      }, 3500),
+      }, 4000),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -43,20 +42,41 @@ const IntroAnimation = () => {
 
   return (
     <div className={`intro-overlay intro-${stage}`} aria-hidden="true">
-      <div className="intro-bar intro-bar-top" />
-      <div className="intro-bar intro-bar-bottom" />
-
-      <div className="intro-text-wrap">
-        <h1 className="intro-text">
-          Sumit <span className="intro-text-accent">Kumar</span>
-        </h1>
-        <div className="intro-line" />
-        <p className="intro-subtitle">
-          Full-Stack Engineer<span className="intro-blink">_</span>
-        </p>
+      <div className="intro-backdrop">
+        <div className="intro-grid" />
+        <div className="intro-orb intro-orb-a" />
+        <div className="intro-orb intro-orb-b" />
+        <div className="intro-scanline" />
       </div>
 
-      <div className="intro-curtain" />
+      <div className="intro-shell">
+        <div className="intro-card">
+          <div className="intro-card-chrome">
+            <span className="intro-dot intro-dot-red" />
+            <span className="intro-dot intro-dot-amber" />
+            <span className="intro-dot intro-dot-green" />
+            <span className="intro-chrome-label">sumit@portfolio — boot</span>
+          </div>
+
+          <div className="intro-card-content">
+            <p className="intro-eyebrow">Portfolio / 00</p>
+            <h1 className="intro-title">
+              Sumit <span className="intro-title-accent">Kumar</span>
+            </h1>
+            <p className="intro-role">
+              Full-Stack Engineer
+              <span className="intro-cursor" />
+            </p>
+
+            <div className="intro-loader">
+              <div className="intro-loader-track">
+                <div className="intro-loader-fill" />
+              </div>
+              <span className="intro-loader-label">Loading systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
