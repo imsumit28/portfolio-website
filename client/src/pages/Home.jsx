@@ -247,7 +247,6 @@ const Home = () => {
 
               <div className="hero-photo-frame mt-4 mt-lg-0">
                 <div className="hero-photo-glow" aria-hidden="true"></div>
-                <div className="hero-photo-border" aria-hidden="true"></div>
                 <img
                   src={profileImg}
                   alt="Sumit Kumar"
