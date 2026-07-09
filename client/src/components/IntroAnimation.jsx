@@ -25,13 +25,13 @@ const IntroAnimation = () => {
     if (stage === 'done') return undefined;
 
     const timers = [
-      setTimeout(() => setStage('revealed'), 120),
-      setTimeout(() => setStage('holding'), 2000),
-      setTimeout(() => setStage('exiting'), 3200),
+      setTimeout(() => setStage('revealed'), 80),
+      setTimeout(() => setStage('holding'), 900),
+      setTimeout(() => setStage('exiting'), 1050),
       setTimeout(() => {
         safeStorage.set(STORAGE_KEY, '1');
         setStage('done');
-      }, 4000),
+      }, 1450),
     ];
 
     return () => timers.forEach(clearTimeout);
