@@ -86,7 +86,7 @@ export const LOCAL_PROJECTS = [
     coverImage: notifyxCover,
     tech: ['Node.js', 'Express', 'BullMQ', 'Redis', 'Socket.io', 'MongoDB', 'Mongoose'],
     githubLink: 'https://github.com/imsumit28/NotifyX',
-    liveLink: null,
+    liveLink: 'https://notifyx-sumit.vercel.app/',
     challenge: {
       accentColor: '#3b82f6',
       context: 'One comment triggered 5 notifications. BullMQ retrying with zero idempotency.',
