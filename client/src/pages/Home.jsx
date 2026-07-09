@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
 import Projects from './Projects';
 import ContactForm from '../components/ContactForm';
-import profileImg from '../assets/profile.png';
+import profileImg from '../assets/profile-new.jpeg';
 import profileVideo from '../assets/profile-video.mp4';
 import aboutDevconnectImg from '../assets/about-devconnect.png';
 
