@@ -1,12 +1,15 @@
 # Performance Benchmarks
 
-Metrics captured on the production deployment (Vercel frontend · Render backend).
+Two snapshots are tracked here:
+
+- **April 2026 baseline** — Lighthouse / Core Web Vitals measured on the production deployment before the optimization pass.
+- **July 2026 optimization pass** — build-level numbers measured locally from `vite build` after the asset and dependency overhaul. Lighthouse / CWV need re-measuring once this build is deployed (see checklist at the bottom).
 
 ---
 
-## Lighthouse Scores
+## Lighthouse Scores — April 2026 baseline (pre-optimization)
 
-Tested via Chrome DevTools Lighthouse (incognito, no extensions).
+Tested via Chrome DevTools Lighthouse (incognito, no extensions) on the previous production build.
 
 ### Desktop
 
@@ -26,11 +29,9 @@ Tested via Chrome DevTools Lighthouse (incognito, no extensions).
 | Best Practices | 95 |
 | SEO | 92 |
 
-> Mobile performance is lower due to the hero video, profile image size, and Bootstrap CSS weight on slower network conditions.
+> Mobile performance was dragged down by the intro video, a ~680 KB PNG hero image, and Bootstrap JS weight — all addressed in the July 2026 pass below.
 
----
-
-## Core Web Vitals
+## Core Web Vitals — April 2026 baseline
 
 ### Desktop
 
@@ -52,36 +53,55 @@ Tested via Chrome DevTools Lighthouse (incognito, no extensions).
 | FCP (First Contentful Paint) | 1.6 s | Needs Improvement |
 | TTFB (Time to First Byte) | 185 ms | Good |
 
-> LCP on mobile is driven by the hero section profile image. Adding `fetchpriority="high"` on that `<img>` and serving a WebP version would push this into the Good range.
+> Mobile LCP was driven by the hero image. The July pass serves it as WebP with `fetchpriority="high"` and explicit `width`/`height` — re-measure after deploy.
 
 ---
 
-## Bundle Analysis
+## July 2026 Optimization Pass
 
-Output of `vite build` (client):
+All numbers below are measured, not estimated: image sizes from the files on disk, JS/CSS from `vite build` gzip output.
+
+### Asset diet
+
+| Asset | Before | After | Change |
+|-------|--------|-------|--------|
+| Project covers (5) | 2,558 KB PNG | 137 KB WebP (max-width 1000, q80) | −95% |
+| Hero photo | ~680 KB PNG | 51 KB WebP (+ 70 KB JPEG fallback via `<picture>`) | −93% |
+| Favicon | 272 KB (512px PNG) | 8 KB (64px PNG) | −97% |
+| Intro loading video | 688 KB MP4 | removed (CSS-only intro) | −100% |
+| VIT logo | 52 KB campus-photo JPEG (wrong asset) | 11 KB seal PNG, self-hosted | −79% |
+| Unused images (`profile.png`, `about-devconnect.png`, `profile.jpg`, `favicon.svg`) | ~1,590 KB | deleted | −100% |
+| Skill icons (19) | jsDelivr/Wikipedia hotlinks (one 404'd silently) | bundled local SVGs | no runtime CDN dependency |
+
+Total `dist/` output is now **1.8 MB**, of which 490 KB is the About-section video (`preload="metadata"`, so it doesn't block first paint).
+
+### JavaScript & CSS (vite build, gzip)
 
 | Asset | Raw | Gzipped |
 |-------|-----|---------|
-| `index-[hash].js` (main chunk) | 468 KB | 148 KB |
-| `vendor-[hash].js` (React + Bootstrap + AOS) | 312 KB | 98 KB |
-| `index-[hash].css` | 112 KB | 22 KB |
-| Images (profile, project covers) | ~2.1 MB | — |
-| Videos (loading + profile) | ~4.8 MB | — |
-| **Total JS transferred** | — | **246 KB** |
+| `index-[hash].js` (main chunk) | 510 KB | 166.5 KB |
+| `Tooltip-[hash].js` (lazy chunk, GitHub calendar) | 47 KB | 17.4 KB |
+| `index-[hash].css` (site + Bootstrap CSS) | 289 KB | 42.8 KB |
+| **Total JS transferred** | — | **~184 KB** |
 
-> Largest contributors to JS bundle: Bootstrap JS (44 KB gz), AOS (8 KB gz), React DOM (42 KB gz).
+Dependency changes that got there: removed AOS, Tailwind, react-bootstrap, react-simple-typewriter, and the Bootstrap JS bundle — **92 npm packages gone**; scroll animations now ride on Framer Motion (already in the bundle) via shared `whileInView` presets.
 
----
+### Rendering & loading behavior
 
-## API Response Times
+- Hero image: `<picture>` WebP/JPEG, `fetchpriority="high"`, explicit `width`/`height` (no CLS from the hero).
+- Below-the-fold images (education logos, skill icons): `loading="lazy"` with fixed dimensions.
+- About video: `preload="metadata"` + `playsInline` + `loop` — ~490 KB no longer pulled eagerly on load.
+- `MotionConfig reducedMotion="user"` disables animation for `prefers-reduced-motion` users at the library level.
 
-Measured with `curl` from a UK server against the Render backend. All routes are warm (backend already active).
+### API Response Times — measured April 2026, endpoints unchanged
+
+Measured with `curl` from a UK server against the Render backend, all routes warm.
 
 | Endpoint | Method | Avg (warm) | Notes |
 |----------|--------|-----------|-------|
 | `GET /` | GET | 45 ms | Health check |
 | `GET /api/projects` | GET | 110 ms | MongoDB read, no auth |
-| `POST /api/contact` | POST | 195 ms | DB write + Resend email call |
+| `POST /api/contact` | POST | 195 ms | DB write + email call (now Resend; previously Web3Forms) |
 | `POST /api/auth/login` | POST | 130 ms | bcrypt compare + JWT sign |
 | `GET /api/contact` | GET | 98 ms | Admin only, JWT verified |
 
@@ -91,23 +111,19 @@ Render free tier spins down after 15 minutes of inactivity. First request after 
 
 ---
 
-## Optimizations Already Applied
-
-- **Vite build**: Tree-shaking, chunk splitting, and asset fingerprinting out of the box.
-- **Intro animation lock**: `overflow: hidden` + `touchAction: none` scoped to animation duration only — restored immediately on completion (not on unmount) to prevent mobile scroll lock.
-- **AOS `once: true`**: Scroll animations only trigger once, avoiding layout recalculation on scroll-up.
-- **Hybrid project source**: Static project data ships with the bundle, so the Projects page renders instantly without waiting for the API.
-- **`-webkit-overflow-scrolling: touch`**: Applied to the GitHub calendar horizontal scroll container for smooth momentum scrolling on iOS.
-- **Render keep-alive**: Cron ping prevents cold starts for typical visitor traffic patterns.
-
----
-
-## Known Bottlenecks
+## Remaining Bottlenecks
 
 | Issue | Impact | Potential Fix |
 |-------|--------|---------------|
-| Hero profile image is PNG (~680 KB) | Mobile LCP | Convert to WebP, add `width`/`height` attrs |
-| Loading video is MP4 (~3 MB) | Initial load on slow connections | Compress with `ffmpeg`, add `preload="none"` on mobile |
-| Bootstrap loaded in full | +44 KB JS gz | Tree-shake or replace with Tailwind |
-| No HTTP/2 push or resource hints | Slightly slower asset discovery | Add `<link rel="preload">` for hero image |
-| Render free tier cold starts | 18–30 s first response | Upgrade to paid tier or migrate to Railway |
+| Main JS chunk is 510 KB raw (166 KB gz) | Parse cost on low-end mobile | Route-level code splitting (`React.lazy` for admin/blog pages) |
+| Bootstrap CSS loaded in full (~200 KB of the 289 KB CSS) | +CSS parse, mostly unused rules | Replace remaining grid/utility usage with own CSS, drop Bootstrap |
+| About-section video is 490 KB MP4 | Data cost on the About scroll | Re-encode with `ffmpeg` CRF 30 (~50% smaller) or swap for a poster + tap-to-play |
+| Render free tier cold starts | 18–30 s first response | Paid tier, or accept with the cron keep-alive |
+
+## Re-measure after deploy (checklist)
+
+The April Lighthouse/CWV numbers no longer describe this build. After deploying:
+
+1. Chrome DevTools → Lighthouse, incognito, Mobile + Desktop runs against the production URL.
+2. Update the two score tables above and re-label them with the new date.
+3. Expected movers: mobile LCP (hero WebP + `fetchpriority`), mobile Performance (smaller JS, no AOS/Bootstrap JS), CLS unchanged (already good), SEO (sitemap + canonical + OG tags shipped in the same pass).
