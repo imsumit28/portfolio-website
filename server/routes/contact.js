@@ -3,6 +3,7 @@ const router = express.Router();
 const rateLimit = require('express-rate-limit');
 const Contact = require('../models/Contact');
 const { protect, requireAdmin } = require('../middleware/auth');
+const { buildContactEmailHtml, buildContactEmailText } = require('../utils/contactEmail');
 
 // Rate limiter: max 3 requests per 15 minutes
 const contactLimiter = rateLimit({
@@ -33,7 +34,9 @@ const sendResendNotification = async ({ name, email, message }) => {
       to: [toEmail],
       reply_to: email,
       subject: `New Portfolio Message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`
+      html: buildContactEmailHtml({ name, email, message }),
+      // Plain-text alternative for clients that block HTML
+      text: buildContactEmailText({ name, email, message })
     })
   });
 
