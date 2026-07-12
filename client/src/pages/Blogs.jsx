@@ -66,7 +66,7 @@ const Blogs = () => {
                     >
                       {post.project}
                     </span>
-                    <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{post.readTime}</span>
+                    <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>{post.readTime}</span>
                   </div>
 
                   <h2 style={{ color: '#f8fafc', fontSize: '1.6rem', marginBottom: '0.9rem' }}>
@@ -84,7 +84,7 @@ const Blogs = () => {
                     >
                       Read Article
                     </Link>
-                    <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{post.sourcePath}</span>
+                    <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>{post.sourcePath}</span>
                   </div>
                 </article>
               </div>

@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { AuthProvider } from './context/AuthContext';
 import './index.css';
 
@@ -22,21 +20,14 @@ import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import ProjectChallenges from './pages/ProjectChallenges';
 import TestingGuide from './pages/TestingGuide';
+import NotFound from './pages/NotFound';
 
 function App() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      mirror: false,
-      easing: 'ease-out-cubic',
-    });
-  }, []);
-
   return (
-    <AuthProvider>
-      <IntroAnimation />
-      <Router>
+    <MotionConfig reducedMotion="user">
+      <AuthProvider>
+        <IntroAnimation />
+        <Router>
         <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
@@ -51,12 +42,14 @@ function App() {
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/challenges/:projectId" element={<ProjectChallenges />} />
               <Route path="/testing-guide" element={<TestingGuide />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
         </div>
-      </Router>
-    </AuthProvider>
+        </Router>
+      </AuthProvider>
+    </MotionConfig>
   );
 }
 

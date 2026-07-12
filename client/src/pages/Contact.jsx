@@ -1,11 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ContactForm from '../components/ContactForm';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { fadeUp, fadeRight } from '../utils/motion';
 
 const DETAILS = [
   { k: 'Email', v: 'ersumitkumar45@gmail.com', link: 'mailto:ersumitkumar45@gmail.com' },
-  { k: 'Phone', v: '+91 8210240106', link: 'tel:+918210240106' },
   { k: 'Location', v: 'Patna, India' },
 ];
 
@@ -18,30 +19,30 @@ const SOCIALS = [
 const Contact = () => {
   return (
     <div className="container py-5 contact-editorial">
-      <div className="section-title-wrapper mt-4" data-aos="fade-right">
+      <motion.div className="section-title-wrapper mt-4" {...fadeRight()}>
         <h3 className="section-title">CONTACT</h3>
         <div className="section-line"></div>
-      </div>
+      </motion.div>
 
       {/* Editorial header */}
-      <header className="ce-header" data-aos="fade-up">
+      <motion.header className="ce-header" {...fadeUp()}>
         <span className="ce-kicker">Get in touch / 06</span>
         <h2 className="ce-headline">
-          Let&apos;s build<br />something good<span className="ce-dot">.</span>
+          Get in<br />touch<span className="ce-dot">.</span>
         </h2>
         <p className="ce-lead">
-          Have a project in mind, a role to fill, or just want to trade ideas?
-          Send a note and I&apos;ll get back to you within 24 hours.
+          Open to internships, freelance work, and full-time roles.
+          If you&apos;re hiring — or just want to talk about real-time systems — send a note.
         </p>
         <span className="ce-status">
           <span className="ce-status-dot"></span>
-          Available for new projects
+          Available
         </span>
-      </header>
+      </motion.header>
 
       <div className="ce-grid">
         {/* Left: direct contact + socials */}
-        <div data-aos="fade-up">
+        <motion.div {...fadeUp()}>
           <p className="ce-col-label">Reach me directly</p>
 
           {DETAILS.map((item, i) => {
@@ -78,12 +79,12 @@ const Contact = () => {
               </a>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right: form */}
-        <div data-aos="fade-up" data-aos-delay="100">
+        <motion.div {...fadeUp(100)}>
           <ContactForm />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

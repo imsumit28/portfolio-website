@@ -50,7 +50,7 @@ const Footer = () => {
 
         {/* Proof line */}
         <p style={{
-          color: '#64748b',
+          color: '#94a3b8',
           fontSize: '0.95rem',
           maxWidth: '580px',
           margin: '0 auto 1.75rem',
@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="mb-4">
           <p
             style={{
-              color: '#64748b',
+              color: '#94a3b8',
               fontSize: '0.72rem',
               fontWeight: '700',
               letterSpacing: '0.18em',
@@ -117,19 +117,13 @@ const Footer = () => {
               href={href}
               target={target}
               rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+              className="footer-social"
+              style={{ '--hs-color': color, '--hs-shadow': shadow }}
             >
-              <div
-                className="social-icon-btn"
-                style={{ fontSize: '1.25rem', transition: 'background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease' }}
-                onMouseEnter={e => Object.assign(e.currentTarget.style, { background: color, color: '#fff', borderColor: color, boxShadow: `0 6px 20px ${shadow}`, transform: 'translateY(-3px) scale(1.08)' })}
-                onMouseLeave={e => Object.assign(e.currentTarget.style, { background: '', color: '', borderColor: '', boxShadow: '', transform: '' })}
-              >
+              <div className="social-icon-btn" style={{ fontSize: '1.25rem' }}>
                 {icon}
               </div>
-              <span style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                {label}
-              </span>
+              <span className="footer-social-label">{label}</span>
             </a>
           ))}
         </div>

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { LOCAL_PROJECTS } from '../data/projectsData';
 import { FiArrowLeft } from 'react-icons/fi';
+import { fadeUp, fadeRight } from '../utils/motion';
 
 const ProjectChallenges = () => {
   const { projectId } = useParams();
@@ -37,12 +39,12 @@ const ProjectChallenges = () => {
         </button>
 
         {/* Header */}
-        <div className="section-title-wrapper mb-2" data-aos="fade-right">
+        <motion.div className="section-title-wrapper mb-2" {...fadeRight()}>
           <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px' }}>
             CHALLENGES FACED
           </h2>
           <div className="section-line"></div>
-        </div>
+        </motion.div>
         <p className="mb-5" style={{ color: '#94a3b8', fontSize: '0.97rem' }}>
           What actually broke in{' '}
           <span style={{ color: challenge.accentColor, fontWeight: 700 }}>{project.title}</span>
@@ -50,8 +52,8 @@ const ProjectChallenges = () => {
         </p>
 
         {/* Challenge card */}
-        <div
-          data-aos="fade-up"
+        <motion.div
+          {...fadeUp()}
           className="d-flex flex-column"
           style={{
             background: 'var(--bg-card)',
@@ -73,7 +75,7 @@ const ProjectChallenges = () => {
             >
               {project.title.toUpperCase()}: THE PROBLEM
             </span>
-            <p className="mb-0 mt-2" style={{ color: '#64748b', fontSize: '0.93rem', lineHeight: '1.65' }}>
+            <p className="mb-0 mt-2" style={{ color: '#94a3b8', fontSize: '0.93rem', lineHeight: '1.65' }}>
               {challenge.context}
             </p>
           </div>
@@ -131,7 +133,7 @@ const ProjectChallenges = () => {
               {challenge.takeaway}
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

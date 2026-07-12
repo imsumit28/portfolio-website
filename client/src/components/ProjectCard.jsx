@@ -25,20 +25,6 @@ const decisionsPanelStyle = {
   gap: '12px',
 };
 
-const whyButtonStyle = {
-  background: 'none',
-  border: '1px solid rgba(255,255,255,0.1)',
-  borderRadius: '6px',
-  fontSize: '0.75rem',
-  fontWeight: 600,
-  padding: '3px 10px',
-  cursor: 'pointer',
-  letterSpacing: '0.3px',
-  transition: 'border-color 0.2s ease, color 0.2s ease',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '5px',
-};
 
 const ProjectCard = ({
   _id,
@@ -116,9 +102,7 @@ const ProjectCard = ({
                 {architectureDecisions.length > 0 && (
                   <button
                     onClick={() => setShowDecisions(v => !v)}
-                    style={{ ...whyButtonStyle, color: showDecisions ? '#f59e0b' : '#64748b' }}
-                    onMouseEnter={e => Object.assign(e.currentTarget.style, { borderColor: '#f59e0b', color: '#f59e0b' })}
-                    onMouseLeave={e => Object.assign(e.currentTarget.style, { borderColor: 'rgba(255,255,255,0.1)', color: showDecisions ? '#f59e0b' : '#64748b' })}
+                    className={`project-why-btn${showDecisions ? ' is-open' : ''}`}
                   >
                     Why this? {showDecisions ? '↑' : '↓'}
                   </button>

@@ -49,7 +49,7 @@ const BlogPost = () => {
               >
                 {post.project}
               </span>
-              <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{post.readTime}</span>
+              <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>{post.readTime}</span>
             </div>
 
             <h1

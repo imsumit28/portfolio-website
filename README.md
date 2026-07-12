@@ -12,7 +12,7 @@ Full-stack portfolio application with a React/Vite frontend and Express API back
 - `client/` serves the portfolio UI and admin pages.
 - `server/` exposes REST APIs under `/api/*`.
 - Public project cards are rendered from local static project metadata with optional API-augmented project entries.
-- Contact form requests are persisted in MongoDB and optional notification delivery is handled server-side via Web3Forms.
+- Contact form submissions go through the API only: the server validates, rate-limits, persists to MongoDB, and sends the email notification itself (Resend first, Web3Forms fallback). No form keys ship to the browser.
 
 ## Security Controls
 - JWT-protected admin routes (`/api/projects/*`, `/api/contact/*` read/update paths)
@@ -28,7 +28,10 @@ PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
 JWT_SECRET=replace_with_a_long_random_secret
 CLIENT_URL=http://localhost:5173
-WEB3FORMS_ACCESS_KEY=optional_web3forms_key
+CONTACT_NOTIFICATION_MODE=server
+RESEND_API_KEY=optional_resend_key
+CONTACT_TO_EMAIL=where_notifications_go@example.com
+WEB3FORMS_ACCESS_KEY=optional_web3forms_fallback_key
 ```
 
 Create `client/.env`:

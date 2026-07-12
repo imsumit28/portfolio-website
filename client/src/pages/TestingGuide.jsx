@@ -34,7 +34,7 @@ const TestingGuide = () => {
         </button>
 
         {/* Header */}
-        <div className="section-title-wrapper mb-2" data-aos="fade-right">
+        <div className="section-title-wrapper mb-2">
           <h2 className="section-title" style={{ minWidth: 'max-content', paddingRight: '20px' }}>
             TESTING GUIDE
           </h2>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import api from '../utils/api';
 import ProjectList from '../components/ProjectList';
 import { LOCAL_PROJECTS } from '../data/projectsData';
+import { fadeUp, fadeRight } from '../utils/motion';
 
 const Projects = () => {
   // Combined projects+loading state to avoid cascading setState calls
@@ -23,22 +25,22 @@ const Projects = () => {
 
   return (
     <div className="container py-5 projects-editorial">
-      <div className="section-title-wrapper mt-4" data-aos="fade-right">
+      <motion.div className="section-title-wrapper mt-4" {...fadeRight()}>
         <h2 className="section-title">PROJECTS</h2>
         <div className="section-line"></div>
-      </div>
+      </motion.div>
 
       {/* Editorial header */}
-      <header className="ce-header" data-aos="fade-up">
+      <motion.header className="ce-header" {...fadeUp()}>
         <span className="ce-kicker">Selected work / 02</span>
         <h2 className="ce-headline">
           Things I&apos;ve<br />shipped<span className="ce-dot">.</span>
         </h2>
         <p className="ce-lead">
-          Production-grade, fully deployed builds — real-time systems, full-stack
-          apps, and developer tools. Tap any project for the full breakdown.
+          Deployed, working builds — real-time systems, full-stack apps, and
+          developer tools. Tap any project for the full breakdown.
         </p>
-      </header>
+      </motion.header>
 
       <ProjectList projects={projects} loading={loading} />
     </div>

@@ -1,8 +1,8 @@
-import devconnectCover from '../assets/projects/devconnect-cover.png';
-import notifyxCover from '../assets/projects/notifyx-cover.png';
-import collabdocsCover from '../assets/projects/collabdocs-cover.png';
-import curlixCover from '../assets/projects/curlix-cover.png';
-import paperpilotCover from '../assets/projects/paperpilot-cover.png';
+import devconnectCover from '../assets/projects/devconnect-cover.webp';
+import notifyxCover from '../assets/projects/notifyx-cover.webp';
+import collabdocsCover from '../assets/projects/collabdocs-cover.webp';
+import curlixCover from '../assets/projects/curlix-cover.webp';
+import paperpilotCover from '../assets/projects/paperpilot-cover.webp';
 
 export const LOCAL_PROJECTS = [
   {
@@ -92,7 +92,8 @@ export const LOCAL_PROJECTS = [
       context: 'One comment triggered 5 notifications. BullMQ retrying with zero idempotency.',
       codeLines: [
         { t: 'comment', text: '// two-layer guard — neither alone is enough' },
-        { t: 'code',    text: 'const fresh = await redis.setnx(`notif:${jobId}`, "1");' },
+        { t: 'comment', text: '// SET NX EX = atomic claim + TTL in one command' },
+        { t: 'code',    text: 'const fresh = await redis.set(`notif:${jobId}`, "1", "NX", "EX", 86400);' },
         { t: 'code',    text: 'if (!fresh) return; // already delivered, bail fast' },
         { t: 'spacer' },
         { t: 'code',    text: 'await Notification.create({ eventId });' },
@@ -124,7 +125,7 @@ export const LOCAL_PROJECTS = [
     architecture: ['Client', 'JWT Auth', 'REST API', 'Socket.IO', 'MongoDB'],
     architectureDecisions: [
       { q: 'Why refresh tokens?', a: 'Short-lived JWTs (15 min) limit damage if stolen. Refresh tokens rotate on every use — a leaked token is detected and invalidated on the next request.' },
-      { q: 'Why sequence numbers?', a: 'Socket.io parallel emits have no ordering guarantee. Sequence numbers let the client buffer and sort messages before rendering, fixing out-of-order display under load.' },
+      { q: 'Why sequence numbers?', a: 'Socket.io parallel emits have no ordering guarantee. A Redis INCR per room issues monotonic sequence numbers that survive restarts and stay consistent across server instances, so the client can buffer and sort messages before rendering.' },
       { q: 'Why REST + WebSockets?', a: 'REST for standard CRUD — stateless and cacheable. WebSockets only for real-time chat. Using sockets for everything adds unnecessary complexity without benefit.' },
     ],
     coverImage: devconnectCover,
@@ -135,13 +136,15 @@ export const LOCAL_PROJECTS = [
       accentColor: '#8b5cf6',
       context: "Messages appeared out of order under load. Spent a full day chasing a React bug that didn't exist.",
       codeLines: [
-        { t: 'comment', text: '// server: tag every emission with a sequence number' },
-        { t: 'code',    text: 'io.to(room).emit("msg", { ...data, seq: ++counter });' },
+        { t: 'comment', text: '// server: Redis INCR per room — monotonic, survives' },
+        { t: 'comment', text: '// restarts, consistent across server instances' },
+        { t: 'code',    text: 'const seq = await redis.incr(`room:${roomId}:seq`);' },
+        { t: 'code',    text: 'io.to(room).emit("msg", { ...data, seq });' },
         { t: 'spacer' },
         { t: 'comment', text: '// client: buffer and sort before rendering' },
         { t: 'code',    text: 'buf.push(msg); buf.sort((a, b) => a.seq - b.seq);' },
       ],
-      takeaway: 'Socket.io parallel emits have no ordering guarantee. Sequence numbers fixed it.',
+      takeaway: 'Socket.io parallel emits have no ordering guarantee. An in-memory counter breaks on restart or with two instances — Redis INCR gives ordering that actually scales.',
     },
   },
   {

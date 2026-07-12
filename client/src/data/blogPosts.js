@@ -49,10 +49,13 @@ export const blogPosts = [
           'To prevent duplicates across retries and restarts, the design uses a fast Redis guard plus a persistent MongoDB uniqueness check.',
         ],
         code: `const idempotencyKey = \`notif:delivered:\${jobId}\`;
-const isNew = await redis.setnx(idempotencyKey, '1');
-await redis.expire(idempotencyKey, 86400);
 
-if (!isNew) return;
+// SET NX EX in one command — atomic claim + TTL. A separate
+// setnx + expire pair leaks a permanent key if the process
+// dies between the two calls.
+const claimed = await redis.set(idempotencyKey, '1', 'NX', 'EX', 86400);
+
+if (!claimed) return;
 
 notificationSchema.index({ userId: 1, eventId: 1 }, { unique: true });
 
@@ -63,7 +66,7 @@ try {
   throw err;
 }`,
         bullets: [
-          'Redis `SETNX` atomically lets only one worker claim delivery.',
+          'A single `SET key value NX EX ttl` atomically claims delivery *and* sets the expiry — no gap where a crash could leave a key without a TTL.',
           'MongoDB unique indexes remain the fallback when Redis state is lost.',
           'Together they protect against duplicate sends caused by retries, races, and restarts.',
         ],

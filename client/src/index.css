@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   --bg-dark: #0a101e;
@@ -539,7 +536,7 @@ ul {
 /* Override calendar text colors */
 .github-calendar-inner .react-activity-calendar__legend-month,
 .github-calendar-inner .react-activity-calendar__legend-weekday {
-  fill: #64748b !important;
+  fill: #94a3b8 !important;
   font-size: 11px !important;
 }
 
@@ -3052,4 +3049,161 @@ textarea.ce-input { resize: none; line-height: 1.6; }
   background: linear-gradient(135deg, #d97706 0%, var(--ca) 100%);
   color: #1a1204;
   box-shadow: 0 10px 28px rgba(245, 158, 11, 0.38);
+}
+
+/* ============================================================
+   Hover states moved out of JS (hero socials, about links,
+   badges, stat cards) — accent per link via --hs-* custom props
+   ============================================================ */
+.hero-social {
+  transition: transform 0.2s ease;
+}
+.hero-social .cta-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.hero-social .cta-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+.hero-social:hover,
+.hero-social:focus-visible {
+  transform: translateY(-4px);
+}
+.hero-social:hover .cta-icon-box,
+.hero-social:focus-visible .cta-icon-box {
+  border-color: var(--hs-color);
+  box-shadow: 0 6px 20px var(--hs-shadow);
+  color: var(--hs-color);
+}
+.hero-social:hover .cta-label,
+.hero-social:focus-visible .cta-label {
+  color: var(--hs-color);
+}
+
+.about-built-link {
+  color: #fbbf24;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px dashed rgba(245, 158, 11, 0.45);
+  transition: border-color 0.2s ease;
+}
+.about-built-link:hover,
+.about-built-link:focus-visible {
+  color: #fbbf24;
+  border-bottom-color: #fbbf24;
+}
+
+.about-badge {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: default;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.about-badge--solid {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+}
+.about-badge--solid:hover {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #1a1204;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+}
+.about-badge--outline {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #cbd5e1;
+}
+.about-badge--outline:hover {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.footer-social {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.footer-social .social-icon-btn {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.footer-social:hover .social-icon-btn,
+.footer-social:focus-visible .social-icon-btn {
+  background: var(--hs-color);
+  color: #fff;
+  border-color: var(--hs-color);
+  box-shadow: 0 6px 20px var(--hs-shadow);
+  transform: translateY(-3px) scale(1.08);
+}
+.footer-social-label {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.project-why-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  color: #94a3b8;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.project-why-btn:hover,
+.project-why-btn:focus-visible,
+.project-why-btn.is-open {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+.project-why-btn.is-open:not(:hover) {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-social,
+  .hero-social .cta-icon-box,
+  .hero-social .cta-label,
+  .about-built-link,
+  .about-badge,
+  .stat-card {
+    transition: none;
+  }
+  .hero-social:hover,
+  .stat-card:hover {
+    transform: none;
+  }
 }

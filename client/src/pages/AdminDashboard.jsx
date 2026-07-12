@@ -190,10 +190,10 @@ const AdminDashboard = () => {
             <table className="table table-hover align-middle admin-table" style={{ color: 'var(--text-main)' }}>
               <thead style={{ borderBottom: '2px solid rgba(255,255,255,0.05)' }}>
                 <tr>
-                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Image</th>
-                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Title</th>
-                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</th>
-                  <th className="py-3 small uppercase tracking-wider" style={{ color: 'rgba(148,163,184,0.95)' }}>Actions</th>
+                  <th className="py-3 small text-uppercase" style={{ color: 'rgba(148,163,184,0.95)' }}>Image</th>
+                  <th className="py-3 small text-uppercase" style={{ color: 'rgba(148,163,184,0.95)' }}>Title</th>
+                  <th className="py-3 small text-uppercase" style={{ color: 'rgba(148,163,184,0.95)' }}>Order</th>
+                  <th className="py-3 small text-uppercase" style={{ color: 'rgba(148,163,184,0.95)' }}>Actions</th>
                 </tr>
               </thead>
               <tbody style={{ border: 'none' }}>
