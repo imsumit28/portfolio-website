@@ -27,7 +27,7 @@ const EducationSection = () => {
           {/* Primary: VIT */}
           <motion.article className="edu-entry" {...fadeUp()}>
             <div className="edu-rail">
-              <img src="/vit.jpg" alt="VIT" className="edu-logo" loading="lazy" />
+              <img src="/vit-logo.png" alt="VIT seal" className="edu-logo" width={92} height={50} loading="lazy" />
               <span className="edu-period">2024 — 2028</span>
               <span className="edu-status"><span className="edu-status-dot"></span> Enrolled</span>
               <div className="edu-metric">
