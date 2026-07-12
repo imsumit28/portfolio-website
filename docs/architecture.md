@@ -9,7 +9,7 @@ flowchart LR
   Browser[Browser Client] -->|HTTP| Frontend[React + Vite]
   Frontend -->|REST /api/*| API[Express API]
   API --> DB[(MongoDB)]
-  API --> Mail[Web3Forms API]
+  API --> Mail[Resend API]
   API --> Files["/uploads"]
 ```
 
@@ -60,15 +60,19 @@ sequenceDiagram
   participant R as Rate Limiter
   participant K as API (/api/contact)
   participant D as MongoDB
-  participant S as Web3Forms API
+  participant S as Resend API
 
   V->>C: Submit contact form
   C->>R: POST /api/contact
   R-->>K: Allowed request
   K->>D: Save message record
-  K->>S: Send notification via HTTP API
+  K->>S: Send HTML notification email (reply-to = sender)
   K-->>C: 201 success
 ```
+
+Notification delivery is server-side only: Resend is the primary provider, with
+Web3Forms as an automatic fallback when Resend is not configured. No email
+provider keys ship to the browser.
 
 ## Design notes
 

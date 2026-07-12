@@ -3,8 +3,9 @@
 Full-stack portfolio application with a React/Vite frontend and Express API backend.
 
 ## Stack
-- Frontend: React 18, Vite, Bootstrap, Axios
+- Frontend: React 18, Vite, Bootstrap, Framer Motion, Axios
 - Backend: Express, Mongoose, JWT auth, Multer uploads
+- Email: Resend (HTML contact notifications, server-side)
 - Database: MongoDB
 - CI: GitHub Actions (server test suite)
 
@@ -12,7 +13,7 @@ Full-stack portfolio application with a React/Vite frontend and Express API back
 - `client/` serves the portfolio UI and admin pages.
 - `server/` exposes REST APIs under `/api/*`.
 - Public project cards are rendered from local static project metadata with optional API-augmented project entries.
-- Contact form submissions go through the API only: the server validates, rate-limits, persists to MongoDB, and sends the email notification itself (Resend first, Web3Forms fallback). No form keys ship to the browser.
+- Contact form submissions go through the API only: the server validates, rate-limits, persists to MongoDB, and sends a branded HTML notification email via Resend (`server/utils/contactEmail.js`), with reply-to set to the sender. Web3Forms acts only as an automatic fallback when Resend is not configured. No email provider keys ship to the browser.
 
 ## Security Controls
 - JWT-protected admin routes (`/api/projects/*`, `/api/contact/*` read/update paths)
@@ -29,8 +30,10 @@ MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
 JWT_SECRET=replace_with_a_long_random_secret
 CLIENT_URL=http://localhost:5173
 CONTACT_NOTIFICATION_MODE=server
-RESEND_API_KEY=optional_resend_key
+# Resend is the primary email provider for contact notifications
+RESEND_API_KEY=your_resend_api_key
 CONTACT_TO_EMAIL=where_notifications_go@example.com
+# Optional fallback, used only when Resend is not configured
 WEB3FORMS_ACCESS_KEY=optional_web3forms_fallback_key
 ```
 
@@ -77,8 +80,8 @@ npm test
 | ![Contact](./docs/screenshots/contact.png) | ![Admin Dashboard](./docs/screenshots/dashboard.png) |
 
 ## Notes
-- Do not expose third-party form keys in frontend code.
-- If `WEB3FORMS_ACCESS_KEY` is unset, contact submissions still persist to MongoDB.
+- Do not expose email provider keys in frontend code — all notification sending is server-side.
+- If no email provider is configured (`RESEND_API_KEY`/`CONTACT_TO_EMAIL` or the `WEB3FORMS_ACCESS_KEY` fallback), contact submissions still persist to MongoDB and remain visible in the admin dashboard.
 
 ## Links
 - [Architecture](./docs/architecture.md)

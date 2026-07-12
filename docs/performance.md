@@ -81,7 +81,7 @@ Measured with `curl` from a UK server against the Render backend. All routes are
 |----------|--------|-----------|-------|
 | `GET /` | GET | 45 ms | Health check |
 | `GET /api/projects` | GET | 110 ms | MongoDB read, no auth |
-| `POST /api/contact` | POST | 195 ms | DB write + Web3Forms call |
+| `POST /api/contact` | POST | 195 ms | DB write + Resend email call |
 | `POST /api/auth/login` | POST | 130 ms | bcrypt compare + JWT sign |
 | `GET /api/contact` | GET | 98 ms | Admin only, JWT verified |
 
