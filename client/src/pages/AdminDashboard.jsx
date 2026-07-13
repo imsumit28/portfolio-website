@@ -138,11 +138,12 @@ const AdminDashboard = () => {
       {/* Header section */}
       <div className="d-flex justify-content-between align-items-center mb-5 border-bottom border-secondary border-opacity-10 pb-4">
         <div>
+          <p className="mb-2" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono, ui-monospace, monospace)', fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Control Panel</p>
           <h2 className="fw-bold mb-1" style={{ letterSpacing: '-0.5px', fontFamily: 'var(--font-display)' }}>Admin Dashboard</h2>
-          <p className="small mb-0" style={{ color: 'rgba(148,163,184,0.9)' }}>Manage your portfolio content and messages</p>
+          <p className="small mb-0" style={{ color: 'var(--text-muted)' }}>Manage your portfolio content and messages</p>
         </div>
         <div className="d-flex align-items-center gap-3">
-          <span className="badge bg-success bg-opacity-10 text-success border border-success border-opacity-20 fs-6 py-2 px-4 rounded-pill fw-normal">
+          <span className="badge fs-6 py-2 px-4 rounded-pill fw-normal" style={{ background: 'rgba(245,158,11,0.1)', color: 'var(--ca-bright)', border: '1px solid rgba(245,158,11,0.25)' }}>
             <span className="d-inline-block me-2" style={{ width: '8px', height: '8px', background: 'var(--accent)', borderRadius: '50%', boxShadow: '0 0 10px var(--accent)' }}></span>
             Welcome, Admin
           </span>
@@ -247,8 +248,8 @@ const AdminDashboard = () => {
                   <div 
                     className="card h-100 transition-all" 
                     style={{
-                      background: msg.isRead ? 'rgba(255,255,255,0.03)' : 'rgba(16,185,129,0.05)',
-                      border: msg.isRead ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(16,185,129,0.3)',
+                      background: msg.isRead ? 'rgba(255,255,255,0.03)' : 'var(--ca-soft)',
+                      border: msg.isRead ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(245,158,11,0.3)',
                       opacity: msg.isRead ? 0.7 : 1,
                       borderRadius: '16px'
                     }}
@@ -262,7 +263,7 @@ const AdminDashboard = () => {
                           <h6 className="small mb-3" style={{ color: 'var(--accent)', opacity: 0.95 }}>{msg.email}</h6>
                         </div>
                         {!msg.isRead && (
-                          <span className="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 rounded-pill px-3">
+                          <span className="badge rounded-pill px-3" style={{ background: 'rgba(245,158,11,0.18)', color: 'var(--ca-bright)', border: '1px solid rgba(245,158,11,0.3)' }}>
                             New
                           </span>
                         )}

@@ -34,10 +34,11 @@ const Login = () => {
 
   return (
     <div className="container py-5 d-flex justify-content-center align-items-center admin-theme" style={{ minHeight: '70vh' }}>
-      <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="card-header text-white text-center py-4 border-0" style={{ background: 'rgba(15,23,42,0.9)' }}>
-          <FaUserShield size={40} className="mb-3 text-primary" />
-          <h3 className="fw-bold mb-0">Admin Login</h3>
+      <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', overflow: 'hidden' }}>
+        <div className="card-header text-white text-center py-4 border-0" style={{ background: 'rgba(15,23,42,0.9)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <FaUserShield size={40} className="mb-3" style={{ color: 'var(--accent)', filter: 'drop-shadow(0 0 12px rgba(245,158,11,0.35))' }} />
+          <p className="mb-1" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono, ui-monospace, monospace)', fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Restricted Area</p>
+          <h3 className="fw-bold mb-0" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.5px' }}>Admin Login</h3>
         </div>
         <div className="card-body p-4 p-md-5" style={{ background: 'transparent', color: 'var(--text-main)' }}>
           {error && <div className="alert alert-danger">{error}</div>}
@@ -49,7 +50,7 @@ const Login = () => {
                 id="login-email"
                 type="email"
                 className="form-control form-control-lg"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc', borderRadius: '10px' }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -61,7 +62,7 @@ const Login = () => {
                 id="login-password"
                 type="password"
                 className="form-control form-control-lg"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc' }}
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc', borderRadius: '10px' }}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
