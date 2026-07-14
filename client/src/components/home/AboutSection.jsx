@@ -1,10 +1,34 @@
 import React, { Suspense } from 'react';
-import { FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt } from 'react-icons/fa';
+import {
+  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt,
+  FaStar, FaFire, FaCodeBranch, FaBook, FaArrowRight
+} from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
-import { BUILT_PROJECTS, SOCIAL_LINKS } from '../../data/homeData';
+import { SOCIAL_LINKS } from '../../data/homeData';
 import { fadeUp, fadeRight } from '../../utils/motion';
+import useGitHubStats from '../../hooks/useGitHubStats';
 import profileVideo from '../../assets/profile-video.mp4';
+
+const GITHUB_USERNAME = 'imsumit28';
+
+const formatNum = (n) => (typeof n === 'number' ? n.toLocaleString() : '—');
+
+const GhMetric = ({ icon, value, unit, label, loading }) => (
+  <div className="ca-metric">
+    <div className="ca-metric-value">
+      {loading ? (
+        <span className="ca-metric-skeleton" />
+      ) : (
+        <>
+          {formatNum(value)}
+          {unit && typeof value === 'number' && <span className="ca-metric-unit">{unit}</span>}
+        </>
+      )}
+    </div>
+    <div className="ca-metric-label">{icon} {label}</div>
+  </div>
+);
 
 const STAT_CARDS = [
   { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '5', sub: 'Deployed & Live' },
@@ -14,6 +38,8 @@ const STAT_CARDS = [
 ];
 
 const AboutSection = () => {
+  const { stats, loading } = useGitHubStats(GITHUB_USERNAME);
+
   return (
     <section className="pt-5 pb-3 about-editorial" id="about">
       <div className="container py-2">
@@ -69,23 +95,6 @@ const AboutSection = () => {
           </div>
 
           <div className="col-lg-8 col-md-7 ps-lg-5">
-            <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-              <strong>Built:</strong>
-            </p>
-            <ul style={{ listStyle: 'none', paddingLeft: 0, marginBottom: '1rem', color: '#cbd5e1', fontSize: '1.05rem', lineHeight: '1.8' }}>
-              {BUILT_PROJECTS.map((p) => (
-                <li key={p.name} style={{ marginBottom: '0.5rem' }}>
-                  ▸{' '}
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="about-built-link">
-                    {p.name}
-                  </a>{' '}
-                  → {p.blurb}
-                </li>
-              ))}
-            </ul>
-            <p className="mb-3" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-              Each one handles real-time interactions and concurrency — the problems I find most interesting to build for.
-            </p>
             <p className="mb-4" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
               Currently <strong>open to full-time roles</strong>, remote or India-based.
             </p>
@@ -134,18 +143,48 @@ const AboutSection = () => {
 
           <div className="ca-panel">
             <div className="ca-head">
-              <div>
-                <p className="ca-kicker">GitHub · @imsumit28</p>
-                <p className="ca-sub">Contribution activity over the past year</p>
+              <div className="ca-head-info">
+                <p className="ca-kicker">GitHub · @{GITHUB_USERNAME}</p>
+                <p className="ca-sub">
+                  {stats?.since ? `Building in public since ${stats.since}.` : 'A year of building, in public.'}
+                </p>
               </div>
               <a
                 href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ca-link"
+                className="btn-global btn-global-primary btn-global-sm ca-cta"
               >
-                <FaGithub size={14} /> View profile ↗
+                <FaGithub size={16} /> View GitHub Profile <FaArrowRight size={12} />
               </a>
+            </div>
+
+            <div className="ca-metrics">
+              <GhMetric
+                loading={loading}
+                value={stats?.contributions}
+                label="Contributions"
+                icon={<FaCodeBranch />}
+              />
+              <GhMetric
+                loading={loading}
+                value={stats?.streak}
+                unit="days"
+                label="Current streak"
+                icon={<FaFire />}
+              />
+              <GhMetric
+                loading={loading}
+                value={stats?.repos}
+                label="Repositories"
+                icon={<FaBook />}
+              />
+              <GhMetric
+                loading={loading}
+                value={stats?.stars}
+                label="Stars earned"
+                icon={<FaStar />}
+              />
             </div>
 
             <div className="github-calendar-inner ca-grid">
@@ -158,7 +197,7 @@ const AboutSection = () => {
                 }} />
               }>
                 <GitHubCalendar
-                  username="imsumit28"
+                  username={GITHUB_USERNAME}
                   colorScheme="dark"
                   theme={{
                     dark: ['#1c2534', '#4d3610', '#8a5e16', '#d18f1e', '#fcd34d'],
@@ -170,6 +209,10 @@ const AboutSection = () => {
                 />
               </Suspense>
             </div>
+
+            <p className="ca-caption">
+              Contribution heatmap over the past year — darker squares mean more commits that day.
+            </p>
           </div>
         </motion.div>
 

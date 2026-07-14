@@ -478,16 +478,16 @@ ul {
 }
 .ca-head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 1.6rem;
-  padding-bottom: 1.3rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--ce-rule);
 }
 .ca-kicker {
-  margin: 0 0 6px;
+  margin: 0 0 5px;
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.72rem;
   letter-spacing: 0.16em;
@@ -499,6 +499,7 @@ ul {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+.ca-cta { flex-shrink: 0; }
 .ca-link {
   display: inline-flex;
   align-items: center;
@@ -511,8 +512,73 @@ ul {
   transition: color 0.2s ease;
 }
 .ca-link:hover { color: var(--ca-bright); }
+
+/* Live GitHub metrics row */
+.ca-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-bottom: 1.5rem;
+  background: var(--ce-rule);
+  border: 1px solid var(--ce-rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ca-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.05rem 1.2rem;
+  background: var(--bg-card);
+}
+.ca-metric-value {
+  display: flex;
+  align-items: baseline;
+  min-height: 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-main);
+}
+.ca-metric-unit {
+  margin-left: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.ca-metric-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.71rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.ca-metric-label svg { color: var(--ca); font-size: 0.82rem; flex-shrink: 0; }
+.ca-metric-skeleton {
+  display: inline-block;
+  width: 54px;
+  height: 1.25rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
 /* react-github-calendar footer legend/label */
 .ca-grid { color: var(--text-muted); font-size: 0.82rem; }
+.ca-caption {
+  margin: 1rem 0 0;
+  font-size: 0.76rem;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+@media (max-width: 640px) {
+  .ca-metrics { grid-template-columns: repeat(2, 1fr); }
+  .ca-cta { width: 100%; justify-content: center; }
+  .ca-head { align-items: flex-start; }
+}
 
 .github-calendar-inner {
   overflow-x: auto;
