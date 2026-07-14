@@ -1,14 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { FaUserShield } from 'react-icons/fa';
+import { FaUserShield, FaEye, FaEyeSlash, FaLock, FaExclamationCircle } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+
     try {
       await login(email, password);
       navigate('/admin/dashboard');
@@ -34,49 +35,75 @@ const Login = () => {
   };
 
   return (
-    <div className="container py-5 d-flex justify-content-center align-items-center admin-theme" style={{ minHeight: '70vh' }}>
-      <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%', background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', overflow: 'hidden' }}>
-        <div className="card-header text-white text-center py-4 border-0" style={{ background: 'rgba(15,23,42,0.9)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-          <FaUserShield size={40} className="mb-3" style={{ color: 'var(--accent)', filter: 'drop-shadow(0 0 12px rgba(245,158,11,0.35))' }} />
-          <p className="mb-1" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono, ui-monospace, monospace)', fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Restricted Area</p>
-          <h3 className="fw-bold mb-0" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.5px' }}>Admin Login</h3>
+    <div className="admin-theme admin-login-wrap">
+      <div className="admin-login-card">
+        <div className="admin-login-head">
+          <div className="admin-login-icon">
+            <FaUserShield />
+          </div>
+          <p className="admin-login-eyebrow">Restricted Area</p>
+          <h1 className="admin-login-title">Admin Login</h1>
+          <p className="admin-login-sub">Sign in to manage your portfolio.</p>
         </div>
-        <div className="card-body p-4 p-md-5" style={{ background: 'transparent', color: 'var(--text-main)' }}>
-          {error && <div className="alert alert-danger">{error}</div>}
-          
+
+        <div className="admin-login-body">
+          {error && (
+            <div className="admin-login-alert" role="alert">
+              <FaExclamationCircle /> {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="login-email" className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Email address</label>
+            <div className="admin-login-field admin-field">
+              <label htmlFor="login-email" className="admin-label">Email address</label>
               <input
                 id="login-email"
                 type="email"
-                className="form-control form-control-lg"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc', borderRadius: '10px' }}
+                className="admin-input"
+                autoComplete="username"
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            <div className="mb-5">
-              <label htmlFor="login-password" className="form-label fw-medium" style={{ color: 'rgba(226,232,240,0.9)' }}>Password</label>
-              <input
-                id="login-password"
-                type="password"
-                className="form-control form-control-lg"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: '#f8fafc', borderRadius: '10px' }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+
+            <div className="admin-login-field admin-field">
+              <label htmlFor="login-password" className="admin-label">Password</label>
+              <div className="admin-input-group">
+                <input
+                  id="login-password"
+                  type={showPassword ? 'text' : 'password'}
+                  className="admin-input"
+                  autoComplete="current-password"
+                  placeholder="••••••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="admin-input-toggle"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  onClick={() => setShowPassword((s) => !s)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
-            <button 
-              type="submit" 
-              className="btn-global btn-global-primary w-100"
+
+            <button
+              type="submit"
+              className="btn-global btn-global-primary admin-login-submit"
               disabled={isLoading}
             >
-              {isLoading ? 'Authenticating...' : 'Login to Admin'}
+              {isLoading ? 'Authenticating…' : 'Login to Admin'}
             </button>
           </form>
+
+          <p className="admin-login-foot">
+            <FaLock size={11} /> Protected area — authorized access only
+          </p>
         </div>
       </div>
     </div>
