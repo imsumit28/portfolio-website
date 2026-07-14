@@ -47,4 +47,52 @@ const upload = multer({
   fileFilter
 });
 
-module.exports = upload;
+// Magic-byte signatures for the formats we accept. The extension and the
+// client-supplied mime type are both attacker-controlled, so we also verify
+// the real file content before trusting it.
+const IMAGE_MAGIC = [
+  { name: 'jpg', bytes: [0xff, 0xd8, 0xff] },
+  { name: 'png', bytes: [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a] },
+  { name: 'gif', bytes: [0x47, 0x49, 0x46, 0x38] } // "GIF8"
+];
+
+const matchesImageSignature = (buf) => {
+  const hasPrefix = IMAGE_MAGIC.some(
+    (sig) => buf.length >= sig.bytes.length && sig.bytes.every((b, i) => buf[i] === b)
+  );
+  if (hasPrefix) return true;
+  // WEBP is a RIFF container: "RIFF" .... "WEBP"
+  return (
+    buf.length >= 12 &&
+    buf.toString('ascii', 0, 4) === 'RIFF' &&
+    buf.toString('ascii', 8, 12) === 'WEBP'
+  );
+};
+
+// Run after `upload.single(...)`. Reads the first bytes of the file multer just
+// wrote and deletes it if the content is not a real image of an allowed type.
+const verifyImageSignature = (req, res, next) => {
+  if (!req.file) return next();
+  const filePath = req.file.path;
+  let fd;
+  try {
+    fd = fs.openSync(filePath, 'r');
+    const buf = Buffer.alloc(12);
+    fs.readSync(fd, buf, 0, 12, 0);
+    fs.closeSync(fd);
+    fd = undefined;
+    if (!matchesImageSignature(buf)) {
+      fs.unlink(filePath, () => {});
+      return res.status(400).json({ message: 'Uploaded file is not a valid image' });
+    }
+    return next();
+  } catch (err) {
+    if (fd !== undefined) {
+      try { fs.closeSync(fd); } catch { /* already closed */ }
+    }
+    fs.unlink(filePath, () => {});
+    return res.status(400).json({ message: 'Could not validate uploaded image' });
+  }
+};
+
+module.exports = { upload, verifyImageSignature };

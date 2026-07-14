@@ -41,9 +41,11 @@ const cookieOptions = () => {
 };
 
 const signToken = (user) =>
-  jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
-    expiresIn: TOKEN_TTL_SECONDS
-  });
+  jwt.sign(
+    { id: user._id, role: user.role, tokenVersion: user.tokenVersion || 0 },
+    process.env.JWT_SECRET,
+    { expiresIn: TOKEN_TTL_SECONDS, algorithm: 'HS256' }
+  );
 
 // @route   POST api/auth/register
 // @access  Admin only — used to provision additional admins

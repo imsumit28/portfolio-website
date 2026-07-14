@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import api, { ASSET_BASE_URL } from '../utils/api';
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaEnvelope } from 'react-icons/fa';
@@ -58,9 +57,8 @@ const AdminDashboard = () => {
     }
   };
 
-  if (!user) {
-    return <Navigate to="/admin/login" replace />;
-  }
+  // Access control is enforced by the <RequireAdmin> route wrapper and by the
+  // backend on every admin API call.
 
   // Project Handlers
   const handleProjectSubmit = async (e) => {

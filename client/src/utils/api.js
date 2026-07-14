@@ -8,6 +8,9 @@ export const ASSET_BASE_URL = API_BASE_URL.replace(/\/api\/?$/, '');
 const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true, // send httpOnly auth cookie cross-origin
+  // Custom header the server requires on cookie-authenticated, state-changing
+  // requests as a CSRF defense. A cross-site <form> cannot set this header.
+  headers: { 'X-Requested-With': 'XMLHttpRequest' },
 });
 
 api.interceptors.response.use(

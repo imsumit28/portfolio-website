@@ -12,8 +12,9 @@ const Login = () => {
   const { login, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Redirect if already logged in
-  if (user) {
+  // Redirect admins straight to the dashboard. Only admins are redirected so a
+  // non-admin session cannot bounce between here and the RequireAdmin guard.
+  if (user && user.role === 'admin') {
     return <Navigate to="/admin/dashboard" replace />;
   }
 

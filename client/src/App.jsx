@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import IntroAnimation from './components/IntroAnimation';
+import RequireAdmin from './components/RequireAdmin';
 
 // Pages
 import Home from './pages/Home';
@@ -39,7 +40,14 @@ function App() {
               <Route path="/blogs/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin/login" element={<Login />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <RequireAdmin>
+                    <AdminDashboard />
+                  </RequireAdmin>
+                }
+              />
               <Route path="/challenges/:projectId" element={<ProjectChallenges />} />
               <Route path="/testing-guide" element={<TestingGuide />} />
               <Route path="*" element={<NotFound />} />

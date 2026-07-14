@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
 const { protect, requireAdmin } = require('../middleware/auth');
-const upload = require('../middleware/upload');
+const { upload, verifyImageSignature } = require('../middleware/upload');
 const rateLimit = require('express-rate-limit');
 
 const uploadLimiter = rateLimit({
@@ -100,7 +100,7 @@ router.get('/:id', protect, requireAdmin, async (req, res) => {
 });
 
 // @route   POST api/projects
-router.post('/', protect, requireAdmin, uploadLimiter, upload.single('image'), async (req, res) => {
+router.post('/', protect, requireAdmin, uploadLimiter, upload.single('image'), verifyImageSignature, async (req, res) => {
   try {
     const payload = buildProjectPayload(req.body, req.file);
     if (!payload.title || !payload.description) {
@@ -118,7 +118,7 @@ router.post('/', protect, requireAdmin, uploadLimiter, upload.single('image'), a
 });
 
 // @route   PUT api/projects/:id
-router.put('/:id', protect, requireAdmin, uploadLimiter, upload.single('image'), async (req, res) => {
+router.put('/:id', protect, requireAdmin, uploadLimiter, upload.single('image'), verifyImageSignature, async (req, res) => {
   try {
     const existing = await Project.findById(req.params.id);
     if (!existing) return res.status(404).json({ message: 'Project not found' });

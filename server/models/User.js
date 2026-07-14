@@ -18,6 +18,12 @@ const UserSchema = new mongoose.Schema({
     enum: ['admin', 'user'],
     default: 'user',
     index: true
+  },
+  // Bumped to invalidate every previously issued JWT for this user
+  // (e.g. "log out everywhere", suspected compromise, or password change).
+  tokenVersion: {
+    type: Number,
+    default: 0
   }
 }, { timestamps: true });
 
