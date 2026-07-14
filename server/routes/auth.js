@@ -94,7 +94,7 @@ router.post('/login', authLimiter, async (req, res) => {
 
     const token = signToken(user);
     res.cookie(COOKIE_NAME, token, cookieOptions());
-    res.json({ user: { id: user._id, email: user.email, role: user.role } });
+    res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role } });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'Server error' });
