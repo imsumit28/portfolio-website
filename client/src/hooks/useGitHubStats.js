@@ -4,30 +4,15 @@ import { useEffect, useState } from 'react';
 // numbers shown are always real and current — never hardcoded.
 //   - api.github.com          → public repo count, followers, join year
 //   - api.github.com/.../repos → summed star count across owned repos
-//   - github-contributions-api → total contributions + current streak
+//   - github-contributions-api → total contributions over the last year
 //     (same data source the contribution heatmap itself uses)
 const USER_API = (u) => `https://api.github.com/users/${u}`;
 const REPOS_API = (u) => `https://api.github.com/users/${u}/repos?per_page=100&type=owner`;
 const CONTRIB_API = (u) => `https://github-contributions-api.jogruber.de/v4/${u}?y=last`;
 
-const cacheKey = (u) => `gh-stats:${u}`;
-const CACHE_TTL = 60 * 60 * 1000; // 1 hour
-
-// Consecutive days with at least one contribution, counting back from today.
-// Today is allowed to be empty (not committed yet) without breaking the streak.
-const computeStreak = (contributions) => {
-  let streak = 0;
-  for (let i = contributions.length - 1; i >= 0; i--) {
-    if (contributions[i].count > 0) {
-      streak++;
-    } else if (i === contributions.length - 1) {
-      continue;
-    } else {
-      break;
-    }
-  }
-  return streak;
-};
+// Bump the version suffix to invalidate previously cached (possibly stale) values.
+const cacheKey = (u) => `gh-stats:v2:${u}`;
+const CACHE_TTL = 15 * 60 * 1000; // 15 minutes — fresh enough for star/repo changes
 
 export default function useGitHubStats(username) {
   const [stats, setStats] = useState(null);
@@ -78,7 +63,6 @@ export default function useGitHubStats(username) {
           next.contributions = typeof data.total?.lastYear === 'number'
             ? data.total.lastYear
             : contributions.reduce((sum, c) => sum + (c.count || 0), 0);
-          next.streak = computeStreak(contributions);
         }
       } catch {
         /* leave whatever we managed to parse */
