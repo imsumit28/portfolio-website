@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import {
-  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt,
-  FaStar, FaFire, FaCodeBranch, FaBook, FaArrowRight
+  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt, FaArrowRight
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
@@ -14,7 +13,7 @@ const GITHUB_USERNAME = 'imsumit28';
 
 const formatNum = (n) => (typeof n === 'number' ? n.toLocaleString() : '—');
 
-const GhMetric = ({ icon, value, unit, label, loading }) => (
+const GhMetric = ({ value, unit, label, loading }) => (
   <div className="ca-metric">
     <div className="ca-metric-value">
       {loading ? (
@@ -26,7 +25,7 @@ const GhMetric = ({ icon, value, unit, label, loading }) => (
         </>
       )}
     </div>
-    <div className="ca-metric-label">{icon} {label}</div>
+    <span className="ca-metric-label">{label}</span>
   </div>
 );
 
@@ -160,31 +159,9 @@ const AboutSection = () => {
             </div>
 
             <div className="ca-metrics">
-              <GhMetric
-                loading={loading}
-                value={stats?.contributions}
-                label="Contributions"
-                icon={<FaCodeBranch />}
-              />
-              <GhMetric
-                loading={loading}
-                value={stats?.streak}
-                unit="days"
-                label="Current streak"
-                icon={<FaFire />}
-              />
-              <GhMetric
-                loading={loading}
-                value={stats?.repos}
-                label="Repositories"
-                icon={<FaBook />}
-              />
-              <GhMetric
-                loading={loading}
-                value={stats?.stars}
-                label="Stars earned"
-                icon={<FaStar />}
-              />
+              <GhMetric loading={loading} value={stats?.contributions} label="Contributions" />
+              <GhMetric loading={loading} value={stats?.repos} label="Repositories" />
+              <GhMetric loading={loading} value={stats?.stars} label="Stars earned" />
             </div>
 
             <div className="github-calendar-inner ca-grid">

@@ -34,7 +34,7 @@ const ExperienceSection = () => {
         >
           {/* Left rail: period + status */}
           <aside className="exp-rail">
-            <span className="exp-mono-label">2025</span>
+            <span className="exp-mono-label">2026</span>
             <p className="exp-period">Jun&nbsp;—&nbsp;Aug</p>
             <span className="exp-status">
               <span className="exp-status-dot" aria-hidden="true" />
@@ -45,12 +45,6 @@ const ExperienceSection = () => {
               <span>Noida, India</span>
             </p>
           </aside>
-
-          {/* Timeline node */}
-          <div className="exp-node" aria-hidden="true">
-            <span className="exp-node-dot" />
-            <span className="exp-node-line" />
-          </div>
 
           {/* Main column */}
           <div className="exp-main">
