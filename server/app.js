@@ -27,6 +27,8 @@ const globalLimiter = rateLimit({
 // Configure CORS to restrict to known origins
 const allowedOrigins = [
   process.env.CLIENT_URL,
+  'https://sumitkr.dev',
+  'https://www.sumitkr.dev',
   'http://localhost:5173'
 ].filter(Boolean);
 
