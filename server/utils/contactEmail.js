@@ -30,7 +30,7 @@ const buildContactEmailHtml = ({ name, email, message }) => {
     dateStyle: 'medium',
     timeStyle: 'short',
   });
-  const replyHref = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(`Re: your message on thesumitkumar.vercel.app`)}`;
+  const replyHref = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(`Re: your message on sumitkr.dev`)}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -113,7 +113,7 @@ const buildContactEmailHtml = ({ name, email, message }) => {
             <td style="padding:20px 32px;" align="center">
               <p style="margin:0;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:12px;line-height:1.6;color:#64748b;">
                 Sent from the contact form at
-                <a href="https://thesumitkumar.vercel.app" style="color:#64748b;text-decoration:underline;">thesumitkumar.vercel.app</a><br />
+                <a href="https://sumitkr.dev" style="color:#64748b;text-decoration:underline;">sumitkr.dev</a><br />
                 The message is also saved in your admin dashboard.
               </p>
             </td>
@@ -128,6 +128,6 @@ const buildContactEmailHtml = ({ name, email, message }) => {
 };
 
 const buildContactEmailText = ({ name, email, message }) =>
-  `New portfolio message\n\nName: ${name}\nEmail: ${email}\n\n${message}\n\n—\nSent from thesumitkumar.vercel.app · also saved in the admin dashboard`;
+  `New portfolio message\n\nName: ${name}\nEmail: ${email}\n\n${message}\n\n—\nSent from sumitkr.dev · also saved in the admin dashboard`;
 
 module.exports = { buildContactEmailHtml, buildContactEmailText };
