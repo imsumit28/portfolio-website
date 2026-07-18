@@ -1,6 +1,6 @@
 # Sumit Kumar Portfolio Website
 
-Full-stack portfolio application with a React/Vite frontend and Express API backend. Live at [thesumitkumar.vercel.app](https://thesumitkumar.vercel.app).
+Full-stack portfolio application with a React/Vite frontend and Express API backend. Live at [sumitkr.dev](https://sumitkr.dev).
 
 ## Stack
 
