@@ -24,6 +24,9 @@ const ProjectPreviewCard = ({ project, onOpen }) => {
     category,
     tech = [],
     logoImage,
+    liveLink = '',
+    githubLink = '',
+    github = '',
   } = project;
 
   const coverSrc = resolveCover(project);
@@ -32,8 +35,10 @@ const ProjectPreviewCard = ({ project, onOpen }) => {
   const techStack = Array.isArray(tech) ? tech : [];
   const visibleTech = techStack.slice(0, 4);
   const extraTech = techStack.length - visibleTech.length;
+  const githubHref = githubLink || github || '';
 
   const open = () => onOpen(project);
+  const stop = (e) => e.stopPropagation();
 
   return (
     <div
@@ -72,6 +77,33 @@ const ProjectPreviewCard = ({ project, onOpen }) => {
               <span key={t} className="project-tech-chip-sm">{t}</span>
             ))}
             {extraTech > 0 && <span className="project-tech-more">+{extraTech}</span>}
+          </div>
+        )}
+
+        {(liveLink || githubHref) && (
+          <div className="project-card-actions">
+            {liveLink && (
+              <a
+                className="btn-global btn-global-primary btn-global-sm"
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stop}
+              >
+                <FiExternalLink /> Live Demo
+              </a>
+            )}
+            {githubHref && (
+              <a
+                className="btn-global btn-global-secondary btn-global-sm"
+                href={githubHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stop}
+              >
+                <FaGithub /> Code
+              </a>
+            )}
           </div>
         )}
       </div>
