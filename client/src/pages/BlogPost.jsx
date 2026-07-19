@@ -86,7 +86,7 @@ const BlogPost = () => {
 
             <div style={{ display: 'grid', gap: '2rem' }}>
               {post.sections.map((section) => (
-                <section key={section.heading}>
+                <section key={section.heading} style={{ minWidth: 0 }}>
                   <h2 style={{ color: '#f8fafc', fontSize: '1.6rem', marginBottom: '1rem' }}>
                     {section.heading}
                   </h2>
@@ -116,6 +116,7 @@ const BlogPost = () => {
                         borderRadius: '16px',
                         border: '1px solid rgba(148, 163, 184, 0.14)',
                         overflowX: 'auto',
+                        maxWidth: '100%',
                         fontSize: '0.9rem',
                         lineHeight: 1.7,
                         marginBottom: '1rem',

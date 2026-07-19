@@ -84,7 +84,17 @@ const Blogs = () => {
                     >
                       Read Article
                     </Link>
-                    <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>{post.sourcePath}</span>
+                    <span
+                      style={{
+                        color: '#94a3b8',
+                        fontSize: '0.9rem',
+                        minWidth: 0,
+                        overflowWrap: 'anywhere',
+                        wordBreak: 'break-word',
+                      }}
+                    >
+                      {post.sourcePath}
+                    </span>
                   </div>
                 </article>
               </div>
