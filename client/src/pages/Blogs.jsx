@@ -1,103 +1,40 @@
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 
+const pad = (n) => String(n + 1).padStart(2, '0');
+
 const Blogs = () => {
   return (
-    <section style={{ background: '#080b1a', minHeight: '100%' }}>
+    <section className="blog-editorial">
       <div className="container py-5">
-        <div className="mx-auto" style={{ maxWidth: '860px' }}>
-          <span
-            style={{
-              color: '#f59e0b',
-              fontSize: '0.85rem',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              fontWeight: 700,
-            }}
-          >
-            Blog
-          </span>
-          <h1
-            style={{
-              color: '#f8fafc',
-              fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
-              marginTop: '0.75rem',
-              marginBottom: '1rem',
-            }}
-          >
-            Notes on building systems that survive real traffic
-          </h1>
-          <p
-            style={{
-              color: '#94a3b8',
-              fontSize: '1.05rem',
-              lineHeight: 1.8,
-              maxWidth: '720px',
-              marginBottom: '2.5rem',
-            }}
-          >
-            These posts come from the blog files in the portfolio workspace and are now
-            available directly from the website.
-          </p>
+        <div className="blog-wrap">
+          <header className="blog-index-header">
+            <span className="ce-kicker">Blog</span>
+            <h1 className="blog-headline">
+              Notes on building systems<br />that survive real traffic<span className="ce-dot">.</span>
+            </h1>
+            <p className="blog-lead">
+              Engineering write-ups from my projects — queues, CRDTs, deploys, and the
+              trade-offs behind them.
+            </p>
+            <div className="blog-count">{String(blogPosts.length).padStart(2, '0')} POSTS</div>
+          </header>
 
-          <div className="row g-4">
-            {blogPosts.map((post) => (
-              <div className="col-12" key={post.slug}>
-                <article
-                  style={{
-                    background: 'rgba(15, 23, 42, 0.78)',
-                    border: '1px solid rgba(148, 163, 184, 0.16)',
-                    borderRadius: '22px',
-                    padding: '1.75rem',
-                    boxShadow: '0 20px 60px rgba(2, 6, 23, 0.28)',
-                  }}
-                >
-                  <div className="d-flex flex-wrap align-items-center gap-3 mb-3">
-                    <span
-                      style={{
-                        color: '#fbbf24',
-                        background: 'rgba(245, 158, 11, 0.1)',
-                        border: '1px solid rgba(245, 158, 11, 0.28)',
-                        borderRadius: '999px',
-                        padding: '0.35rem 0.75rem',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                      }}
-                    >
-                      {post.project}
-                    </span>
-                    <span style={{ color: '#94a3b8', fontSize: '0.9rem' }}>{post.readTime}</span>
+          <div className="blog-index">
+            {blogPosts.map((post, i) => (
+              <Link key={post.slug} to={`/blogs/${post.slug}`} className="blog-row">
+                <span className="blog-row-idx">{pad(i)}</span>
+                <div className="blog-row-main">
+                  <div className="blog-row-meta">
+                    <span className="blog-row-tag">{post.project}</span>
+                    <span className="blog-row-sep">/</span>
+                    <span>{post.readTime}</span>
                   </div>
-
-                  <h2 style={{ color: '#f8fafc', fontSize: '1.6rem', marginBottom: '0.9rem' }}>
-                    {post.title}
-                  </h2>
-                  <p style={{ color: '#cbd5e1', lineHeight: 1.8, marginBottom: '1.4rem' }}>
-                    {post.excerpt}
-                  </p>
-
-                  <div className="d-flex flex-wrap gap-3 align-items-center">
-                    <Link
-                      to={`/blogs/${post.slug}`}
-                      className="btn-global btn-global-primary"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      Read Article
-                    </Link>
-                    <span
-                      style={{
-                        color: '#94a3b8',
-                        fontSize: '0.9rem',
-                        minWidth: 0,
-                        overflowWrap: 'anywhere',
-                        wordBreak: 'break-word',
-                      }}
-                    >
-                      {post.sourcePath}
-                    </span>
-                  </div>
-                </article>
-              </div>
+                  <h2 className="blog-row-title">{post.title}</h2>
+                  <p className="blog-row-excerpt">{post.excerpt}</p>
+                </div>
+                <span className="blog-row-arrow" aria-hidden="true">→</span>
+              </Link>
             ))}
           </div>
         </div>
