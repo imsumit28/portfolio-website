@@ -18,34 +18,6 @@ export const EXPERIENCE_CONTRIBUTIONS = [
 
 export const EXPERIENCE_TECHNOLOGIES = ['React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Git', 'Agile'];
 
-export const BUILT_PROJECTS = [
-  {
-    name: 'Paper Pilot',
-    href: 'https://paperpilot2026.vercel.app',
-    blurb: 'AI-powered exam-paper generator with queue-based LLM pipeline',
-  },
-  {
-    name: 'CollabDocs',
-    href: 'https://collabdocs2026.vercel.app/login',
-    blurb: 'CRDT-based collaborative editor with AI assistance',
-  },
-  {
-    name: 'NotifyX',
-    href: 'https://github.com/imsumit28/NotifyX',
-    blurb: 'distributed notification system using Redis & BullMQ',
-  },
-  {
-    name: 'Curlix',
-    href: 'https://curlix.vercel.app',
-    blurb: 'production-grade URL shortener with sub-10 ms redirects & async analytics',
-  },
-  {
-    name: 'DevConnect',
-    href: 'https://devconnect2026.vercel.app/',
-    blurb: 'real-time developer network',
-  },
-];
-
 export const SOCIAL_LINKS = {
   github: 'https://github.com/imsumit28',
   linkedin: 'https://www.linkedin.com/in/imsumit45/',
