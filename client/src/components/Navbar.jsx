@@ -90,7 +90,6 @@ const Navbar = () => {
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
           boxShadow: '0 2px 20px rgba(0,0,0,0.5)',
-          borderTop: '2px solid #f59e0b',
           borderBottom: '1px solid rgba(255,255,255,0.07)',
         }}
       >
