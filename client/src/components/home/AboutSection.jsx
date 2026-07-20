@@ -94,7 +94,7 @@ const AboutSection = () => {
 
             {/* Projects shipped */}
             <div className="ship-stat mb-5">
-              <span className="ship-stat-num">7</span>
+              <span className="ship-stat-num">5</span>
               <span className="ship-stat-meta">
                 <span className="ship-stat-label">Projects Shipped</span>
                 <span className="ship-stat-sub">Deployed &amp; live in production</span>
