@@ -13,7 +13,7 @@ Full-stack portfolio application with a React/Vite frontend and Express API back
 ## Architecture
 
 - `client/` serves the portfolio UI and admin pages.
-  - Home page is composed from section components in `src/components/home/` (Hero, About, Experience, Skills, Education, Resume, Contact).
+  - Home page is composed from section components in `src/components/home/` (Hero, About, Experience, Projects, Skills, Education, Resume, Contact).
   - Content lives in data modules (`src/data/homeData.js`, `skillsData.js`, `projectsData.js`, `blogPosts.js`), not in JSX.
   - Scroll animations use shared Framer Motion presets (`src/utils/motion.js`) with `MotionConfig reducedMotion="user"` for accessibility.
   - All images and skill icons are bundled locally — no runtime CDN or Wikipedia hotlinks. Project covers ship as WebP.
