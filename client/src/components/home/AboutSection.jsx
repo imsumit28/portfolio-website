@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import {
-  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt, FaArrowRight
+  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
@@ -13,21 +13,11 @@ const GITHUB_USERNAME = 'imsumit28';
 
 const formatNum = (n) => (typeof n === 'number' ? n.toLocaleString() : '—');
 
-const GhMetric = ({ value, unit, label, loading }) => (
-  <div className="ca-metric">
-    <div className="ca-metric-value">
-      {loading ? (
-        <span className="ca-metric-skeleton" />
-      ) : (
-        <>
-          {formatNum(value)}
-          {unit && typeof value === 'number' && <span className="ca-metric-unit">{unit}</span>}
-        </>
-      )}
-    </div>
-    <span className="ca-metric-label">{label}</span>
-  </div>
-);
+const GH_STATS = [
+  { key: 'contributions', label: 'commits' },
+  { key: 'repos', label: 'repositories' },
+  { key: 'stars', label: 'stars' },
+];
 
 const STAT_CARDS = [
   { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '5', sub: 'Deployed & Live' },
@@ -140,56 +130,66 @@ const AboutSection = () => {
             <div className="section-line"></div>
           </div>
 
-          <div className="ca-panel">
-            <div className="ca-head">
-              <div className="ca-head-info">
-                <p className="ca-kicker">GitHub · @{GITHUB_USERNAME}</p>
-                <p className="ca-sub">
-                  {stats?.since ? `Building in public since ${stats.since}.` : 'A year of building, in public.'}
-                </p>
+          <div className="ca-terminal">
+            <div className="ca-bar">
+              <span className="ca-dot" />
+              <span className="ca-dot" />
+              <span className="ca-dot" />
+              <span className="ca-bar-path">~/github/{GITHUB_USERNAME}</span>
+            </div>
+
+            <div className="ca-body">
+              <p className="ca-prompt">
+                <span className="ca-prompt-sign">$</span>
+                git log --author={GITHUB_USERNAME} --since=&quot;1 year ago&quot;
+              </p>
+
+              <div className="ca-stats">
+                {GH_STATS.map(({ key, label }) => (
+                  <div className="ca-stat" key={key}>
+                    <span className="ca-stat-num">
+                      {loading ? <i className="ca-sk" /> : formatNum(stats?.[key])}
+                    </span>
+                    <span className="ca-stat-key">{label}</span>
+                  </div>
+                ))}
               </div>
-              <a
-                href={SOCIAL_LINKS.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-global btn-global-primary btn-global-sm ca-cta"
-              >
-                <FaGithub size={16} /> View GitHub Profile <FaArrowRight size={12} />
-              </a>
-            </div>
 
-            <div className="ca-metrics">
-              <GhMetric loading={loading} value={stats?.contributions} label="Contributions" />
-              <GhMetric loading={loading} value={stats?.repos} label="Repositories" />
-              <GhMetric loading={loading} value={stats?.stars} label="Stars earned" />
-            </div>
+              <div className="github-calendar-inner">
+                <Suspense fallback={
+                  <div style={{
+                    height: '150px',
+                    background: 'rgba(255,255,255,0.04)',
+                    borderRadius: '8px',
+                    animation: 'pulse 0.8s ease-in-out infinite'
+                  }} />
+                }>
+                  <GitHubCalendar
+                    username={GITHUB_USERNAME}
+                    colorScheme="dark"
+                    theme={{
+                      dark: ['#1c2534', '#4d3610', '#8a5e16', '#d18f1e', '#fcd34d'],
+                    }}
+                    fontSize={12}
+                    blockSize={13}
+                    blockMargin={4}
+                    style={{ width: '100%' }}
+                  />
+                </Suspense>
+              </div>
 
-            <div className="github-calendar-inner ca-grid">
-              <Suspense fallback={
-                <div style={{
-                  height: '150px',
-                  background: 'rgba(255,255,255,0.04)',
-                  borderRadius: '8px',
-                  animation: 'pulse 0.8s ease-in-out infinite'
-                }} />
-              }>
-                <GitHubCalendar
-                  username={GITHUB_USERNAME}
-                  colorScheme="dark"
-                  theme={{
-                    dark: ['#1c2534', '#4d3610', '#8a5e16', '#d18f1e', '#fcd34d'],
-                  }}
-                  fontSize={12}
-                  blockSize={13}
-                  blockMargin={4}
-                  style={{ width: '100%' }}
-                />
-              </Suspense>
+              <div className="ca-foot">
+                <span className="ca-foot-hint"># one square per day, last 12 months</span>
+                <a
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ca-foot-link"
+                >
+                  <FaGithub size={14} /> full profile
+                </a>
+              </div>
             </div>
-
-            <p className="ca-caption">
-              Contribution heatmap over the past year — darker squares mean more commits that day.
-            </p>
           </div>
         </motion.div>
 
