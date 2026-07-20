@@ -1,7 +1,5 @@
 import React, { Suspense } from 'react';
-import {
-  FaGithub, FaBriefcase, FaCode, FaRocket, FaMapMarkerAlt
-} from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
 import { SOCIAL_LINKS } from '../../data/homeData';
@@ -17,13 +15,6 @@ const GH_STATS = [
   { key: 'contributions', label: 'commits' },
   { key: 'repos', label: 'repositories' },
   { key: 'stars', label: 'stars' },
-];
-
-const STAT_CARDS = [
-  { icon: <FaRocket size={20} className="text-accent" />, label: 'Projects Shipped', val: '5', sub: 'Deployed & Live' },
-  { icon: <FaCode size={20} className="text-accent" />, label: 'Tech Stack', val: 'React, Node, MongoDB' },
-  { icon: <FaMapMarkerAlt size={20} className="text-accent" />, label: 'Location', val: 'Patna, India' },
-  { icon: <FaBriefcase size={20} className="text-accent" />, label: 'Status', val: 'Open to Work' },
 ];
 
 const AboutSection = () => {
@@ -84,40 +75,30 @@ const AboutSection = () => {
           </div>
 
           <div className="col-lg-8 col-md-7 ps-lg-5">
-            <p className="mb-4" style={{ lineHeight: '1.8', color: '#cbd5e1', fontSize: '1.05rem' }}>
-              Currently <strong>open to full-time roles</strong>, remote or India-based.
-            </p>
-
-            <p className="mb-5 fst-italic" style={{ color: '#fbbf24', fontSize: '1.1rem', borderLeft: '2px solid rgba(245,158,11,0.45)', paddingLeft: '15px' }}>
-              "The interesting problems happen when two users hit save at the same time. That's what I build for."
-            </p>
-
-            {/* Badges */}
-            <div className="mb-5 d-flex flex-wrap gap-3">
-              <div className="about-badge about-badge--solid px-4 py-2 rounded-pill shadow-sm">
-                <FaBriefcase className="me-2" size={14} /> Open to Full-time Roles
+            {/* Bio — as code */}
+            <div className="about-code mb-5">
+              <div className="about-code-bar">
+                <span className="about-code-file">developer.js</span>
               </div>
-              <div className="about-badge about-badge--outline px-4 py-2 rounded-pill shadow-sm">
-                <FaCode className="me-2" size={14} /> React · Node.js · TypeScript · Redis
+              <div className="about-code-body">
+                <div className="about-code-line"><span className="tok-cmt">// Currently open to full-time roles,</span></div>
+                <div className="about-code-line"><span className="tok-cmt">// remote or India-based.</span></div>
+                <div className="about-code-line">{' '}</div>
+                <div className="about-code-line"><span className="tok-quote">/*</span></div>
+                <div className="about-code-line"><span className="tok-quote"> *  "The interesting problems happen when</span></div>
+                <div className="about-code-line"><span className="tok-quote"> *   two users hit save at the same time.</span></div>
+                <div className="about-code-line"><span className="tok-quote"> *   That's what I build for."</span></div>
+                <div className="about-code-line"><span className="tok-quote"> */</span></div>
               </div>
             </div>
 
-            {/* Quick Stat Cards */}
-            <div className="row g-3 mb-5">
-              {STAT_CARDS.map((stat) => (
-                <div className="col-sm-6 col-lg-3 col-6" key={stat.label}>
-                  <div className="stat-card p-3 rounded-3 h-100 d-flex flex-column">
-                    <div className="d-flex align-items-center gap-2 mb-3">
-                      <span style={{ flexShrink: 0 }}>{stat.icon}</span>
-                      <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '700', lineHeight: '1.2' }}>{stat.label}</span>
-                    </div>
-                    <div className="mt-auto" style={{ color: 'var(--text-main)', fontWeight: '600', fontSize: '0.95rem', lineHeight: '1.4' }}>
-                      {stat.val}
-                      {stat.sub && <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'normal', marginTop: '2px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{stat.sub}</div>}
-                    </div>
-                  </div>
-                </div>
-              ))}
+            {/* Projects shipped */}
+            <div className="ship-stat mb-5">
+              <span className="ship-stat-num">7</span>
+              <span className="ship-stat-meta">
+                <span className="ship-stat-label">Projects Shipped</span>
+                <span className="ship-stat-sub">Deployed &amp; live in production</span>
+              </span>
             </div>
 
           </div>

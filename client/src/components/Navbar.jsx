@@ -7,7 +7,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const currentPath = location.pathname;
   const [activeSection, setActiveSection] = useState('home');
-  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
 
@@ -47,28 +46,6 @@ const Navbar = () => {
     setTimeout(handleScroll, 100);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [currentPath]);
-
-  // Update animated indicator position (desktop only)
-  useEffect(() => {
-    const updateIndicator = () => {
-      if (navRef.current) {
-        const activeLink = navRef.current.querySelector('.nav-link-custom.active');
-        if (activeLink) {
-          setIndicatorStyle({
-            left: activeLink.offsetLeft + 16,
-            width: activeLink.offsetWidth - 32,
-            opacity: 1
-          });
-        } else {
-          setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
-        }
-      }
-    };
-    updateIndicator();
-    setTimeout(updateIndicator, 50);
-    window.addEventListener('resize', updateIndicator);
-    return () => window.removeEventListener('resize', updateIndicator);
-  }, [activeSection, currentPath]);
 
   const scrollToSection = (section) => {
     const el = section === 'home' ? document.body : document.getElementById(section);
@@ -113,6 +90,7 @@ const Navbar = () => {
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
           boxShadow: '0 2px 20px rgba(0,0,0,0.5)',
+          borderTop: '2px solid #f59e0b',
           borderBottom: '1px solid rgba(255,255,255,0.07)',
         }}
       >
@@ -152,7 +130,6 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            <div className="nav-indicator d-none d-lg-block" style={indicatorStyle}></div>
           </ul>
 
           {/* Mobile hamburger button */}

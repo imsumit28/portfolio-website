@@ -127,10 +127,13 @@ ul {
 
 .nav-link-custom {
   color: var(--text-main) !important;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem !important;
+  font-family: var(--font-mono, 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: -0.2px;
+  padding: 0.5rem 0.75rem !important;
   position: relative;
+  transition: color 0.2s ease;
 }
 
 .nav-link-custom:hover,
@@ -138,15 +141,10 @@ ul {
   color: var(--accent) !important;
 }
 
-/* Floating Indicator */
-.nav-indicator {
-  position: absolute;
-  bottom: 0px;
-  height: 2px;
-  background-color: var(--accent);
-  transition: all 0.3s ease-in-out;
-  border-radius: 2px;
-  pointer-events: none;
+/* Terminal-style active prompt */
+.nav-link-custom.active::before {
+  content: '> ';
+  color: var(--accent);
 }
 
 /* Section Styling */
@@ -3274,44 +3272,77 @@ textarea.ce-input { resize: none; line-height: 1.6; }
   border-bottom-color: #fbbf24;
 }
 
-.about-badge {
+/* Availability + stack — code snippet */
+.about-code {
+  max-width: 560px;
+  border: 1px solid var(--ce-rule);
+  border-radius: 12px;
+  background: rgba(9, 14, 26, 0.55);
+  overflow: hidden;
+}
+.about-code-bar {
   display: flex;
   align-items: center;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: default;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  gap: 12px;
+  padding: 0.6rem 1.1rem;
+  border-bottom: 1px solid var(--ce-rule);
+  background: rgba(255, 255, 255, 0.015);
 }
-.about-badge--solid {
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: #fbbf24;
+.about-code-file {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
 }
-.about-badge--solid:hover {
-  background: #f59e0b;
-  border-color: #f59e0b;
-  color: #1a1204;
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+.about-code-body {
+  padding: 1.15rem 1.35rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.86rem;
+  line-height: 1.95;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.about-badge--outline {
-  background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  color: #cbd5e1;
-}
-.about-badge--outline:hover {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.5);
-  color: #fbbf24;
-}
+.about-code-body::-webkit-scrollbar { display: none; }
+.about-code-line { white-space: pre; }
+.tok-cmt   { color: #6b7685; font-style: italic; }
+.tok-quote { color: #d9a441; font-style: italic; }
 
-.stat-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  cursor: default;
-  transition: transform 0.3s ease;
+/* Projects shipped — single feature stat */
+.ship-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.35rem;
+  padding: 1.1rem 1.7rem;
+  border: 1px solid var(--ce-rule);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
 }
-.stat-card:hover {
-  transform: translateY(-5px);
+.ship-stat-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+.ship-stat-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 1.35rem;
+  border-left: 1px solid var(--ce-rule);
+}
+.ship-stat-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+.ship-stat-sub {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
 }
 
 .footer-social {
@@ -3369,13 +3400,10 @@ textarea.ce-input { resize: none; line-height: 1.6; }
   .hero-social,
   .hero-social .cta-icon-box,
   .hero-social .cta-label,
-  .about-built-link,
-  .about-badge,
-  .stat-card {
+  .about-built-link {
     transition: none;
   }
-  .hero-social:hover,
-  .stat-card:hover {
+  .hero-social:hover {
     transform: none;
   }
 }
