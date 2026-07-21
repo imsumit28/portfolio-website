@@ -27,9 +27,9 @@ const Contact = () => {
       {/* Editorial header */}
       <motion.header className="ce-header" {...fadeUp()}>
         <span className="ce-kicker">Get in touch / 06</span>
-        <h2 className="ce-headline">
+        <h1 className="ce-headline">
           Get in<br />touch<span className="ce-dot">.</span>
-        </h2>
+        </h1>
         <p className="ce-lead">
           Open to internships, freelance work, and full-time roles.
           If you&apos;re hiring — or just want to talk about real-time systems — send a note.

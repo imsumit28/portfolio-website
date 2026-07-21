@@ -17,7 +17,7 @@ const Home = () => {
 
       {/* Projects Section */}
       <section className="pt-0 pb-5" id="projects">
-        <Projects />
+        <Projects embedded />
       </section>
 
       <SkillsSection />

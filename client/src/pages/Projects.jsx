@@ -5,7 +5,14 @@ import ProjectList from '../components/ProjectList';
 import { LOCAL_PROJECTS } from '../data/projectsData';
 import { fadeUp, fadeRight } from '../utils/motion';
 
-const Projects = () => {
+/**
+ * `embedded` is set when Home renders this as one section among many — Home
+ * already owns the page's single <h1> (the hero), so the headline drops to <h2>
+ * there and is promoted to <h1> only on the standalone /projects route.
+ */
+const Projects = ({ embedded = false }) => {
+  const Headline = embedded ? 'h2' : 'h1';
+
   // Combined projects+loading state to avoid cascading setState calls.
   // Seeded with LOCAL_PROJECTS so the list has content before the API responds —
   // prerendering has no server to fetch from, and in the browser this removes the
@@ -39,9 +46,9 @@ const Projects = () => {
       {/* Editorial header */}
       <motion.header className="ce-header" {...fadeUp()}>
         <span className="ce-kicker">Selected work / 02</span>
-        <h2 className="ce-headline">
+        <Headline className="ce-headline">
           Things I&apos;ve<br />shipped<span className="ce-dot">.</span>
-        </h2>
+        </Headline>
         <p className="ce-lead">
           Deployed, working builds — real-time systems, full-stack apps, and
           developer tools. Tap any project for the full breakdown.
