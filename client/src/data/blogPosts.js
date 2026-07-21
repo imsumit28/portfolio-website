@@ -6,6 +6,7 @@ export const blogPosts = [
       "A production-focused breakdown of idempotency, retries, batching, and real-time delivery in the NotifyX notification pipeline.",
     project: 'NotifyX',
     readTime: '8 min read',
+    publishedAt: '2026-07-09',
     sourcePath: 'blog-posts/02-distributed-notifications-notifyx.md',
     intro: [
       "Most tutorials show you how to send a notification. Nobody shows you what happens when the network drops mid-delivery, your queue worker crashes, or a bug causes the same event to fire three times.",
@@ -167,6 +168,7 @@ sub.on('message', (channel, data) => {
       'Why collaborative editing breaks naive sync, and how Y.js CRDT solved concurrent editing without silent data loss.',
     project: 'CollabDocs',
     readTime: '6 min read',
+    publishedAt: '2026-07-09',
     sourcePath: 'blog-posts/01-crdt-vs-ot-collabdocs.md',
     intro: [
       'When I started building CollabDocs, I thought collaborative editing just meant syncing text over WebSockets.',
@@ -264,6 +266,7 @@ Y.applyUpdate(doc2, Y.encodeStateAsUpdate(doc1));`,
       'A practical write-up of the production bugs behind DevConnect: reconnects, CORS, token expiry, env drift, and message ordering.',
     project: 'DevConnect',
     readTime: '7 min read',
+    publishedAt: '2026-07-09',
     sourcePath: 'blog-posts/03-deploying-to-production.md',
     intro: [
       'DevConnect worked great on localhost, then deployment exposed the real engineering work: sleeping servers, reconnect logic, CORS, token expiry, and broken assumptions about message delivery.',
@@ -380,6 +383,7 @@ function validateEnv() {
       'The core tradeoff behind Curlix: keep redirects sub-10 ms while still collecting useful click analytics asynchronously.',
     project: 'Curlix',
     readTime: '5 min read',
+    publishedAt: '2026-07-09',
     sourcePath: 'derived from portfolio project data',
     intro: [
       'URL shorteners look simple until you realize the redirect path is the product. Every extra database call shows up directly in user latency.',
@@ -439,6 +443,7 @@ res.redirect(302, longUrl);`,
       'Paper generation takes seconds, not milliseconds, so Paper Pilot pushes LLM and PDF work into a background worker and streams progress to the user.',
     project: 'Paper Pilot',
     readTime: '6 min read',
+    publishedAt: '2026-07-09',
     sourcePath: 'derived from portfolio project data',
     intro: [
       'If an educator clicks generate and the browser just freezes behind a spinner, the system feels broken even when the backend is technically working.',

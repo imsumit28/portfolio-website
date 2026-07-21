@@ -3,6 +3,14 @@ import { getBlogPostBySlug } from '../data/blogPosts';
 
 const pad = (n) => String(n + 1).padStart(2, '0');
 
+const formatDate = (iso) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
 const BlogPost = () => {
   const { slug } = useParams();
   const post = getBlogPostBySlug(slug);
@@ -17,10 +25,17 @@ const BlogPost = () => {
         <div className="post-wrap">
           <Link to="/blogs" className="post-back">← All posts</Link>
 
+          <article className="post-article">
           <header className="post-header">
             <div className="post-meta">
               <span className="blog-row-tag">{post.project}</span>
               <span className="blog-row-sep">/</span>
+              {post.publishedAt && (
+                <>
+                  <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+                  <span className="blog-row-sep">/</span>
+                </>
+              )}
               <span>{post.readTime}</span>
             </div>
             <h1 className="post-title">{post.title}</h1>
@@ -78,6 +93,7 @@ const BlogPost = () => {
               <span className="post-source-path">{post.sourcePath}</span>
             </div>
           </footer>
+          </article>
         </div>
       </div>
     </section>

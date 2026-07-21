@@ -5,7 +5,10 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Children are gated on `loading`, and the effect that clears it never runs
+  // during prerendering — so starting `true` on the server would emit an empty
+  // document. There is no session to check without a browser anyway.
+  const [loading, setLoading] = useState(typeof window !== 'undefined');
 
   useEffect(() => {
     const checkUser = async () => {

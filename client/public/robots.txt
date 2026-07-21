@@ -2,4 +2,9 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
+# Not prerendered — these fall through the SPA rewrite to the homepage shell and
+# would otherwise be crawled carrying the homepage's canonical.
+Disallow: /challenges/
+Disallow: /testing-guide
+
 Sitemap: https://sumitkr.dev/sitemap.xml

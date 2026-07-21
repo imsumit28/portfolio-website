@@ -6,8 +6,14 @@ import { LOCAL_PROJECTS } from '../data/projectsData';
 import { fadeUp, fadeRight } from '../utils/motion';
 
 const Projects = () => {
-  // Combined projects+loading state to avoid cascading setState calls
-  const [{ projects, loading }, setFetchState] = useState({ projects: [], loading: true });
+  // Combined projects+loading state to avoid cascading setState calls.
+  // Seeded with LOCAL_PROJECTS so the list has content before the API responds —
+  // prerendering has no server to fetch from, and in the browser this removes the
+  // blank frame that `loading` used to render.
+  const [{ projects, loading }, setFetchState] = useState({
+    projects: LOCAL_PROJECTS,
+    loading: false,
+  });
 
   useEffect(() => {
     const fetchProjects = async () => {

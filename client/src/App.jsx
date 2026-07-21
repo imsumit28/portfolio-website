@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
@@ -28,7 +28,6 @@ function App() {
     <MotionConfig reducedMotion="user">
       <AuthProvider>
         <IntroAnimation />
-        <Router>
         <ScrollToTop />
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
@@ -55,7 +54,6 @@ function App() {
           </main>
           <Footer />
         </div>
-        </Router>
       </AuthProvider>
     </MotionConfig>
   );
