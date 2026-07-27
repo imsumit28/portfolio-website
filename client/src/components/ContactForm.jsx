@@ -93,7 +93,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={updateFormField}
               required
-              placeholder="Jane Doe"
+              placeholder="Enter your name"
             />
           </div>
           <div className="ce-form-field">
