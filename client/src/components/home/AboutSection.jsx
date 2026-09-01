@@ -2,9 +2,10 @@ import React, { Suspense } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
-import { SOCIAL_LINKS } from '../../data/homeData';
+import { LEETCODE_USERNAME, SOCIAL_LINKS } from '../../data/homeData';
 import { fadeUp, fadeRight } from '../../utils/motion';
 import useGitHubStats from '../../hooks/useGitHubStats';
+import useLeetCodeLatest from '../../hooks/useLeetCodeLatest';
 import profileVideo from '../../assets/profile-video.mp4';
 
 const GITHUB_USERNAME = 'imsumit28';
@@ -19,6 +20,7 @@ const GH_STATS = [
 
 const AboutSection = () => {
   const { stats, loading } = useGitHubStats(GITHUB_USERNAME);
+  const { submission: leetCodeLatest, loading: leetCodeLoading } = useLeetCodeLatest(LEETCODE_USERNAME);
 
   return (
     <section className="pt-5 pb-3 about-editorial" id="about">
@@ -60,11 +62,37 @@ const AboutSection = () => {
               <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-2 text-white">
                 <span className="about-bullet">{'>'}</span> <strong>City:</strong>&nbsp; Patna, India
               </div>
-              <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-4 text-white">
+              <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-2 text-white">
                 <span className="about-bullet">{'>'}</span> <strong>Email:</strong>&nbsp;
                 <a href={`mailto:${SOCIAL_LINKS.email}?subject=Connecting%20from%20your%20Portfolio`} className="about-built-link" style={{ fontWeight: 500 }}>
                   {SOCIAL_LINKS.email}
                 </a>
+              </div>
+              <div className="d-flex align-items-center justify-content-center justify-content-md-start mb-4 text-white">
+                <span className="about-bullet">{'>'}</span> <strong>LeetCode:</strong>&nbsp;
+                {leetCodeLoading ? (
+                  <i className="ca-sk" />
+                ) : leetCodeLatest ? (
+                  <a
+                    href={leetCodeLatest.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-built-link"
+                    style={{ fontWeight: 500 }}
+                  >
+                    {leetCodeLatest.title}
+                  </a>
+                ) : (
+                  <a
+                    href={SOCIAL_LINKS.leetcode}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-built-link"
+                    style={{ fontWeight: 500 }}
+                  >
+                    View profile
+                  </a>
+                )}
               </div>
               <div className="d-flex justify-content-center justify-content-md-start">
                 <a href="/resume.pdf" download="Sumit_Kumar_Full_Stack_Developer_Resume.pdf" className="btn-global btn-global-secondary w-100" style={{ maxWidth: '300px', fontSize: '0.95rem' }}>
@@ -83,6 +111,25 @@ const AboutSection = () => {
               <div className="about-code-body">
                 <div className="about-code-line"><span className="tok-cmt">// Currently open to full-time roles,</span></div>
                 <div className="about-code-line"><span className="tok-cmt">// remote or India-based.</span></div>
+                <div className="about-code-line">{' '}</div>
+                <div className="about-code-line">
+                  <span className="tok-cmt">// Last LeetCode:</span>{' '}
+                  {leetCodeLoading ? (
+                    <span className="tok-cmt">fetching…</span>
+                  ) : leetCodeLatest ? (
+                    <a
+                      href={leetCodeLatest.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="about-built-link tok-str"
+                      style={{ fontStyle: 'normal' }}
+                    >
+                      &quot;{leetCodeLatest.title}&quot;
+                    </a>
+                  ) : (
+                    <span className="tok-cmt">unavailable</span>
+                  )}
+                </div>
                 <div className="about-code-line">{' '}</div>
                 <div className="about-code-line"><span className="tok-quote">/*</span></div>
                 <div className="about-code-line"><span className="tok-quote"> *  "The interesting problems happen when</span></div>

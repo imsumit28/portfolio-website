@@ -18,9 +18,12 @@ export const EXPERIENCE_CONTRIBUTIONS = [
 
 export const EXPERIENCE_TECHNOLOGIES = ['React.js', 'Node.js', 'MongoDB', 'REST APIs', 'Git', 'Agile'];
 
+export const LEETCODE_USERNAME = 'imsumit45';
+
 export const SOCIAL_LINKS = {
   github: 'https://github.com/imsumit28',
   linkedin: 'https://www.linkedin.com/in/imsumit45/',
   x: 'https://x.com/imsumit4545',
+  leetcode: `https://leetcode.com/u/${LEETCODE_USERNAME}/`,
   email: 'ersumitkumar45@gmail.com',
 };

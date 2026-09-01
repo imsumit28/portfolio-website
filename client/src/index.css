@@ -3306,6 +3306,7 @@ textarea.ce-input { resize: none; line-height: 1.6; }
 .about-code-line { white-space: pre; }
 .tok-cmt   { color: #6b7685; font-style: italic; }
 .tok-quote { color: #d9a441; font-style: italic; }
+.tok-str   { color: #8fd3a8; font-style: italic; }
 
 /* Projects shipped — single feature stat */
 .ship-stat {
